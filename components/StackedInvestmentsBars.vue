@@ -2,61 +2,63 @@
   <div class="bars">
     <span class="label" v-html="label" />
     <div class="intro">
-      <span v-if="scenario === 'CPol'"><SensesSelect v-model="region" :options="regions" /> is currently investing <strong>{{ sumThisLabel }}</strong> Billion US-Dollar per year according to the <SensesSelect v-model="model" :options="models" /> model.</span>
-      <span v-else>In total, <strong>{{ diff }}</strong> Billion US-Dollar more per year</span>
+      <span v-if="scenario === 'CPol'">{{ region }} is currently investing <strong>{{ sumThisLabel }}</strong> Billion US-Dollar per year.</span>
+      <span v-else>In total, <strong>{{ diffLabel }}</strong> Billion US-Dollar <strong>{{ diff > 0 ? 'more' : 'less' }}</strong> per year</span>
     </div>
     <svg ref="vis" class="vis">
       <g v-for="(el, i) in elements" v-if="width" v-tooltip="el.tooltip">
         <rect
           :x="el.x0 - el.x1"
           :width="el.width"
-          :height="50"
+          :height="height"
           :y="0"
           :style="{ fill: el.color }" />
-        <g v-if="el.marker !== el.width">
+        <g v-if="el.marker !== el.width" :class="{ 'difference': true, 'showDifference': barDifference }">
           <g v-if="el.marker < el.width">
             <rect
               :x="el.x0 - el.x1"
               :width="el.marker"
-              :height="50"
+              :height="height"
               :y="0"
-              :style="{ fill: '#fff', opacity: 0.8 }" />
+              :style="{ fill: 'rgba(255, 255, 255, 0.8)' }" />
             <line
               :x1="el.x0 - el.x1 + el.marker"
               :x2="el.x0 - el.x1 + el.marker"
               :y1="0"
-              :y2="50"
+              :y2="height"
               class="more" />
           </g>
           <g v-else>
             <rect
               :x="el.x0 - el.x1"
               :width="el.width"
-              :height="50"
+              :height="height"
               :y="0"
-              :style="{ fill: '#fff', opacity: 0.8 }" />
+              :style="{ fill: 'rgba(255, 255, 255, 0.8)' }" />
             <rect
               v-if="el.marker > el.width"
               :x="el.x0 - el.x1 + el.width"
               :width="el.marker - el.width"
-              :height="50"
+              :height="height"
               :style="{ fill: el.color }"
               :y="0" />
             <rect
               v-if="el.marker > el.width"
               :x="el.x0 - el.x1 + el.width"
               :width="el.marker - el.width"
-              :height="50"
+              :height="height"
               :y="0"
               :style="{ fill: 'url(#diagonal-stripe-more)' }" />
             <line
+              v-if="barDifference"
               :x1="el.x0 - el.x1 + el.width"
               :x2="el.x0 - el.x1 + el.width"
               :y1="0"
-              :y2="50"
+              :y2="height"
               class="more" />
           </g>
         </g>
+        <text ref="labels" v-if="scenario !== 'CPol' || !barDifference" x="0" :style="`transform: translateX(${el.x0 - el.x1}px)`" :y="height + 5" dominant-baseline="hanging" class="label">{{ barDifference ? el.diff : formatNumber(el.value) }}</text>
       </g>
       <defs>
         <pattern id="diagonal-stripe-more" patternUnits="userSpaceOnUse" width="10" height="10">
@@ -71,11 +73,6 @@
         </pattern>
       </defs>
     </svg>
-    <footer v-if="scenario !== 'CPol'" class="labels" :style="{ 'grid-template-columns': widths, 'width': `calc(100% - ${gaps}px)`, 'grid-column-gap': `${gap}px` }">
-      <section v-for="(el, i) in elements" :style="{ 'text-align': el.marker < el.width ? 'left' : 'right' }">
-        {{ el.diff }}
-      </section>
-    </footer>
   </div>
 </template>
 
@@ -83,8 +80,8 @@
 import { scaleLinear, scaleTime, scaleBand } from 'd3-scale'
 import { format } from 'd3-format'
 import { range } from 'd3-array'
-import { map, groupBy, sum, values, filter, get } from 'lodash'
-import { mapGetters } from 'vuex'
+import { map, groupBy, sum, values, filter, get, forEach } from 'lodash'
+import { mapGetters, mapState } from 'vuex'
 import SensesSelect from 'library/src/components/SensesSelect'
 
 export default {
@@ -93,109 +90,31 @@ export default {
     return {
       colors: ['#aaa', '#feeda1', '#fdbf6f', '#e9f6a1', '#b7e075', '#229c53', '#da372a', '#a50026'],
       width: 0,
-      height: 0,
+      height: 50,
       margin: {
         left: 0,
         right: 0,
         top: 70,
         bottom: 10
-      },
-      models: [
-        {
-          'label': 'AIM/CGE',
-          'value': 'AIM/CGE'
-        },
-        {
-          'label': 'IMAGE',
-          'value': 'IMAGE'
-        },
-        {
-          'label': 'MESSAGEix-GLOBIOM',
-          'value': 'MESSAGEix-GLOBIOM'
-        },
-        {
-          'label': 'POLES',
-          'value': 'POLES'
-        },
-        {
-          'label': 'REMIND-MAgPIE',
-          'value': 'REMIND-MAgPIE'
-        },
-        {
-          'label': 'WITCH-GLOBIOM',
-          'value': 'WITCH-GLOBIOM'
-        }
-      ],
-      regions: [
-        {
-          'label': 'The World',
-          'value': 'World'
-        },
-        {
-          'label': 'China',
-          'value': 'CHN'
-        },
-        {
-          'label': 'EU',
-          'value': 'EU'
-        },
-        {
-          'label': 'India',
-          'value': 'IND'
-        },
-        {
-          'label': 'USA',
-          'value': 'USA'
-        },
-        {
-          'label': 'R5OECD90+EU',
-          'value': 'R5OECD90+EU'
-        },
-        {
-          'label': 'R5REF',
-          'value': 'R5REF'
-        },
-        {
-          'label': 'R5ASIA',
-          'value': 'R5ASIA'
-        },
-        {
-          'label': 'R5MAF',
-          'value': 'R5MAF'
-        },
-        {
-          'label': 'R5LAM',
-          'value': 'R5LAM'
-        }
-      ]
+      }
     }
   },
   computed: {
-    region: {
-      get () {
-        return this.$store.state.settings.region
-      },
-      set (value) {
-        this.$store.commit('SETTINGS_CHANGE', { key: 'region', value })
-      }
-    },
-    model: {
-      get () {
-        return this.$store.state.settings.model
-      },
-      set (value) {
-        this.$store.commit('SETTINGS_CHANGE', { key: 'model', value })
-      }
-    },
+    ...mapState({
+      'barStacked': state => state.settings.barStacked,
+      'barDifference': state => state.settings.barDifference,
+      'region': state => state.settings.region
+    }),
     total () {
       return sum(values(this.extents))
     },
     label () {
+      const pronom = this.region === 'World' ? 'we' : this.region
       const labels = {
-        'CPol': 'What we are <strong>currently</strong> investing <small>(Current policies)</small>',
-        'NDC': 'What we <strong>pledged</strong> to invest <small>(Nationally Determined Contributions)</small>',
-        '2C': 'What we <strong>should</strong> invest for <strong>2°C</strong>',
-        '1.5C': 'What we <strong>should</strong> invest for <strong>1.5°C</strong>'
+        'CPol': `What ${pronom} ${this.region === 'World' ? 'are' : 'is'} <strong>currently</strong> investing <small>(Current policies)</small>`,
+        'NDC': `What ${pronom} <strong>pledged</strong> to invest <small>(Nationally Determined Contributions)</small>`,
+        '2C': `What ${pronom} <strong>should</strong> invest for <strong>2°C</strong>`,
+        '1.5C': `What ${pronom} <strong>should</strong> invest for <strong>1.5°C</strong>`
       }
       return get(labels, this.scenario, this.scenario)
     },
@@ -205,7 +124,7 @@ export default {
         .domain([0, this.total])
     },
     widths () {
-      return map(this.elements, d => { return `${get(d, 'x1', 0) - this.gap}px` }).join(' ')
+      return map(this.elements, d => { return get(d, 'x1', 0) - this.gap })
     },
     gaps () {
       return (this.elements.length - 1) * this.gap
@@ -220,15 +139,17 @@ export default {
       return sum(map(this.elements, 'reference'))
     },
     diff () {
-      const diff = this.sumThis - this.sumReference
-      return this.formatNumber(diff).replace('-', '–')
+      return this.sumThis - this.sumReference
+    },
+    diffLabel () {
+      return this.formatNumber(Math.abs(this.diff))
     },
     elements () {
       let x0 = 0
       return map(this.variables, (variable, i) => {
         const value = get(get(filter(this.data, { variable }), 0), 'value', 0)
         const reference = get(get(filter(this.reference, { variable }), 0), 'value', 0)
-        const x1 = this.scaleX(get(this.extents, variable, value)) + this.gap
+        const x1 = this.barStacked ? this.scaleX(get(this.extents, variable, value)) + this.gap : this.scaleX(value)
         const width = this.scaleX(value)
         const marker = this.scaleX(reference)
         const color = get(this.colors, i, '#222')
@@ -255,6 +176,10 @@ export default {
     window.addEventListener('resize', this.calcSizes, false)
   },
   updated () {
+    forEach(this.$refs.labels, (label, i) => {
+      const { width } = label.getBBox()
+      label.style.opacity = width < this.widths[i] ? 1 : 0
+    })
     this.calcSizes()
   },
   beforeDestroy () {
@@ -280,7 +205,6 @@ export default {
       const { vis: el } = this.$refs
       if (el !== 'undefined') {
         this.width = el.clientWidth || el.parentNode.clientWidth
-        this.height = el.clientHeight || el.parentNode.clientHeight
       }
     }
   },
@@ -321,7 +245,11 @@ export default {
 
     .vis {
       width: 100%;
-      height: 50px;
+      height: calc(50px + 5px + #{$font-size-small});
+
+      rect, line, text {
+        transition: width $transition-animation, transform $transition-animation, opacity $transition-animation, x $transition-animation, x1 $transition-animation, x2 $transition-animation;
+      }
 
       line {
         &.more {
@@ -329,6 +257,24 @@ export default {
           stroke-width: 2px;
           stroke-dasharray: 2px, 2px;
         }
+      }
+
+      .difference {
+        rect, line {
+          opacity: 0;
+        }
+
+        &.showDifference {
+          rect, line {
+            opacity: 1;
+          }
+        }
+      }
+
+      .label {
+        font-size: $font-size-small;
+        fill: getColor(gray, 60);
+        font-family: $font-sans;
       }
     }
 

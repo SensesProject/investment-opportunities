@@ -1,14 +1,18 @@
-import { has, get, set } from 'lodash'
+import { has, get, set, isUndefined, isNaN } from 'lodash'
 
 const DEFAULTS = {
   model: 'AIM/CGE',
-  region: 'World'
+  region: 'World',
+  barStacked: true,
+  barDifference: true
 }
 
 const state = () => {
   return {
     model: DEFAULTS.model,
-    region: DEFAULTS.region
+    region: DEFAULTS.region,
+    barStacked: DEFAULTS.barStacked,
+    barDifference: DEFAULTS.barDifference
   }
 }
 
@@ -16,7 +20,7 @@ const mutations = {
   SETTINGS_CHANGE (state, { key, value }) {
     if (has(state, key)) {
       let val = value
-      if (!value) {
+      if (isUndefined(value) || isNaN(value)) {
         val = get(DEFAULTS, key)
       }
       set(state, key, val)

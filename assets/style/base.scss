@@ -3,3 +3,37 @@ $font-prefix: "../../node_modules/library/src/assets/fonts";
 @import "library/src/style/base.scss";
 @import "./tooltip";
 @import "./global";
+
+.tooltip {
+  font-size: $font-size-default;
+  font-weight: $font-weight-regular;
+  letter-spacing: 0.02em;
+
+  header {
+    font-weight: $font-weight-bold;
+    font-size: $font-size-big;
+    margin: 0 0 $spacing / 6;
+  }
+}
+
+.highlight {
+  background: transparent;
+  border: 1px solid #f5f6f8 !important;
+  color: getColor(gray, 40);
+  transition: border-color $transition, color $transition;
+
+  svg g path {
+    stroke: getColor(gray, 40) !important;
+    transition: stroke $transition;
+  }
+
+  &:hover, &:focus {
+    background: transparent;
+    border-color: $color-neon !important;
+    color: $color-neon;
+
+    svg g path {
+      stroke: $color-neon !important;
+    }
+  }
+}

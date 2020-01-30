@@ -1,5 +1,5 @@
 <template>
-  <div class="labels" :style="{ 'grid-template-columns': widths, 'width': `calc(100% - ${gaps}px)`, 'grid-column-gap': `${gap}px` }">
+  <div class="labels" :class="{ barStacked }" :style="{ 'grid-template-columns': widths, 'width': `calc(100% - ${gaps}px)`, 'grid-column-gap': `${gap}px` }">
     <section :style="{ 'grid-column-end': `span ${groups[0].length}` }">
       <h4>Energy Efficiency</h4>
       <p>This contains investments in technology that make the usage of energy more efficient.</p>
@@ -43,7 +43,7 @@
 import { scaleLinear, scaleTime, scaleBand } from 'd3-scale'
 import { range } from 'd3-array'
 import { map, groupBy, sum, values, filter, get } from 'lodash'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 
 export default {
   props: ['extents', 'gap'],
@@ -58,6 +58,9 @@ export default {
     }
   },
   computed: {
+    ...mapState({
+      'barStacked': state => state.settings.barStacked
+    }),
     total () {
       return sum(values(this.extents))
     },
@@ -86,6 +89,12 @@ export default {
     display: grid;
     // grid-column-gap: $spacing / 2;
     max-width: 100%;
+    transition: opacity $transition-animation;
+    opacity: 0;
+
+    &.barStacked {
+      opacity: 1;
+    }
 
     section {
       border-top: 2px solid getColor(gray, 90);
