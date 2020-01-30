@@ -2,11 +2,11 @@
   <div class="bars">
     <span class="label" v-html="label" />
     <div class="intro">
-      <span v-if="scenario === 'CPol'">The World is currently investing <strong>{{ sumThisLabel }}</strong> Billion US-Dollar per year.</span>
+      <span v-if="scenario === 'CPol'"><SensesSelect v-model="region" :options="regions" /> is currently investing <strong>{{ sumThisLabel }}</strong> Billion US-Dollar per year according to the <SensesSelect v-model="model" :options="models" /> model.</span>
       <span v-else>In total, <strong>{{ diff }}</strong> Billion US-Dollar more per year</span>
     </div>
     <svg ref="vis" class="vis">
-      <g v-for="(el, i) in elements" v-if="width">
+      <g v-for="(el, i) in elements" v-if="width" v-tooltip="el.tooltip">
         <rect
           :x="el.x0 - el.x1"
           :width="el.width"
@@ -21,6 +21,12 @@
               :height="50"
               :y="0"
               :style="{ fill: '#fff', opacity: 0.8 }" />
+            <line
+              :x1="el.x0 - el.x1 + el.marker"
+              :x2="el.x0 - el.x1 + el.marker"
+              :y1="0"
+              :y2="50"
+              class="more" />
           </g>
           <g v-else>
             <rect
@@ -43,13 +49,13 @@
               :height="50"
               :y="0"
               :style="{ fill: 'url(#diagonal-stripe-more)' }" />
+            <line
+              :x1="el.x0 - el.x1 + el.width"
+              :x2="el.x0 - el.x1 + el.width"
+              :y1="0"
+              :y2="50"
+              class="more" />
           </g>
-          <line
-            :x1="el.x0 - el.x1 + el.marker"
-            :x2="el.x0 - el.x1 + el.marker"
-            :y1="0"
-            :y2="50"
-            class="more" />
         </g>
       </g>
       <defs>
@@ -79,6 +85,7 @@ import { format } from 'd3-format'
 import { range } from 'd3-array'
 import { map, groupBy, sum, values, filter, get } from 'lodash'
 import { mapGetters } from 'vuex'
+import SensesSelect from 'library/src/components/SensesSelect'
 
 export default {
   props: ['data', 'scenario', 'extents', 'variables', 'reference', 'gap'],
@@ -92,14 +99,94 @@ export default {
         right: 0,
         top: 70,
         bottom: 10
-      }
+      },
+      models: [
+        {
+          'label': 'AIM/CGE',
+          'value': 'AIM/CGE'
+        },
+        {
+          'label': 'IMAGE',
+          'value': 'IMAGE'
+        },
+        {
+          'label': 'MESSAGEix-GLOBIOM',
+          'value': 'MESSAGEix-GLOBIOM'
+        },
+        {
+          'label': 'POLES',
+          'value': 'POLES'
+        },
+        {
+          'label': 'REMIND-MAgPIE',
+          'value': 'REMIND-MAgPIE'
+        },
+        {
+          'label': 'WITCH-GLOBIOM',
+          'value': 'WITCH-GLOBIOM'
+        }
+      ],
+      regions: [
+        {
+          'label': 'The World',
+          'value': 'World'
+        },
+        {
+          'label': 'China',
+          'value': 'CHN'
+        },
+        {
+          'label': 'EU',
+          'value': 'EU'
+        },
+        {
+          'label': 'India',
+          'value': 'IND'
+        },
+        {
+          'label': 'USA',
+          'value': 'USA'
+        },
+        {
+          'label': 'R5OECD90+EU',
+          'value': 'R5OECD90+EU'
+        },
+        {
+          'label': 'R5REF',
+          'value': 'R5REF'
+        },
+        {
+          'label': 'R5ASIA',
+          'value': 'R5ASIA'
+        },
+        {
+          'label': 'R5MAF',
+          'value': 'R5MAF'
+        },
+        {
+          'label': 'R5LAM',
+          'value': 'R5LAM'
+        }
+      ]
     }
   },
   computed: {
-    ...mapGetters([
-      'rangeValues',
-      'rangeTime'
-    ]),
+    region: {
+      get () {
+        return this.$store.state.settings.region
+      },
+      set (value) {
+        this.$store.commit('SETTINGS_CHANGE', { key: 'region', value })
+      }
+    },
+    model: {
+      get () {
+        return this.$store.state.settings.model
+      },
+      set (value) {
+        this.$store.commit('SETTINGS_CHANGE', { key: 'model', value })
+      }
+    },
     total () {
       return sum(values(this.extents))
     },
@@ -127,14 +214,14 @@ export default {
       return sum(map(this.elements, 'value'))
     },
     sumThisLabel () {
-      return format(',.2r')(this.sumThis)
+      return this.formatNumber(this.sumThis)
     },
     sumReference () {
       return sum(map(this.elements, 'reference'))
     },
     diff () {
       const diff = this.sumThis - this.sumReference
-      return format(',.2r')(diff).replace('-', '–')
+      return this.formatNumber(diff).replace('-', '–')
     },
     elements () {
       let x0 = 0
@@ -146,17 +233,19 @@ export default {
         const marker = this.scaleX(reference)
         const color = get(this.colors, i, '#222')
         const diff = value - reference
+        const tooltip = this.createTooltip(variable, value, reference, diff)
         x0 += x1
         return {
           label: variable,
-          diff: (diff > 0 ? '+' : '') + format(',.2r')(diff).replace('-', '–'),
+          diff: (diff > 0 ? '+' : '') + this.formatNumber(diff).replace('-', '–'),
           x0,
           x1,
           width,
           value,
           reference,
           color,
-          marker
+          marker,
+          tooltip
         }
       })
     }
@@ -172,6 +261,21 @@ export default {
     window.removeEventListener('resize', this.calcSizes, false)
   },
   methods: {
+    createTooltip (variable, value, reference, diff) {
+      const { formatNumber: fN } = this
+      return `
+        <header>${variable}</header>
+        <p>
+          We are currently investing <strong>${fN(reference)}</strong> Billion US-Dollar per year,<br />
+          but we should invest <strong>${fN(value)}</strong>.
+          That means, we should invest<br />
+          <strong>${fN(Math.abs(diff))} ${diff > 0 ? 'more': 'less'}</strong> in ${variable}.
+        </p>
+      `
+    },
+    formatNumber (n) {
+      return format(',.3r')(n)
+    },
     calcSizes () {
       const { vis: el } = this.$refs
       if (el !== 'undefined') {
@@ -179,6 +283,9 @@ export default {
         this.height = el.clientHeight || el.parentNode.clientHeight
       }
     }
+  },
+  components: {
+    SensesSelect
   }
 }
 </script>
@@ -190,12 +297,12 @@ export default {
     .label {
       margin-bottom: $spacing / 8;
       display: block;
-      font-size: 1.4rem;
+      font-size: $font-size-bigger;
       font-weight: $font-weight-regular;
       font-family: $font-serif;
 
       small {
-        font-size: 0.6em;
+        font-size: $font-size-default;
         color: getColor(gray, 60);
       }
 
@@ -206,7 +313,7 @@ export default {
     }
 
     .intro {
-      font-size: 0.8rem;
+      font-size: $font-size-default;
       margin-bottom: $spacing / 2;
       display: block;
       color: getColor(gray, 40);
@@ -227,7 +334,7 @@ export default {
 
     .labels {
       display: grid;
-      font-size: 0.6em;
+      font-size: $font-size-small;
       color: getColor(gray, 60);
     }
   }

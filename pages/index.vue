@@ -6,12 +6,10 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import Options from '~/components/Options'
 import StackedInvestments from '~/components/StackedInvestments'
 
 export default {
   components: {
-    Options,
     StackedInvestments
   },
   created () {
