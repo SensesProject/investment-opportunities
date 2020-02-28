@@ -1,7 +1,10 @@
 <template>
-  <div class="container">
-    <StackedInvestments />
-    <Options />
+  <div>
+    <SensesMenu message="Work in Progress"/>
+    <div class="container">
+      <StackedInvestments />
+      <Options />
+    </div>
   </div>
 </template>
 
@@ -9,11 +12,13 @@
 import { mapState, mapActions } from 'vuex'
 import StackedInvestments from '~/components/StackedInvestments'
 import Options from '~/components/Options'
+import SensesMenu from 'library/src/components/SensesMenu.vue'
 
 export default {
   components: {
     StackedInvestments,
-    Options
+    Options,
+    SensesMenu
   },
   created () {
     this.loadInvestments()

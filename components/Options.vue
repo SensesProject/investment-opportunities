@@ -134,7 +134,7 @@ export default {
   .options {
     background-color: #fff;
     position: absolute;
-    top: $spacing / 2;
+    top: $spacing * 2;
     right: $spacing / 2;
     padding: $spacing / 4;
     border: 1px solid getColor(gray, 80);
