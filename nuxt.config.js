@@ -45,6 +45,9 @@ export default {
   /*
   ** Build configuration
   */
+  router: {
+    base: '/investment/'
+  },
   build: {
     /*
     ** You can extend webpack config here

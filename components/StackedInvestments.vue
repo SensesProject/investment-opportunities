@@ -2,8 +2,15 @@
   <div class="vis">
     <div class="wrapper">
       <div v-for="(scenario, key) in dataByScenario" class="scenario">
-        <StackedInvestmentsBars :gap="gap" :data="scenario" :scenario="key" :extents="extents" :variables="variables" :reference="reference" />
-        <StackedInvestmentsLabels :gap="gap" v-if="key === 'CPol'" :extents="extents" />
+        <StackedInvestmentsBars
+          :gap="gap"
+          :data="scenario"
+          :scenario="key"
+          :extents="extents"
+          :variables="variables"
+          :reference="reference"
+        />
+        <StackedInvestmentsLabels v-if="key === 'CPol'" :gap="gap" :extents="extents" />
       </div>
     </div>
   </div>

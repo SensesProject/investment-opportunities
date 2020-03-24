@@ -1,5 +1,4 @@
-import { map, assign, get, filter, flatten, includes } from 'lodash'
-import { extent } from 'd3-array'
+import { assign, get, filter } from 'lodash'
 import axios from 'axios'
 
 const state = () => {

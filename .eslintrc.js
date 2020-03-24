@@ -1,16 +1,22 @@
 module.exports = {
   root: true,
-  parser: 'babel-eslint',
   env: {
     browser: true,
     node: true
   },
-  extends: 'standard',
-  // required to lint *.vue files
-  plugins: [
-    'html'
+  parserOptions: {
+    parser: 'babel-eslint'
+  },
+  extends: [
+    '@nuxtjs',
+    'plugin:nuxt/recommended'
   ],
   // add your custom rules here
-  rules: {},
-  globals: {}
+  rules: {
+    'vue/valid-v-for': 1,
+    'vue/require-prop-types': 1,
+    'no-irregular-whitespace': 1,
+    'vue/no-use-v-if-with-v-for': 1,
+    'vue/require-v-for-key': 1
+  }
 }

@@ -3,8 +3,8 @@ import { has, get, set, isUndefined, isNaN } from 'lodash'
 const DEFAULTS = {
   model: 'AIM/CGE',
   region: 'World',
-  barStacked: true,
-  barDifference: true
+  barStacked: false,
+  barDifference: false
 }
 
 const state = () => {

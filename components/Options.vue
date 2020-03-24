@@ -2,88 +2,86 @@
   <div class="options">
     <SensesSelect v-model="region" :options="regions" />
     <SensesSelect v-model="model" :options="models" />
-    <label><input type="checkbox" v-model="barStacked"> {{ barStacked ? 'not ' : '' }}stacked</label>
-    <label><input type="checkbox" v-model="barDifference"> difference {{ barDifference ? '' : 'not ' }}colored</label>
+    <label><input v-model="barStacked" type="checkbox"> {{ barStacked ? '' : 'not ' }}stacked</label>
+    <label><input v-model="barDifference" type="checkbox"> difference {{ barDifference ? '' : 'not ' }}colored</label>
   </div>
 </template>
 
 <script>
-import { scaleLinear, scaleTime, scaleBand } from 'd3-scale'
-import { format } from 'd3-format'
-import { range } from 'd3-array'
-import { map, groupBy, sum, values, filter, get } from 'lodash'
-import { mapState } from 'vuex'
 import SensesSelect from 'library/src/components/SensesSelect'
 
 export default {
+  components: {
+    SensesSelect
+  },
   data: () => {
     return {
       models: [
         {
-          'label': 'AIM/CGE',
-          'value': 'AIM/CGE'
+          label: 'AIM/CGE',
+          value: 'AIM/CGE'
         },
         {
-          'label': 'IMAGE',
-          'value': 'IMAGE'
+          label: 'IMAGE',
+          value: 'IMAGE'
         },
         {
-          'label': 'MESSAGEix-GLOBIOM',
-          'value': 'MESSAGEix-GLOBIOM'
+          label: 'MESSAGEix-GLOBIOM',
+          value: 'MESSAGEix-GLOBIOM'
         },
         {
-          'label': 'POLES',
-          'value': 'POLES'
+          label: 'POLES',
+          value: 'POLES'
         },
         {
-          'label': 'REMIND-MAgPIE',
-          'value': 'REMIND-MAgPIE'
+          label: 'REMIND-MAgPIE',
+          value: 'REMIND-MAgPIE'
         },
         {
-          'label': 'WITCH-GLOBIOM',
-          'value': 'WITCH-GLOBIOM'
+          label: 'WITCH-GLOBIOM',
+          value: 'WITCH-GLOBIOM'
         }
       ],
       regions: [
         {
-          'label': 'The World',
-          'value': 'World'
+          label: 'The World',
+          value: 'World'
         },
         {
-          'label': 'China',
-          'value': 'CHN'
+          label: 'China',
+          value: 'CHN'
         },
         {
-          'label': 'EU',
-          'value': 'EU'
+          label: 'EU',
+          value: 'EU'
         },
         {
-          'label': 'India',
-          'value': 'IND'
+          label: 'India',
+          value: 'IND'
         },
         {
-          'label': 'USA',
-          'value': 'USA'
+          label: 'USA',
+          value: 'USA'
         },
         {
-          'label': 'R5OECD90+EU',
-          'value': 'R5OECD90+EU'
+          label: 'R5OECD90+EU',
+          value: 'R5OECD90+EU'
         },
         {
-          'label': 'R5REF',
-          'value': 'R5REF'
+          label: 'R5REF',
+          value: 'R5REF'
         },
         {
-          'label': 'R5ASIA',
-          'value': 'R5ASIA'
+          label: 'R5ASIA',
+          value: 'R5ASIA'
         },
         {
-          'label': 'R5MAF',
-          'value': 'R5MAF'
+          label: 'R5MAF',
+          value: 'R5MAF'
         },
         {
-          'label': 'R5LAM',
-          'value': 'R5LAM'
+          label: 'R5LAM',
+          value: 'R5LAM'
         }
       ]
     }
@@ -121,9 +119,6 @@ export default {
         this.$store.commit('SETTINGS_CHANGE', { key: 'barDifference', value })
       }
     }
-  },
-  components: {
-    SensesSelect
   }
 }
 </script>
@@ -133,8 +128,8 @@ export default {
 
   .options {
     background-color: #fff;
-    position: absolute;
     top: $spacing * 2;
+    position: fixed;
     right: $spacing / 2;
     padding: $spacing / 4;
     border: 1px solid getColor(gray, 80);

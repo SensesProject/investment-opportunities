@@ -40,10 +40,8 @@
 </template>
 
 <script>
-import { scaleLinear, scaleTime, scaleBand } from 'd3-scale'
-import { range } from 'd3-array'
-import { map, groupBy, sum, values, filter, get } from 'lodash'
-import { mapGetters, mapState } from 'vuex'
+import { map, sum, values, get } from 'lodash'
+import { mapState } from 'vuex'
 
 export default {
   props: ['extents', 'gap'],
@@ -59,7 +57,7 @@ export default {
   },
   computed: {
     ...mapState({
-      'barStacked': state => state.settings.barStacked
+      barStacked: state => state.settings.barStacked
     }),
     total () {
       return sum(values(this.extents))
@@ -71,9 +69,8 @@ export default {
       return (this.blocks - 1) * this.gap
     },
     widths () {
-      let x0 = 0
       return map(this.groups, (group) => {
-        return map(group, key => {
+        return map(group, (key) => {
           return `${100 / this.total * get(this.extents, key, 0)}%`
         }).join(' ')
       }).join(' ')

@@ -6,13 +6,14 @@
       <span v-else>In total, <strong>{{ diffLabel }}</strong> Billion US-Dollar <strong>{{ diff > 0 ? 'more' : 'less' }}</strong> per year</span>
     </div>
     <svg ref="vis" class="vis">
-      <g v-for="(el, i) in elements" v-if="width" v-tooltip="el.tooltip">
+      <g v-for="(el) in elements" v-if="width" v-tooltip="el.tooltip">
         <rect
           :x="el.x0 - el.x1"
           :width="el.width"
           :height="height"
           :y="0"
-          :style="{ fill: el.color }" />
+          :style="{ fill: el.color }"
+        />
         <g v-if="el.marker !== el.width" :class="{ 'difference': true, 'showDifference': barDifference }">
           <g v-if="el.marker < el.width">
             <rect
@@ -20,13 +21,15 @@
               :width="el.marker"
               :height="height"
               :y="0"
-              :style="{ fill: 'rgba(255, 255, 255, 0.8)' }" />
+              :style="{ fill: 'rgba(255, 255, 255, 0.8)' }"
+            />
             <line
               :x1="el.x0 - el.x1 + el.marker"
               :x2="el.x0 - el.x1 + el.marker"
               :y1="0"
               :y2="height"
-              class="more" />
+              class="more"
+            />
           </g>
           <g v-else>
             <rect
@@ -34,42 +37,64 @@
               :width="el.width"
               :height="height"
               :y="0"
-              :style="{ fill: 'rgba(255, 255, 255, 0.8)' }" />
+              :style="{ fill: 'rgba(255, 255, 255, 0.8)' }"
+            />
             <rect
               v-if="el.marker > el.width"
               :x="el.x0 - el.x1 + el.width"
               :width="el.marker - el.width"
               :height="height"
               :style="{ fill: el.color }"
-              :y="0" />
+              :y="0"
+            />
             <rect
               v-if="el.marker > el.width"
               :x="el.x0 - el.x1 + el.width"
               :width="el.marker - el.width"
               :height="height"
               :y="0"
-              :style="{ fill: 'url(#diagonal-stripe-more)' }" />
+              :style="{ fill: 'url(#diagonal-stripe-more)' }"
+            />
             <line
               v-if="barDifference"
               :x1="el.x0 - el.x1 + el.width"
               :x2="el.x0 - el.x1 + el.width"
               :y1="0"
               :y2="height"
-              class="more" />
+              class="more"
+            />
           </g>
         </g>
-        <text ref="labels" v-if="scenario !== 'CPol' || !barDifference" x="0" :style="`transform: translateX(${el.x0 - el.x1}px)`" :y="height + 5" dominant-baseline="hanging" class="label">{{ barDifference ? el.diff : formatNumber(el.value) }}</text>
+        <text
+          v-if="scenario !== 'CPol' || !barDifference"
+          ref="labels"
+          x="0"
+          :style="`transform: translateX(${el.x0 - el.x1}px)`"
+          :y="height + 5"
+          dominant-baseline="hanging"
+          class="label"
+        >{{ barDifference ? el.diff : formatNumber(el.value) }}</text>
       </g>
       <defs>
         <pattern id="diagonal-stripe-more" patternUnits="userSpaceOnUse" width="10" height="10">
-          <path d='M-1,1 l2,-2
+          <path
+            d="M-1,1 l2,-2
                    M0,10 l10,-10
-                   M9,11 l2,-2' stroke='#fff' style="opacity: 0.8" stroke-width='1.5'/>
+                   M9,11 l2,-2"
+            stroke="#fff"
+            style="opacity: 0.8"
+            stroke-width="1.5"
+          />
         </pattern>
         <pattern id="diagonal-stripe-less" patternUnits="userSpaceOnUse" width="10" height="10">
-          <path d='M-1,1 l2,-2
+          <path
+            d="M-1,1 l2,-2
                    M0,10 l10,-10
-                   M9,11 l2,-2' stroke='#fff' style="opacity: 0.9" stroke-width='4'/>
+                   M9,11 l2,-2"
+            stroke="#fff"
+            style="opacity: 0.9"
+            stroke-width="4"
+          />
         </pattern>
       </defs>
     </svg>
@@ -77,12 +102,10 @@
 </template>
 
 <script>
-import { scaleLinear, scaleTime, scaleBand } from 'd3-scale'
+import { scaleLinear } from 'd3-scale'
 import { format } from 'd3-format'
-import { range } from 'd3-array'
-import { map, groupBy, sum, values, filter, get, forEach } from 'lodash'
-import { mapGetters, mapState } from 'vuex'
-import SensesSelect from 'library/src/components/SensesSelect'
+import { map, sum, values, filter, get, forEach } from 'lodash'
+import { mapState } from 'vuex'
 
 export default {
   props: ['data', 'scenario', 'extents', 'variables', 'reference', 'gap'],
@@ -101,9 +124,9 @@ export default {
   },
   computed: {
     ...mapState({
-      'barStacked': state => state.settings.barStacked,
-      'barDifference': state => state.settings.barDifference,
-      'region': state => state.settings.region
+      barStacked: state => state.settings.barStacked,
+      barDifference: state => state.settings.barDifference,
+      region: state => state.settings.region
     }),
     total () {
       return sum(values(this.extents))
@@ -111,8 +134,8 @@ export default {
     label () {
       const pronom = this.region === 'World' ? 'we' : this.region
       const labels = {
-        'CPol': `What ${pronom} ${this.region === 'World' ? 'are' : 'is'} <strong>currently</strong> investing <small>(Current policies)</small>`,
-        'NDC': `What ${pronom} <strong>pledged</strong> to invest <small>(Nationally Determined Contributions)</small>`,
+        CPol: `What ${pronom} ${this.region === 'World' ? 'are' : 'is'} <strong>currently</strong> investing <small>(Current policies)</small>`,
+        NDC: `What ${pronom} <strong>pledged</strong> to invest <small>(Nationally Determined Contributions)</small>`,
         '2C': `What ${pronom} <strong>should</strong> invest for <strong>2°C</strong>`,
         '1.5C': `What ${pronom} <strong>should</strong> invest for <strong>1.5°C</strong>`
       }
@@ -124,7 +147,7 @@ export default {
         .domain([0, this.total])
     },
     widths () {
-      return map(this.elements, d => { return get(d, 'x1', 0) - this.gap })
+      return map(this.elements, (d) => { return get(d, 'x1', 0) - this.gap })
     },
     gaps () {
       return (this.elements.length - 1) * this.gap
@@ -194,7 +217,7 @@ export default {
           We are currently investing <strong>${fN(reference)}</strong> Billion US-Dollar per year,<br />
           but we should invest <strong>${fN(value)}</strong>.
           That means, we should invest<br />
-          <strong>${fN(Math.abs(diff))} ${diff > 0 ? 'more': 'less'}</strong> in ${variable}.
+          <strong>${fN(Math.abs(diff))} ${diff > 0 ? 'more' : 'less'}</strong> in ${variable}.
         </p>
       `
     },
@@ -207,9 +230,6 @@ export default {
         this.width = el.clientWidth || el.parentNode.clientWidth
       }
     }
-  },
-  components: {
-    SensesSelect
   }
 }
 </script>
