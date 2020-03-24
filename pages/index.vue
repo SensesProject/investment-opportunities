@@ -26,9 +26,9 @@
 <script>
 import { mapActions } from 'vuex'
 import SensesMeta from 'library/src/components/SensesMeta.vue'
+import SensesMenu from 'library/src/components/SensesMenu.vue'
 import StackedInvestments from '~/components/StackedInvestments'
 import Options from '~/components/Options'
-import SensesMenu from 'library/src/components/SensesMenu.vue'
 
 export default {
   components: {
