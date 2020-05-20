@@ -1,40 +1,16 @@
 <template>
   <div class="labels" :class="{ barStacked }" :style="{ 'grid-template-columns': widths, 'width': `calc(100% - ${gaps}px)`, 'grid-column-gap': `${gap}px` }">
     <section :style="{ 'grid-column-end': `span ${groups[0].length}` }">
-      <h4>Energy Efficiency</h4>
-      <p>This contains investments in technology that make the usage of energy more efficient.</p>
+      <h4>Efficiency</h4>
     </section>
     <section :style="{ 'grid-column-end': `span ${groups[1].length}` }">
       <h4>CCS, T&D and Storage</h4>
-      <p>
-        This includes
-        <ul>
-          <li>Carbon dioxide capture and storage</li>
-          <li>Power Transmission & Distribution</li>
-          <li>Energy storage</li>
-        </ul>
-      </p>
     </section>
     <section :style="{ 'grid-column-end': `span ${groups[2].length}` }">
       <h4>Nuclear & Bioenergy</h4>
-      <p>
-        This includes
-        <ul>
-          <li>Nuclear energy</li>
-          <li>Bioenergy</li>
-          <li>Non-bio renewables</li>
-        </ul>
-      </p>
     </section>
     <section :style="{ 'grid-column-end': `span ${groups[3].length}` }">
       <h4>Fossil Fuels</h4>
-      <p>
-        This includes
-        <ul>
-          <li>Fossil Fuels without Carbon dioxide capture and storage</li>
-          <li>Fossil Fuels</li>
-        </ul>
-      </p>
     </section>
   </div>
 </template>

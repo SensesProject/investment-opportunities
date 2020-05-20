@@ -56,7 +56,7 @@ export default {
       forEach(this.variables, (variable) => {
         const runs = filter(this.data, { variable })
         // Get the average values from the runs
-        const values = map(runs, run => get(run, ['values', this.showModels && this.barStacked ? 'max' : 'average'])) // TODO: Right now we are only using the average value
+        const values = map(runs, run => get(run, ['values', 'max'])) // TODO: Right now we are only using the average value
         // Set the max value
         maxes[variable] = Math.max(...values)
       })
@@ -78,11 +78,12 @@ export default {
 
     .wrapper {
       max-width: 1200px;
+      width: 100%;
     }
   }
 
   .scenario {
-    margin: 0 0 $spacing * 2;
+    margin: 0 0 $spacing;
   }
 
 </style>
