@@ -3,7 +3,8 @@
     <SensesSelect v-model="region" :options="regions" />
     <SensesSelect v-model="model" :options="models" />
     <label><input v-model="barStacked" type="checkbox"> {{ barStacked ? '' : 'not ' }}stacked</label>
-    <label><input v-model="barDifference" type="checkbox"> difference {{ barDifference ? '' : 'not ' }}colored</label>
+    <label><input v-model="barDifference" type="checkbox"> difference {{ barDifference ? '' : 'models ' }}colored</label>
+    <label><input v-model="showModels" type="checkbox"> {{ showModels ? 'hide' : 'show' }} models</label>
   </div>
 </template>
 
@@ -40,6 +41,10 @@ export default {
         {
           label: 'WITCH-GLOBIOM',
           value: 'WITCH-GLOBIOM'
+        },
+        {
+          label: 'average',
+          value: 'average'
         }
       ],
       regions: [
@@ -117,6 +122,14 @@ export default {
       },
       set (value) {
         this.$store.commit('SETTINGS_CHANGE', { key: 'barDifference', value })
+      }
+    },
+    showModels: {
+      get () {
+        return this.$store.state.settings.showModels
+      },
+      set (value) {
+        this.$store.commit('SETTINGS_CHANGE', { key: 'showModels', value })
       }
     }
   }

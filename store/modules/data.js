@@ -1,6 +1,8 @@
 import { assign, get, filter } from 'lodash'
 import axios from 'axios'
 
+const PATH_DATA = './data/investments-1.1.json'
+
 const state = () => {
   return {
     investments: []
@@ -20,11 +22,10 @@ const mutations = {
 
 const getters = {
   data: (state, getters, rootState) => {
-    const model = get(rootState, ['settings', 'model'])
+    // Get the currently selected region
     const region = get(rootState, ['settings', 'region'])
-    // const scenario = get(rootState, ['settings', 'scenario'])
-
-    return filter(get(state, ['investments', 'data'], []), { model, region })
+    // Based on the region, we filter the data
+    return filter(get(state, ['investments', 'data'], []), { region })
   }
 }
 
@@ -33,10 +34,9 @@ const actions = {
     const status = get(state.datum, 'status')
     if (status !== 'loading') {
       commit('DATA_CHANGE', { status: 'loading' })
-      const url = './data/investments.json'
-      axios.get(url)
+      axios.get(PATH_DATA)
         .then((response) => {
-          commit('DATA_CHANGE', { status: 'success', data: response.data.runs })
+          commit('DATA_CHANGE', { status: 'success', data: response.data })
         })
         .catch((error) => {
           console.error('error', error)

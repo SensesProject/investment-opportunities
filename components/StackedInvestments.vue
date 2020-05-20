@@ -8,7 +8,6 @@
           :scenario="key"
           :extents="extents"
           :variables="variables"
-          :reference="reference"
         />
         <StackedInvestmentsLabels v-if="key === 'CPol'" :gap="gap" :extents="extents" />
       </div>
@@ -17,8 +16,8 @@
 </template>
 
 <script>
-import { map, groupBy, filter, maxBy, get, fromPairs } from 'lodash'
-import { mapGetters } from 'vuex'
+import { groupBy, filter, get, map, forEach } from 'lodash'
+import { mapState, mapGetters } from 'vuex'
 import StackedInvestmentsBars from '~/components/StackedInvestmentsBars'
 import StackedInvestmentsLabels from '~/components/StackedInvestmentsLabels'
 
@@ -44,17 +43,24 @@ export default {
     ...mapGetters([
       'data'
     ]),
+    ...mapState({
+      showModels: state => state.settings.showModels,
+      barStacked: state => state.settings.barStacked
+    }),
     dataByScenario () {
       return groupBy(this.data, 'scenario')
     },
-    reference () {
-      return get(this.dataByScenario, 'CPol')
-    },
     extents () {
-      return fromPairs(map(this.variables, (variable) => {
+      // We need the maximum value for each variable for the unstacked chart
+      const maxes = {}
+      forEach(this.variables, (variable) => {
         const runs = filter(this.data, { variable })
-        return [variable, get(maxBy(runs, 'value'), 'value')]
-      }))
+        // Get the average values from the runs
+        const values = map(runs, run => get(run, ['values', this.showModels && this.barStacked ? 'max' : 'average'])) // TODO: Right now we are only using the average value
+        // Set the max value
+        maxes[variable] = Math.max(...values)
+      })
+      return maxes
     }
   },
   components: {

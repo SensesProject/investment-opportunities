@@ -4,7 +4,8 @@ const DEFAULTS = {
   model: 'AIM/CGE',
   region: 'World',
   barStacked: false,
-  barDifference: false
+  barDifference: false,
+  showModels: false
 }
 
 const state = () => {
@@ -12,7 +13,8 @@ const state = () => {
     model: DEFAULTS.model,
     region: DEFAULTS.region,
     barStacked: DEFAULTS.barStacked,
-    barDifference: DEFAULTS.barDifference
+    barDifference: DEFAULTS.barDifference,
+    showModels: DEFAULTS.showModels
   }
 }
 

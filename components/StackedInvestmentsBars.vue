@@ -14,6 +14,16 @@
           :y="0"
           :style="{ fill: el.color }"
         />
+        <g v-if="showModels && barStacked">
+          <line
+            v-for="value in el.values"
+            :x1="el.x0 - el.x1"
+            :x2="el.x0 - el.x1 + value.x"
+            :y1="value.y"
+            :y2="value.y"
+            :style="{ stroke: '#000' }"
+          />
+        </g>
         <g v-if="el.marker !== el.width" :class="{ 'difference': true, 'showDifference': barDifference }">
           <g v-if="el.marker < el.width">
             <rect
@@ -102,13 +112,13 @@
 </template>
 
 <script>
-import { scaleLinear } from 'd3-scale'
+import { scaleLinear, scalePoint } from 'd3-scale'
 import { format } from 'd3-format'
-import { map, sum, values, filter, get, forEach } from 'lodash'
+import { map, sum, values, filter, get, forEach, keys } from 'lodash'
 import { mapState } from 'vuex'
 
 export default {
-  props: ['data', 'scenario', 'extents', 'variables', 'reference', 'gap'],
+  props: ['data', 'scenario', 'extents', 'variables', 'gap'],
   data: () => {
     return {
       colors: ['#aaa', '#feeda1', '#fdbf6f', '#e9f6a1', '#b7e075', '#229c53', '#da372a', '#a50026'],
@@ -126,6 +136,7 @@ export default {
     ...mapState({
       barStacked: state => state.settings.barStacked,
       barDifference: state => state.settings.barDifference,
+      showModels: state => state.settings.showModels,
       region: state => state.settings.region
     }),
     total () {
@@ -145,6 +156,10 @@ export default {
       return scaleLinear()
         .range([this.margin.left, this.width - (this.variables.length - 1) * this.gap - this.margin.right])
         .domain([0, this.total])
+    },
+    scaleY () {
+      return scalePoint()
+        .range([0, this.height])
     },
     widths () {
       return map(this.elements, (d) => { return get(d, 'x1', 0) - this.gap })
@@ -170,8 +185,20 @@ export default {
     elements () {
       let x0 = 0
       return map(this.variables, (variable, i) => {
-        const value = get(get(filter(this.data, { variable }), 0), 'value', 0)
-        const reference = get(get(filter(this.reference, { variable }), 0), 'value', 0)
+        const data = get(filter(this.data, { variable }), 0)
+
+        const value = get(data, ['values', 'average'], 0)
+        const reference = get(data, ['reference', 'average'], 0)
+
+        this.scaleY.domain(keys(get(data, ['values'], [])))
+
+        const values = map(get(data, ['values'], []), (d, i) => {
+          return {
+            x: this.scaleX(d),
+            y: this.scaleY(i)
+          }
+        })
+
         const x1 = this.barStacked ? this.scaleX(get(this.extents, variable, value)) + this.gap : this.scaleX(value)
         const width = this.scaleX(value)
         const marker = this.scaleX(reference)
@@ -189,7 +216,8 @@ export default {
           reference,
           color,
           marker,
-          tooltip
+          tooltip,
+          values
         }
       })
     }

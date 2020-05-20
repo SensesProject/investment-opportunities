@@ -12,6 +12,7 @@
         <small>McCollum, D.L., Zhou, W., Bertram, C. et al. Energy investment needs for fulfilling the Paris Agreement and achieving the Sustainable Development Goals. Nat Energy 3, 589–599 (2018). </small>
       </div>
       <StackedInvestments />
+      <BarInvestments />
       <div class="wrapper margin">
         <h2>Trade-off curves for single technologies</h2>
         <img src="graphic-2.png">
@@ -28,11 +29,13 @@ import { mapActions } from 'vuex'
 import SensesMeta from 'library/src/components/SensesMeta.vue'
 import SensesMenu from 'library/src/components/SensesMenu.vue'
 import StackedInvestments from '~/components/StackedInvestments'
+import BarInvestments from '~/components/BarInvestments'
 import Options from '~/components/Options'
 
 export default {
   components: {
     StackedInvestments,
+    BarInvestments,
     Options,
     SensesMenu,
     SensesMeta
