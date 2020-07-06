@@ -52,7 +52,7 @@ export default {
       return fromPairs(compact(map(this.dataByScenario, (scenario, key) => {
         if (key === 'CPol') { return false }
         const rel = map(scenario, ({ model, region, variable, value, changes }) => {
-          console.log(changes)
+          // console.log(changes)
           const [change, isPositive] = get(changes, this.model, [0, false])
           // const reference = get(find(this.reference, { model, region, variable }), 'value')
           // const change = Math.abs(reference - value) / Math.max(reference, value)
