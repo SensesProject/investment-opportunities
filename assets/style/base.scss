@@ -3,6 +3,8 @@ $font-prefix: "../../node_modules/library/src/assets/fonts";
 @import "library/src/style/base.scss";
 @import "./tooltip";
 @import "./global";
+@import "./layout";
+@import "./typography";
 
 .tooltip {
   font-size: $font-size-default;

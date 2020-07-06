@@ -1,104 +1,27 @@
 <template>
   <div class="bars">
-    <span class="label" v-html="label" />
-    <div class="intro">
+    <span class="label wrapper" v-html="label" />
+    <div class="intro wrapper">
       <span v-if="scenario === 'CPol'">{{ region }} is currently investing <strong>{{ sumThisLabel }}</strong> Billion US-Dollar per year.</span>
       <span v-else>In total, <strong>{{ diffLabel }}</strong> Billion US-Dollar <strong>{{ diff > 0 ? 'more' : 'less' }}</strong> per year</span>
     </div>
     <svg ref="vis" class="vis">
-      <g v-for="variable in elements" v-if="width">
-        <g v-for="el in variable" v-tooltip="el.tooltip" :key="el.key">
-          <rect
-            :x="el.x"
-            :width="el.width"
-            :height="el.height"
-            :class="[el.key, el.label]"
-            :y="el.y"
-            :style="{ fill: el.color }"
-          />
-          <g v-if="el.marker !== el.width" :class="{ 'difference': true, 'showDifference': barDifference }">
-            <g v-if="el.marker < el.width">
-              <rect
-                :x="el.x"
-                :width="el.marker"
-                :height="height"
-                :y="el.y"
-                :style="{ fill: 'rgba(255, 255, 255, 0.8)' }"
-              />
-              <line
-                :x1="el.x + el.marker"
-                :x2="el.x + el.marker"
-                :y1="el.y"
-                :y2="height"
-                class="more"
-              />
-            </g>
-            <g v-else>
-              <rect
-                :x="el.x"
-                :width="el.width"
-                :height="el.height"
-                :y="el.y"
-                :style="{ fill: 'rgba(255, 255, 255, 0.8)' }"
-              />
-              <rect
-                v-if="el.marker > el.width"
-                :x="el.x + el.width"
-                :width="el.marker - el.width"
-                :height="el.height"
-                :style="{ fill: el.color }"
-                :y="el.y"
-              />
-              <rect
-                v-if="el.marker > el.width"
-                :x="el.x + el.width"
-                :width="el.marker - el.width"
-                :height="el.height"
-                :y="el.y"
-                :style="{ fill: 'url(#diagonal-stripe-more)' }"
-              />
-              <line
-                v-if="barDifference"
-                :x1="el.x + el.width"
-                :x2="el.x + el.width"
-                :y1="el.y"
-                :y2="height"
-                class="more"
-              />
-            </g>
+      <g v-for="(variable, i) in elements" v-if="width">
+        <g v-for="el in variable" v-tooltip="el.tooltip" :key="el.id">
+          <StackedInvestmentsBar
+            v-bind="el" />
+          <g v-if="el.marker !== el.width" :class="['difference', { showDifference }]">
+            <StackedInvestmentsDiffLess
+              v-if="el.marker < el.width"
+              v-bind="el" />
+            <StackedInvestmentsDiffMore
+              v-else
+              v-bind="el" />
           </g>
-          <text
-            ref="labels"
-            :x="0"
-            :style="`transform: translateX(${el.x}px)`"
-            :y="el.y + el.height / 2"
-            dominant-baseline="hanging"
-            class="label"
-          >{{ barDifference ? el.diff : formatNumber(el.value) }}</text>
+          <StackedInvestmentsLabel v-bind="el" :width="widths[i]" :showDifference="showDifference" />
         </g>
       </g>
-      <defs>
-        <pattern id="diagonal-stripe-more" patternUnits="userSpaceOnUse" width="4" height="4">
-          <path
-              d="M-1,1 l2,-2
-                M0,4 l4,-4
-                M3,5 l2,-2"
-              stroke="#fff"
-              style="opacity: 0.8"
-              stroke-width="1.5"
-            />
-        </pattern>
-        <pattern id="diagonal-stripe-less" patternUnits="userSpaceOnUse" width="10" height="10">
-          <path
-            d="M-1,1 l2,-2
-                   M0,10 l10,-10
-                   M9,11 l2,-2"
-            stroke="#fff"
-            style="opacity: 0.9"
-            stroke-width="4"
-          />
-        </pattern>
-      </defs>
+      <StackedInvestmentsDefs />
     </svg>
   </div>
 </template>
@@ -106,11 +29,23 @@
 <script>
 import { scaleLinear, scaleBand } from 'd3-scale'
 import { format } from 'd3-format'
-import { map, sum, values, filter, get, forEach, compact } from 'lodash'
+import { map, sum, values, filter, get, compact } from 'lodash'
 import { mapState } from 'vuex'
+import StackedInvestmentsBar from '~/components/StackedInvestmentsBar'
+import StackedInvestmentsDefs from '~/components/StackedInvestmentsDefs'
+import StackedInvestmentsDiffLess from '~/components/StackedInvestmentsDiffLess'
+import StackedInvestmentsDiffMore from '~/components/StackedInvestmentsDiffMore'
+import StackedInvestmentsLabel from '~/components/StackedInvestmentsLabel'
 
 export default {
   props: ['data', 'scenario', 'extents', 'variables', 'gap'],
+  components: {
+    StackedInvestmentsBar,
+    StackedInvestmentsDefs,
+    StackedInvestmentsDiffLess,
+    StackedInvestmentsDiffMore,
+    StackedInvestmentsLabel
+  },
   data: () => {
     return {
       colors: ['#aaa', '#feeda1', '#fdbf6f', '#e9f6a1', '#b7e075', '#229c53', '#da372a', '#a50026'],
@@ -118,9 +53,7 @@ export default {
       height: 100,
       margin: {
         left: 0,
-        right: 0,
-        top: 70,
-        bottom: 10
+        right: 0
       },
       models: ['average', 'POLES', 'REMIND-MAgPIE', 'AIM/CGE', 'IMAGE', 'MESSAGEix-GLOBIOM']
     }
@@ -128,7 +61,7 @@ export default {
   computed: {
     ...mapState({
       barStacked: state => state.settings.barStacked,
-      barDifference: state => state.settings.barDifference,
+      showDifference: state => state.settings.barDifference,
       showModels: state => state.settings.showModels,
       region: state => state.settings.region
     }),
@@ -154,6 +87,7 @@ export default {
       return scaleBand()
         .range([0, this.height])
         .domain(this.models)
+        .paddingOuter(0)
     },
     widths () {
       return map(this.elements, (d) => { return get(d, 'x1', 0) - this.gap })
@@ -201,13 +135,13 @@ export default {
           const marker = this.scaleX(this.showModels ? reference : referenceAverage)
           const diff = value - reference
           const tooltip = this.createTooltip(variable, value, reference, diff)
-          const height = this.showModels ? this.scaleY.bandwidth() / 2 : this.scaleY.bandwidth() / 2 + 1
+          const height = this.scaleY.bandwidth() / 2 + 1
           if (key === 'max') {
             return false
           }
           n++
           return {
-            key,
+            id: key,
             x: x0,
             y,
             label: variable,
@@ -215,7 +149,7 @@ export default {
             x0,
             x1,
             width,
-            value,
+            value: this.formatNumber(value),
             height,
             reference,
             color,
@@ -236,10 +170,6 @@ export default {
     window.addEventListener('resize', this.calcSizes, false)
   },
   updated () {
-    forEach(this.$refs.labels, (label, i) => {
-      const { width } = label.getBBox()
-      label.style.opacity = width < this.widths[i] ? 1 : 0
-    })
     this.calcSizes()
   },
   beforeDestroy () {

@@ -1,18 +1,16 @@
 <template>
-  <div class="vis">
-    <div class="wrapper">
-      <div v-for="(scenario, key) in dataByScenario" class="scenario">
-        <StackedInvestmentsBars
-          :gap="gap"
-          :data="scenario"
-          :scenario="key"
-          :extents="extents"
-          :variables="variables"
-        />
-        <StackedInvestmentsLabels v-if="key === 'CPol'" :gap="gap" :extents="extents" />
-      </div>
+  <section class="section vis">
+    <div v-for="(scenario, key) in dataByScenario" class="scenario">
+      <StackedInvestmentsBars
+        :gap="gap"
+        :data="scenario"
+        :scenario="key"
+        :extents="extents"
+        :variables="variables"
+      />
+      <StackedInvestmentsLabels v-if="key === 'CPol'" :gap="gap" :extents="extents" />
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -73,17 +71,8 @@ export default {
 <style lang="scss" scoped>
   @import "~@/assets/style/global";
 
-  .vis {
-    @include center();
-
-    .wrapper {
-      max-width: 1200px;
-      width: 100%;
-    }
-  }
-
   .scenario {
-    margin: 0 0 $spacing;
+    margin: $spacing 0 0;
   }
 
 </style>

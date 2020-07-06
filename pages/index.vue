@@ -1,16 +1,11 @@
 <template>
   <div>
     <SensesMenu message="Work in Progress"/>
-    <div class="container">
-      <div class="wrapper">
+    <main class="container">
+      <header class="page-header header wrapper">
         <h1>Investment Opportunities and Alignment</h1>
-        <ul>
-          <li>how investments consistent with the Paris Agreement Long-term target look like</li>
-          <li>the investments of today determine to a large extent the emissions of tomorrow</li>
-        </ul>
-        <img src="graphic.png">
-        <small>McCollum, D.L., Zhou, W., Bertram, C. et al. Energy investment needs for fulfilling the Paris Agreement and achieving the Sustainable Development Goals. Nat Energy 3, 589–599 (2018). </small>
-      </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </header>
       <StackedInvestments />
       <BarInvestments />
       <div class="wrapper margin">
@@ -20,7 +15,7 @@
       </div>
       <Options />
       <SensesMeta id="investment-opportunities"/>
-    </div>
+    </main>
   </div>
 </template>
 
@@ -55,12 +50,7 @@ export default {
   @import "~@/assets/style/global";
 
   .container {
-    padding: $spacing * 4 $spacing * 2;
-    max-width: 1200px;
-
     .wrapper {
-      margin-bottom: $spacing * 8;
-
       &.margin {
         margin-top: $spacing * 8;
       }
