@@ -1,26 +1,33 @@
 <template>
   <text
-    ref="label"
     :x="0"
-    :style="`transform: translateX(${x}px)`"
-    :y="y + height / 2"
+    :style="`transform: translateX(${labelX}px)`"
+    :y="labelY"
     dominant-baseline="hanging"
-    class="label"
-  >{{ showDifference ? diff : value }}</text>
+    :class="['label', { isVisible: isVisible }]"
+  ><tspan ref="label">{{ showDifference ? diff : value }}</tspan></text>
 </template>
 
 <script>
 export default {
-  props: ['x', 'y', 'height', 'diff', 'value', 'showDifference'],
+  props: ['labelX', 'labelY', 'height', 'diff', 'value', 'showDifference', 'width', 'isVisible'],
+  mounted () {
+    this.checkVisibility()
+  },
   updated () {
-    const { label } = this.$refs
-    const { width } = label.getBBox()
-    label.style.opacity = width < this.widths ? 1 : 0
+    this.checkVisibility()
+  },
+  methods: {
+    checkVisibility () {
+      const { label } = this.$refs
+      const { width } = label.getBBox()
+      label.style.opacity = width < this.width ? 1 : 0
+    }
   }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @import "~@/assets/style/global";
 
   .label {
@@ -28,6 +35,17 @@ export default {
     fill: getColor(gray, 60);
     font-family: $font-sans;
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity $transition-animation / 4, transform $transition-animation;
+
+    &.isVisible {
+      opacity: 1;
+      transition: opacity $transition-animation;
+      transition-delay: $transition-animation;
+    }
+
+    tspan {
+      opacity: 0;
+      transition: opacity $transition-animation / 4;
+    }
   }
 </style>

@@ -1,24 +1,27 @@
 <template>
   <div class="bars">
-    <span class="label wrapper" v-html="label" />
-    <div class="intro wrapper">
-      <span v-if="scenario === 'CPol'">{{ region }} is currently investing <strong>{{ sumThisLabel }}</strong> Billion US-Dollar per year.</span>
-      <span v-else>In total, <strong>{{ diffLabel }}</strong> Billion US-Dollar <strong>{{ diff > 0 ? 'more' : 'less' }}</strong> per year</span>
-    </div>
+    <StackedInvestmentsHeadline :elements="elements" :scenario="scenario" />
     <svg ref="vis" class="vis">
-      <g v-for="(variable, i) in elements" v-if="width">
-        <g v-for="el in variable" v-tooltip="el.tooltip" :key="el.id">
+      <g v-for="({ bars, labelY, labelX, value, diff }, i) in elements" v-if="width">
+        <g v-for="bar in bars" v-tooltip="bar.tooltip" :key="bar.id">
           <StackedInvestmentsBar
-            v-bind="el" />
-          <g v-if="el.marker !== el.width" :class="['difference', { showDifference }]">
+            v-bind="bar" />
+          <g v-if="bar.marker !== bar.width" :class="['difference', { showDifference }]">
             <StackedInvestmentsDiffLess
-              v-if="el.marker < el.width"
-              v-bind="el" />
+              v-if="bar.marker < bar.width"
+              v-bind="bar" />
             <StackedInvestmentsDiffMore
               v-else
-              v-bind="el" />
+              v-bind="bar" />
           </g>
-          <StackedInvestmentsLabel v-bind="el" :width="widths[i]" :showDifference="showDifference" />
+          <StackedInvestmentsLabel
+            :isVisible="barStacked && !showModels"
+            :labelY="labelY"
+            :labelX="labelX"
+            :value="value"
+            :diff="diff"
+            :width="widths[i]"
+            :showDifference="showDifference" />
         </g>
       </g>
       <StackedInvestmentsDefs />
@@ -36,6 +39,7 @@ import StackedInvestmentsDefs from '~/components/StackedInvestmentsDefs'
 import StackedInvestmentsDiffLess from '~/components/StackedInvestmentsDiffLess'
 import StackedInvestmentsDiffMore from '~/components/StackedInvestmentsDiffMore'
 import StackedInvestmentsLabel from '~/components/StackedInvestmentsLabel'
+import StackedInvestmentsHeadline from '~/components/StackedInvestmentsHeadline'
 
 export default {
   props: ['data', 'scenario', 'extents', 'variables', 'gap'],
@@ -44,13 +48,14 @@ export default {
     StackedInvestmentsDefs,
     StackedInvestmentsDiffLess,
     StackedInvestmentsDiffMore,
-    StackedInvestmentsLabel
+    StackedInvestmentsLabel,
+    StackedInvestmentsHeadline
   },
   data: () => {
     return {
       colors: ['#aaa', '#feeda1', '#fdbf6f', '#e9f6a1', '#b7e075', '#229c53', '#da372a', '#a50026'],
       width: 0,
-      height: 100,
+      height: 50,
       margin: {
         left: 0,
         right: 0
@@ -62,21 +67,10 @@ export default {
     ...mapState({
       barStacked: state => state.settings.barStacked,
       showDifference: state => state.settings.barDifference,
-      showModels: state => state.settings.showModels,
-      region: state => state.settings.region
+      showModels: state => state.settings.showModels
     }),
     total () {
       return sum(values(this.extents))
-    },
-    label () {
-      const pronom = this.region === 'World' ? 'we' : this.region
-      const labels = {
-        CPol: `What ${pronom} ${this.region === 'World' ? 'are' : 'is'} <strong>currently</strong> investing <small>(Current policies)</small>`,
-        NDC: `What ${pronom} <strong>pledged</strong> to invest <small>(Nationally Determined Contributions)</small>`,
-        '2C': `What ${pronom} <strong>should</strong> invest for <strong>2°C</strong>`,
-        '1.5C': `What ${pronom} <strong>should</strong> invest for <strong>1.5°C</strong>`
-      }
-      return get(labels, this.scenario, this.scenario)
     },
     scaleX () {
       return scaleLinear()
@@ -90,25 +84,7 @@ export default {
         .paddingOuter(0)
     },
     widths () {
-      return map(this.elements, (d) => { return get(d, 'x1', 0) - this.gap })
-    },
-    gaps () {
-      return (this.elements.length - 1) * this.gap
-    },
-    sumThis () {
-      return sum(map(this.elements, 'value'))
-    },
-    sumThisLabel () {
-      return this.formatNumber(this.sumThis)
-    },
-    sumReference () {
-      return sum(map(this.elements, 'reference'))
-    },
-    diff () {
-      return this.sumThis - this.sumReference
-    },
-    diffLabel () {
-      return this.formatNumber(Math.abs(this.diff))
+      return map(this.elements, (d) => { return get(d, ['bars', 0, 'width'], 0) - this.gap })
     },
     elements () {
       let x0 = 0
@@ -124,18 +100,20 @@ export default {
 
         let n = 0
 
+        const bandwidth = this.scaleY.bandwidth()
+
         const bars = compact(map(values, (value, key) => {
           const reference = get(references, key, 0)
 
           // const x = this.scaleX(value)
-          const y = this.showModels ? this.scaleY(key) : this.scaleY(key) - this.scaleY.bandwidth() / 2 * n
+          const y = this.showModels ? this.scaleY(key) : this.scaleY(key) - bandwidth / 2 * n
 
           const x1 = this.barStacked ? this.scaleX(get(this.extents, variable, value)) + this.gap : this.scaleX(value)
           const width = this.scaleX(this.showModels ? value : average)
           const marker = this.scaleX(this.showModels ? reference : referenceAverage)
           const diff = value - reference
           const tooltip = this.createTooltip(variable, value, reference, diff)
-          const height = this.scaleY.bandwidth() / 2 + 1
+          const height = bandwidth / 2 + 1
           if (key === 'max') {
             return false
           }
@@ -158,10 +136,19 @@ export default {
           }
         }))
 
+        const labelX = x0
+        const labelY = this.height / 2 + bandwidth / 2
+
         const maxValue = get(values, this.barStacked ? 'max' : 'average')
         x0 += this.barStacked ? this.scaleX(get(this.extents, variable, maxValue)) + this.gap : this.scaleX(maxValue)
 
-        return bars
+        return {
+          labelX,
+          labelY,
+          value: this.formatNumber(average),
+          diff: this.formatNumber(average - referenceAverage),
+          bars
+        }
       })
     }
   },
@@ -205,36 +192,11 @@ export default {
   @import "~@/assets/style/global";
 
   .bars {
-    .label {
-      margin-bottom: $spacing / 8;
-      display: block;
-      font-size: $font-size-bigger;
-      font-weight: $font-weight-regular;
-      font-family: $font-serif;
-
-      small {
-        font-size: $font-size-default;
-        color: getColor(gray, 60);
-      }
-
-      strong {
-        font-weight: $font-weight-bold;
-        font-family: $font-sans;
-      }
-    }
-
-    .intro {
-      font-size: $font-size-default;
-      margin-bottom: $spacing / 2;
-      display: block;
-      color: getColor(gray, 40);
-    }
-
     .vis {
       width: 100%;
       height: calc(100px + 5px + #{$font-size-small});
 
-      rect, text {
+      rect {
         transition: opacity $transition-animation, width $transition-animation, height $transition-animation, y $transition-animation, x $transition-animation;
       }
 
