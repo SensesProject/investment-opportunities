@@ -17,6 +17,7 @@ module.exports = {
     'vue/require-prop-types': 1,
     'no-irregular-whitespace': 1,
     'vue/no-use-v-if-with-v-for': 1,
-    'vue/require-v-for-key': 1
+    'vue/require-v-for-key': 1,
+    'quote-props': 'as-needed'
   }
 }
