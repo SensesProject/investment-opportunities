@@ -1,5 +1,6 @@
 <template>
   <div class="options">
+    Step: {{ step }}<br />
     <SensesSelect v-model="region" :options="regions" />
     <SensesSelect v-model="model" :options="models" />
     <label><input v-model="barStacked" type="checkbox"> {{ barStacked ? '' : 'not ' }}stacked</label>
@@ -10,6 +11,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import SensesSelect from 'library/src/components/SensesSelect'
 
 export default {
@@ -93,6 +95,9 @@ export default {
     }
   },
   computed: {
+    ...mapState({
+      step: state => state.settings.step
+    }),
     isRotated: {
       get () {
         return this.$store.state.settings.isRotated

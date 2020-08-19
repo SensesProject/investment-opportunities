@@ -6,7 +6,8 @@ const DEFAULTS = {
   barStacked: false,
   barDifference: false,
   showModels: false,
-  isRotated: false
+  isRotated: false,
+  step: 0
 }
 
 const state = () => {
@@ -16,7 +17,8 @@ const state = () => {
     barStacked: DEFAULTS.barStacked,
     barDifference: DEFAULTS.barDifference,
     showModels: DEFAULTS.showModels,
-    isRotated: DEFAULTS.isRotated
+    isRotated: DEFAULTS.isRotated,
+    step: DEFAULTS.step
   }
 }
 
