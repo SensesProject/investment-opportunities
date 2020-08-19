@@ -1,16 +1,21 @@
 <template>
-  <section class="section vis">
-    <div v-for="(scenario, key) in dataByScenario" class="scenario">
-      <StackedInvestmentsBars
-        :gap="gap"
-        :data="scenario"
-        :scenario="key"
-        :extents="extents"
-        :variables="variables"
-      />
-      <StackedInvestmentsLabels v-if="key === 'CPol'" :gap="gap" :extents="extents" />
-    </div>
-  </section>
+  <svg ref="vis" class="vis" :viewBox="`0 0 ${width} ${width}`">
+    <g v-if="width">
+      <g v-for="(data, key) in dataByScenario" class="scenario">
+        <StackedInvestmentsBars
+          :width="width"
+          :height="height"
+          :gap="gap"
+          :data="data"
+          :scenario="key"
+          :extents="extents"
+          :variables="variables"
+        />
+        <StackedInvestmentsLabels v-if="key === 'CPol'" :gap="gap" :extents="extents" />
+      </g>
+    </g>
+    <StackedInvestmentsDefs />
+  </svg>
 </template>
 
 <script>
@@ -18,10 +23,18 @@ import { groupBy, filter, get, map, forEach } from 'lodash'
 import { mapState, mapGetters } from 'vuex'
 import StackedInvestmentsBars from '~/components/StackedInvestmentsBars'
 import StackedInvestmentsLabels from '~/components/StackedInvestmentsLabels'
+import StackedInvestmentsDefs from '~/components/StackedInvestmentsDefs'
 
 export default {
+  components: {
+    StackedInvestmentsBars,
+    StackedInvestmentsLabels,
+    StackedInvestmentsDefs
+  },
   data: () => {
     return {
+      width: 0,
+      height: 0,
       gap: 20,
       variables: [
         'Energy Efficiency',
@@ -61,9 +74,25 @@ export default {
       return maxes
     }
   },
-  components: {
-    StackedInvestmentsBars,
-    StackedInvestmentsLabels
+  mounted () {
+    this.calcSizes()
+    window.addEventListener('resize', this.calcSizes, false)
+  },
+  updated () {
+    this.calcSizes()
+  },
+  beforeDestroy () {
+    window.removeEventListener('resize', this.calcSizes, false)
+  },
+  methods: {
+    calcSizes () {
+      const { vis: el } = this.$refs
+      if (el !== 'undefined') {
+        this.width = el.clientWidth || el.parentNode.clientWidth
+        console.log('here', this.width)
+        this.height = this.width
+      }
+    }
   }
 }
 </script>
@@ -75,4 +104,12 @@ export default {
     margin: $spacing 0 0;
   }
 
+  .vis {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    margin-left: 0;
+    z-index: $z-index-graphics;
+  }
 </style>

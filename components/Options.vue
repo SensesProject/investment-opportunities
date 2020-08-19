@@ -5,6 +5,7 @@
     <label><input v-model="barStacked" type="checkbox"> {{ barStacked ? '' : 'not ' }}stacked</label>
     <label><input v-model="barDifference" type="checkbox"> difference {{ barDifference ? '' : 'models ' }}colored</label>
     <label><input v-model="showModels" type="checkbox"> {{ showModels ? 'hide' : 'show' }} models</label>
+    <label><input v-model="isRotated" type="checkbox"> {{ isRotated ? 'is not' : 'is' }} rotated</label>
   </div>
 </template>
 
@@ -92,6 +93,15 @@ export default {
     }
   },
   computed: {
+    isRotated: {
+      get () {
+        return this.$store.state.settings.isRotated
+      },
+      set (value) {
+        console.log({ value })
+        this.$store.commit('SETTINGS_CHANGE', { key: 'isRotated', value })
+      }
+    },
     region: {
       get () {
         return this.$store.state.settings.region

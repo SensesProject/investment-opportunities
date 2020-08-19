@@ -1,6 +1,5 @@
 <template>
   <div class="bars">
-    <span class="label" v-html="label" />
     <svg ref="vis" class="vis">
       <g v-for="tick in ticks" v-if="width">
         <line
@@ -36,14 +35,14 @@
 
 <script>
 import { scaleLinear, scaleBand } from 'd3-scale'
-import { map, get, find, isUndefined } from 'lodash'
+import { map, find, isUndefined, compact, range } from 'lodash'
 import { mapState } from 'vuex'
+import { getColor, calcBar } from '../assets/js/utils.js'
 
 export default {
-  props: ['data', 'scenario', 'variables', 'gap'],
+  props: ['data', 'options', 'gap'],
   data: () => {
     return {
-      colors: ['#aaa', '#feeda1', '#fdbf6f', '#e9f6a1', '#b7e075', '#229c53', '#da372a', '#a50026'],
       width: 0,
       height: 50,
       margin: {
@@ -58,16 +57,6 @@ export default {
     ...mapState({
       region: state => state.settings.region
     }),
-    label () {
-      const pronom = this.region === 'World' ? 'we' : this.region
-      const labels = {
-        CPol: `What ${pronom} ${this.region === 'World' ? 'are' : 'is'} <strong>currently</strong> investing <small>(Current policies)</small>`,
-        NDC: 'Relative changes for <strong>NDCs</strong>',
-        '2C': 'Relative changes for <strong>2°C</strong>',
-        '1.5C': 'Relative changes for <strong>1.5°C</strong>'
-      }
-      return get(labels, this.scenario, this.scenario)
-    },
     scaleY () {
       return scaleLinear()
         .range([0, this.height / 2 - this.margin.top])
@@ -76,33 +65,41 @@ export default {
     scaleX () {
       return scaleBand()
         .range([this.margin.left, this.width - this.margin.right])
-        .domain(this.variables)
+        .domain(range(this.options.length))
         .padding(0.3)
     },
+    yBase () {
+      return this.height / 2
+    },
+    barWidth () {
+      return this.scaleX.bandwidth()
+    },
     elements () {
-      return map(this.variables, (variable, i) => {
-        const { change, isPositive } = find(this.data, { variable }, {})
-        const x = this.scaleX(variable)
-        const y = this.height / 2 + (this.scaleY(change) * (isPositive ? 1 : -1))
-        const width = this.scaleX.bandwidth()
-        const color = get(this.colors, i, '#222')
-        const d = `M${x} ${this.height / 2} L${x} ${y} L${x + width} ${y} L ${x + width} ${this.height / 2} Z`
+      const { yBase, barWidth, options, data } = this
+
+      return compact(map(options, (option, i) => {
+        const datum = find(data, option)
+        if (!datum) { return false }
+        const { change, isPositive, variable } = datum
+        const x = this.scaleX(i)
+        const y = yBase + (this.scaleY(change) * (isPositive ? 1 : -1))
         return {
-          d,
+          d: calcBar(x, yBase, y, barWidth),
           x,
-          y: this.height / 2,
-          color
+          y: yBase,
+          color: getColor(variable)
         }
-      })
+      }))
     },
     ticks () {
+      const { margin, yBase, barWidth } = this
       const ticks = this.scaleY.ticks(3)
       return map(ticks.concat(ticks), (tick, i) => {
         const isPositive = i <= ticks.length
         return {
-          y: this.height / 2 + (this.scaleY(tick) * (isPositive ? -1 : 1)),
-          x1: this.margin.left,
-          x2: this.width - this.margin.right,
+          y: yBase + (this.scaleY(tick) * (isPositive ? -1 : 1)),
+          x1: margin.left,
+          x2: barWidth - margin.right,
           label: `${isPositive ? '' : '–'}${tick * 100}%`
         }
       })

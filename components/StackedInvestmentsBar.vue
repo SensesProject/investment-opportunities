@@ -1,16 +1,16 @@
 <template>
   <rect
-    :x="x"
+    :x="0"
     :width="width"
-    :height="height"
+    :height="groupHeight"
     :class="[id, label]"
     :y="y"
-    :style="{ fill: color }"
+    :style="{ fill: color, transform: `rotate(${isRotated ? -90 : 0}deg)` }"
   />
 </template>
 
 <script>
 export default {
-  props: ['x', 'width', 'height', 'id', 'label', 'y', 'color']
+  props: ['width', 'groupHeight', 'id', 'label', 'y', 'color', 'isRotated']
 }
 </script>
