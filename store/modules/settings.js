@@ -7,6 +7,7 @@ const DEFAULTS = {
   barDifference: false,
   showModels: false,
   isRotated: false,
+  highlight: [],
   step: 0
 }
 
@@ -18,12 +19,14 @@ const state = () => {
     barDifference: DEFAULTS.barDifference,
     showModels: DEFAULTS.showModels,
     isRotated: DEFAULTS.isRotated,
+    highlight: DEFAULTS.highlight,
     step: DEFAULTS.step
   }
 }
 
 const mutations = {
   SETTINGS_CHANGE (state, { key, value }) {
+    console.log({ key, value })
     if (has(state, key)) {
       let val = value
       if (isUndefined(value) || isNaN(value)) {
