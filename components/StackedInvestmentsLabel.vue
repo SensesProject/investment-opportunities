@@ -38,7 +38,7 @@ export default {
     transition: opacity $transition-animation / 4, transform $transition-animation;
 
     &.isVisible {
-      opacity: 1;
+      // opacity: 1;
       transition: opacity $transition-animation;
       transition-delay: $transition-animation;
     }

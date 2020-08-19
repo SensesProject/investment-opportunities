@@ -17,8 +17,8 @@
         <StackedInvestmentsBar
           :width="bar.width"
           :groupHeight="bar.groupHeight"
+          :variable="bar.label"
           :id="bar.id"
-          :label="bar.label"
           :y="bar.y"
           :color="bar.color"
           :isRotated="isRotated" />
@@ -206,6 +206,14 @@ export default {
 
   rect {
     transition: transform $transition-animation, opacity $transition-animation, width $transition-animation, height $transition-animation, y $transition-animation, x $transition-animation;
+
+    &.hasHighlight {
+      opacity: 0.5;
+
+      &.isHighlighted {
+        opacity: 1;
+      }
+    }
   }
 
   line {

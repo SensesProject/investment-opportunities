@@ -88,9 +88,9 @@ export default {
     calcSizes () {
       const { vis: el } = this.$refs
       if (el !== 'undefined') {
-        this.width = el.clientWidth || el.parentNode.clientWidth
-        console.log('here', this.width)
-        this.height = this.width
+        this.height = el.clientHeight || el.parentNode.clientHeight
+        console.log('here', this.height)
+        this.width = this.height
       }
     }
   }
@@ -105,11 +105,14 @@ export default {
   }
 
   .vis {
-    position: absolute;
-    width: 100%;
-    left: 0;
-    top: 0;
-    margin-left: 0;
-    z-index: $z-index-graphics;
+    position: sticky;
+    top: 10vh;
+    max-height: 80vh;
+    // position: absolute;
+    // width: 100%;
+    // left: 0;
+    // top: 0;
+    // margin-left: 0;
+    // z-index: $z-index-graphics;
   }
 </style>
