@@ -11,7 +11,9 @@
       <section class="section investment">
         <StackedInvestments />
         <div class="text">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <IntersectionObserver :step="1">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </IntersectionObserver>
           <BarInvestmentsChart
             :gap="20"
             :data="relativeValues"
@@ -45,7 +47,8 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions, mapGetters, mapState } from 'vuex'
+import IntersectionObserver from 'library/src/components//IntersectionObserver'
 import SensesMeta from 'library/src/components/SensesMeta.vue'
 import SensesMenu from 'library/src/components/SensesMenu.vue'
 import StackedInvestments from '~/components/StackedInvestments'
@@ -56,6 +59,7 @@ import Options from '~/components/Options'
 export default {
   components: {
     StackedInvestments,
+    IntersectionObserver,
     BarInvestmentsChart,
     BarInvestments,
     Options,
@@ -63,6 +67,9 @@ export default {
     SensesMeta
   },
   computed: {
+    ...mapState({
+      step: state => state.settings.step
+    }),
     ...mapGetters([
       'relativeValues'
     ])
@@ -72,8 +79,16 @@ export default {
   },
   methods: {
     ...mapActions([
-      'loadInvestments'
+      'loadInvestments',
+      'changeSettings'
     ])
+  },
+  mounted () {
+    console.log('Step', this.step)
+    this.$on('step', (step) => {
+      console.log({ step })
+      this.changeSettings({ key: 'step', step })
+    })
   }
 }
 </script>
