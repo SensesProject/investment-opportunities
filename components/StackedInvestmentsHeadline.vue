@@ -1,11 +1,7 @@
 <template>
-  <header>
-    <span class="label wrapper" v-html="label" />
-    <div class="intro wrapper">
-      <span v-if="scenario === 'CPol'">{{ region }} is currently investing <strong>{{ sumThisLabel }}</strong> Billion US-Dollar per year.</span>
-      <span v-else>In total, <strong>{{ diffLabel }}</strong> Billion US-Dollar <strong>{{ diff > 0 ? 'more' : 'less' }}</strong> per year</span>
-    </div>
-  </header>
+  <g>
+    <text :x="0" :y="y + headlineHeight" :class="['headline', 'wrapper', { isRotated }]" v-html="label" />
+  </g>
 </template>
 
 <script>
@@ -14,7 +10,7 @@ import { map, sum, get } from 'lodash'
 import { mapState } from 'vuex'
 
 export default {
-  props: ['scenario', 'elements'],
+  props: ['scenario', 'elements', 'height', 'y', 'headlineHeight', 'isRotated'],
   computed: {
     ...mapState({
       region: state => state.settings.region
@@ -22,10 +18,10 @@ export default {
     label () {
       const pronom = this.region === 'World' ? 'we' : this.region
       const labels = {
-        CPol: `What ${pronom} ${this.region === 'World' ? 'are' : 'is'} <strong>currently</strong> investing <small>(Current policies)</small>`,
-        NDC: `What ${pronom} <strong>pledged</strong> to invest <small>(Nationally Determined Contributions)</small>`,
-        '2C': `What ${pronom} <strong>should</strong> invest for <strong>2°C</strong>`,
-        '1.5C': `What ${pronom} <strong>should</strong> invest for <strong>1.5°C</strong>`
+        CPol: `What ${pronom} ${this.region === 'World' ? 'are' : 'is'} <tspan>currently</tspan> investing <small>(Current policies)</small>`,
+        NDC: `What ${pronom} <tspan>pledged</tspan> to invest <small>(Nationally Determined Contributions)</small>`,
+        '2C': `What ${pronom} <tspan>should</tspan> invest for <tspan>2°C</tspan>`,
+        '1.5C': `What ${pronom} <tspan>should</tspan> invest for <tspan>1.5°C</tspan>`
       }
       return get(labels, this.scenario, this.scenario)
     },
@@ -56,30 +52,27 @@ export default {
 <style lang="scss">
   @import "~@/assets/style/global";
 
-  .bars {
-    .label {
-      margin-bottom: $spacing / 8;
-      display: block;
-      font-size: $font-size-bigger;
-      font-weight: $font-weight-regular;
-      font-family: $font-serif;
+  .headline {
+    margin-bottom: $spacing / 8;
+    display: block;
+    font-size: $font-size-bigger;
+    font-weight: $font-weight-regular;
+    font-family: $font-serif;
+    opacity: 1;
+    transition: opacity $transition-animation;
 
-      small {
-        font-size: $font-size-default;
-        color: getColor(gray, 60);
-      }
-
-      strong {
-        font-weight: $font-weight-bold;
-        font-family: $font-sans;
-      }
+    &.isRotated {
+      opacity: 0;
     }
 
-    .intro {
+    small {
       font-size: $font-size-default;
-      margin-bottom: $spacing / 2;
-      display: block;
-      color: getColor(gray, 40);
+      color: getColor(gray, 60);
+    }
+
+    tspan {
+      font-weight: $font-weight-bold;
+      font-family: $font-sans;
     }
   }
 </style>

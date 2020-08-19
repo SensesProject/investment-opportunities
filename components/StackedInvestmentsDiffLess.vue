@@ -1,9 +1,9 @@
 <template>
   <g>
     <rect
-      :x="x"
+      :x="0"
       :width="marker"
-      :height="height"
+      :height="groupHeight"
       :y="y"
       :style="{ fill: 'rgba(255, 255, 255, 0.8)' }"
     />
@@ -11,7 +11,7 @@
       :x1="x + marker"
       :x2="x + marker"
       :y1="y"
-      :y2="height"
+      :y2="groupHeight"
       class="more"
     />
   </g>
@@ -19,6 +19,6 @@
 
 <script>
 export default {
-  props: ['marker', 'x', 'y', 'height']
+  props: ['marker', 'x', 'y', 'groupHeight']
 }
 </script>

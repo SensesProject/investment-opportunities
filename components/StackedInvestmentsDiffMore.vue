@@ -1,33 +1,33 @@
 <template>
   <g>
     <rect
-      :x="x"
+      :x="0"
       :width="width"
-      :height="height"
+      :height="groupHeight"
       :y="y"
       :style="{ fill: 'rgba(255, 255, 255, 0.8)' }"
     />
     <rect
       v-if="marker > width"
-      :x="x + width"
+      :x="0 + width"
       :width="marker - width"
-      :height="height"
+      :height="groupHeight"
       :style="{ fill: color }"
       :y="y"
     />
     <rect
       v-if="marker > width"
-      :x="x + width"
+      :x="0 + width"
       :width="marker - width"
-      :height="height"
+      :height="groupHeight"
       :y="y"
       :style="{ fill: 'url(#diagonal-stripe-more)' }"
     />
     <line
-      :x1="x + width"
-      :x2="x + width"
+      :x1="0 + width"
+      :x2="0 + width"
       :y1="y"
-      :y2="height"
+      :y2="groupHeight"
       class="more"
     />
   </g>
@@ -35,6 +35,6 @@
 
 <script>
 export default {
-  props: ['x', 'width', 'height', 'y', 'marker', 'color']
+  props: ['x', 'width', 'groupHeight', 'y', 'marker', 'color']
 }
 </script>

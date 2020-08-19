@@ -5,7 +5,8 @@ const DEFAULTS = {
   region: 'World',
   barStacked: false,
   barDifference: false,
-  showModels: false
+  showModels: false,
+  isRotated: false
 }
 
 const state = () => {
@@ -14,7 +15,8 @@ const state = () => {
     region: DEFAULTS.region,
     barStacked: DEFAULTS.barStacked,
     barDifference: DEFAULTS.barDifference,
-    showModels: DEFAULTS.showModels
+    showModels: DEFAULTS.showModels,
+    isRotated: DEFAULTS.isRotated
   }
 }
 
