@@ -13,9 +13,14 @@
         </IntersectionObserver>
       </header>
       <section class="section investment">
-        <StackedInvestments />
-        <div class="text">
+        <div class="text center">
           <IntersectionObserver :step="1" :noStyling="true">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </IntersectionObserver>
+        </div>
+        <StackedInvestments />
+        <div class="text right">
+          <IntersectionObserver :step="2" :noStyling="true">
             <h2><span class="ecff">Extraction and Conversion - Fossil Fuels</span> and <span class="effc">Electricity - Fossil Fuels w/o CCS</span></h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             <BarInvestmentsChart
@@ -32,7 +37,7 @@
               ]"
             />
           </IntersectionObserver>
-          <IntersectionObserver :step="2" :noStyling="true">
+          <IntersectionObserver :step="3" :noStyling="true">
             <h2><span class="enr">Electricity - Non-bio Renewables</span>, <span class="ecb">Extraction and Conversion - Bioenergy</span> and <span class="ecn">Extraction and Conversion - Nuclear</span></h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             <BarInvestmentsChart
@@ -52,7 +57,7 @@
               ]"
             />
           </IntersectionObserver>
-          <IntersectionObserver :step="3" :noStyling="true">
+          <IntersectionObserver :step="4" :noStyling="true">
             <h2><span class="ets">Electricity - T&D and Storage</span> and <span class="ccs">CCS</span></h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             <BarInvestmentsChart
@@ -69,7 +74,7 @@
               ]"
             />
           </IntersectionObserver>
-          <IntersectionObserver :step="4" :noStyling="true">
+          <IntersectionObserver :step="5" :noStyling="true">
             <h2><span class="ee">Energy Efficiency</span></h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             <BarInvestmentsChart
@@ -83,7 +88,7 @@
               ]"
             />
           </IntersectionObserver>
-          <IntersectionObserver :step="5" :noStyling="true">
+          <IntersectionObserver :step="6" :noStyling="true">
             <h2><span>Models</span></h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -151,36 +156,49 @@ export default {
           this.changeSettings({ key: 'isRotated', value: false })
           this.changeSettings({ key: 'barStacked', value: false })
           this.changeSettings({ key: 'showModels', value: false })
+          this.changeSettings({ key: 'isColored', value: false })
           this.changeSettings({ key: 'highlight', value: [] })
           break
         case 1:
-          this.changeSettings({ key: 'isRotated', value: true })
+          this.changeSettings({ key: 'isRotated', value: false })
           this.changeSettings({ key: 'barStacked', value: true })
           this.changeSettings({ key: 'showModels', value: false })
-          this.changeSettings({ key: 'highlight', value: ['Extraction and Conversion - Fossil Fuels', 'Electricity - Fossil Fuels w/o CCS'] })
+          this.changeSettings({ key: 'isColored', value: true })
+          this.changeSettings({ key: 'highlight', value: [] })
           break
         case 2:
           this.changeSettings({ key: 'isRotated', value: true })
           this.changeSettings({ key: 'barStacked', value: true })
           this.changeSettings({ key: 'showModels', value: false })
-          this.changeSettings({ key: 'highlight', value: ['Electricity - Non-bio Renewables', 'Extraction and Conversion - Bioenergy', 'Extraction and Conversion - Nuclear'] })
+          this.changeSettings({ key: 'isColored', value: true })
+          this.changeSettings({ key: 'highlight', value: ['Extraction and Conversion - Fossil Fuels', 'Electricity - Fossil Fuels w/o CCS'] })
           break
         case 3:
           this.changeSettings({ key: 'isRotated', value: true })
           this.changeSettings({ key: 'barStacked', value: true })
           this.changeSettings({ key: 'showModels', value: false })
-          this.changeSettings({ key: 'highlight', value: ['Electricity - T&D and Storage', 'CCS'] })
+          this.changeSettings({ key: 'isColored', value: true })
+          this.changeSettings({ key: 'highlight', value: ['Electricity - Non-bio Renewables', 'Extraction and Conversion - Bioenergy', 'Extraction and Conversion - Nuclear'] })
           break
         case 4:
           this.changeSettings({ key: 'isRotated', value: true })
           this.changeSettings({ key: 'barStacked', value: true })
           this.changeSettings({ key: 'showModels', value: false })
-          this.changeSettings({ key: 'highlight', value: ['Energy Efficiency'] })
+          this.changeSettings({ key: 'isColored', value: true })
+          this.changeSettings({ key: 'highlight', value: ['Electricity - T&D and Storage', 'CCS'] })
           break
         case 5:
           this.changeSettings({ key: 'isRotated', value: true })
           this.changeSettings({ key: 'barStacked', value: true })
+          this.changeSettings({ key: 'showModels', value: false })
+          this.changeSettings({ key: 'isColored', value: true })
+          this.changeSettings({ key: 'highlight', value: ['Energy Efficiency'] })
+          break
+        case 6:
+          this.changeSettings({ key: 'isRotated', value: true })
+          this.changeSettings({ key: 'barStacked', value: true })
           this.changeSettings({ key: 'showModels', value: true })
+          this.changeSettings({ key: 'isColored', value: true })
           this.changeSettings({ key: 'highlight', value: [] })
           break
       }
@@ -221,9 +239,17 @@ export default {
         // padding-top: 30vh;
       }
 
-      & > div {
-        width: 50%;
-        margin-left: 50%;
+      & > .text {
+        &.center {
+          max-width: 700px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        &.right {
+          width: 50%;
+          margin-left: 50%;
+        }
       }
     }
   }
