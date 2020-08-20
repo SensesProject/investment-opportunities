@@ -7,6 +7,7 @@
     <label><input v-model="barDifference" type="checkbox"> difference {{ barDifference ? '' : 'models ' }}colored</label>
     <label><input v-model="showModels" type="checkbox"> {{ showModels ? 'hide' : 'show' }} models</label>
     <label><input v-model="isRotated" type="checkbox"> {{ isRotated ? 'is not' : 'is' }} rotated</label>
+    <label><input v-model="isColored" type="checkbox"> {{ isColored ? 'is not' : 'is' }} colored</label>
   </div>
 </template>
 
@@ -98,12 +99,19 @@ export default {
     ...mapState({
       step: state => state.settings.step
     }),
+    isColored: {
+      get () {
+        return this.$store.state.settings.isColored
+      },
+      set (value) {
+        this.$store.commit('SETTINGS_CHANGE', { key: 'isColored', value })
+      }
+    },
     isRotated: {
       get () {
         return this.$store.state.settings.isRotated
       },
       set (value) {
-        console.log({ value })
         this.$store.commit('SETTINGS_CHANGE', { key: 'isRotated', value })
       }
     },

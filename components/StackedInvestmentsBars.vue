@@ -37,7 +37,8 @@ export default {
       barStacked: state => state.settings.barStacked,
       showDifference: state => state.settings.barDifference,
       showModels: state => state.settings.showModels,
-      isRotated: state => state.settings.isRotated
+      isRotated: state => state.settings.isRotated,
+      isColored: state => state.settings.isColored
     }),
     total () {
       return sum(values(this.extents))
@@ -57,9 +58,12 @@ export default {
       return map(this.elements, (d) => { return get(d, ['bars', 0, 'width'], 0) - this.gap })
     },
     elements () {
+      const { isColored, barStacked, showModels } = this
+      console.log({ isColored })
+
       let x0 = 0
       return map(this.variables, (variable, i) => {
-        const color = get(this.colors, i, '#222')
+        const color = isColored ? get(this.colors, i) : '#222'
         const data = get(filter(this.data, { variable }), 0)
 
         const values = get(data, ['values'], {})
@@ -76,11 +80,11 @@ export default {
         const bars = compact(map(values, (value, key) => {
           const reference = get(references, key, 0)
 
-          const y = this.showModels ? this.scaleY(key) : this.scaleY(key) - bandwidth / 2 * n
+          const y = showModels ? this.scaleY(key) : this.scaleY(key) - bandwidth / 2 * n
 
-          const x1 = this.barStacked ? this.scaleX(get(this.extents, variable, value)) + this.gap : this.scaleX(value)
-          const width = this.scaleX(this.showModels ? value : average)
-          const marker = this.scaleX(this.showModels ? reference : referenceAverage)
+          const x1 = barStacked ? this.scaleX(get(this.extents, variable, value)) + this.gap : this.scaleX(value)
+          const width = this.scaleX(showModels ? value : average)
+          const marker = this.scaleX(showModels ? reference : referenceAverage)
           const diff = value - reference
           const tooltip = this.createTooltip(variable, value, reference, diff)
 

@@ -81,7 +81,8 @@ export default {
       barStacked: state => state.settings.barStacked,
       showDifference: state => state.settings.barDifference,
       showModels: state => state.settings.showModels,
-      isRotated: state => state.settings.isRotated
+      isRotated: state => state.settings.isRotated,
+      isColored: state => state.settings.isColored
     }),
     total () {
       return sum(values(this.extents))
@@ -104,9 +105,11 @@ export default {
       return this.formulations.indexOf(this.scenario) * (this.groupHeight + this.headlineHeight)
     },
     elements () {
+      const { isColored } = this
+
       let x0 = 0
       return map(this.variables, (variable, i) => {
-        const color = get(this.colors, i, '#222')
+        const color = isColored ? get(this.colors, i, '#222') : '#222'
         const data = get(filter(this.data, { variable }), 0)
 
         const values = get(data, ['values'], {})

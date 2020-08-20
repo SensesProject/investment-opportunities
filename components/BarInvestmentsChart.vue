@@ -55,7 +55,8 @@ export default {
   },
   computed: {
     ...mapState({
-      region: state => state.settings.region
+      region: state => state.settings.region,
+      isColored: state => state.settings.isColored
     }),
     scaleY () {
       return scaleLinear()
@@ -75,7 +76,7 @@ export default {
       return this.scaleX.bandwidth()
     },
     elements () {
-      const { yBase, barWidth, options, data } = this
+      const { yBase, barWidth, options, data, isColored } = this
 
       return compact(map(options, (option, i) => {
         const datum = find(data, option)
@@ -87,7 +88,7 @@ export default {
           d: calcBar(x, yBase, y, barWidth),
           x,
           y: yBase,
-          color: getColor(variable)
+          color: isColored ? getColor(variable) : '#222'
         }
       }))
     },

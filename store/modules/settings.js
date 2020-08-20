@@ -8,6 +8,7 @@ const DEFAULTS = {
   showModels: false,
   isRotated: false,
   highlight: [],
+  isColored: false,
   step: 0
 }
 
@@ -20,6 +21,7 @@ const state = () => {
     showModels: DEFAULTS.showModels,
     isRotated: DEFAULTS.isRotated,
     highlight: DEFAULTS.highlight,
+    isColored: DEFAULTS.isColored,
     step: DEFAULTS.step
   }
 }
