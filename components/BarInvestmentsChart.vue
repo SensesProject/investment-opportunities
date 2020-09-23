@@ -19,6 +19,7 @@
       </g>
       <g v-for="(el) in elements" v-if="width">
         <path
+          v-tooltip="el.tooltip"
           :d="el.d"
           :style="{ fill: el.color }"
         />
@@ -81,10 +82,12 @@ export default {
       return compact(map(options, (option, i) => {
         const datum = find(data, option)
         if (!datum) { return false }
-        const { change, isPositive, variable } = datum
+        console.log({ datum, option, i })
+        const { change, isPositive, variable, region } = datum
         const x = this.scaleX(i)
         const y = yBase + (this.scaleY(change) * (isPositive ? 1 : -1))
         return {
+          tooltip: `Variable: ${variable}<br />Change: ${change}<br />Region: ${region}`,
           d: calcBar(x, yBase, y, barWidth),
           x,
           y: yBase,
