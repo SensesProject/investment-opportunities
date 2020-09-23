@@ -10,11 +10,11 @@
     <g v-for="({ bars, labelY, labelX, value, diff }, i) in elements">
       <g
         v-for="bar in bars"
-        v-tooltip="bar.tooltip"
         :key="bar.id"
         class="bar"
         :style="bar.style">
         <StackedInvestmentsBar
+          v-tooltip="bar.tooltip"
           :width="bar.width"
           :groupHeight="bar.groupHeight"
           :variable="bar.label"
@@ -31,6 +31,7 @@
             v-bind="bar" />
         </g>
         <StackedInvestmentsLabel
+          v-if="false"
           :isVisible="barStacked && !showModels"
           :labelY="labelY"
           :labelX="labelX"
@@ -54,6 +55,26 @@ import StackedInvestmentsDiffMore from '~/components/StackedInvestmentsDiffMore'
 import StackedInvestmentsLabel from '~/components/StackedInvestmentsLabel'
 import StackedInvestmentsHeadline from '~/components/StackedInvestmentsHeadline'
 
+const colors = {
+  'Energy Efficiency': '#8c8c94',
+  'CCS': '#d7d7e3',
+  'Electricity - T&D and Storage': '#aaa',
+  'Extraction and Conversion - Nuclear': '#feeda1',
+  'Extraction and Conversion - Bioenergy': '#e9f6a1',
+  'Hydrogen - Non-fossil': '#e9f6a1',
+  'Energy Supply|Electricity|Solar': '#229c53',
+  'Energy Supply|Electricity|Wind': '#b7e075',
+  'Hydrogen - Fossil': '#da372a',
+  'Electricity - Fossil Fuels w/o CCS': '#a50026',
+  'other renewables': '#229c53',
+  'Coal': '#da372a',
+  'Oil and Gas': '#a50026'
+}
+
+function getColorFromVariable (variable) {
+  return get(colors, variable, '#000')
+}
+
 export default {
   props: ['data', 'scenario', 'extents', 'variables', 'gap', 'width', 'height'],
   components: {
@@ -65,7 +86,7 @@ export default {
   },
   data: () => {
     return {
-      colors: ['#aaa', '#feeda1', '#fdbf6f', '#e9f6a1', '#b7e075', '#229c53', '#da372a', '#a50026'],
+      // colors: ['#aaa', '#feeda1', '#fdbf6f', '#e9f6a1', '#b7e075', '#229c53', '#da372a', '#a50026'],
       groupHeight: 50,
       headlineHeight: 50,
       margin: {
@@ -109,7 +130,7 @@ export default {
 
       let x0 = 0
       return map(this.variables, (variable, i) => {
-        const color = isColored ? get(this.colors, i, '#222') : '#222'
+        const color = isColored ? getColorFromVariable(variable) : '#222'
         const data = get(filter(this.data, { variable }), 0)
 
         const values = get(data, ['values'], {})

@@ -16,6 +16,26 @@ import { map, sum, values, filter, get, compact } from 'lodash'
 import { mapState } from 'vuex'
 import StackedInvestmentsFormulation from '~/components/StackedInvestmentsFormulation'
 
+const colors = {
+  'Energy Efficiency': '#8c8c94',
+  'CCS': '#d7d7e3',
+  'Electricity - T&D and Storage': '#aaa',
+  'Extraction and Conversion - Nuclear': '#feeda1',
+  'Extraction and Conversion - Bioenergy': '#e9f6a1',
+  'Hydrogen - Non-fossil': '#e9f6a1',
+  'Energy Supply|Electricity|Solar': '#229c53',
+  'Energy Supply|Electricity|Wind': '#b7e075',
+  'Hydrogen - Fossil': '#da372a',
+  'Electricity - Fossil Fuels w/o CCS': '#a50026',
+  'other renewables': '#229c53',
+  'Coal': '#da372a',
+  'Oil and Gas': '#a50026'
+}
+
+function getColorFromVariable (variable) {
+  return get(colors, variable, '#000')
+}
+
 export default {
   props: ['data', 'scenario', 'extents', 'variables', 'gap', 'width', 'height'],
   components: {
@@ -23,7 +43,7 @@ export default {
   },
   data: () => {
     return {
-      colors: ['#aaa', '#feeda1', '#fdbf6f', '#e9f6a1', '#b7e075', '#229c53', '#da372a', '#a50026'],
+      // colors: ['#aaa', '#feeda1', '#fdbf6f', '#e9f6a1', '#b7e075', '#229c53', '#da372a', '#a50026'],
       groupHeight: 50,
       margin: {
         left: 0,
@@ -63,7 +83,7 @@ export default {
 
       let x0 = 0
       return map(this.variables, (variable, i) => {
-        const color = isColored ? get(this.colors, i) : '#222'
+        const color = isColored ? getColorFromVariable(variable) : '#222'
         const data = get(filter(this.data, { variable }), 0)
 
         const values = get(data, ['values'], {})

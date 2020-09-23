@@ -37,16 +37,29 @@ export default {
       height: 0,
       gap: 20,
       variables: [
-        'Energy Efficiency',
-        'CCS',
-        'Electricity - T&D and Storage',
-        'Extraction and Conversion - Nuclear',
-        'Extraction and Conversion - Bioenergy',
-        'Electricity - Non-bio Renewables',
-        'Electricity - Fossil Fuels w/o CCS',
-        'Extraction and Conversion - Fossil Fuels'
+        // 'Energy Efficiency',
+        // 'CCS',
+        // 'Electricity - T&D and Storage',
+        // 'Extraction and Conversion - Nuclear',
+        // 'Extraction and Conversion - Bioenergy',
+        // 'Electricity - Non-bio Renewables'
         // 'Hydrogen - Fossil',
         // 'Hydrogen - Non-fossil',
+        // 'Extraction and Conversion - Fossil Fuels',
+        // 'Electricity - Fossil Fuels w/o CCS',
+        'Oil and Gas',
+        'Coal',
+        'Electricity - Fossil Fuels w/o CCS',
+        'Hydrogen - Fossil',
+        'Extraction and Conversion - Nuclear',
+        'Extraction and Conversion - Bioenergy',
+        'Hydrogen - Non-fossil',
+        'Energy Supply|Electricity|Solar',
+        'Energy Supply|Electricity|Wind',
+        'other renewables',
+        'Electricity - T&D and Storage',
+        'Energy Efficiency',
+        'CCS'
       ]
     }
   },
@@ -67,7 +80,7 @@ export default {
       forEach(this.variables, (variable) => {
         const runs = filter(this.data, { variable })
         // Get the average values from the runs
-        const values = map(runs, run => get(run, ['values', 'max'])) // TODO: Right now we are only using the average value
+        const values = map(runs, run => get(run, ['values', 'average'])) // TODO: Right now we are only using the average value
         // Set the max value
         maxes[variable] = Math.max(...values)
       })
@@ -88,9 +101,13 @@ export default {
     calcSizes () {
       const { vis: el } = this.$refs
       if (el !== 'undefined') {
-        this.height = el.clientHeight || el.parentNode.clientHeight
+        // this.height = el.clientHeight || el.parentNode.clientHeight
+        // console.log('here', this.height)
+        // this.width = this.height
+
+        this.width = el.clientWidth || el.parentNode.clientWidth
         console.log('here', this.height)
-        this.width = this.height
+        this.height = this.width
       }
     }
   }
@@ -106,8 +123,10 @@ export default {
 
   .vis {
     position: sticky;
+    width: 100%;
     top: 10vh;
-    max-height: 80vh;
+    // max-height: 80vh;
+    // z-index: -1;
     // position: absolute;
     // width: 100%;
     // left: 0;

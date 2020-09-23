@@ -6,7 +6,7 @@
     :class="{ hasHighlight: highlight.length, isHighlighted: highlight.includes(variable) }"
     :data-id="variable"
     :y="y"
-    :style="{ fill: color, transform: `rotate(${isRotated ? -90 : 0}deg)` }"
+    :style="{ fill: color, transform: `rotate(${isRotated ? 0 : 0}deg)` }"
   />
 </template>
 
