@@ -38,7 +38,7 @@
 import { scaleLinear, scaleBand } from 'd3-scale'
 import { map, find, isUndefined, compact, range } from 'lodash'
 import { mapState } from 'vuex'
-import { getColor, calcBar } from '../assets/js/utils.js'
+import { getColorFromVariable, calcBar } from '../assets/js/utils.js'
 
 export default {
   props: ['data', 'options', 'gap'],
@@ -82,7 +82,6 @@ export default {
       return compact(map(options, (option, i) => {
         const datum = find(data, option)
         if (!datum) { return false }
-        console.log({ datum, option, i })
         const { change, isPositive, variable, region } = datum
         const x = this.scaleX(i)
         const y = yBase + (this.scaleY(change) * (isPositive ? 1 : -1))
@@ -91,7 +90,7 @@ export default {
           d: calcBar(x, yBase, y, barWidth),
           x,
           y: yBase,
-          color: isColored ? getColor(variable) : '#222'
+          color: isColored ? getColorFromVariable(variable) : '#222'
         }
       }))
     },
@@ -134,6 +133,7 @@ export default {
   .bars {
     .vis {
       height: 300px;
+      width: 100%;
 
       path {
         transition: d $transition-animation;

@@ -13,3 +13,17 @@
 .header, .section {
   margin-top: $spacing;
 }
+
+
+.page-header {
+	border-bottom: 1px solid #e5e5e5;
+	padding-bottom: 2rem;
+}
+
+figure {
+	margin: 1rem 0;
+
+	header {
+		margin-bottom: 1rem;
+	}
+}

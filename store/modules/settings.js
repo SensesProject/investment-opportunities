@@ -28,7 +28,7 @@ const state = () => {
 
 const mutations = {
   SETTINGS_CHANGE (state, { key, value }) {
-    console.log({ key, value })
+    // console.log({ key, value })
     if (has(state, key)) {
       let val = value
       if (isUndefined(value) || isNaN(value)) {
@@ -42,6 +42,81 @@ const mutations = {
 const actions = {
   changeSettings ({ commit }, params) {
     commit('SETTINGS_CHANGE', params)
+  },
+  changeStep ({ commit }, step) {
+    const GROUP_FOSSILS = [
+      'Oil and Gas',
+      'Coal',
+      'Electricity - Fossil Fuels w/o CCS',
+      'Hydrogen - Fossil'
+    ]
+
+    const GROUP_NON_FOSSILS = [
+      'Extraction and Conversion - Nuclear',
+      'Extraction and Conversion - Bioenergy',
+      'Hydrogen - Non-fossil',
+      'Energy Supply|Electricity|Solar',
+      'Energy Supply|Electricity|Wind',
+      'other renewables'
+    ]
+
+    const GROUP_OTHERS = [
+      'Electricity - T&D and Storage',
+      'Energy Efficiency',
+      'CCS'
+    ]
+    // commit('SETTINGS_CHANGE', params)
+    switch (step) {
+      case 0:
+        // this.changeSettings({ key: 'isRotated', value: false })
+        commit('SETTINGS_CHANGE', { key: 'barStacked', value: false })
+        commit('SETTINGS_CHANGE', { key: 'showModels', value: false })
+        commit('SETTINGS_CHANGE', { key: 'isColored', value: false })
+        commit('SETTINGS_CHANGE', { key: 'highlight', value: [] })
+        break
+      case 1:
+        // commit('SETTINGS_CHANGE', { key: 'isRotated', value: false })
+        commit('SETTINGS_CHANGE', { key: 'barStacked', value: true })
+        commit('SETTINGS_CHANGE', { key: 'showModels', value: false })
+        commit('SETTINGS_CHANGE', { key: 'isColored', value: true })
+        commit('SETTINGS_CHANGE', { key: 'highlight', value: [] })
+        break
+      case 2:
+        // commit('SETTINGS_CHANGE', { key: 'isRotated', value: true })
+        commit('SETTINGS_CHANGE', { key: 'barStacked', value: true })
+        commit('SETTINGS_CHANGE', { key: 'showModels', value: false })
+        commit('SETTINGS_CHANGE', { key: 'isColored', value: true })
+        commit('SETTINGS_CHANGE', { key: 'highlight', value: GROUP_FOSSILS })
+        break
+      case 3:
+        // commit('SETTINGS_CHANGE', { key: 'isRotated', value: true })
+        commit('SETTINGS_CHANGE', { key: 'barStacked', value: true })
+        commit('SETTINGS_CHANGE', { key: 'showModels', value: false })
+        commit('SETTINGS_CHANGE', { key: 'isColored', value: true })
+        commit('SETTINGS_CHANGE', { key: 'highlight', value: GROUP_NON_FOSSILS })
+        break
+      case 4:
+        // commit('SETTINGS_CHANGE', { key: 'isRotated', value: true })
+        commit('SETTINGS_CHANGE', { key: 'barStacked', value: true })
+        commit('SETTINGS_CHANGE', { key: 'showModels', value: false })
+        commit('SETTINGS_CHANGE', { key: 'isColored', value: true })
+        commit('SETTINGS_CHANGE', { key: 'highlight', value: GROUP_OTHERS })
+        break
+      case 5:
+        // commit('SETTINGS_CHANGE', { key: 'isRotated', value: true })
+        commit('SETTINGS_CHANGE', { key: 'barStacked', value: true })
+        commit('SETTINGS_CHANGE', { key: 'showModels', value: false })
+        commit('SETTINGS_CHANGE', { key: 'isColored', value: true })
+        commit('SETTINGS_CHANGE', { key: 'highlight', value: ['Energy Efficiency'] })
+        break
+      case 6:
+        // commit('SETTINGS_CHANGE', { key: 'isRotated', value: true })
+        commit('SETTINGS_CHANGE', { key: 'barStacked', value: true })
+        commit('SETTINGS_CHANGE', { key: 'showModels', value: true })
+        commit('SETTINGS_CHANGE', { key: 'isColored', value: true })
+        commit('SETTINGS_CHANGE', { key: 'highlight', value: [] })
+        break
+    }
   }
 }
 

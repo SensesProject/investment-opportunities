@@ -1,35 +1,39 @@
 <template>
-  <svg ref="vis" class="vis" :viewBox="`0 0 ${width} ${width}`">
-    <g v-if="width">
-      <g v-for="(data, key) in dataByScenario" class="scenario">
-        <StackedInvestmentsBars
-          :width="width"
-          :height="height"
-          :gap="gap"
-          :data="data"
-          :scenario="key"
-          :extents="extents"
-          :variables="variables"
-        />
-        <StackedInvestmentsLabels v-if="key === 'CPol'" :gap="gap" :extents="extents" />
+  <figure class="vis-investment-absolute">
+    <svg ref="vis" class="vis" :viewBox="`0 0 ${width} ${height}`">
+      <g v-if="width">
+        <g v-for="(data, key) in dataByScenario" class="scenario">
+          <StackedInvestmentsBars
+            :width="width"
+            :height="height"
+            :gap="gap"
+            :data="data"
+            :scenario="key"
+            :extents="extents"
+            :variables="variables"
+            :y="scaleY(key)"
+          />
+        </g>
       </g>
-    </g>
-    <StackedInvestmentsDefs />
-  </svg>
+      <StackedInvestmentsDefs />
+    </svg>
+    <Labels :data="dataByScenario" />
+  </figure>
 </template>
 
 <script>
 import { groupBy, filter, get, map, forEach } from 'lodash'
-import { mapState, mapGetters } from 'vuex'
+import { scaleBand } from 'd3-scale'
+import { mapGetters } from 'vuex'
 import StackedInvestmentsBars from '~/components/StackedInvestmentsBars'
-import StackedInvestmentsLabels from '~/components/StackedInvestmentsLabels'
 import StackedInvestmentsDefs from '~/components/StackedInvestmentsDefs'
+import Labels from '~/components/InvestmentAbsolute/Labels'
 
 export default {
   components: {
     StackedInvestmentsBars,
-    StackedInvestmentsLabels,
-    StackedInvestmentsDefs
+    StackedInvestmentsDefs,
+    Labels
   },
   data: () => {
     return {
@@ -37,16 +41,6 @@ export default {
       height: 0,
       gap: 20,
       variables: [
-        // 'Energy Efficiency',
-        // 'CCS',
-        // 'Electricity - T&D and Storage',
-        // 'Extraction and Conversion - Nuclear',
-        // 'Extraction and Conversion - Bioenergy',
-        // 'Electricity - Non-bio Renewables'
-        // 'Hydrogen - Fossil',
-        // 'Hydrogen - Non-fossil',
-        // 'Extraction and Conversion - Fossil Fuels',
-        // 'Electricity - Fossil Fuels w/o CCS',
         'Oil and Gas',
         'Coal',
         'Electricity - Fossil Fuels w/o CCS',
@@ -60,17 +54,20 @@ export default {
         'Electricity - T&D and Storage',
         'Energy Efficiency',
         'CCS'
-      ]
+      ],
+      scenarios: ['historic', 'NDC', '2C', '1.5C']
     }
   },
   computed: {
     ...mapGetters([
       'data'
     ]),
-    ...mapState({
-      showModels: state => state.settings.showModels,
-      barStacked: state => state.settings.barStacked
-    }),
+    scaleY () {
+      return scaleBand()
+        .range([0, this.height])
+        .domain(this.scenarios)
+        .paddingOuter(0)
+    },
     dataByScenario () {
       return groupBy(this.data, 'scenario')
     },
@@ -101,37 +98,46 @@ export default {
     calcSizes () {
       const { vis: el } = this.$refs
       if (el !== 'undefined') {
-        // this.height = el.clientHeight || el.parentNode.clientHeight
-        // console.log('here', this.height)
-        // this.width = this.height
-
         this.width = el.clientWidth || el.parentNode.clientWidth
-        console.log('here', this.height)
-        this.height = this.width
+        this.height = el.clientHeight || el.parentNode.clientHeight
       }
     }
   }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   @import "~@/assets/style/global";
 
-  .scenario {
-    margin: $spacing 0 0;
+  .vis-investment-absolute {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    height: 70vh;
+
+    .vis {
+      height: 100%;
+      width: 100%;
+
+      figure, svg {
+
+      }
+
+      svg > * {
+        pointer-events: all;
+      }
+    }
+
+    .vis-labels {
+      pointer-events: none;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      display: grid;
+      grid-template-rows: repeat(4, 1fr);
+    }
   }
 
-  .vis {
-    position: sticky;
-    width: 100%;
-    top: 10vh;
-    // max-height: 80vh;
-    // z-index: -1;
-    // position: absolute;
-    // width: 100%;
-    // left: 0;
-    // top: 0;
-    // margin-left: 0;
-    // z-index: $z-index-graphics;
-  }
 </style>
