@@ -1,10 +1,11 @@
 <template>
   <g>
     <StackedInvestmentsHeadline
+      v-if="false"
       :elements="elements"
       :scenario="scenario"
       :height="height"
-      :y="y0"
+      :y="y"
       :headlineHeight="headlineHeight"
       :isRotated="isRotated" />
     <g v-for="({ bars, labelY, labelX, value, diff }, i) in elements">
@@ -76,7 +77,7 @@ function getColorFromVariable (variable) {
 }
 
 export default {
-  props: ['data', 'scenario', 'extents', 'variables', 'gap', 'width', 'height'],
+  props: ['data', 'scenario', 'extents', 'variables', 'gap', 'width', 'height', 'y'],
   components: {
     StackedInvestmentsBar,
     StackedInvestmentsDiffLess,
@@ -122,9 +123,9 @@ export default {
     widths () {
       return map(this.elements, (d) => { return get(d, ['bars', 0, 'width'], 0) - this.gap })
     },
-    y0 () {
-      return this.formulations.indexOf(this.scenario) * (this.groupHeight + this.headlineHeight)
-    },
+    // y () {
+    //   return this.formulations.indexOf(this.scenario) * (this.groupHeight + this.headlineHeight)
+    // },
     elements () {
       const { isColored } = this
 
@@ -164,7 +165,7 @@ export default {
           // console.log(`translate(${this.isRotated ? 0 : x0}px, ${this.isRotated ? x0 : 0}px) rotate(${this.isRotated ? '-90deg' : '0deg'})`)
           const style = {
             transformOrigin: `${this.width / 2}px ${this.width / 2}px`,
-            transform: `translate(${this.isRotated ? this.y0 : x0}px, ${this.isRotated ? this.height - x0 : this.headlineHeight + 10 + this.y0}px)`
+            transform: `translate(${this.isRotated ? this.y : x0}px, ${this.isRotated ? this.height - x0 : this.headlineHeight + 10 + this.y}px)`
           }
           return {
             id: key,
