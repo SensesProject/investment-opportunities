@@ -1,4 +1,5 @@
 import { has, get, set, isUndefined, isNaN } from 'lodash'
+import { GROUP_FOSSILS, GROUP_NON_FOSSILS, GROUP_OTHERS } from '~/store/config'
 
 const DEFAULTS = {
   model: 'AIM/CGE',
@@ -44,27 +45,6 @@ const actions = {
     commit('SETTINGS_CHANGE', params)
   },
   changeStep ({ commit }, step) {
-    const GROUP_FOSSILS = [
-      'Oil and Gas',
-      'Coal',
-      'Electricity - Fossil Fuels w/o CCS',
-      'Hydrogen - Fossil'
-    ]
-
-    const GROUP_NON_FOSSILS = [
-      'Extraction and Conversion - Nuclear',
-      'Extraction and Conversion - Bioenergy',
-      'Hydrogen - Non-fossil',
-      'Energy Supply|Electricity|Solar',
-      'Energy Supply|Electricity|Wind',
-      'other renewables'
-    ]
-
-    const GROUP_OTHERS = [
-      'Electricity - T&D and Storage',
-      'Energy Efficiency',
-      'CCS'
-    ]
     // commit('SETTINGS_CHANGE', params)
     switch (step) {
       case 0:

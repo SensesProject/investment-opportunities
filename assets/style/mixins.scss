@@ -1,0 +1,9 @@
+@mixin graphic-text-tick () {
+  font-size: 0.6rem;
+  fill: $color-light-gray;
+}
+
+@mixin graphic-text-label () {
+	font-size: 0.6rem;
+  fill: $color-dark-gray;
+}

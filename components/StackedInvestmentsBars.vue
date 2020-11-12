@@ -23,9 +23,17 @@
         </g>
       </g>
     </g> -->
+    <BarGroups
+      v-if="scenario === 'historic'"
+      :data="data"
+      :scaleX="scaleX"
+      :groupHeight="groupHeight"
+      :scenario="scenario"
+      :gap="gap"
+      :extents="extents"
+      :y="y0" />
     <BarVariable
       :data="data"
-      :variables="variables"
       :scaleX="scaleX"
       :groupHeight="groupHeight"
       :scenario="scenario"
@@ -34,7 +42,6 @@
       :y="y0" />
     <BarScenario
       :data="data"
-      :variables="variables"
       :scaleX="scaleX"
       :groupHeight="groupHeight"
       :scenario="scenario"
@@ -48,20 +55,23 @@ import { format } from 'd3-format'
 import { map, sum, values, filter, get, compact, round } from 'lodash'
 import { mapState } from 'vuex'
 import { getColorFromVariable } from '../assets/js/utils.js'
+import { VARIABLES } from '~/store/config'
 // import StackedInvestmentsBar from '~/components/StackedInvestmentsBar'
 // import StackedInvestmentsDiffLess from '~/components/StackedInvestmentsDiffLess'
 // import StackedInvestmentsDiffMore from '~/components/StackedInvestmentsDiffMore'
 import BarScenario from '~/components/InvestmentRelative/BarScenario'
 import BarVariable from '~/components/InvestmentRelative/BarVariable'
+import BarGroups from '~/components/InvestmentRelative/BarGroups'
 
 export default {
-  props: ['data', 'scenario', 'extents', 'variables', 'gap', 'width', 'height', 'y'],
+  props: ['data', 'scenario', 'extents', 'gap', 'width', 'height', 'y'],
   components: {
     // StackedInvestmentsBar,
     // StackedInvestmentsDiffLess,
     // StackedInvestmentsDiffMore,
     BarScenario,
-    BarVariable
+    BarVariable,
+    BarGroups
   },
   data: () => {
     return {
@@ -71,8 +81,7 @@ export default {
         left: 0,
         right: 0
       },
-      models: ['average', 'POLES', 'REMIND-MAgPIE', 'AIM/CGE', 'IMAGE', 'MESSAGEix-GLOBIOM'],
-      formulations: ['CPol', 'NDC', '2C', '1.5C']
+      models: ['average', 'POLES', 'REMIND-MAgPIE', 'AIM/CGE', 'IMAGE', 'MESSAGEix-GLOBIOM']
     }
   },
   computed: {
@@ -88,7 +97,7 @@ export default {
     },
     scaleX () {
       return scaleLinear()
-        .range([this.margin.left, this.width - (this.variables.length - 1) * this.gap - this.margin.right])
+        .range([this.margin.left, this.width - (VARIABLES.length - 1) * this.gap - this.margin.right])
         .domain([0, this.total])
     },
     scaleY () {
@@ -110,7 +119,7 @@ export default {
       const { isColored } = this
 
       let x0 = 0
-      return map(this.variables, (variable, i) => {
+      return map(VARIABLES, (variable, i) => {
         const color = isColored ? getColorFromVariable(variable) : '#222'
         const data = get(filter(this.data, { variable }), 0)
 

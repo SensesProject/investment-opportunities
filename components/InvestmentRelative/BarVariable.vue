@@ -19,10 +19,11 @@ import { format } from 'd3-format'
 import { get, find, map } from 'lodash'
 import { mapState } from 'vuex'
 import { getColorFromVariable } from '~/assets/js/utils.js'
+import { VARIABLES } from '~/store/config'
 // import { MODELS } from '~/store/config'
 
 export default {
-  props: ['data', 'scenario', 'variables', 'width', 'height', 'y', 'scaleX', 'groupHeight', 'extents', 'gap'],
+  props: ['data', 'scenario', 'width', 'height', 'y', 'scaleX', 'groupHeight', 'extents', 'gap'],
   data: () => {
     return {
       headlineHeight: 50
@@ -38,7 +39,7 @@ export default {
     barVariables () {
       let x0 = 0
 
-      return map(this.variables, (variable) => {
+      return map(VARIABLES, (variable) => {
         const d = find(this.data, { variable })
         const value = get(d, ['values', 'average'], 0)
 
@@ -77,7 +78,7 @@ export default {
           We are currently investing <strong>${fN(reference)}</strong> Billion US-Dollar per year,<br />
           but we ${this.scenario === 'NDC' ? 'pledged to' : 'should'} invest <strong>${fN(value)}</strong>.
           That means, we should invest<br />
-          <strong>${fN(Math.abs(value - reference))} (${change}) ${isPositive ? 'more' : 'less'}</strong> in ${variable}.
+          <strong>${fN(Math.abs(value - reference))} (${format('.0%')(change)}) ${isPositive ? 'more' : 'less'}</strong> in ${variable}.
         </p>
       `
     },

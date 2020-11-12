@@ -1,49 +1,57 @@
 <template>
-  <div class="bars">
-    <svg ref="vis" class="vis">
-      <g v-for="tick in ticks" v-if="width">
+  <figure>
+    <header>
+      <h4><slot name="header"></slot></h4>
+    </header>
+    <div class="bars">
+      <svg ref="vis" class="vis">
+        <g v-for="tick in ticks" v-if="width">
+          <line
+            :x1="tick.x1"
+            :x2="tick.x2"
+            :y1="tick.y"
+            :y2="tick.y"
+            class="tick" />
+          <text
+            :x="tick.x1 - 5"
+            :y="tick.y"
+            class="tick"
+            text-anchor="end"
+            dominant-baseline="middle">
+            {{ tick.label }}
+          </text>
+        </g>
+        <g v-for="(el) in elements" v-if="width">
+          <path
+            v-tooltip="el.tooltip"
+            :d="el.d"
+            :style="{ fill: el.color }"
+          />
+        </g>
         <line
-          :x1="tick.x1"
-          :x2="tick.x2"
-          :y1="tick.y"
-          :y2="tick.y"
-          class="tick" />
-        <text
-          :x="tick.x1 - 5"
-          :y="tick.y"
-          class="tick"
-          text-anchor="end"
-          dominant-baseline="middle">
-          {{ tick.label }}
-        </text>
-      </g>
-      <g v-for="(el) in elements" v-if="width">
-        <path
-          v-tooltip="el.tooltip"
-          :d="el.d"
-          :style="{ fill: el.color }"
-        />
-      </g>
-      <line
-        :x1="margin.left"
-        :x2="width"
-        :y1="height / 2"
-        :y2="height / 2"
-        class="tick zero" />
-    </svg>
-  </div>
+          :x1="margin.left"
+          :x2="width"
+          :y1="height / 2"
+          :y2="height / 2"
+          class="tick zero" />
+      </svg>
+    </div>
+    <figcaption><slot name="caption"></slot></figcaption>
+  </figure>
 </template>
 
 <script>
 import { scaleLinear, scaleBand } from 'd3-scale'
-import { map, find, isUndefined, compact, range } from 'lodash'
-import { mapState } from 'vuex'
+import { map, find, isUndefined, compact, range, get, forEach } from 'lodash'
+import { mapState, mapGetters } from 'vuex'
+import { format } from 'd3-format'
 import { getColorFromVariable, calcBar } from '../assets/js/utils.js'
 
 export default {
-  props: ['data', 'options', 'gap'],
+  props: ['variables', 'scenarios'],
   data: () => {
     return {
+      gap: 20,
       width: 0,
       height: 50,
       margin: {
@@ -59,10 +67,13 @@ export default {
       region: state => state.settings.region,
       isColored: state => state.settings.isColored
     }),
+    ...mapGetters([
+      'data'
+    ]),
     scaleY () {
       return scaleLinear()
         .range([0, this.height / 2 - this.margin.top])
-        .domain([0, 1]).nice()
+        .domain([0, 2])
     },
     scaleX () {
       return scaleBand()
@@ -76,33 +87,43 @@ export default {
     barWidth () {
       return this.scaleX.bandwidth()
     },
+    options () {
+      const arr = []
+      forEach(this.variables, (variable) => {
+        forEach(this.scenarios, (scenario) => {
+          arr.push({ variable, scenario })
+        })
+      })
+      return arr
+    },
     elements () {
-      const { yBase, barWidth, options, data, isColored } = this
+      const { yBase, barWidth, options, data } = this
 
       return compact(map(options, (option, i) => {
         const datum = find(data, option)
         if (!datum) { return false }
-        const { change, isPositive, variable, region } = datum
+        const { variable, region, value } = datum
+        const [change, isPositive] = get(datum, ['changes', 'average'], [])
         const x = this.scaleX(i)
-        const y = yBase + (this.scaleY(change) * (isPositive ? 1 : -1))
+        const y = yBase + (this.scaleY(change) * (isPositive ? -1 : 1))
         return {
-          tooltip: `Variable: ${variable}<br />Change: ${change}<br />Region: ${region}`,
+          tooltip: `Variable: ${variable}<br />${value}<br />Change: ${format('.0%')(change)}<br />Region: ${region}`,
           d: calcBar(x, yBase, y, barWidth),
           x,
           y: yBase,
-          color: isColored ? getColorFromVariable(variable) : '#222'
+          color: getColorFromVariable(variable)
         }
       }))
     },
     ticks () {
-      const { margin, yBase, barWidth } = this
-      const ticks = this.scaleY.ticks(3)
+      const { margin, yBase } = this
+      const ticks = this.scaleY.ticks(2)
       return map(ticks.concat(ticks), (tick, i) => {
         const isPositive = i <= ticks.length
         return {
           y: yBase + (this.scaleY(tick) * (isPositive ? -1 : 1)),
           x1: margin.left,
-          x2: barWidth - margin.right,
+          x2: this.width - margin.right,
           label: `${isPositive ? '' : '–'}${tick * 100}%`
         }
       })

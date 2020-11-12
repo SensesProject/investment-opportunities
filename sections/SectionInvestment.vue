@@ -14,98 +14,50 @@
       </IntersectionObserver>
       <IntersectionObserver :step="2" :noStyling="true" classes="step step-2">
         <h3>Upscaling efficiency</h3>
-        <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-        <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. <span class="type-efficiency">efficiency</span> sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <figure>
-          <header>
-            <h4>Relative changey differ</h4>
-          </header>
-          <BarInvestmentsChart
-            :gap="20"
-            :data="relativeValues"
-            path="scenario"
-            :options="[
-              { scenario: 'NDC', variable: 'Oil and Gas' },
-              { scenario: 'NDC', variable: 'Coal' },
-              { scenario: 'NDC', variable: 'Electricity - Fossil Fuels w/o CCS' },
-              { scenario: 'NDC', variable: 'Hydrogen - Fossil' },
-              { scenario: '1.5C', variable: 'Oil and Gas' },
-              { scenario: '1.5C', variable: 'Coal' },
-              { scenario: '1.5C', variable: 'Electricity - Fossil Fuels w/o CCS' },
-              { scenario: '1.5C', variable: 'Hydrogen - Fossil' },
-              { scenario: '2C', variable: 'Oil and Gas' },
-              { scenario: '2C', variable: 'Coal' },
-              { scenario: '2C', variable: 'Electricity - Fossil Fuels w/o CCS' },
-              { scenario: '2C', variable: 'Hydrogen - Fossil' }
-            ]"
-          />
-          <figcaption>Figure 1. Something</figcaption>
-        </figure>
+        <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. <Variable variable="oil-and-gas">Oil and Gas</Variable> incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud <Variable variable="coal">Coal</Variable> and <Variable variable="hydrogen-fossil">Hydrogen - Fossil</Variable> exercitation ullamco.</p>
+        <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. <Variable variable="fossil-fuels">Fossil Fuels</Variable> sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <BarInvestmentsChart
+          :variables="GROUP_FOSSILS"
+          :scenarios="['NDC', '2C', '1.5C']">
+          <template v-slot:header>
+            Change in something
+          </template>
+          <template v-slot:caption>
+            Figure 1. Relative changes in something
+          </template>
+        </BarInvestmentsChart>
         <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
       </IntersectionObserver>
       <IntersectionObserver :step="3" :noStyling="true" classes="step step-3">
         <h3>Upscaling low-carbon</h3>
-        <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-        <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. <span class="type-low">low-carbon</span> sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <figure>
-          <header>
-            <h4>Relative changey differ</h4>
-          </header>
-          <BarInvestmentsChart
-            :gap="20"
-            :data="relativeValues"
-            path="scenario"
-            :options="[
-              { scenario: 'NDC', variable: 'Extraction and Conversion - Nuclear' },
-              { scenario: 'NDC', variable: 'Extraction and Conversion - Bioenergy' },
-              { scenario: 'NDC', variable: 'Hydrogen - Non-fossil' },
-              { scenario: 'NDC', variable: 'Energy Supply|Electricity|Solar' },
-              { scenario: 'NDC', variable: 'Energy Supply|Electricity|Wind' },
-              { scenario: 'NDC', variable: 'other renewables' },
-              { scenario: '1.5C', variable: 'Extraction and Conversion - Nuclear' },
-              { scenario: '1.5C', variable: 'Extraction and Conversion - Bioenergy' },
-              { scenario: '1.5C', variable: 'Hydrogen - Non-fossil' },
-              { scenario: '1.5C', variable: 'Energy Supply|Electricity|Solar' },
-              { scenario: '1.5C', variable: 'Energy Supply|Electricity|Wind' },
-              { scenario: '1.5C', variable: 'other renewables' },
-              { scenario: '2C', variable: 'Extraction and Conversion - Nuclear' },
-              { scenario: '2C', variable: 'Extraction and Conversion - Bioenergy' },
-              { scenario: '2C', variable: 'Hydrogen - Non-fossil' },
-              { scenario: '2C', variable: 'Energy Supply|Electricity|Solar' },
-              { scenario: '2C', variable: 'Energy Supply|Electricity|Wind' },
-              { scenario: '2C', variable: 'other renewables' }
-            ]"
-          />
-          <figcaption>Figure 1. Something</figcaption>
-        </figure>
+        <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud <Variable variable="nuclear">Nuclear</Variable> exercitation ullamco. incididunt ut labore et dolore magna aliqua. <Variable variable="bioenergy">Bioenergy</Variable> Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+        <p>incididunt ut labore et <Variable variable="hydrogen-non-fossil">Hydrogen - Non-fossil</Variable> dolore magna aliqua. <Variable variable="solar">Solar</Variable> Ut enim ad minim veniam, quis nostrud exercitation ullamco. <Variable variable="wind">Wind</Variable> sed do eiusmod tempor incididunt ut labore et dolore <Variable variable="other-renewables">other renewables</Variable> magna aliqua.</p>
+        <BarInvestmentsChart
+          :variables="GROUP_NON_FOSSILS"
+          :scenarios="['NDC', '2C', '1.5C']">
+          <template v-slot:header>
+            Change in something
+          </template>
+          <template v-slot:caption>
+            Figure 2. Relative changes in something
+          </template>
+        </BarInvestmentsChart>
         <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
       </IntersectionObserver>
       <IntersectionObserver :step="4" :noStyling="true" classes="step step-4">
         <h3>Downscaling fossils</h3>
-        <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-        <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. <span class="type-fossil">fossil fuel</span> sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <figure>
-          <header>
-            <h4>Relative changey differ</h4>
-          </header>
-          <BarInvestmentsChart
-            :gap="20"
-            :data="relativeValues"
-            path="scenario"
-            :options="[
-              { scenario: 'NDC', variable: 'Electricity - T&D and Storage' },
-              { scenario: 'NDC', variable: 'Energy Efficiency' },
-              { scenario: 'NDC', variable: 'CCS' },
-              { scenario: '1.5C', variable: 'Electricity - T&D and Storage' },
-              { scenario: '1.5C', variable: 'Energy Efficiency' },
-              { scenario: '1.5C', variable: 'CCS' },
-              { scenario: '2C', variable: 'Electricity - T&D and Storage' },
-              { scenario: '2C', variable: 'Energy Efficiency' },
-              { scenario: '2C', variable: 'CCS' }
-            ]"
-          />
-          <figcaption>Figure 1. Something</figcaption>
-        </figure>
+        <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation <Variable variable="transmission-and-distribution">Transmission and Distribution</Variable> ullamco. incididunt ut <Variable variable="energy-efficiency">Energy Efficiency</Variable> labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+        <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. <Variable variable="ccs">CCS</Variable> sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <BarInvestmentsChart
+          :variables="GROUP_OTHERS"
+          :scenarios="['NDC', '2C', '1.5C']">
+          <template v-slot:header>
+            Change in something
+          </template>
+          <template v-slot:caption>
+            Figure 3. Relative changes in something
+          </template>
+        </BarInvestmentsChart>
       </IntersectionObserver>
       <IntersectionObserver :step="5" :noStyling="true" classes="step step-5">
         <h3>Others</h3>
@@ -122,12 +74,20 @@ import { mapGetters, mapActions } from 'vuex'
 import IntersectionObserver from 'library/src/components/IntersectionObserver'
 import BarInvestmentsChart from '~/components/BarInvestmentsChart'
 import StackedInvestments from '~/components/StackedInvestments'
+import Variable from '~/components/Helper/Variable'
+import { GROUP_FOSSILS, GROUP_NON_FOSSILS, GROUP_OTHERS } from '~/store/config'
 
 export default {
+  data: () => {
+    return {
+      GROUP_FOSSILS, GROUP_NON_FOSSILS, GROUP_OTHERS
+    }
+  },
   components: {
     IntersectionObserver,
     BarInvestmentsChart,
-    StackedInvestments
+    StackedInvestments,
+    Variable
   },
   computed: {
     ...mapGetters([
@@ -141,9 +101,7 @@ export default {
     ])
   },
   mounted () {
-    console.log('Step', this.step)
     this.$on('step', (step) => {
-      console.log({ step })
       this.changeStep(step)
     })
   }

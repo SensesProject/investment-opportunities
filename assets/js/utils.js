@@ -2,19 +2,19 @@ import { get } from 'lodash'
 
 export const getColorFromVariable = function (key) {
   const colors = {
-    'Energy Efficiency': '#8c8c94',
-    'CCS': '#d7d7e3',
-    'Electricity - T&D and Storage': '#aaa',
-    'Extraction and Conversion - Nuclear': '#feeda1',
-    'Extraction and Conversion - Bioenergy': '#e9f6a1',
-    'Hydrogen - Non-fossil': '#e9f6a1',
-    'Energy Supply|Electricity|Solar': '#229c53',
-    'Energy Supply|Electricity|Wind': '#b7e075',
-    'Hydrogen - Fossil': '#da372a',
-    'Electricity - Fossil Fuels w/o CCS': '#a50026',
-    'other renewables': '#229c53',
-    'Coal': '#da372a',
-    'Oil and Gas': '#a50026'
+    'Coal': '#F0A1BA',
+    'Oil and Gas': '#E67887',
+    'Fossil Fuels': '#FAA99C',
+    'Hydrogen - Fossil': '#FFBD9A',
+    'Nuclear': '#FFE7A0',
+    'Bioenergy': '#A2E7C0',
+    'Hydrogen - Non-fossil': '#A3D1EA',
+    'Solar': '#B8AEFF',
+    'Wind': '#B6D68C',
+    'other renewables': '#DED68E',
+    'Transmission and Distribution': '#D8D8E4',
+    'Energy Efficiency': '#AC9BD9',
+    'CCS': '#BAD2EB'
   }
   return get(colors, key, '#000')
 }

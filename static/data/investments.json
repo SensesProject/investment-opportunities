@@ -1,392 +1,147 @@
 [
   {
     "scenario": "1.5C",
-    "variable": "Energy Efficiency",
+    "variable": "Oil and Gas",
     "region": "World",
     "values": {
-      "average": 525.017,
-      "POLES": 484.446,
-      "max": 584.0,
-      "REMIND-MAgPIE": 578.141,
-      "AIM/CGE": 584.0,
-      "IMAGE": 506.134,
-      "MESSAGEix-GLOBIOM": 472.366
+      "average": 425.321,
+      "POLES": 659.196,
+      "max": 659.196,
+      "REMIND-MAgPIE": 497.1861,
+      "AIM/CGE": 172.55610000000001,
+      "IMAGE": 298.4184,
+      "MESSAGEix-GLOBIOM": 499.2507
     },
     "reference": {
-      "average": 250.633,
-      "max": 250.633,
-      "Reference": 250.633
+      "average": 759.733,
+      "max": 759.733,
+      "Reference": 759.733
     },
     "changes": {
       "average": [
-        1.095,
+        0.44,
         false
       ],
       "POLES": [
-        0.933,
+        0.132,
         false
       ],
       "max": [
-        1.33,
+        0.132,
         false
       ],
       "REMIND-MAgPIE": [
-        1.307,
+        0.346,
         false
       ],
       "AIM/CGE": [
-        1.33,
+        0.773,
         false
       ],
       "IMAGE": [
-        1.019,
+        0.607,
         false
       ],
       "MESSAGEix-GLOBIOM": [
-        0.885,
+        0.343,
         false
       ]
     }
   },
   {
     "scenario": "1.5C",
-    "variable": "CCS",
+    "variable": "Coal",
     "region": "World",
     "values": {
-      "average": 136.715,
-      "POLES": 165.617,
-      "max": 210.195,
-      "REMIND-MAgPIE": 50.1,
-      "AIM/CGE": 169.146,
-      "IMAGE": 210.195,
-      "MESSAGEix-GLOBIOM": 88.517
+      "average": 47.258,
+      "POLES": 73.24400000000001,
+      "max": 73.24400000000001,
+      "REMIND-MAgPIE": 55.2429,
+      "AIM/CGE": 19.172900000000002,
+      "IMAGE": 33.1576,
+      "MESSAGEix-GLOBIOM": 55.4723
     },
     "reference": {
-      "average": 0.0,
-      "max": 0.0,
-      "Reference": 0.0
+      "average": 84.3,
+      "max": 84.3,
+      "Reference": 84.3
     },
     "changes": {
       "average": [
-        135.715,
+        0.439,
         false
       ],
       "POLES": [
-        164.617,
+        0.131,
         false
       ],
       "max": [
-        200.0,
+        0.131,
         false
       ],
       "REMIND-MAgPIE": [
-        49.1,
+        0.345,
         false
       ],
       "AIM/CGE": [
-        168.146,
+        0.773,
         false
       ],
       "IMAGE": [
-        200.0,
+        0.607,
         false
       ],
       "MESSAGEix-GLOBIOM": [
-        87.517,
+        0.342,
         false
       ]
     }
   },
   {
     "scenario": "1.5C",
-    "variable": "Electricity - T&D and Storage",
+    "variable": "Fossil Fuels",
     "region": "World",
     "values": {
-      "average": 937.686,
-      "POLES": 795.403,
-      "max": 1572.364,
-      "REMIND-MAgPIE": 1301.059,
-      "AIM/CGE": 1572.364,
-      "IMAGE": 331.916,
-      "MESSAGEix-GLOBIOM": 687.689
+      "average": 48.573,
+      "POLES": 29.087,
+      "max": 108.388,
+      "REMIND-MAgPIE": 11.65,
+      "AIM/CGE": 108.388,
+      "IMAGE": 24.191,
+      "MESSAGEix-GLOBIOM": 69.549
     },
     "reference": {
-      "average": 288.467,
-      "max": 288.467,
-      "Reference": 288.467
+      "average": 132.4,
+      "max": 132.4,
+      "Reference": 132.4
     },
     "changes": {
       "average": [
-        2.251,
+        0.633,
         false
       ],
       "POLES": [
-        1.757,
+        0.78,
         false
       ],
       "max": [
-        4.451,
+        0.181,
         false
       ],
       "REMIND-MAgPIE": [
-        3.51,
+        0.912,
         false
       ],
       "AIM/CGE": [
-        4.451,
+        0.181,
         false
       ],
       "IMAGE": [
-        0.151,
+        0.817,
         false
       ],
       "MESSAGEix-GLOBIOM": [
-        1.384,
-        false
-      ]
-    }
-  },
-  {
-    "scenario": "1.5C",
-    "variable": "Extraction and Conversion - Nuclear",
-    "region": "World",
-    "values": {
-      "average": 205.603,
-      "POLES": 301.74,
-      "max": 301.74,
-      "REMIND-MAgPIE": 146.754,
-      "AIM/CGE": 117.169,
-      "IMAGE": 232.978,
-      "MESSAGEix-GLOBIOM": 229.373
-    },
-    "reference": {
-      "average": 35.367,
-      "max": 35.367,
-      "Reference": 35.367
-    },
-    "changes": {
-      "average": [
-        4.813,
-        false
-      ],
-      "POLES": [
-        7.532,
-        false
-      ],
-      "max": [
-        7.532,
-        false
-      ],
-      "REMIND-MAgPIE": [
-        3.149,
-        false
-      ],
-      "AIM/CGE": [
-        2.313,
-        false
-      ],
-      "IMAGE": [
-        5.587,
-        false
-      ],
-      "MESSAGEix-GLOBIOM": [
-        5.486,
-        false
-      ]
-    }
-  },
-  {
-    "scenario": "1.5C",
-    "variable": "Extraction and Conversion - Bioenergy",
-    "region": "World",
-    "values": {
-      "average": 230.586,
-      "POLES": 355.354,
-      "max": 355.354,
-      "REMIND-MAgPIE": 280.223,
-      "AIM/CGE": 124.051,
-      "IMAGE": 282.961,
-      "MESSAGEix-GLOBIOM": 110.34
-    },
-    "reference": {
-      "average": 8.667,
-      "max": 8.667,
-      "Reference": 8.667
-    },
-    "changes": {
-      "average": [
-        25.605,
-        false
-      ],
-      "POLES": [
-        40.001,
-        false
-      ],
-      "max": [
-        40.001,
-        false
-      ],
-      "REMIND-MAgPIE": [
-        31.332,
-        false
-      ],
-      "AIM/CGE": [
-        13.313,
-        false
-      ],
-      "IMAGE": [
-        31.648,
-        false
-      ],
-      "MESSAGEix-GLOBIOM": [
-        11.731,
-        false
-      ]
-    }
-  },
-  {
-    "scenario": "1.5C",
-    "variable": "Hydrogen - Non-fossil",
-    "region": "World",
-    "values": {
-      "average": 30.026,
-      "POLES": 3.657,
-      "max": 129.674,
-      "REMIND-MAgPIE": 129.674,
-      "AIM/CGE": 0.0,
-      "IMAGE": 0.001,
-      "MESSAGEix-GLOBIOM": 16.8
-    },
-    "reference": {
-      "average": 0.0,
-      "max": 0.0,
-      "Reference": 0.0
-    },
-    "changes": {
-      "average": [
-        29.026,
-        false
-      ],
-      "POLES": [
-        2.657,
-        false
-      ],
-      "max": [
-        128.674,
-        false
-      ],
-      "REMIND-MAgPIE": [
-        128.674,
-        false
-      ],
-      "AIM/CGE": [
-        0,
-        true
-      ],
-      "IMAGE": [
-        0.999,
-        true
-      ],
-      "MESSAGEix-GLOBIOM": [
-        15.8,
-        false
-      ]
-    }
-  },
-  {
-    "scenario": "1.5C",
-    "variable": "Energy Supply|Electricity|Solar",
-    "region": "World",
-    "values": {
-      "average": 472.293,
-      "POLES": 283.547,
-      "max": 1287.078,
-      "REMIND-MAgPIE": 1287.078,
-      "AIM/CGE": 454.895,
-      "IMAGE": 104.625,
-      "MESSAGEix-GLOBIOM": 231.319
-    },
-    "reference": {
-      "average": 187.831,
-      "max": 187.831,
-      "Reference": 187.831
-    },
-    "changes": {
-      "average": [
-        1.514,
-        false
-      ],
-      "POLES": [
-        0.51,
-        false
-      ],
-      "max": [
-        5.852,
-        false
-      ],
-      "REMIND-MAgPIE": [
-        5.852,
-        false
-      ],
-      "AIM/CGE": [
-        1.422,
-        false
-      ],
-      "IMAGE": [
-        0.443,
-        true
-      ],
-      "MESSAGEix-GLOBIOM": [
-        0.232,
-        false
-      ]
-    }
-  },
-  {
-    "scenario": "1.5C",
-    "variable": "Energy Supply|Electricity|Wind",
-    "region": "World",
-    "values": {
-      "average": 271.894,
-      "POLES": 213.2,
-      "max": 444.976,
-      "REMIND-MAgPIE": 408.833,
-      "AIM/CGE": 444.976,
-      "IMAGE": 119.664,
-      "MESSAGEix-GLOBIOM": 172.797
-    },
-    "reference": {
-      "average": 55.455,
-      "max": 55.455,
-      "Reference": 55.455
-    },
-    "changes": {
-      "average": [
-        3.903,
-        false
-      ],
-      "POLES": [
-        2.845,
-        false
-      ],
-      "max": [
-        7.024,
-        false
-      ],
-      "REMIND-MAgPIE": [
-        6.372,
-        false
-      ],
-      "AIM/CGE": [
-        7.024,
-        false
-      ],
-      "IMAGE": [
-        1.158,
-        false
-      ],
-      "MESSAGEix-GLOBIOM": [
-        2.116,
+        0.475,
         false
       ]
     }
@@ -412,19 +167,19 @@
     "changes": {
       "average": [
         19.148,
-        false
+        true
       ],
       "POLES": [
         20.594,
-        false
+        true
       ],
       "max": [
         43.409,
-        false
+        true
       ],
       "REMIND-MAgPIE": [
         0.075,
-        false
+        true
       ],
       "AIM/CGE": [
         0,
@@ -432,59 +187,255 @@
       ],
       "IMAGE": [
         43.409,
-        false
+        true
       ],
       "MESSAGEix-GLOBIOM": [
         32.661,
-        false
+        true
       ]
     }
   },
   {
     "scenario": "1.5C",
-    "variable": "Electricity - Fossil Fuels w/o CCS",
+    "variable": "Nuclear",
     "region": "World",
     "values": {
-      "average": 48.573,
-      "POLES": 29.087,
-      "max": 108.388,
-      "REMIND-MAgPIE": 11.65,
-      "AIM/CGE": 108.388,
-      "IMAGE": 24.191,
-      "MESSAGEix-GLOBIOM": 69.549
+      "average": 205.603,
+      "POLES": 301.74,
+      "max": 301.74,
+      "REMIND-MAgPIE": 146.754,
+      "AIM/CGE": 117.169,
+      "IMAGE": 232.978,
+      "MESSAGEix-GLOBIOM": 229.373
     },
     "reference": {
-      "average": 132.4,
-      "max": 132.4,
-      "Reference": 132.4
+      "average": 35.367,
+      "max": 35.367,
+      "Reference": 35.367
     },
     "changes": {
       "average": [
-        0.633,
+        4.813,
         true
       ],
       "POLES": [
-        0.78,
+        7.532,
         true
       ],
       "max": [
-        0.181,
+        7.532,
         true
       ],
       "REMIND-MAgPIE": [
-        0.912,
+        3.149,
         true
       ],
       "AIM/CGE": [
-        0.181,
+        2.313,
         true
       ],
       "IMAGE": [
-        0.817,
+        5.587,
         true
       ],
       "MESSAGEix-GLOBIOM": [
-        0.475,
+        5.486,
+        true
+      ]
+    }
+  },
+  {
+    "scenario": "1.5C",
+    "variable": "Bioenergy",
+    "region": "World",
+    "values": {
+      "average": 230.586,
+      "POLES": 355.354,
+      "max": 355.354,
+      "REMIND-MAgPIE": 280.223,
+      "AIM/CGE": 124.051,
+      "IMAGE": 282.961,
+      "MESSAGEix-GLOBIOM": 110.34
+    },
+    "reference": {
+      "average": 8.667,
+      "max": 8.667,
+      "Reference": 8.667
+    },
+    "changes": {
+      "average": [
+        25.605,
+        true
+      ],
+      "POLES": [
+        40.001,
+        true
+      ],
+      "max": [
+        40.001,
+        true
+      ],
+      "REMIND-MAgPIE": [
+        31.332,
+        true
+      ],
+      "AIM/CGE": [
+        13.313,
+        true
+      ],
+      "IMAGE": [
+        31.648,
+        true
+      ],
+      "MESSAGEix-GLOBIOM": [
+        11.731,
+        true
+      ]
+    }
+  },
+  {
+    "scenario": "1.5C",
+    "variable": "Hydrogen - Non-fossil",
+    "region": "World",
+    "values": {
+      "average": 30.026,
+      "POLES": 3.657,
+      "max": 129.674,
+      "REMIND-MAgPIE": 129.674,
+      "AIM/CGE": 0.0,
+      "IMAGE": 0.001,
+      "MESSAGEix-GLOBIOM": 16.8
+    },
+    "reference": {
+      "average": 0.0,
+      "max": 0.0,
+      "Reference": 0.0
+    },
+    "changes": {
+      "average": [
+        29.026,
+        true
+      ],
+      "POLES": [
+        2.657,
+        true
+      ],
+      "max": [
+        128.674,
+        true
+      ],
+      "REMIND-MAgPIE": [
+        128.674,
+        true
+      ],
+      "AIM/CGE": [
+        0,
+        true
+      ],
+      "IMAGE": [
+        0.999,
+        false
+      ],
+      "MESSAGEix-GLOBIOM": [
+        15.8,
+        true
+      ]
+    }
+  },
+  {
+    "scenario": "1.5C",
+    "variable": "Solar",
+    "region": "World",
+    "values": {
+      "average": 472.293,
+      "POLES": 283.547,
+      "max": 1287.078,
+      "REMIND-MAgPIE": 1287.078,
+      "AIM/CGE": 454.895,
+      "IMAGE": 104.625,
+      "MESSAGEix-GLOBIOM": 231.319
+    },
+    "reference": {
+      "average": 187.831,
+      "max": 187.831,
+      "Reference": 187.831
+    },
+    "changes": {
+      "average": [
+        1.514,
+        true
+      ],
+      "POLES": [
+        0.51,
+        true
+      ],
+      "max": [
+        5.852,
+        true
+      ],
+      "REMIND-MAgPIE": [
+        5.852,
+        true
+      ],
+      "AIM/CGE": [
+        1.422,
+        true
+      ],
+      "IMAGE": [
+        0.443,
+        false
+      ],
+      "MESSAGEix-GLOBIOM": [
+        0.232,
+        true
+      ]
+    }
+  },
+  {
+    "scenario": "1.5C",
+    "variable": "Wind",
+    "region": "World",
+    "values": {
+      "average": 271.894,
+      "POLES": 213.2,
+      "max": 444.976,
+      "REMIND-MAgPIE": 408.833,
+      "AIM/CGE": 444.976,
+      "IMAGE": 119.664,
+      "MESSAGEix-GLOBIOM": 172.797
+    },
+    "reference": {
+      "average": 55.455,
+      "max": 55.455,
+      "Reference": 55.455
+    },
+    "changes": {
+      "average": [
+        3.903,
+        true
+      ],
+      "POLES": [
+        2.845,
+        true
+      ],
+      "max": [
+        7.024,
+        true
+      ],
+      "REMIND-MAgPIE": [
+        6.372,
+        true
+      ],
+      "AIM/CGE": [
+        7.024,
+        true
+      ],
+      "IMAGE": [
+        1.158,
+        true
+      ],
+      "MESSAGEix-GLOBIOM": [
+        2.116,
         true
       ]
     }
@@ -494,13 +445,13 @@
     "variable": "other renewables",
     "region": "World",
     "values": {
-      "average": -200.399,
-      "POLES": -70.34700000000004,
-      "max": 15.039000000000001,
-      "REMIND-MAgPIE": -878.2449999999999,
-      "AIM/CGE": -9.918999999999983,
-      "IMAGE": 15.039000000000001,
-      "MESSAGEix-GLOBIOM": -58.52199999999999
+      "average": 0.0,
+      "POLES": 0.0,
+      "max": 0.0,
+      "REMIND-MAgPIE": 0.0,
+      "AIM/CGE": 0.0,
+      "IMAGE": 0.0,
+      "MESSAGEix-GLOBIOM": 0.0
     },
     "reference": {
       "average": 66.181,
@@ -509,243 +460,47 @@
     },
     "changes": {
       "average": [
-        4.028,
-        true
+        1.0,
+        false
       ],
       "POLES": [
-        2.063,
-        true
+        1.0,
+        false
       ],
       "max": [
-        0.773,
-        true
+        1.0,
+        false
       ],
       "REMIND-MAgPIE": [
-        14.27,
-        true
+        1.0,
+        false
       ],
       "AIM/CGE": [
-        1.15,
-        true
+        1.0,
+        false
       ],
       "IMAGE": [
-        0.773,
-        true
+        1.0,
+        false
       ],
       "MESSAGEix-GLOBIOM": [
-        1.884,
-        true
+        1.0,
+        false
       ]
     }
   },
   {
     "scenario": "1.5C",
-    "variable": "Coal",
+    "variable": "Transmission and Distribution",
     "region": "World",
     "values": {
-      "average": 0.0,
-      "POLES": 0.0,
-      "max": 0.0,
-      "REMIND-MAgPIE": 0.0,
-      "AIM/CGE": 0.0,
-      "IMAGE": 0.0,
-      "MESSAGEix-GLOBIOM": 0.0
-    },
-    "reference": {
-      "average": 84.3,
-      "max": 84.3,
-      "Reference": 84.3
-    },
-    "changes": {
-      "average": [
-        1.0,
-        true
-      ],
-      "POLES": [
-        1.0,
-        true
-      ],
-      "max": [
-        1.0,
-        true
-      ],
-      "REMIND-MAgPIE": [
-        1.0,
-        true
-      ],
-      "AIM/CGE": [
-        1.0,
-        true
-      ],
-      "IMAGE": [
-        1.0,
-        true
-      ],
-      "MESSAGEix-GLOBIOM": [
-        1.0,
-        true
-      ]
-    }
-  },
-  {
-    "scenario": "1.5C",
-    "variable": "Oil and Gas",
-    "region": "World",
-    "values": {
-      "average": 0.0,
-      "POLES": 0.0,
-      "max": 0.0,
-      "REMIND-MAgPIE": 0.0,
-      "AIM/CGE": 0.0,
-      "IMAGE": 0.0,
-      "MESSAGEix-GLOBIOM": 0.0
-    },
-    "reference": {
-      "average": 759.733,
-      "max": 759.733,
-      "Reference": 759.733
-    },
-    "changes": {
-      "average": [
-        1.0,
-        true
-      ],
-      "POLES": [
-        1.0,
-        true
-      ],
-      "max": [
-        1.0,
-        true
-      ],
-      "REMIND-MAgPIE": [
-        1.0,
-        true
-      ],
-      "AIM/CGE": [
-        1.0,
-        true
-      ],
-      "IMAGE": [
-        1.0,
-        true
-      ],
-      "MESSAGEix-GLOBIOM": [
-        1.0,
-        true
-      ]
-    }
-  },
-  {
-    "scenario": "NDC",
-    "variable": "Energy Efficiency",
-    "region": "World",
-    "values": {
-      "average": 294.668,
-      "POLES": 298.221,
-      "max": 312.157,
-      "REMIND-MAgPIE": 312.157,
-      "AIM/CGE": 295.074,
-      "IMAGE": 287.413,
-      "MESSAGEix-GLOBIOM": 280.475
-    },
-    "reference": {
-      "average": 250.633,
-      "max": 250.633,
-      "Reference": 250.633
-    },
-    "changes": {
-      "average": [
-        0.176,
-        false
-      ],
-      "POLES": [
-        0.19,
-        false
-      ],
-      "max": [
-        0.245,
-        false
-      ],
-      "REMIND-MAgPIE": [
-        0.245,
-        false
-      ],
-      "AIM/CGE": [
-        0.177,
-        false
-      ],
-      "IMAGE": [
-        0.147,
-        false
-      ],
-      "MESSAGEix-GLOBIOM": [
-        0.119,
-        false
-      ]
-    }
-  },
-  {
-    "scenario": "NDC",
-    "variable": "CCS",
-    "region": "World",
-    "values": {
-      "average": 12.318,
-      "POLES": 39.049,
-      "max": 39.049,
-      "REMIND-MAgPIE": 3.558,
-      "AIM/CGE": 9.483,
-      "IMAGE": 6.235,
-      "MESSAGEix-GLOBIOM": 3.265
-    },
-    "reference": {
-      "average": 0.0,
-      "max": 0.0,
-      "Reference": 0.0
-    },
-    "changes": {
-      "average": [
-        11.318,
-        false
-      ],
-      "POLES": [
-        38.049,
-        false
-      ],
-      "max": [
-        38.049,
-        false
-      ],
-      "REMIND-MAgPIE": [
-        2.558,
-        false
-      ],
-      "AIM/CGE": [
-        8.483,
-        false
-      ],
-      "IMAGE": [
-        5.235,
-        false
-      ],
-      "MESSAGEix-GLOBIOM": [
-        2.265,
-        false
-      ]
-    }
-  },
-  {
-    "scenario": "NDC",
-    "variable": "Electricity - T&D and Storage",
-    "region": "World",
-    "values": {
-      "average": 570.371,
-      "POLES": 512.212,
-      "max": 837.716,
-      "REMIND-MAgPIE": 837.716,
-      "AIM/CGE": 540.222,
-      "IMAGE": 455.399,
-      "MESSAGEix-GLOBIOM": 506.306
+      "average": 937.686,
+      "POLES": 795.403,
+      "max": 1572.364,
+      "REMIND-MAgPIE": 1301.059,
+      "AIM/CGE": 1572.364,
+      "IMAGE": 331.916,
+      "MESSAGEix-GLOBIOM": 687.689
     },
     "reference": {
       "average": 288.467,
@@ -754,145 +509,96 @@
     },
     "changes": {
       "average": [
-        0.977,
-        false
+        2.251,
+        true
       ],
       "POLES": [
-        0.776,
-        false
+        1.757,
+        true
       ],
       "max": [
-        1.904,
-        false
+        4.451,
+        true
       ],
       "REMIND-MAgPIE": [
-        1.904,
-        false
+        3.51,
+        true
       ],
       "AIM/CGE": [
-        0.873,
-        false
+        4.451,
+        true
       ],
       "IMAGE": [
-        0.579,
-        false
+        0.151,
+        true
       ],
       "MESSAGEix-GLOBIOM": [
-        0.755,
-        false
-      ]
-    }
-  },
-  {
-    "scenario": "NDC",
-    "variable": "Extraction and Conversion - Nuclear",
-    "region": "World",
-    "values": {
-      "average": 108.99,
-      "POLES": 179.4,
-      "max": 179.4,
-      "REMIND-MAgPIE": 164.241,
-      "AIM/CGE": 99.884,
-      "IMAGE": 72.681,
-      "MESSAGEix-GLOBIOM": 28.745
-    },
-    "reference": {
-      "average": 35.367,
-      "max": 35.367,
-      "Reference": 35.367
-    },
-    "changes": {
-      "average": [
-        2.082,
-        false
-      ],
-      "POLES": [
-        4.073,
-        false
-      ],
-      "max": [
-        4.073,
-        false
-      ],
-      "REMIND-MAgPIE": [
-        3.644,
-        false
-      ],
-      "AIM/CGE": [
-        1.824,
-        false
-      ],
-      "IMAGE": [
-        1.055,
-        false
-      ],
-      "MESSAGEix-GLOBIOM": [
-        0.187,
+        1.384,
         true
       ]
     }
   },
   {
-    "scenario": "NDC",
-    "variable": "Extraction and Conversion - Bioenergy",
+    "scenario": "1.5C",
+    "variable": "Energy Efficiency",
     "region": "World",
     "values": {
-      "average": 76.132,
-      "POLES": 142.383,
-      "max": 142.383,
-      "REMIND-MAgPIE": 55.869,
-      "AIM/CGE": 49.822,
-      "IMAGE": 93.161,
-      "MESSAGEix-GLOBIOM": 39.425
+      "average": 525.017,
+      "POLES": 484.446,
+      "max": 584.0,
+      "REMIND-MAgPIE": 578.141,
+      "AIM/CGE": 584.0,
+      "IMAGE": 506.134,
+      "MESSAGEix-GLOBIOM": 472.366
     },
     "reference": {
-      "average": 8.667,
-      "max": 8.667,
-      "Reference": 8.667
+      "average": 250.633,
+      "max": 250.633,
+      "Reference": 250.633
     },
     "changes": {
       "average": [
-        7.784,
-        false
+        1.095,
+        true
       ],
       "POLES": [
-        15.428,
-        false
+        0.933,
+        true
       ],
       "max": [
-        15.428,
-        false
+        1.33,
+        true
       ],
       "REMIND-MAgPIE": [
-        5.446,
-        false
+        1.307,
+        true
       ],
       "AIM/CGE": [
-        4.748,
-        false
+        1.33,
+        true
       ],
       "IMAGE": [
-        9.749,
-        false
+        1.019,
+        true
       ],
       "MESSAGEix-GLOBIOM": [
-        3.549,
-        false
+        0.885,
+        true
       ]
     }
   },
   {
-    "scenario": "NDC",
-    "variable": "Hydrogen - Non-fossil",
+    "scenario": "1.5C",
+    "variable": "CCS",
     "region": "World",
     "values": {
-      "average": 3.335,
-      "POLES": 1.252,
-      "max": 14.362,
-      "REMIND-MAgPIE": 14.362,
-      "AIM/CGE": 0.0,
-      "IMAGE": 0.153,
-      "MESSAGEix-GLOBIOM": 0.91
+      "average": 136.715,
+      "POLES": 165.617,
+      "max": 210.195,
+      "REMIND-MAgPIE": 50.1,
+      "AIM/CGE": 169.146,
+      "IMAGE": 210.195,
+      "MESSAGEix-GLOBIOM": 88.517
     },
     "reference": {
       "average": 0.0,
@@ -901,129 +607,178 @@
     },
     "changes": {
       "average": [
-        2.335,
-        false
+        135.715,
+        true
       ],
       "POLES": [
+        164.617,
+        true
+      ],
+      "max": [
+        200.0,
+        true
+      ],
+      "REMIND-MAgPIE": [
+        49.1,
+        true
+      ],
+      "AIM/CGE": [
+        168.146,
+        true
+      ],
+      "IMAGE": [
+        200.0,
+        true
+      ],
+      "MESSAGEix-GLOBIOM": [
+        87.517,
+        true
+      ]
+    }
+  },
+  {
+    "scenario": "NDC",
+    "variable": "Oil and Gas",
+    "region": "World",
+    "values": {
+      "average": 836.869,
+      "POLES": 1068.0723,
+      "max": 1068.0723,
+      "REMIND-MAgPIE": 838.6569000000001,
+      "AIM/CGE": 585.9027000000001,
+      "IMAGE": 666.8973,
+      "MESSAGEix-GLOBIOM": 1024.8165
+    },
+    "reference": {
+      "average": 759.733,
+      "max": 759.733,
+      "Reference": 759.733
+    },
+    "changes": {
+      "average": [
+        0.102,
+        true
+      ],
+      "POLES": [
+        0.406,
+        true
+      ],
+      "max": [
+        0.406,
+        true
+      ],
+      "REMIND-MAgPIE": [
+        0.104,
+        true
+      ],
+      "AIM/CGE": [
+        0.229,
+        false
+      ],
+      "IMAGE": [
+        0.122,
+        false
+      ],
+      "MESSAGEix-GLOBIOM": [
+        0.349,
+        true
+      ]
+    }
+  },
+  {
+    "scenario": "NDC",
+    "variable": "Coal",
+    "region": "World",
+    "values": {
+      "average": 92.985,
+      "POLES": 118.67470000000002,
+      "max": 118.67470000000002,
+      "REMIND-MAgPIE": 93.1841,
+      "AIM/CGE": 65.1003,
+      "IMAGE": 74.0997,
+      "MESSAGEix-GLOBIOM": 113.8685
+    },
+    "reference": {
+      "average": 84.3,
+      "max": 84.3,
+      "Reference": 84.3
+    },
+    "changes": {
+      "average": [
+        0.103,
+        true
+      ],
+      "POLES": [
+        0.408,
+        true
+      ],
+      "max": [
+        0.408,
+        true
+      ],
+      "REMIND-MAgPIE": [
+        0.105,
+        true
+      ],
+      "AIM/CGE": [
+        0.228,
+        false
+      ],
+      "IMAGE": [
+        0.121,
+        false
+      ],
+      "MESSAGEix-GLOBIOM": [
+        0.351,
+        true
+      ]
+    }
+  },
+  {
+    "scenario": "NDC",
+    "variable": "Fossil Fuels",
+    "region": "World",
+    "values": {
+      "average": 139.005,
+      "POLES": 155.669,
+      "max": 192.032,
+      "REMIND-MAgPIE": 98.995,
+      "AIM/CGE": 139.516,
+      "IMAGE": 192.032,
+      "MESSAGEix-GLOBIOM": 108.813
+    },
+    "reference": {
+      "average": 132.4,
+      "max": 132.4,
+      "Reference": 132.4
+    },
+    "changes": {
+      "average": [
+        0.05,
+        true
+      ],
+      "POLES": [
+        0.176,
+        true
+      ],
+      "max": [
+        0.45,
+        true
+      ],
+      "REMIND-MAgPIE": [
         0.252,
         false
       ],
-      "max": [
-        13.362,
-        false
-      ],
-      "REMIND-MAgPIE": [
-        13.362,
-        false
-      ],
       "AIM/CGE": [
-        0,
+        0.054,
         true
       ],
       "IMAGE": [
-        0.847,
+        0.45,
         true
       ],
       "MESSAGEix-GLOBIOM": [
-        0.09,
-        true
-      ]
-    }
-  },
-  {
-    "scenario": "NDC",
-    "variable": "Energy Supply|Electricity|Solar",
-    "region": "World",
-    "values": {
-      "average": 206.075,
-      "POLES": 223.816,
-      "max": 538.13,
-      "REMIND-MAgPIE": 538.13,
-      "AIM/CGE": 103.609,
-      "IMAGE": 115.061,
-      "MESSAGEix-GLOBIOM": 49.76
-    },
-    "reference": {
-      "average": 187.831,
-      "max": 187.831,
-      "Reference": 187.831
-    },
-    "changes": {
-      "average": [
-        0.097,
-        false
-      ],
-      "POLES": [
-        0.192,
-        false
-      ],
-      "max": [
-        1.865,
-        false
-      ],
-      "REMIND-MAgPIE": [
-        1.865,
-        false
-      ],
-      "AIM/CGE": [
-        0.448,
-        true
-      ],
-      "IMAGE": [
-        0.387,
-        true
-      ],
-      "MESSAGEix-GLOBIOM": [
-        0.735,
-        true
-      ]
-    }
-  },
-  {
-    "scenario": "NDC",
-    "variable": "Energy Supply|Electricity|Wind",
-    "region": "World",
-    "values": {
-      "average": 160.878,
-      "POLES": 203.873,
-      "max": 287.898,
-      "REMIND-MAgPIE": 287.898,
-      "AIM/CGE": 129.503,
-      "IMAGE": 98.729,
-      "MESSAGEix-GLOBIOM": 84.389
-    },
-    "reference": {
-      "average": 55.455,
-      "max": 55.455,
-      "Reference": 55.455
-    },
-    "changes": {
-      "average": [
-        1.901,
-        false
-      ],
-      "POLES": [
-        2.676,
-        false
-      ],
-      "max": [
-        4.192,
-        false
-      ],
-      "REMIND-MAgPIE": [
-        4.192,
-        false
-      ],
-      "AIM/CGE": [
-        1.335,
-        false
-      ],
-      "IMAGE": [
-        0.78,
-        false
-      ],
-      "MESSAGEix-GLOBIOM": [
-        0.522,
+        0.178,
         false
       ]
     }
@@ -1049,19 +804,19 @@
     "changes": {
       "average": [
         8.695,
-        false
+        true
       ],
       "POLES": [
         10.339,
-        false
+        true
       ],
       "max": [
         18.384,
-        false
+        true
       ],
       "REMIND-MAgPIE": [
         18.384,
-        false
+        true
       ],
       "AIM/CGE": [
         0,
@@ -1069,59 +824,255 @@
       ],
       "IMAGE": [
         14.042,
-        false
+        true
       ],
       "MESSAGEix-GLOBIOM": [
         1.71,
+        true
+      ]
+    }
+  },
+  {
+    "scenario": "NDC",
+    "variable": "Nuclear",
+    "region": "World",
+    "values": {
+      "average": 108.99,
+      "POLES": 179.4,
+      "max": 179.4,
+      "REMIND-MAgPIE": 164.241,
+      "AIM/CGE": 99.884,
+      "IMAGE": 72.681,
+      "MESSAGEix-GLOBIOM": 28.745
+    },
+    "reference": {
+      "average": 35.367,
+      "max": 35.367,
+      "Reference": 35.367
+    },
+    "changes": {
+      "average": [
+        2.082,
+        true
+      ],
+      "POLES": [
+        4.073,
+        true
+      ],
+      "max": [
+        4.073,
+        true
+      ],
+      "REMIND-MAgPIE": [
+        3.644,
+        true
+      ],
+      "AIM/CGE": [
+        1.824,
+        true
+      ],
+      "IMAGE": [
+        1.055,
+        true
+      ],
+      "MESSAGEix-GLOBIOM": [
+        0.187,
         false
       ]
     }
   },
   {
     "scenario": "NDC",
-    "variable": "Electricity - Fossil Fuels w/o CCS",
+    "variable": "Bioenergy",
     "region": "World",
     "values": {
-      "average": 139.005,
-      "POLES": 155.669,
-      "max": 192.032,
-      "REMIND-MAgPIE": 98.995,
-      "AIM/CGE": 139.516,
-      "IMAGE": 192.032,
-      "MESSAGEix-GLOBIOM": 108.813
+      "average": 76.132,
+      "POLES": 142.383,
+      "max": 142.383,
+      "REMIND-MAgPIE": 55.869,
+      "AIM/CGE": 49.822,
+      "IMAGE": 93.161,
+      "MESSAGEix-GLOBIOM": 39.425
     },
     "reference": {
-      "average": 132.4,
-      "max": 132.4,
-      "Reference": 132.4
+      "average": 8.667,
+      "max": 8.667,
+      "Reference": 8.667
     },
     "changes": {
       "average": [
-        0.05,
-        false
+        7.784,
+        true
       ],
       "POLES": [
-        0.176,
-        false
+        15.428,
+        true
       ],
       "max": [
-        0.45,
-        false
+        15.428,
+        true
       ],
       "REMIND-MAgPIE": [
-        0.252,
+        5.446,
         true
       ],
       "AIM/CGE": [
-        0.054,
-        false
+        4.748,
+        true
       ],
       "IMAGE": [
-        0.45,
+        9.749,
+        true
+      ],
+      "MESSAGEix-GLOBIOM": [
+        3.549,
+        true
+      ]
+    }
+  },
+  {
+    "scenario": "NDC",
+    "variable": "Hydrogen - Non-fossil",
+    "region": "World",
+    "values": {
+      "average": 3.335,
+      "POLES": 1.252,
+      "max": 14.362,
+      "REMIND-MAgPIE": 14.362,
+      "AIM/CGE": 0.0,
+      "IMAGE": 0.153,
+      "MESSAGEix-GLOBIOM": 0.91
+    },
+    "reference": {
+      "average": 0.0,
+      "max": 0.0,
+      "Reference": 0.0
+    },
+    "changes": {
+      "average": [
+        2.335,
+        true
+      ],
+      "POLES": [
+        0.252,
+        true
+      ],
+      "max": [
+        13.362,
+        true
+      ],
+      "REMIND-MAgPIE": [
+        13.362,
+        true
+      ],
+      "AIM/CGE": [
+        0,
+        true
+      ],
+      "IMAGE": [
+        0.847,
         false
       ],
       "MESSAGEix-GLOBIOM": [
-        0.178,
+        0.09,
+        false
+      ]
+    }
+  },
+  {
+    "scenario": "NDC",
+    "variable": "Solar",
+    "region": "World",
+    "values": {
+      "average": 206.075,
+      "POLES": 223.816,
+      "max": 538.13,
+      "REMIND-MAgPIE": 538.13,
+      "AIM/CGE": 103.609,
+      "IMAGE": 115.061,
+      "MESSAGEix-GLOBIOM": 49.76
+    },
+    "reference": {
+      "average": 187.831,
+      "max": 187.831,
+      "Reference": 187.831
+    },
+    "changes": {
+      "average": [
+        0.097,
+        true
+      ],
+      "POLES": [
+        0.192,
+        true
+      ],
+      "max": [
+        1.865,
+        true
+      ],
+      "REMIND-MAgPIE": [
+        1.865,
+        true
+      ],
+      "AIM/CGE": [
+        0.448,
+        false
+      ],
+      "IMAGE": [
+        0.387,
+        false
+      ],
+      "MESSAGEix-GLOBIOM": [
+        0.735,
+        false
+      ]
+    }
+  },
+  {
+    "scenario": "NDC",
+    "variable": "Wind",
+    "region": "World",
+    "values": {
+      "average": 160.878,
+      "POLES": 203.873,
+      "max": 287.898,
+      "REMIND-MAgPIE": 287.898,
+      "AIM/CGE": 129.503,
+      "IMAGE": 98.729,
+      "MESSAGEix-GLOBIOM": 84.389
+    },
+    "reference": {
+      "average": 55.455,
+      "max": 55.455,
+      "Reference": 55.455
+    },
+    "changes": {
+      "average": [
+        1.901,
+        true
+      ],
+      "POLES": [
+        2.676,
+        true
+      ],
+      "max": [
+        4.192,
+        true
+      ],
+      "REMIND-MAgPIE": [
+        4.192,
+        true
+      ],
+      "AIM/CGE": [
+        1.335,
+        true
+      ],
+      "IMAGE": [
+        0.78,
+        true
+      ],
+      "MESSAGEix-GLOBIOM": [
+        0.522,
         true
       ]
     }
@@ -1131,13 +1082,13 @@
     "variable": "other renewables",
     "region": "World",
     "values": {
-      "average": -45.197,
-      "POLES": -19.943000000000012,
-      "max": 34.629,
-      "REMIND-MAgPIE": -250.23199999999997,
-      "AIM/CGE": 25.89399999999999,
-      "IMAGE": -16.332000000000008,
-      "MESSAGEix-GLOBIOM": 34.629
+      "average": 0.0,
+      "POLES": 0.0,
+      "max": 0.0,
+      "REMIND-MAgPIE": 0.0,
+      "AIM/CGE": 0.0,
+      "IMAGE": 0.0,
+      "MESSAGEix-GLOBIOM": 0.0
     },
     "reference": {
       "average": 66.181,
@@ -1146,243 +1097,47 @@
     },
     "changes": {
       "average": [
-        1.683,
-        true
+        1.0,
+        false
       ],
       "POLES": [
-        1.301,
-        true
+        1.0,
+        false
       ],
       "max": [
-        0.477,
-        true
+        1.0,
+        false
       ],
       "REMIND-MAgPIE": [
-        4.781,
-        true
+        1.0,
+        false
       ],
       "AIM/CGE": [
-        0.609,
-        true
+        1.0,
+        false
       ],
       "IMAGE": [
-        1.247,
-        true
+        1.0,
+        false
       ],
       "MESSAGEix-GLOBIOM": [
-        0.477,
-        true
+        1.0,
+        false
       ]
     }
   },
   {
     "scenario": "NDC",
-    "variable": "Coal",
+    "variable": "Transmission and Distribution",
     "region": "World",
     "values": {
-      "average": 0.0,
-      "POLES": 0.0,
-      "max": 0.0,
-      "REMIND-MAgPIE": 0.0,
-      "AIM/CGE": 0.0,
-      "IMAGE": 0.0,
-      "MESSAGEix-GLOBIOM": 0.0
-    },
-    "reference": {
-      "average": 84.3,
-      "max": 84.3,
-      "Reference": 84.3
-    },
-    "changes": {
-      "average": [
-        1.0,
-        true
-      ],
-      "POLES": [
-        1.0,
-        true
-      ],
-      "max": [
-        1.0,
-        true
-      ],
-      "REMIND-MAgPIE": [
-        1.0,
-        true
-      ],
-      "AIM/CGE": [
-        1.0,
-        true
-      ],
-      "IMAGE": [
-        1.0,
-        true
-      ],
-      "MESSAGEix-GLOBIOM": [
-        1.0,
-        true
-      ]
-    }
-  },
-  {
-    "scenario": "NDC",
-    "variable": "Oil and Gas",
-    "region": "World",
-    "values": {
-      "average": 0.0,
-      "POLES": 0.0,
-      "max": 0.0,
-      "REMIND-MAgPIE": 0.0,
-      "AIM/CGE": 0.0,
-      "IMAGE": 0.0,
-      "MESSAGEix-GLOBIOM": 0.0
-    },
-    "reference": {
-      "average": 759.733,
-      "max": 759.733,
-      "Reference": 759.733
-    },
-    "changes": {
-      "average": [
-        1.0,
-        true
-      ],
-      "POLES": [
-        1.0,
-        true
-      ],
-      "max": [
-        1.0,
-        true
-      ],
-      "REMIND-MAgPIE": [
-        1.0,
-        true
-      ],
-      "AIM/CGE": [
-        1.0,
-        true
-      ],
-      "IMAGE": [
-        1.0,
-        true
-      ],
-      "MESSAGEix-GLOBIOM": [
-        1.0,
-        true
-      ]
-    }
-  },
-  {
-    "scenario": "2C",
-    "variable": "Energy Efficiency",
-    "region": "World",
-    "values": {
-      "average": 418.343,
-      "POLES": 379.853,
-      "max": 504.73,
-      "REMIND-MAgPIE": 451.524,
-      "AIM/CGE": 504.73,
-      "IMAGE": 400.885,
-      "MESSAGEix-GLOBIOM": 354.725
-    },
-    "reference": {
-      "average": 250.633,
-      "max": 250.633,
-      "Reference": 250.633
-    },
-    "changes": {
-      "average": [
-        0.669,
-        false
-      ],
-      "POLES": [
-        0.516,
-        false
-      ],
-      "max": [
-        1.014,
-        false
-      ],
-      "REMIND-MAgPIE": [
-        0.802,
-        false
-      ],
-      "AIM/CGE": [
-        1.014,
-        false
-      ],
-      "IMAGE": [
-        0.599,
-        false
-      ],
-      "MESSAGEix-GLOBIOM": [
-        0.415,
-        false
-      ]
-    }
-  },
-  {
-    "scenario": "2C",
-    "variable": "CCS",
-    "region": "World",
-    "values": {
-      "average": 107.467,
-      "POLES": 149.783,
-      "max": 149.783,
-      "REMIND-MAgPIE": 41.977,
-      "AIM/CGE": 148.572,
-      "IMAGE": 117.639,
-      "MESSAGEix-GLOBIOM": 79.366
-    },
-    "reference": {
-      "average": 0.0,
-      "max": 0.0,
-      "Reference": 0.0
-    },
-    "changes": {
-      "average": [
-        106.467,
-        false
-      ],
-      "POLES": [
-        148.783,
-        false
-      ],
-      "max": [
-        148.783,
-        false
-      ],
-      "REMIND-MAgPIE": [
-        40.977,
-        false
-      ],
-      "AIM/CGE": [
-        147.572,
-        false
-      ],
-      "IMAGE": [
-        116.639,
-        false
-      ],
-      "MESSAGEix-GLOBIOM": [
-        78.366,
-        false
-      ]
-    }
-  },
-  {
-    "scenario": "2C",
-    "variable": "Electricity - T&D and Storage",
-    "region": "World",
-    "values": {
-      "average": 799.111,
-      "POLES": 680.291,
-      "max": 1247.81,
-      "REMIND-MAgPIE": 1247.81,
-      "AIM/CGE": 1106.512,
-      "IMAGE": 378.892,
-      "MESSAGEix-GLOBIOM": 582.05
+      "average": 570.371,
+      "POLES": 512.212,
+      "max": 837.716,
+      "REMIND-MAgPIE": 837.716,
+      "AIM/CGE": 540.222,
+      "IMAGE": 455.399,
+      "MESSAGEix-GLOBIOM": 506.306
     },
     "reference": {
       "average": 288.467,
@@ -1391,145 +1146,96 @@
     },
     "changes": {
       "average": [
-        1.77,
-        false
+        0.977,
+        true
       ],
       "POLES": [
-        1.358,
-        false
+        0.776,
+        true
       ],
       "max": [
-        3.326,
-        false
+        1.904,
+        true
       ],
       "REMIND-MAgPIE": [
-        3.326,
-        false
+        1.904,
+        true
       ],
       "AIM/CGE": [
-        2.836,
-        false
+        0.873,
+        true
       ],
       "IMAGE": [
-        0.313,
-        false
+        0.579,
+        true
       ],
       "MESSAGEix-GLOBIOM": [
-        1.018,
-        false
+        0.755,
+        true
       ]
     }
   },
   {
-    "scenario": "2C",
-    "variable": "Extraction and Conversion - Nuclear",
+    "scenario": "NDC",
+    "variable": "Energy Efficiency",
     "region": "World",
     "values": {
-      "average": 167.725,
-      "POLES": 243.452,
-      "max": 243.452,
-      "REMIND-MAgPIE": 160.414,
-      "AIM/CGE": 82.154,
-      "IMAGE": 209.923,
-      "MESSAGEix-GLOBIOM": 142.681
+      "average": 294.668,
+      "POLES": 298.221,
+      "max": 312.157,
+      "REMIND-MAgPIE": 312.157,
+      "AIM/CGE": 295.074,
+      "IMAGE": 287.413,
+      "MESSAGEix-GLOBIOM": 280.475
     },
     "reference": {
-      "average": 35.367,
-      "max": 35.367,
-      "Reference": 35.367
+      "average": 250.633,
+      "max": 250.633,
+      "Reference": 250.633
     },
     "changes": {
       "average": [
-        3.742,
-        false
+        0.176,
+        true
       ],
       "POLES": [
-        5.884,
-        false
+        0.19,
+        true
       ],
       "max": [
-        5.884,
-        false
+        0.245,
+        true
       ],
       "REMIND-MAgPIE": [
-        3.536,
-        false
+        0.245,
+        true
       ],
       "AIM/CGE": [
-        1.323,
-        false
+        0.177,
+        true
       ],
       "IMAGE": [
-        4.936,
-        false
+        0.147,
+        true
       ],
       "MESSAGEix-GLOBIOM": [
-        3.034,
-        false
+        0.119,
+        true
       ]
     }
   },
   {
-    "scenario": "2C",
-    "variable": "Extraction and Conversion - Bioenergy",
+    "scenario": "NDC",
+    "variable": "CCS",
     "region": "World",
     "values": {
-      "average": 165.93,
-      "POLES": 230.476,
-      "max": 230.476,
-      "REMIND-MAgPIE": 202.415,
-      "AIM/CGE": 149.094,
-      "IMAGE": 174.035,
-      "MESSAGEix-GLOBIOM": 73.629
-    },
-    "reference": {
-      "average": 8.667,
-      "max": 8.667,
-      "Reference": 8.667
-    },
-    "changes": {
-      "average": [
-        18.145,
-        false
-      ],
-      "POLES": [
-        25.592,
-        false
-      ],
-      "max": [
-        25.592,
-        false
-      ],
-      "REMIND-MAgPIE": [
-        22.355,
-        false
-      ],
-      "AIM/CGE": [
-        16.202,
-        false
-      ],
-      "IMAGE": [
-        19.08,
-        false
-      ],
-      "MESSAGEix-GLOBIOM": [
-        7.495,
-        false
-      ]
-    }
-  },
-  {
-    "scenario": "2C",
-    "variable": "Hydrogen - Non-fossil",
-    "region": "World",
-    "values": {
-      "average": 15.265,
-      "POLES": 2.038,
-      "max": 58.581,
-      "REMIND-MAgPIE": 58.581,
-      "AIM/CGE": 0.0,
-      "IMAGE": 5.623,
-      "MESSAGEix-GLOBIOM": 10.082
+      "average": 12.318,
+      "POLES": 39.049,
+      "max": 39.049,
+      "REMIND-MAgPIE": 3.558,
+      "AIM/CGE": 9.483,
+      "IMAGE": 6.235,
+      "MESSAGEix-GLOBIOM": 3.265
     },
     "reference": {
       "average": 0.0,
@@ -1538,129 +1244,178 @@
     },
     "changes": {
       "average": [
-        14.265,
-        false
+        11.318,
+        true
       ],
       "POLES": [
-        1.038,
-        false
+        38.049,
+        true
       ],
       "max": [
-        57.581,
-        false
+        38.049,
+        true
       ],
       "REMIND-MAgPIE": [
-        57.581,
-        false
+        2.558,
+        true
       ],
       "AIM/CGE": [
-        0,
+        8.483,
         true
       ],
       "IMAGE": [
-        4.623,
-        false
-      ],
-      "MESSAGEix-GLOBIOM": [
-        9.082,
-        false
-      ]
-    }
-  },
-  {
-    "scenario": "2C",
-    "variable": "Energy Supply|Electricity|Solar",
-    "region": "World",
-    "values": {
-      "average": 340.976,
-      "POLES": 260.933,
-      "max": 869.72,
-      "REMIND-MAgPIE": 869.72,
-      "AIM/CGE": 284.651,
-      "IMAGE": 146.709,
-      "MESSAGEix-GLOBIOM": 142.865
-    },
-    "reference": {
-      "average": 187.831,
-      "max": 187.831,
-      "Reference": 187.831
-    },
-    "changes": {
-      "average": [
-        0.815,
-        false
-      ],
-      "POLES": [
-        0.389,
-        false
-      ],
-      "max": [
-        3.63,
-        false
-      ],
-      "REMIND-MAgPIE": [
-        3.63,
-        false
-      ],
-      "AIM/CGE": [
-        0.515,
-        false
-      ],
-      "IMAGE": [
-        0.219,
+        5.235,
         true
       ],
       "MESSAGEix-GLOBIOM": [
-        0.239,
+        2.265,
         true
       ]
     }
   },
   {
     "scenario": "2C",
-    "variable": "Energy Supply|Electricity|Wind",
+    "variable": "Oil and Gas",
     "region": "World",
     "values": {
-      "average": 241.373,
-      "POLES": 227.093,
-      "max": 435.729,
-      "REMIND-MAgPIE": 435.729,
-      "AIM/CGE": 293.466,
-      "IMAGE": 124.481,
-      "MESSAGEix-GLOBIOM": 126.095
+      "average": 580.611,
+      "POLES": 808.1694,
+      "max": 808.1694,
+      "REMIND-MAgPIE": 598.6971000000001,
+      "AIM/CGE": 356.8284,
+      "IMAGE": 347.6331,
+      "MESSAGEix-GLOBIOM": 791.7255
     },
     "reference": {
-      "average": 55.455,
-      "max": 55.455,
-      "Reference": 55.455
+      "average": 759.733,
+      "max": 759.733,
+      "Reference": 759.733
     },
     "changes": {
       "average": [
-        3.353,
+        0.236,
         false
       ],
       "POLES": [
-        3.095,
-        false
+        0.064,
+        true
       ],
       "max": [
-        6.857,
-        false
+        0.064,
+        true
       ],
       "REMIND-MAgPIE": [
-        6.857,
+        0.212,
         false
       ],
       "AIM/CGE": [
-        4.292,
+        0.53,
         false
       ],
       "IMAGE": [
-        1.245,
+        0.542,
         false
       ],
       "MESSAGEix-GLOBIOM": [
-        1.274,
+        0.042,
+        true
+      ]
+    }
+  },
+  {
+    "scenario": "2C",
+    "variable": "Coal",
+    "region": "World",
+    "values": {
+      "average": 64.512,
+      "POLES": 89.79660000000001,
+      "max": 89.79660000000001,
+      "REMIND-MAgPIE": 66.5219,
+      "AIM/CGE": 39.647600000000004,
+      "IMAGE": 38.6259,
+      "MESSAGEix-GLOBIOM": 87.96950000000001
+    },
+    "reference": {
+      "average": 84.3,
+      "max": 84.3,
+      "Reference": 84.3
+    },
+    "changes": {
+      "average": [
+        0.235,
+        false
+      ],
+      "POLES": [
+        0.065,
+        true
+      ],
+      "max": [
+        0.065,
+        true
+      ],
+      "REMIND-MAgPIE": [
+        0.211,
+        false
+      ],
+      "AIM/CGE": [
+        0.53,
+        false
+      ],
+      "IMAGE": [
+        0.542,
+        false
+      ],
+      "MESSAGEix-GLOBIOM": [
+        0.044,
+        true
+      ]
+    }
+  },
+  {
+    "scenario": "2C",
+    "variable": "Fossil Fuels",
+    "region": "World",
+    "values": {
+      "average": 59.657,
+      "POLES": 54.328,
+      "max": 110.431,
+      "REMIND-MAgPIE": 31.47,
+      "AIM/CGE": 110.431,
+      "IMAGE": 24.327,
+      "MESSAGEix-GLOBIOM": 77.73
+    },
+    "reference": {
+      "average": 132.4,
+      "max": 132.4,
+      "Reference": 132.4
+    },
+    "changes": {
+      "average": [
+        0.549,
+        false
+      ],
+      "POLES": [
+        0.59,
+        false
+      ],
+      "max": [
+        0.166,
+        false
+      ],
+      "REMIND-MAgPIE": [
+        0.762,
+        false
+      ],
+      "AIM/CGE": [
+        0.166,
+        false
+      ],
+      "IMAGE": [
+        0.816,
+        false
+      ],
+      "MESSAGEix-GLOBIOM": [
+        0.413,
         false
       ]
     }
@@ -1686,19 +1441,19 @@
     "changes": {
       "average": [
         12.71,
-        false
+        true
       ],
       "POLES": [
         14.269,
-        false
+        true
       ],
       "max": [
         22.569,
-        false
+        true
       ],
       "REMIND-MAgPIE": [
         5.685,
-        false
+        true
       ],
       "AIM/CGE": [
         0,
@@ -1706,59 +1461,255 @@
       ],
       "IMAGE": [
         22.569,
-        false
+        true
       ],
       "MESSAGEix-GLOBIOM": [
         22.026,
+        true
+      ]
+    }
+  },
+  {
+    "scenario": "2C",
+    "variable": "Nuclear",
+    "region": "World",
+    "values": {
+      "average": 167.725,
+      "POLES": 243.452,
+      "max": 243.452,
+      "REMIND-MAgPIE": 160.414,
+      "AIM/CGE": 82.154,
+      "IMAGE": 209.923,
+      "MESSAGEix-GLOBIOM": 142.681
+    },
+    "reference": {
+      "average": 35.367,
+      "max": 35.367,
+      "Reference": 35.367
+    },
+    "changes": {
+      "average": [
+        3.742,
+        true
+      ],
+      "POLES": [
+        5.884,
+        true
+      ],
+      "max": [
+        5.884,
+        true
+      ],
+      "REMIND-MAgPIE": [
+        3.536,
+        true
+      ],
+      "AIM/CGE": [
+        1.323,
+        true
+      ],
+      "IMAGE": [
+        4.936,
+        true
+      ],
+      "MESSAGEix-GLOBIOM": [
+        3.034,
+        true
+      ]
+    }
+  },
+  {
+    "scenario": "2C",
+    "variable": "Bioenergy",
+    "region": "World",
+    "values": {
+      "average": 165.93,
+      "POLES": 230.476,
+      "max": 230.476,
+      "REMIND-MAgPIE": 202.415,
+      "AIM/CGE": 149.094,
+      "IMAGE": 174.035,
+      "MESSAGEix-GLOBIOM": 73.629
+    },
+    "reference": {
+      "average": 8.667,
+      "max": 8.667,
+      "Reference": 8.667
+    },
+    "changes": {
+      "average": [
+        18.145,
+        true
+      ],
+      "POLES": [
+        25.592,
+        true
+      ],
+      "max": [
+        25.592,
+        true
+      ],
+      "REMIND-MAgPIE": [
+        22.355,
+        true
+      ],
+      "AIM/CGE": [
+        16.202,
+        true
+      ],
+      "IMAGE": [
+        19.08,
+        true
+      ],
+      "MESSAGEix-GLOBIOM": [
+        7.495,
+        true
+      ]
+    }
+  },
+  {
+    "scenario": "2C",
+    "variable": "Hydrogen - Non-fossil",
+    "region": "World",
+    "values": {
+      "average": 15.265,
+      "POLES": 2.038,
+      "max": 58.581,
+      "REMIND-MAgPIE": 58.581,
+      "AIM/CGE": 0.0,
+      "IMAGE": 5.623,
+      "MESSAGEix-GLOBIOM": 10.082
+    },
+    "reference": {
+      "average": 0.0,
+      "max": 0.0,
+      "Reference": 0.0
+    },
+    "changes": {
+      "average": [
+        14.265,
+        true
+      ],
+      "POLES": [
+        1.038,
+        true
+      ],
+      "max": [
+        57.581,
+        true
+      ],
+      "REMIND-MAgPIE": [
+        57.581,
+        true
+      ],
+      "AIM/CGE": [
+        0,
+        true
+      ],
+      "IMAGE": [
+        4.623,
+        true
+      ],
+      "MESSAGEix-GLOBIOM": [
+        9.082,
+        true
+      ]
+    }
+  },
+  {
+    "scenario": "2C",
+    "variable": "Solar",
+    "region": "World",
+    "values": {
+      "average": 340.976,
+      "POLES": 260.933,
+      "max": 869.72,
+      "REMIND-MAgPIE": 869.72,
+      "AIM/CGE": 284.651,
+      "IMAGE": 146.709,
+      "MESSAGEix-GLOBIOM": 142.865
+    },
+    "reference": {
+      "average": 187.831,
+      "max": 187.831,
+      "Reference": 187.831
+    },
+    "changes": {
+      "average": [
+        0.815,
+        true
+      ],
+      "POLES": [
+        0.389,
+        true
+      ],
+      "max": [
+        3.63,
+        true
+      ],
+      "REMIND-MAgPIE": [
+        3.63,
+        true
+      ],
+      "AIM/CGE": [
+        0.515,
+        true
+      ],
+      "IMAGE": [
+        0.219,
+        false
+      ],
+      "MESSAGEix-GLOBIOM": [
+        0.239,
         false
       ]
     }
   },
   {
     "scenario": "2C",
-    "variable": "Electricity - Fossil Fuels w/o CCS",
+    "variable": "Wind",
     "region": "World",
     "values": {
-      "average": 59.657,
-      "POLES": 54.328,
-      "max": 110.431,
-      "REMIND-MAgPIE": 31.47,
-      "AIM/CGE": 110.431,
-      "IMAGE": 24.327,
-      "MESSAGEix-GLOBIOM": 77.73
+      "average": 241.373,
+      "POLES": 227.093,
+      "max": 435.729,
+      "REMIND-MAgPIE": 435.729,
+      "AIM/CGE": 293.466,
+      "IMAGE": 124.481,
+      "MESSAGEix-GLOBIOM": 126.095
     },
     "reference": {
-      "average": 132.4,
-      "max": 132.4,
-      "Reference": 132.4
+      "average": 55.455,
+      "max": 55.455,
+      "Reference": 55.455
     },
     "changes": {
       "average": [
-        0.549,
+        3.353,
         true
       ],
       "POLES": [
-        0.59,
+        3.095,
         true
       ],
       "max": [
-        0.166,
+        6.857,
         true
       ],
       "REMIND-MAgPIE": [
-        0.762,
+        6.857,
         true
       ],
       "AIM/CGE": [
-        0.166,
+        4.292,
         true
       ],
       "IMAGE": [
-        0.816,
+        1.245,
         true
       ],
       "MESSAGEix-GLOBIOM": [
-        0.413,
+        1.274,
         true
       ]
     }
@@ -1768,13 +1719,13 @@
     "variable": "other renewables",
     "region": "World",
     "values": {
-      "average": -99.603,
-      "POLES": -33.84,
-      "max": 8.814999999999998,
-      "REMIND-MAgPIE": -433.99100000000004,
-      "AIM/CGE": 8.814999999999998,
-      "IMAGE": -22.22800000000001,
-      "MESSAGEix-GLOBIOM": -16.77000000000001
+      "average": 0.0,
+      "POLES": 0.0,
+      "max": 0.0,
+      "REMIND-MAgPIE": 0.0,
+      "AIM/CGE": 0.0,
+      "IMAGE": 0.0,
+      "MESSAGEix-GLOBIOM": 0.0
     },
     "reference": {
       "average": 66.181,
@@ -1783,96 +1734,190 @@
     },
     "changes": {
       "average": [
-        2.505,
-        true
+        1.0,
+        false
       ],
       "POLES": [
-        1.511,
-        true
+        1.0,
+        false
       ],
       "max": [
-        0.867,
-        true
+        1.0,
+        false
       ],
       "REMIND-MAgPIE": [
-        7.558,
-        true
+        1.0,
+        false
       ],
       "AIM/CGE": [
-        0.867,
-        true
+        1.0,
+        false
       ],
       "IMAGE": [
-        1.336,
-        true
+        1.0,
+        false
       ],
       "MESSAGEix-GLOBIOM": [
-        1.253,
-        true
+        1.0,
+        false
       ]
     }
   },
   {
     "scenario": "2C",
-    "variable": "Coal",
+    "variable": "Transmission and Distribution",
     "region": "World",
     "values": {
-      "average": 0.0,
-      "POLES": 0.0,
-      "max": 0.0,
-      "REMIND-MAgPIE": 0.0,
-      "AIM/CGE": 0.0,
-      "IMAGE": 0.0,
-      "MESSAGEix-GLOBIOM": 0.0
+      "average": 799.111,
+      "POLES": 680.291,
+      "max": 1247.81,
+      "REMIND-MAgPIE": 1247.81,
+      "AIM/CGE": 1106.512,
+      "IMAGE": 378.892,
+      "MESSAGEix-GLOBIOM": 582.05
     },
     "reference": {
-      "average": 84.3,
-      "max": 84.3,
-      "Reference": 84.3
+      "average": 288.467,
+      "max": 288.467,
+      "Reference": 288.467
     },
     "changes": {
       "average": [
-        1.0,
+        1.77,
         true
       ],
       "POLES": [
-        1.0,
+        1.358,
         true
       ],
       "max": [
-        1.0,
+        3.326,
         true
       ],
       "REMIND-MAgPIE": [
-        1.0,
+        3.326,
         true
       ],
       "AIM/CGE": [
-        1.0,
+        2.836,
         true
       ],
       "IMAGE": [
-        1.0,
+        0.313,
         true
       ],
       "MESSAGEix-GLOBIOM": [
-        1.0,
+        1.018,
         true
       ]
     }
   },
   {
     "scenario": "2C",
+    "variable": "Energy Efficiency",
+    "region": "World",
+    "values": {
+      "average": 418.343,
+      "POLES": 379.853,
+      "max": 504.73,
+      "REMIND-MAgPIE": 451.524,
+      "AIM/CGE": 504.73,
+      "IMAGE": 400.885,
+      "MESSAGEix-GLOBIOM": 354.725
+    },
+    "reference": {
+      "average": 250.633,
+      "max": 250.633,
+      "Reference": 250.633
+    },
+    "changes": {
+      "average": [
+        0.669,
+        true
+      ],
+      "POLES": [
+        0.516,
+        true
+      ],
+      "max": [
+        1.014,
+        true
+      ],
+      "REMIND-MAgPIE": [
+        0.802,
+        true
+      ],
+      "AIM/CGE": [
+        1.014,
+        true
+      ],
+      "IMAGE": [
+        0.599,
+        true
+      ],
+      "MESSAGEix-GLOBIOM": [
+        0.415,
+        true
+      ]
+    }
+  },
+  {
+    "scenario": "2C",
+    "variable": "CCS",
+    "region": "World",
+    "values": {
+      "average": 107.467,
+      "POLES": 149.783,
+      "max": 149.783,
+      "REMIND-MAgPIE": 41.977,
+      "AIM/CGE": 148.572,
+      "IMAGE": 117.639,
+      "MESSAGEix-GLOBIOM": 79.366
+    },
+    "reference": {
+      "average": 0.0,
+      "max": 0.0,
+      "Reference": 0.0
+    },
+    "changes": {
+      "average": [
+        106.467,
+        true
+      ],
+      "POLES": [
+        148.783,
+        true
+      ],
+      "max": [
+        148.783,
+        true
+      ],
+      "REMIND-MAgPIE": [
+        40.977,
+        true
+      ],
+      "AIM/CGE": [
+        147.572,
+        true
+      ],
+      "IMAGE": [
+        116.639,
+        true
+      ],
+      "MESSAGEix-GLOBIOM": [
+        78.366,
+        true
+      ]
+    }
+  },
+  {
+    "scenario": "historic",
     "variable": "Oil and Gas",
     "region": "World",
     "values": {
-      "average": 0.0,
-      "POLES": 0.0,
-      "max": 0.0,
-      "REMIND-MAgPIE": 0.0,
-      "AIM/CGE": 0.0,
-      "IMAGE": 0.0,
-      "MESSAGEix-GLOBIOM": 0.0
+      "average": 759.733,
+      "max": 759.733,
+      "Reference": 759.733
     },
     "reference": {
       "average": 759.733,
@@ -1881,48 +1926,32 @@
     },
     "changes": {
       "average": [
-        1.0,
-        true
-      ],
-      "POLES": [
-        1.0,
+        0,
         true
       ],
       "max": [
-        1.0,
+        0,
         true
       ],
-      "REMIND-MAgPIE": [
-        1.0,
-        true
-      ],
-      "AIM/CGE": [
-        1.0,
-        true
-      ],
-      "IMAGE": [
-        1.0,
-        true
-      ],
-      "MESSAGEix-GLOBIOM": [
-        1.0,
+      "Reference": [
+        0,
         true
       ]
     }
   },
   {
     "scenario": "historic",
-    "variable": "Energy Efficiency",
+    "variable": "Coal",
     "region": "World",
     "values": {
-      "average": 250.633,
-      "max": 250.633,
-      "Reference": 250.633
+      "average": 84.3,
+      "max": 84.3,
+      "Reference": 84.3
     },
     "reference": {
-      "average": 250.633,
-      "max": 250.633,
-      "Reference": 250.633
+      "average": 84.3,
+      "max": 84.3,
+      "Reference": 84.3
     },
     "changes": {
       "average": [
@@ -1941,7 +1970,36 @@
   },
   {
     "scenario": "historic",
-    "variable": "CCS",
+    "variable": "Fossil Fuels",
+    "region": "World",
+    "values": {
+      "average": 132.4,
+      "max": 132.4,
+      "Reference": 132.4
+    },
+    "reference": {
+      "average": 132.4,
+      "max": 132.4,
+      "Reference": 132.4
+    },
+    "changes": {
+      "average": [
+        0,
+        true
+      ],
+      "max": [
+        0,
+        true
+      ],
+      "Reference": [
+        0,
+        true
+      ]
+    }
+  },
+  {
+    "scenario": "historic",
+    "variable": "Hydrogen - Fossil",
     "region": "World",
     "values": {
       "average": 0.0,
@@ -1970,36 +2028,7 @@
   },
   {
     "scenario": "historic",
-    "variable": "Electricity - T&D and Storage",
-    "region": "World",
-    "values": {
-      "average": 288.467,
-      "max": 288.467,
-      "Reference": 288.467
-    },
-    "reference": {
-      "average": 288.467,
-      "max": 288.467,
-      "Reference": 288.467
-    },
-    "changes": {
-      "average": [
-        0,
-        true
-      ],
-      "max": [
-        0,
-        true
-      ],
-      "Reference": [
-        0,
-        true
-      ]
-    }
-  },
-  {
-    "scenario": "historic",
-    "variable": "Extraction and Conversion - Nuclear",
+    "variable": "Nuclear",
     "region": "World",
     "values": {
       "average": 35.367,
@@ -2028,7 +2057,7 @@
   },
   {
     "scenario": "historic",
-    "variable": "Extraction and Conversion - Bioenergy",
+    "variable": "Bioenergy",
     "region": "World",
     "values": {
       "average": 8.667,
@@ -2086,7 +2115,7 @@
   },
   {
     "scenario": "historic",
-    "variable": "Energy Supply|Electricity|Solar",
+    "variable": "Solar",
     "region": "World",
     "values": {
       "average": 187.831,
@@ -2115,7 +2144,7 @@
   },
   {
     "scenario": "historic",
-    "variable": "Energy Supply|Electricity|Wind",
+    "variable": "Wind",
     "region": "World",
     "values": {
       "average": 55.455,
@@ -2126,64 +2155,6 @@
       "average": 55.455,
       "max": 55.455,
       "Reference": 55.455
-    },
-    "changes": {
-      "average": [
-        0,
-        true
-      ],
-      "max": [
-        0,
-        true
-      ],
-      "Reference": [
-        0,
-        true
-      ]
-    }
-  },
-  {
-    "scenario": "historic",
-    "variable": "Hydrogen - Fossil",
-    "region": "World",
-    "values": {
-      "average": 0.0,
-      "max": 0.0,
-      "Reference": 0.0
-    },
-    "reference": {
-      "average": 0.0,
-      "max": 0.0,
-      "Reference": 0.0
-    },
-    "changes": {
-      "average": [
-        0,
-        true
-      ],
-      "max": [
-        0,
-        true
-      ],
-      "Reference": [
-        0,
-        true
-      ]
-    }
-  },
-  {
-    "scenario": "historic",
-    "variable": "Electricity - Fossil Fuels w/o CCS",
-    "region": "World",
-    "values": {
-      "average": 132.4,
-      "max": 132.4,
-      "Reference": 132.4
-    },
-    "reference": {
-      "average": 132.4,
-      "max": 132.4,
-      "Reference": 132.4
     },
     "changes": {
       "average": [
@@ -2231,17 +2202,17 @@
   },
   {
     "scenario": "historic",
-    "variable": "Coal",
+    "variable": "Transmission and Distribution",
     "region": "World",
     "values": {
-      "average": 84.3,
-      "max": 84.3,
-      "Reference": 84.3
+      "average": 288.467,
+      "max": 288.467,
+      "Reference": 288.467
     },
     "reference": {
-      "average": 84.3,
-      "max": 84.3,
-      "Reference": 84.3
+      "average": 288.467,
+      "max": 288.467,
+      "Reference": 288.467
     },
     "changes": {
       "average": [
@@ -2260,17 +2231,46 @@
   },
   {
     "scenario": "historic",
-    "variable": "Oil and Gas",
+    "variable": "Energy Efficiency",
     "region": "World",
     "values": {
-      "average": 759.733,
-      "max": 759.733,
-      "Reference": 759.733
+      "average": 250.633,
+      "max": 250.633,
+      "Reference": 250.633
     },
     "reference": {
-      "average": 759.733,
-      "max": 759.733,
-      "Reference": 759.733
+      "average": 250.633,
+      "max": 250.633,
+      "Reference": 250.633
+    },
+    "changes": {
+      "average": [
+        0,
+        true
+      ],
+      "max": [
+        0,
+        true
+      ],
+      "Reference": [
+        0,
+        true
+      ]
+    }
+  },
+  {
+    "scenario": "historic",
+    "variable": "CCS",
+    "region": "World",
+    "values": {
+      "average": 0.0,
+      "max": 0.0,
+      "Reference": 0.0
+    },
+    "reference": {
+      "average": 0.0,
+      "max": 0.0,
+      "Reference": 0.0
     },
     "changes": {
       "average": [

@@ -10,7 +10,6 @@
             :data="data"
             :scenario="key"
             :extents="extents"
-            :variables="variables"
             :y="scaleY(key)"
           />
         </g>
@@ -28,6 +27,7 @@ import { mapGetters } from 'vuex'
 import StackedInvestmentsBars from '~/components/StackedInvestmentsBars'
 import StackedInvestmentsDefs from '~/components/StackedInvestmentsDefs'
 import Labels from '~/components/InvestmentAbsolute/Labels'
+import { VARIABLES } from '~/store/config'
 
 export default {
   components: {
@@ -40,21 +40,6 @@ export default {
       width: 0,
       height: 0,
       gap: 20,
-      variables: [
-        'Oil and Gas',
-        'Coal',
-        'Electricity - Fossil Fuels w/o CCS',
-        'Hydrogen - Fossil',
-        'Extraction and Conversion - Nuclear',
-        'Extraction and Conversion - Bioenergy',
-        'Hydrogen - Non-fossil',
-        'Energy Supply|Electricity|Solar',
-        'Energy Supply|Electricity|Wind',
-        'other renewables',
-        'Electricity - T&D and Storage',
-        'Energy Efficiency',
-        'CCS'
-      ],
       scenarios: ['historic', 'NDC', '2C', '1.5C']
     }
   },
@@ -74,12 +59,12 @@ export default {
     extents () {
       // We need the maximum value for each variable for the unstacked chart
       const maxes = {}
-      forEach(this.variables, (variable) => {
+      forEach(VARIABLES, (variable) => {
         const runs = filter(this.data, { variable })
         // Get the average values from the runs
         const values = map(runs, run => get(run, ['values', 'average'])) // TODO: Right now we are only using the average value
         // Set the max value
-        maxes[variable] = Math.max(...values)
+        maxes[variable] = Math.max(...values, 0)
       })
       return maxes
     }
