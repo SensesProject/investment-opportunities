@@ -34,16 +34,16 @@
         <h3>Upscaling low-carbon investments</h3>
         <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud <Variable variable="nuclear">Nuclear</Variable> exercitation ullamco. incididunt ut labore et dolore magna aliqua. <Variable variable="bioenergy">Bioenergy</Variable> Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
         <p>incididunt ut labore et <Variable variable="hydrogen-non-fossil">Hydrogen - Non-fossil</Variable> dolore magna aliqua. <Variable variable="solar">Solar</Variable> Ut enim ad minim veniam, quis nostrud exercitation ullamco. <Variable variable="wind">Wind</Variable> sed do eiusmod tempor incididunt ut labore et dolore <Variable variable="other-renewables">other renewables</Variable> magna aliqua.</p>
-        <BarInvestmentsChart
+        <BarCompactAbsolute
           :variables="GROUP_NON_FOSSILS"
           :scenarios="['NDC', '2C', '1.5C']">
           <template v-slot:header>
             Change in something
           </template>
           <template v-slot:caption>
-            Figure 2. Relative changes in something
+            Figure 2. Absolute changes in something
           </template>
-        </BarInvestmentsChart>
+        </BarCompactAbsolute>
         <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
       </IntersectionObserver>
       <IntersectionObserver :step="4" :noStyling="true" classes="step step-4">
@@ -76,6 +76,7 @@ import { mapGetters, mapActions } from 'vuex'
 import IntersectionObserver from 'library/src/components/IntersectionObserver'
 import BarInvestmentsChart from '~/components/BarInvestmentsChart'
 import StackedInvestments from '~/components/StackedInvestments'
+import BarCompactAbsolute from '~/components/ChartCompactAbsolute/Chart'
 import Variable from '~/components/Helper/Variable'
 import { GROUP_FOSSILS, GROUP_NON_FOSSILS, GROUP_OTHERS } from '~/store/config'
 
@@ -89,6 +90,7 @@ export default {
     IntersectionObserver,
     BarInvestmentsChart,
     StackedInvestments,
+    BarCompactAbsolute,
     Variable
   },
   computed: {
