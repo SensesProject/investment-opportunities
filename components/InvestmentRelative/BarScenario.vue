@@ -2,7 +2,7 @@
   <g class="barScenario-wrapper">
     <rect
       class="barScenario"
-      :class="{ isVisible: !isColored }"
+      :class="{ isVisible: !isColored && !barStacked }"
       :x="barScenario.x"
       :y="barScenario.y"
       :width="barScenario.width"
