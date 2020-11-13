@@ -91,7 +91,8 @@ export default {
   computed: {
     ...mapState({
       region: state => state.settings.region,
-      isColored: state => state.settings.isColored
+      isColored: state => state.settings.isColored,
+      model: state => state.settings.model
     }),
     ...mapGetters([
       'data'
@@ -140,7 +141,7 @@ export default {
         const datum = find(data, option)
         if (!datum) { return false }
         const { variable, region, value } = datum
-        const [change, isPositive] = get(datum, ['changes', 'average'], [])
+        const [change, isPositive] = get(datum, ['changes', this.region, this.model], [])
         const x = this.scaleX(i)
         const y = yBase + (Math.min(this.scaleY(change), this.maxHeight) * (isPositive ? -1 : 1))
         return {
