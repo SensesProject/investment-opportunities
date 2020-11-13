@@ -1,7 +1,7 @@
 [
   {
     "scenario": "1.5C",
-    "variable": "Oil and Gas",
+    "variable": "Oil and Gas extraction",
     "region": "World",
     "values": {
       "average": 425.321,
@@ -50,7 +50,7 @@
   },
   {
     "scenario": "1.5C",
-    "variable": "Coal",
+    "variable": "Coal extraction",
     "region": "World",
     "values": {
       "average": 47.258,
@@ -99,7 +99,7 @@
   },
   {
     "scenario": "1.5C",
-    "variable": "Fossil Fuels",
+    "variable": "Fossil power generation",
     "region": "World",
     "values": {
       "average": 48.573,
@@ -445,13 +445,13 @@
     "variable": "other renewables",
     "region": "World",
     "values": {
-      "average": 0.0,
-      "POLES": 0.0,
-      "max": 0.0,
-      "REMIND-MAgPIE": 0.0,
-      "AIM/CGE": 0.0,
-      "IMAGE": 0.0,
-      "MESSAGEix-GLOBIOM": 0.0
+      "average": 105.991,
+      "POLES": 69.19600000000001,
+      "max": 158.563,
+      "REMIND-MAgPIE": 146.939,
+      "AIM/CGE": 99.951,
+      "IMAGE": 55.305,
+      "MESSAGEix-GLOBIOM": 158.563
     },
     "reference": {
       "average": 66.181,
@@ -460,32 +460,32 @@
     },
     "changes": {
       "average": [
-        1.0,
-        false
+        0.602,
+        true
       ],
       "POLES": [
-        1.0,
-        false
+        0.046,
+        true
       ],
       "max": [
-        1.0,
-        false
+        1.396,
+        true
       ],
       "REMIND-MAgPIE": [
-        1.0,
-        false
+        1.22,
+        true
       ],
       "AIM/CGE": [
-        1.0,
-        false
+        0.51,
+        true
       ],
       "IMAGE": [
-        1.0,
+        0.164,
         false
       ],
       "MESSAGEix-GLOBIOM": [
-        1.0,
-        false
+        1.396,
+        true
       ]
     }
   },
@@ -637,8 +637,57 @@
     }
   },
   {
+    "scenario": "1.5C",
+    "variable": "Storage",
+    "region": "World",
+    "values": {
+      "average": 101.511,
+      "POLES": 21.128,
+      "max": 322.778,
+      "REMIND-MAgPIE": 322.778,
+      "AIM/CGE": 115.585,
+      "IMAGE": 8.506,
+      "MESSAGEix-GLOBIOM": 39.559
+    },
+    "reference": {
+      "average": 3.833,
+      "max": 3.833,
+      "Reference": 3.833
+    },
+    "changes": {
+      "average": [
+        25.483,
+        true
+      ],
+      "POLES": [
+        4.512,
+        true
+      ],
+      "max": [
+        83.21,
+        true
+      ],
+      "REMIND-MAgPIE": [
+        83.21,
+        true
+      ],
+      "AIM/CGE": [
+        29.155,
+        true
+      ],
+      "IMAGE": [
+        1.219,
+        true
+      ],
+      "MESSAGEix-GLOBIOM": [
+        9.321,
+        true
+      ]
+    }
+  },
+  {
     "scenario": "NDC",
-    "variable": "Oil and Gas",
+    "variable": "Oil and Gas extraction",
     "region": "World",
     "values": {
       "average": 836.869,
@@ -687,7 +736,7 @@
   },
   {
     "scenario": "NDC",
-    "variable": "Coal",
+    "variable": "Coal extraction",
     "region": "World",
     "values": {
       "average": 92.985,
@@ -736,7 +785,7 @@
   },
   {
     "scenario": "NDC",
-    "variable": "Fossil Fuels",
+    "variable": "Fossil power generation",
     "region": "World",
     "values": {
       "average": 139.005,
@@ -1082,13 +1131,13 @@
     "variable": "other renewables",
     "region": "World",
     "values": {
-      "average": 0.0,
-      "POLES": 0.0,
-      "max": 0.0,
-      "REMIND-MAgPIE": 0.0,
-      "AIM/CGE": 0.0,
-      "IMAGE": 0.0,
-      "MESSAGEix-GLOBIOM": 0.0
+      "average": 79.503,
+      "POLES": 62.499,
+      "max": 133.344,
+      "REMIND-MAgPIE": 133.344,
+      "AIM/CGE": 81.44800000000001,
+      "IMAGE": 50.694,
+      "MESSAGEix-GLOBIOM": 69.53
     },
     "reference": {
       "average": 66.181,
@@ -1097,32 +1146,32 @@
     },
     "changes": {
       "average": [
-        1.0,
-        false
+        0.201,
+        true
       ],
       "POLES": [
-        1.0,
+        0.056,
         false
       ],
       "max": [
-        1.0,
-        false
+        1.015,
+        true
       ],
       "REMIND-MAgPIE": [
-        1.0,
-        false
+        1.015,
+        true
       ],
       "AIM/CGE": [
-        1.0,
-        false
+        0.231,
+        true
       ],
       "IMAGE": [
-        1.0,
+        0.234,
         false
       ],
       "MESSAGEix-GLOBIOM": [
-        1.0,
-        false
+        0.051,
+        true
       ]
     }
   },
@@ -1274,8 +1323,57 @@
     }
   },
   {
+    "scenario": "NDC",
+    "variable": "Storage",
+    "region": "World",
+    "values": {
+      "average": 41.596,
+      "POLES": 17.71,
+      "max": 166.128,
+      "REMIND-MAgPIE": 166.128,
+      "AIM/CGE": 11.226,
+      "IMAGE": 12.916,
+      "MESSAGEix-GLOBIOM": 0.0
+    },
+    "reference": {
+      "average": 3.833,
+      "max": 3.833,
+      "Reference": 3.833
+    },
+    "changes": {
+      "average": [
+        9.852,
+        true
+      ],
+      "POLES": [
+        3.62,
+        true
+      ],
+      "max": [
+        42.342,
+        true
+      ],
+      "REMIND-MAgPIE": [
+        42.342,
+        true
+      ],
+      "AIM/CGE": [
+        1.929,
+        true
+      ],
+      "IMAGE": [
+        2.37,
+        true
+      ],
+      "MESSAGEix-GLOBIOM": [
+        1.0,
+        false
+      ]
+    }
+  },
+  {
     "scenario": "2C",
-    "variable": "Oil and Gas",
+    "variable": "Oil and Gas extraction",
     "region": "World",
     "values": {
       "average": 580.611,
@@ -1324,7 +1422,7 @@
   },
   {
     "scenario": "2C",
-    "variable": "Coal",
+    "variable": "Coal extraction",
     "region": "World",
     "values": {
       "average": 64.512,
@@ -1373,7 +1471,7 @@
   },
   {
     "scenario": "2C",
-    "variable": "Fossil Fuels",
+    "variable": "Fossil power generation",
     "region": "World",
     "values": {
       "average": 59.657,
@@ -1719,13 +1817,13 @@
     "variable": "other renewables",
     "region": "World",
     "values": {
-      "average": 0.0,
-      "POLES": 0.0,
-      "max": 0.0,
-      "REMIND-MAgPIE": 0.0,
-      "AIM/CGE": 0.0,
-      "IMAGE": 0.0,
-      "MESSAGEix-GLOBIOM": 0.0
+      "average": 91.916,
+      "POLES": 68.22099999999999,
+      "max": 164.004,
+      "REMIND-MAgPIE": 164.004,
+      "AIM/CGE": 73.613,
+      "IMAGE": 50.583,
+      "MESSAGEix-GLOBIOM": 103.161
     },
     "reference": {
       "average": 66.181,
@@ -1734,32 +1832,32 @@
     },
     "changes": {
       "average": [
-        1.0,
-        false
+        0.389,
+        true
       ],
       "POLES": [
-        1.0,
-        false
+        0.031,
+        true
       ],
       "max": [
-        1.0,
-        false
+        1.478,
+        true
       ],
       "REMIND-MAgPIE": [
-        1.0,
-        false
+        1.478,
+        true
       ],
       "AIM/CGE": [
-        1.0,
-        false
+        0.112,
+        true
       ],
       "IMAGE": [
-        1.0,
+        0.236,
         false
       ],
       "MESSAGEix-GLOBIOM": [
-        1.0,
-        false
+        0.559,
+        true
       ]
     }
   },
@@ -1911,8 +2009,57 @@
     }
   },
   {
+    "scenario": "2C",
+    "variable": "Storage",
+    "region": "World",
+    "values": {
+      "average": 92.819,
+      "POLES": 20.899,
+      "max": 357.189,
+      "REMIND-MAgPIE": 357.189,
+      "AIM/CGE": 63.712,
+      "IMAGE": 10.844,
+      "MESSAGEix-GLOBIOM": 11.453
+    },
+    "reference": {
+      "average": 3.833,
+      "max": 3.833,
+      "Reference": 3.833
+    },
+    "changes": {
+      "average": [
+        23.216,
+        true
+      ],
+      "POLES": [
+        4.452,
+        true
+      ],
+      "max": [
+        92.188,
+        true
+      ],
+      "REMIND-MAgPIE": [
+        92.188,
+        true
+      ],
+      "AIM/CGE": [
+        15.622,
+        true
+      ],
+      "IMAGE": [
+        1.829,
+        true
+      ],
+      "MESSAGEix-GLOBIOM": [
+        1.988,
+        true
+      ]
+    }
+  },
+  {
     "scenario": "historic",
-    "variable": "Oil and Gas",
+    "variable": "Oil and Gas extraction",
     "region": "World",
     "values": {
       "average": 759.733,
@@ -1941,7 +2088,7 @@
   },
   {
     "scenario": "historic",
-    "variable": "Coal",
+    "variable": "Coal extraction",
     "region": "World",
     "values": {
       "average": 84.3,
@@ -1970,7 +2117,7 @@
   },
   {
     "scenario": "historic",
-    "variable": "Fossil Fuels",
+    "variable": "Fossil power generation",
     "region": "World",
     "values": {
       "average": 132.4,
@@ -2271,6 +2418,35 @@
       "average": 0.0,
       "max": 0.0,
       "Reference": 0.0
+    },
+    "changes": {
+      "average": [
+        0,
+        true
+      ],
+      "max": [
+        0,
+        true
+      ],
+      "Reference": [
+        0,
+        true
+      ]
+    }
+  },
+  {
+    "scenario": "historic",
+    "variable": "Storage",
+    "region": "World",
+    "values": {
+      "average": 3.833,
+      "max": 3.833,
+      "Reference": 3.833
+    },
+    "reference": {
+      "average": 3.833,
+      "max": 3.833,
+      "Reference": 3.833
     },
     "changes": {
       "average": [
