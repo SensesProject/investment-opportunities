@@ -3,7 +3,7 @@
     Step: {{ step }}<br />
     <SensesSelect v-model="region" :options="regions" />
     <SensesSelect v-model="model" :options="models" />
-    <label><input v-model="isColored" type="checkbox"> {{ isColored ? 'is not' : 'is' }} colored</label>
+    <label><input v-model="isColored" type="checkbox"> {{ isColored ? 'is' : 'is not' }} colored</label>
   </div>
 </template>
 
