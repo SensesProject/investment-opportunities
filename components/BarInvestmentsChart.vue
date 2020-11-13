@@ -142,7 +142,6 @@ export default {
         const { variable, region, value } = datum
         const [change, isPositive] = get(datum, ['changes', 'average'], [])
         const x = this.scaleX(i)
-        console.log(this.scaleY.range()[1], this.scaleY(change), Math.min(this.scaleY(change), this.maxHeight))
         const y = yBase + (Math.min(this.scaleY(change), this.maxHeight) * (isPositive ? -1 : 1))
         return {
           tooltip: `Variable: ${variable}<br />${value}<br />Change: ${format('.0%')(change)}<br />Region: ${region}`,
