@@ -7,11 +7,11 @@
       "average": 397.802,
       "POLES": 659.196,
       "max": 659.196,
-      "REMIND-MAgPIE": 497.1861,
-      "WITCH-GLOBIOM": 157.2633,
-      "AIM/CGE": 172.55610000000001,
-      "IMAGE": 298.4184,
-      "MESSAGEix-GLOBIOM": 499.2507
+      "REMIND-MAgPIE": 497.186,
+      "WITCH-GLOBIOM": 157.263,
+      "AIM/CGE": 172.556,
+      "IMAGE": 298.418,
+      "MESSAGEix-GLOBIOM": 499.251
     },
     "reference": {
       "average": 759.733,
@@ -64,14 +64,14 @@
     "variable": "Coal extraction",
     "region": "World",
     "values": {
-      "average": 44.2,
-      "POLES": 73.24400000000001,
-      "max": 73.24400000000001,
-      "REMIND-MAgPIE": 55.2429,
-      "WITCH-GLOBIOM": 17.4737,
-      "AIM/CGE": 19.172900000000002,
-      "IMAGE": 33.1576,
-      "MESSAGEix-GLOBIOM": 55.4723
+      "average": 44.201,
+      "POLES": 73.244,
+      "max": 73.244,
+      "REMIND-MAgPIE": 55.243,
+      "WITCH-GLOBIOM": 17.474,
+      "AIM/CGE": 19.173,
+      "IMAGE": 33.158,
+      "MESSAGEix-GLOBIOM": 55.472
     },
     "reference": {
       "average": 84.3,
@@ -545,7 +545,7 @@
     "region": "World",
     "values": {
       "average": 116.032,
-      "POLES": 69.19600000000001,
+      "POLES": 69.196,
       "max": 158.563,
       "REMIND-MAgPIE": 146.939,
       "WITCH-GLOBIOM": 132.113,
@@ -754,7 +754,7 @@
         true
       ],
       "max": [
-        200.0,
+        249.446,
         true
       ],
       "REMIND-MAgPIE": [
@@ -762,7 +762,7 @@
         true
       ],
       "WITCH-GLOBIOM": [
-        200.0,
+        249.446,
         true
       ],
       "AIM/CGE": [
@@ -770,7 +770,7 @@
         true
       ],
       "IMAGE": [
-        200.0,
+        209.195,
         true
       ],
       "MESSAGEix-GLOBIOM": [
@@ -844,14 +844,14 @@
     "variable": "Oil and Gas extraction",
     "region": "World",
     "values": {
-      "average": 931.737,
-      "POLES": 1068.0723,
-      "max": 1395.9396000000002,
-      "REMIND-MAgPIE": 838.6569000000001,
-      "WITCH-GLOBIOM": 1395.9396000000002,
-      "AIM/CGE": 585.9027000000001,
-      "IMAGE": 666.8973,
-      "MESSAGEix-GLOBIOM": 1024.8165
+      "average": 931.736,
+      "POLES": 1068.072,
+      "max": 1395.94,
+      "REMIND-MAgPIE": 838.657,
+      "WITCH-GLOBIOM": 1395.94,
+      "AIM/CGE": 585.903,
+      "IMAGE": 666.897,
+      "MESSAGEix-GLOBIOM": 1024.816
     },
     "reference": {
       "average": 759.733,
@@ -905,13 +905,13 @@
     "region": "World",
     "values": {
       "average": 103.526,
-      "POLES": 118.67470000000002,
-      "max": 155.10440000000003,
-      "REMIND-MAgPIE": 93.1841,
-      "WITCH-GLOBIOM": 155.10440000000003,
-      "AIM/CGE": 65.1003,
-      "IMAGE": 74.0997,
-      "MESSAGEix-GLOBIOM": 113.8685
+      "POLES": 118.675,
+      "max": 155.104,
+      "REMIND-MAgPIE": 93.184,
+      "WITCH-GLOBIOM": 155.104,
+      "AIM/CGE": 65.1,
+      "IMAGE": 74.1,
+      "MESSAGEix-GLOBIOM": 113.868
     },
     "reference": {
       "average": 84.3,
@@ -1389,7 +1389,7 @@
       "max": 134.541,
       "REMIND-MAgPIE": 133.344,
       "WITCH-GLOBIOM": 134.541,
-      "AIM/CGE": 81.44800000000001,
+      "AIM/CGE": 81.448,
       "IMAGE": 50.694,
       "MESSAGEix-GLOBIOM": 69.53
     },
@@ -1685,13 +1685,13 @@
     "region": "World",
     "values": {
       "average": 532.074,
-      "POLES": 808.1694,
-      "max": 808.1694,
-      "REMIND-MAgPIE": 598.6971000000001,
-      "WITCH-GLOBIOM": 465.45120000000003,
-      "AIM/CGE": 356.8284,
-      "IMAGE": 347.6331,
-      "MESSAGEix-GLOBIOM": 791.7255
+      "POLES": 808.169,
+      "max": 808.169,
+      "REMIND-MAgPIE": 598.697,
+      "WITCH-GLOBIOM": 465.451,
+      "AIM/CGE": 356.828,
+      "IMAGE": 347.633,
+      "MESSAGEix-GLOBIOM": 791.726
     },
     "reference": {
       "average": 759.733,
@@ -1744,14 +1744,14 @@
     "variable": "Coal extraction",
     "region": "World",
     "values": {
-      "average": 59.119,
-      "POLES": 89.79660000000001,
-      "max": 89.79660000000001,
-      "REMIND-MAgPIE": 66.5219,
-      "WITCH-GLOBIOM": 51.716800000000006,
-      "AIM/CGE": 39.647600000000004,
-      "IMAGE": 38.6259,
-      "MESSAGEix-GLOBIOM": 87.96950000000001
+      "average": 59.12,
+      "POLES": 89.797,
+      "max": 89.797,
+      "REMIND-MAgPIE": 66.522,
+      "WITCH-GLOBIOM": 51.717,
+      "AIM/CGE": 39.648,
+      "IMAGE": 38.626,
+      "MESSAGEix-GLOBIOM": 87.97
     },
     "reference": {
       "average": 84.3,
@@ -2225,7 +2225,7 @@
     "region": "World",
     "values": {
       "average": 88.387,
-      "POLES": 68.22099999999999,
+      "POLES": 68.221,
       "max": 164.004,
       "REMIND-MAgPIE": 164.004,
       "WITCH-GLOBIOM": 132.113,
@@ -2434,7 +2434,7 @@
         true
       ],
       "max": [
-        200.0,
+        250.494,
         true
       ],
       "REMIND-MAgPIE": [
@@ -2442,7 +2442,7 @@
         true
       ],
       "WITCH-GLOBIOM": [
-        200.0,
+        250.494,
         true
       ],
       "AIM/CGE": [
