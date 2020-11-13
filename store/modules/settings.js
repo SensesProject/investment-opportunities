@@ -2,7 +2,7 @@ import { has, get, set, isUndefined, isNaN } from 'lodash'
 import { GROUP_FOSSILS, GROUP_NON_FOSSILS, GROUP_OTHERS } from '~/store/config'
 
 const DEFAULTS = {
-  model: 'AIM/CGE',
+  model: 'average',
   region: 'World',
   barStacked: false,
   barDifference: false,
