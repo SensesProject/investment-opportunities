@@ -1,7 +1,7 @@
 <template>
   <div class="vis-labels">
     <section>
-      <h2>What we are <strong :class="{ isHighlighted: !barStacked }">currently</strong> investing <small>(Current policies)</small></h2>
+      <h2>What we are <strong :class="{ isHighlighted: !barStacked }">currently</strong> investing <small>(Current policies) {{ model }}</small></h2>
       <span class="label-2" v-if="get(values, ['historic'], 0) && !barStacked">As of 2020, we are investing <strong>{{ get(values, ['historic', 'value'], 0) }}</strong> billion US dollar every year</span>
     </section>
     <section>
@@ -27,7 +27,8 @@ export default {
   props: ['data'],
   computed: {
     ...mapState({
-      barStacked: state => state.settings.barStacked
+      barStacked: state => state.settings.barStacked,
+      model: state => state.settings.model
     }),
     values () {
       const DECIMALS = 2
@@ -35,7 +36,7 @@ export default {
 
       forEach(this.data, (values, scenario) => {
         datum[scenario] = {
-          value: round(sumBy(values, value => get(value, ['values', 'average'], 0)), DECIMALS)
+          value: round(sumBy(values, value => get(value, ['values', this.model], 0)), DECIMALS)
         }
       })
 

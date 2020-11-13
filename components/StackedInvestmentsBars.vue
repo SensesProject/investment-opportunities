@@ -89,7 +89,7 @@ export default {
       barStacked: state => state.settings.barStacked,
       showDifference: state => state.settings.barDifference,
       showModels: state => state.settings.showModels,
-      isRotated: state => state.settings.isRotated,
+      model: state => state.settings.model,
       isColored: state => state.settings.isColored
     }),
     total () {
@@ -126,8 +126,8 @@ export default {
         const values = get(data, ['values'], {})
         const references = get(data, ['reference'], {})
 
-        const average = get(values, 'average', 0)
-        const referenceAverage = get(references, 'average', 0)
+        const average = get(values, this.model, 0)
+        const referenceAverage = get(references, this.model, 0)
 
         let n = 0
 

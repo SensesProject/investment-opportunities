@@ -23,7 +23,7 @@
 <script>
 import { groupBy, filter, get, map, forEach } from 'lodash'
 import { scaleBand } from 'd3-scale'
-import { mapGetters } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import StackedInvestmentsBars from '~/components/StackedInvestmentsBars'
 import StackedInvestmentsDefs from '~/components/StackedInvestmentsDefs'
 import Labels from '~/components/InvestmentAbsolute/Labels'
@@ -47,6 +47,9 @@ export default {
     ...mapGetters([
       'data'
     ]),
+    ...mapState({
+      model: state => state.settings.model
+    }),
     scaleY () {
       return scaleBand()
         .range([0, this.height])
@@ -62,7 +65,7 @@ export default {
       forEach(VARIABLES, (variable) => {
         const runs = filter(this.data, { variable })
         // Get the average values from the runs
-        const values = map(runs, run => get(run, ['values', 'average'])) // TODO: Right now we are only using the average value
+        const values = map(runs, run => get(run, ['values', this.model])) // TODO: Right now we are only using the average value
         // Set the max value
         maxes[variable] = Math.max(...values, 0)
       })

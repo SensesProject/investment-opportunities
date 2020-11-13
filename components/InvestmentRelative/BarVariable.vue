@@ -34,17 +34,18 @@ export default {
       barStacked: state => state.settings.barStacked,
       isColored: state => state.settings.isColored,
       showModels: state => state.settings.showModels,
-      highlight: state => state.settings.highlight
+      highlight: state => state.settings.highlight,
+      model: state => state.settings.model
     }),
     barVariables () {
       let x0 = 0
 
       return map(VARIABLES, (variable) => {
         const d = find(this.data, { variable })
-        const value = get(d, ['values', 'average'], 0)
+        const value = get(d, ['values', this.model], 0)
 
-        const reference = get(d, ['reference', 'average'], 0)
-        const [change, isPositiveChange] = get(d, ['changes', 'average'], [])
+        const reference = get(d, ['reference', this.model], 0)
+        const [change, isPositiveChange] = get(d, ['changes', this.model], [])
 
         const color = this.isColored ? getColorFromVariable(variable) : '#343437'
 

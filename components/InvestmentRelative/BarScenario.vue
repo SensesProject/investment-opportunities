@@ -16,27 +16,20 @@ import { format } from 'd3-format'
 import { get, sumBy, find } from 'lodash'
 import { mapState } from 'vuex'
 import { VARIABLES } from '~/store/config'
-// import { MODELS } from '~/store/config'
 
 export default {
   props: ['data', 'scenario', 'width', 'height', 'y', 'scaleX', 'groupHeight'],
-  data: () => {
-    return {
-      headlineHeight: 50
-    }
-  },
   computed: {
     ...mapState({
       barStacked: state => state.settings.barStacked,
-      isColored: state => state.settings.isColored
+      isColored: state => state.settings.isColored,
+      model: state => state.settings.model
     }),
     barScenario () {
-      console.log({ VARIABLES })
       const sum = sumBy(VARIABLES, (variable) => {
         const d = find(this.data, { variable })
-        return get(d, ['values', 'average'], 0)
+        return get(d, ['values', this.model], 0)
       })
-      console.log({ sum }, this.scaleX.domain())
       const tooltip = this.createScenarioTooltip(this.scenario, sum, 0, 0)
       return {
         x: 0,
