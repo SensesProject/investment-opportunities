@@ -5,6 +5,19 @@
     </header>
     <div class="bars">
       <svg ref="vis" class="vis">
+        <defs>
+          <linearGradient
+            v-for="({ variable, color }) in gradients"
+            :id="`gradient-${variable}`"
+            gradientUnits="userSpaceOnUse"
+            x1="0"
+            x2="0"
+            y1="0"
+            :y2="maxHeight">
+            <stop offset="0.05" :stop-color="color" stop-opacity="0" />
+            <stop offset="0.15" :stop-color="color" stop-opacity="1" />
+          </linearGradient>
+        </defs>
         <g v-for="tick in ticks" v-if="width">
           <line
             :x1="tick.x1"
@@ -25,7 +38,7 @@
           <path
             v-tooltip="el.tooltip"
             :d="el.d"
-            :style="{ fill: el.color }"
+            :fill="`url(#gradient-${el.variable})`"
           />
         </g>
         <line
@@ -42,13 +55,26 @@
 
 <script>
 import { scaleLinear, scaleBand } from 'd3-scale'
-import { map, find, isUndefined, compact, range, get, forEach } from 'lodash'
+import { map, find, isUndefined, compact, range, get, forEach, kebabCase } from 'lodash'
 import { mapState, mapGetters } from 'vuex'
 import { format } from 'd3-format'
 import { getColorFromVariable, calcBar } from '../assets/js/utils.js'
 
 export default {
-  props: ['variables', 'scenarios'],
+  props: {
+    variables: {
+      type: Array,
+      default: () => []
+    },
+    scenarios: {
+      type: Array,
+      default: () => []
+    },
+    limit: {
+      type: Number,
+      default: 2
+    }
+  },
   data: () => {
     return {
       gap: 20,
@@ -73,7 +99,10 @@ export default {
     scaleY () {
       return scaleLinear()
         .range([0, this.height / 2 - this.margin.top])
-        .domain([0, 2])
+        .domain([0, this.limit])
+    },
+    maxHeight () {
+      return this.scaleY.range()[1] + 15
     },
     scaleX () {
       return scaleBand()
@@ -96,6 +125,14 @@ export default {
       })
       return arr
     },
+    gradients () {
+      return map(this.variables, (variable) => {
+        return {
+          variable: kebabCase(variable),
+          color: getColorFromVariable(variable)
+        }
+      })
+    },
     elements () {
       const { yBase, barWidth, options, data } = this
 
@@ -105,13 +142,14 @@ export default {
         const { variable, region, value } = datum
         const [change, isPositive] = get(datum, ['changes', 'average'], [])
         const x = this.scaleX(i)
-        const y = yBase + (this.scaleY(change) * (isPositive ? -1 : 1))
+        console.log(this.scaleY.range()[1], this.scaleY(change), Math.min(this.scaleY(change), this.maxHeight))
+        const y = yBase + (Math.min(this.scaleY(change), this.maxHeight) * (isPositive ? -1 : 1))
         return {
           tooltip: `Variable: ${variable}<br />${value}<br />Change: ${format('.0%')(change)}<br />Region: ${region}`,
           d: calcBar(x, yBase, y, barWidth),
           x,
           y: yBase,
-          color: getColorFromVariable(variable)
+          variable: kebabCase(variable)
         }
       }))
     },

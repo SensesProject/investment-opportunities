@@ -19,7 +19,8 @@
         <p>Whether Carbon capture and storage offers a way for fossil fuels to retain it's place in the transition to a low-carbon energy system is uncertain, but some models foresee increased investments into <Variable variable="hydrogen-fossil">Hydrogen - Fossil</Variable> with CCS in ambitious mitigation scenarios.</p>
         <BarInvestmentsChart
           :variables="GROUP_FOSSILS"
-          :scenarios="['NDC', '2C', '1.5C']">
+          :scenarios="['NDC', '2C', '1.5C']"
+          :limit="1">
           <template v-slot:header>
             Change of investments
           </template>
