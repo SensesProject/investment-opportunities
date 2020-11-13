@@ -5,31 +5,33 @@
     </div>
     <div class="steps">
       <IntersectionObserver :step="0" :noStyling="true" classes="step step-0">
-        <h3>No change without investing</h3>
-        <p>Achieving targets require investments, no change without investing in it incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-        <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. <a href="https://google.de">link to science-based target type initiatives</a> sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <h3>Next decade is crucial</h3>
+        <p>Compared to the investment volumes observed in the last x years, annual average investments over the next 10 years need to be considerably scaled up for achieving ambitious mitigation targets. Currently pledged targets for 2030 (so called Nationally Determined Contributions, NDC, see emissions gap module) already imply an increase of yearly investments, but cost-efficiently achieving the 2°C or even 1.5°C target requires an even stronger increase.</p>
+        <p>Increased investments don't imply equally increased costs to consumers. Many of the investments required actually allow for future savings, by limiting energy bills (as in the case of efficiency investments), or by providing power generation without fuel costs (as in the case of investments into renewable power generation). The current situation of high public spending via COVID-19 recovery packages offers a great way of mobilizing these sums, which are only a small percentage of envisioned total recovery packages [refer to Andrijevic et al. 2020] </p>
+		<p>Let's now look at the composition of these total energy investments, and what implications climate targets have for each of them </p>
+		
       </IntersectionObserver>
       <IntersectionObserver :step="1" :noStyling="true" classes="step step-1 step-trigger">
         <div />
       </IntersectionObserver>
       <IntersectionObserver :step="2" :noStyling="true" classes="step step-2">
-        <h3>Upscaling efficiency</h3>
-        <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. <Variable variable="oil-and-gas">Oil and Gas</Variable> incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud <Variable variable="coal">Coal</Variable> and <Variable variable="hydrogen-fossil">Hydrogen - Fossil</Variable> exercitation ullamco.</p>
-        <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. <Variable variable="fossil-fuels">Fossil Fuels</Variable> sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <h3>Reducing fossil investments</h3>
+        <p>While the fossil sector, and especially the extraction side has still captured the largest share of energy investments in the past years, investments into fossil extraction needs to be reduced considerably in order to achieve the Paris Agreement climate targets and avoid stranded assets. While <Variable variable="oil-and-gas">Oil and Gas</Variable> investments decrease markedly, they don't fall to zero, as also declining production volumes still require some investments into existing fields. <Variable variable="coal">Coal</Variable> investments decrease even stronger in most models, as coal is the fossil fuel with the higher emission intensity and the lowest specific value. Furthermore, it's mostly used in power generation, where low-carbon alternatives are most mature and expanding rapidly. Therefore, investments into <Variable variable="fossil-fuels">Fossil Fuels</Variable> also decrease very strongly, with investments into new coal-fired power plants ending immediately in mitigation scenarios, and only some gas generation projects still being pursued in some regions.</p>
+        <p> Whether Carbon capture and storage offers a way for fossil fuels to retain it's place in the transition to a low-carbon energy system is uncertain, but some models foresee increased investments into <Variable variable="hydrogen-fossil">Hydrogen - Fossil</Variable> with CCS in ambitious mitigation scenarios.</p>
         <BarInvestmentsChart
           :variables="GROUP_FOSSILS"
           :scenarios="['NDC', '2C', '1.5C']">
           <template v-slot:header>
-            Change in something
+            Change of investments
           </template>
           <template v-slot:caption>
-            Figure 1. Relative changes in something
+            Figure 1. Relative changes of different fossil investment components.
           </template>
         </BarInvestmentsChart>
-        <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+        <p></p>
       </IntersectionObserver>
       <IntersectionObserver :step="3" :noStyling="true" classes="step step-3">
-        <h3>Upscaling low-carbon</h3>
+        <h3>Upscaling low-carbon investments</h3>
         <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud <Variable variable="nuclear">Nuclear</Variable> exercitation ullamco. incididunt ut labore et dolore magna aliqua. <Variable variable="bioenergy">Bioenergy</Variable> Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
         <p>incididunt ut labore et <Variable variable="hydrogen-non-fossil">Hydrogen - Non-fossil</Variable> dolore magna aliqua. <Variable variable="solar">Solar</Variable> Ut enim ad minim veniam, quis nostrud exercitation ullamco. <Variable variable="wind">Wind</Variable> sed do eiusmod tempor incididunt ut labore et dolore <Variable variable="other-renewables">other renewables</Variable> magna aliqua.</p>
         <BarInvestmentsChart
