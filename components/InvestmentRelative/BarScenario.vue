@@ -23,12 +23,13 @@ export default {
     ...mapState({
       barStacked: state => state.settings.barStacked,
       isColored: state => state.settings.isColored,
-      model: state => state.settings.model
+      model: state => state.settings.model,
+      region: state => state.settings.region
     }),
     barScenario () {
       const sum = sumBy(VARIABLES, (variable) => {
         const d = find(this.data, { variable })
-        return get(d, ['values', this.model], 0)
+        return get(d, ['values', this.region, this.model], 0)
       })
       const tooltip = this.createScenarioTooltip(this.scenario, sum, 0, 0)
       return {

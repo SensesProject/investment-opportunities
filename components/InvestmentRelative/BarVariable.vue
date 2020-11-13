@@ -35,17 +35,18 @@ export default {
       isColored: state => state.settings.isColored,
       showModels: state => state.settings.showModels,
       highlight: state => state.settings.highlight,
-      model: state => state.settings.model
+      model: state => state.settings.model,
+      region: state => state.settings.region
     }),
     barVariables () {
       let x0 = 0
 
       return map(VARIABLES, (variable) => {
         const d = find(this.data, { variable })
-        const value = get(d, ['values', this.model], 0)
+        const value = get(d, ['values', this.region, this.model], 0)
 
-        const reference = get(d, ['reference', this.model], 0)
-        const [change, isPositiveChange] = get(d, ['changes', this.model], [])
+        const reference = get(d, ['reference', this.region, this.model], 0)
+        const [change, isPositiveChange] = get(d, ['changes', this.region, this.model], [])
 
         const color = this.isColored ? getColorFromVariable(variable) : '#343437'
 

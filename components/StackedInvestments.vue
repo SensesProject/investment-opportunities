@@ -48,7 +48,8 @@ export default {
       'data'
     ]),
     ...mapState({
-      model: state => state.settings.model
+      model: state => state.settings.model,
+      region: state => state.settings.region
     }),
     scaleY () {
       return scaleBand()
@@ -57,6 +58,7 @@ export default {
         .paddingOuter(0)
     },
     dataByScenario () {
+      console.log(this.data)
       return groupBy(this.data, 'scenario')
     },
     extents () {
@@ -65,7 +67,7 @@ export default {
       forEach(VARIABLES, (variable) => {
         const runs = filter(this.data, { variable })
         // Get the average values from the runs
-        const values = map(runs, run => get(run, ['values', this.model])) // TODO: Right now we are only using the average value
+        const values = map(runs, run => get(run, ['values', this.region, this.model]))
         // Set the max value
         maxes[variable] = Math.max(...values, 0)
       })
