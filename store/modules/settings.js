@@ -46,6 +46,7 @@ const actions = {
   },
   changeStep ({ commit }, step) {
     // commit('SETTINGS_CHANGE', params)
+    commit('SETTINGS_CHANGE', { key: 'step', value: step })
     switch (step) {
       case 0:
         // this.changeSettings({ key: 'isRotated', value: false })
