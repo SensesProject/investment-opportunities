@@ -13,6 +13,10 @@
     color: $text-color;
     border-radius: $border-radius;
     padding: $spacing / 3 $spacing / 2 $spacing / 2;
+
+    p {
+      font-size: 0.8rem;
+    }
   }
 
   .tooltip-arrow {

@@ -2,15 +2,17 @@
   <figure class="vis-investment-absolute">
     <svg ref="vis" class="vis" :viewBox="`0 0 ${width} ${height}`">
       <g v-if="width">
+        <Guides :height="height" />
         <g v-for="(data, key) in dataByScenario" class="scenario">
           <StackedInvestmentsBars
             :width="width"
             :height="height"
-            :gap="gap"
+            :gap="showRegions ? 10 : gap"
             :data="data"
             :scenario="key"
             :extents="extents"
             :y="scaleY(key)"
+            :scenarioHeight="scenarioHeight"
           />
         </g>
       </g>
@@ -21,19 +23,21 @@
 </template>
 
 <script>
-import { groupBy, filter, get, map, forEach } from 'lodash'
+import { groupBy, filter, get, map, forEach, max } from 'lodash'
 import { scaleBand } from 'd3-scale'
 import { mapState, mapGetters } from 'vuex'
 import StackedInvestmentsBars from '~/components/StackedInvestmentsBars'
 import StackedInvestmentsDefs from '~/components/StackedInvestmentsDefs'
 import Labels from '~/components/InvestmentAbsolute/Labels'
-import { VARIABLES } from '~/store/config'
+import Guides from '~/components/Guides'
+import { VARIABLES, REGIONS } from '~/store/config'
 
 export default {
   components: {
     StackedInvestmentsBars,
     StackedInvestmentsDefs,
-    Labels
+    Labels,
+    Guides
   },
   data: () => {
     return {
@@ -49,7 +53,8 @@ export default {
     ]),
     ...mapState({
       model: state => state.settings.model,
-      region: state => state.settings.region
+      region: state => state.settings.region,
+      showRegions: state => state.settings.showRegions
     }),
     scaleY () {
       return scaleBand()
@@ -57,8 +62,10 @@ export default {
         .domain(this.scenarios)
         .paddingOuter(0)
     },
+    scenarioHeight () {
+      return this.scaleY.bandwidth()
+    },
     dataByScenario () {
-      console.log(this.data)
       return groupBy(this.data, 'scenario')
     },
     extents () {
@@ -67,7 +74,14 @@ export default {
       forEach(VARIABLES, (variable) => {
         const runs = filter(this.data, { variable })
         // Get the average values from the runs
-        const values = map(runs, run => get(run, ['values', this.region, this.model]))
+        const values = map(runs, (run) => {
+          if (this.showRegions) {
+            const regions = map(REGIONS, region => get(run, ['values', region, this.model]))
+            return max(regions)
+          } else {
+            return get(run, ['values', 'World', this.model])
+          }
+        })
         // Set the max value
         maxes[variable] = Math.max(...values, 0)
       })

@@ -24,6 +24,20 @@ export const GROUP_OTHERS = [
   'Storage'
 ]
 
+export const REGIONS = [
+  'R5OECD90+EU',
+  'USA',
+  'R5MAF',
+  'R5ASIA',
+  'R5LAM',
+  'R5REF',
+  'CHN',
+  'IND'
+  //  'EUR',
+  //  'JPN',
+  //  'RUS',
+]
+
 export const GROUP_LABELS = ['Fossil', 'Non-Fossil', 'Other']
 
 export const VARIABLES = [...GROUP_FOSSILS, ...GROUP_NON_FOSSILS, ...GROUP_OTHERS]

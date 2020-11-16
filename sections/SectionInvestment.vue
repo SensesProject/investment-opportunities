@@ -61,11 +61,17 @@
           </template>
         </BarInvestmentsChart>
       </IntersectionObserver>
-      <IntersectionObserver :step="5" :noStyling="true" classes="step step-5">
+      <IntersectionObserver :step="5" :noStyling="true" classes="step step-5 step-trigger">
+        <div />
+      </IntersectionObserver>
+      <IntersectionObserver :step="6" :noStyling="true" classes="step step-6">
         <h3>Others</h3>
         <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
         <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. <span class="type-other">others</span> sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      </IntersectionObserver>
+      <IntersectionObserver :step="7" :noStyling="true" classes="step step-7 step-trigger">
+        <div />
       </IntersectionObserver>
     </div>
   </section>
@@ -129,7 +135,7 @@ export default {
   .steps {
     display: grid;
     width: 100%;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     grid-column-gap: 1rem;
     grid-row-gap: 30vh;
     margin: 20vh 0;
@@ -158,8 +164,8 @@ export default {
     }
 
     @mixin place-right() {
-      grid-column-start: 4;
-      grid-column-end: 6;
+      grid-column-start: 5;
+      grid-column-end: 7;
     }
 
     .step-0 {
@@ -188,9 +194,21 @@ export default {
       @include place-left();
     }
 
-    .step-5 {
+    .step-5 { // Trigger
+      width: 0px;
       grid-row-start: 6;
+      height: 40vh;
+    }
+
+    .step-6 {
+      grid-row-start: 7;
       @include place-right();
+    }
+
+    .step-7 { // Trigger
+      width: 0px;
+      grid-row-start: 8;
+      height: 40vh;
     }
   }
 }

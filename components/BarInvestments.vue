@@ -3,7 +3,7 @@
     <div class="wrapper">
       <div v-for="(scenario, key) in relativeValuesByScenario" class="scenario">
         <BarInvestmentsChart
-          :gap="gap"
+          :gap="showRegions ? 5 : gap"
           :data="scenario"
           :scenario="key"
           :options="options"
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import { map } from 'lodash'
 import BarInvestmentsChart from '~/components/BarInvestmentsChart'
 
@@ -38,6 +38,9 @@ export default {
     }
   },
   computed: {
+    ...mapState({
+      showRegions: state => state.settings.showRegions
+    }),
     ...mapGetters([
       'relativeValuesByScenario'
     ]),

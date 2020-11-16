@@ -7,3 +7,8 @@
 	font-size: 0.6rem;
   fill: $color-dark-gray;
 }
+
+@mixin graphic-text-label-2 () {
+	font-size: 0.5rem;
+  fill: $color-dark-gray;
+}

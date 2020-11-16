@@ -32,6 +32,15 @@
       :gap="gap"
       :extents="extents"
       :y="y0" />
+    <BarRegion
+      :data="data"
+      :scaleX="scaleX"
+      :groupHeight="groupHeight"
+      :scenario="scenario"
+      :gap="gap"
+      :extents="extents"
+      :y="y0"
+      :scenarioHeight="scenarioHeight" />
     <BarVariable
       :data="data"
       :scaleX="scaleX"
@@ -45,7 +54,8 @@
       :scaleX="scaleX"
       :groupHeight="groupHeight"
       :scenario="scenario"
-      :y="y0" />
+      :y="y0"
+      :height="height" />
   </g>
 </template>
 
@@ -61,16 +71,18 @@ import { VARIABLES } from '~/store/config'
 // import StackedInvestmentsDiffMore from '~/components/StackedInvestmentsDiffMore'
 import BarScenario from '~/components/InvestmentRelative/BarScenario'
 import BarVariable from '~/components/InvestmentRelative/BarVariable'
+import BarRegion from '~/components/InvestmentRelative/BarRegion'
 import BarGroups from '~/components/InvestmentRelative/BarGroups'
 
 export default {
-  props: ['data', 'scenario', 'extents', 'gap', 'width', 'height', 'y'],
+  props: ['data', 'scenario', 'extents', 'gap', 'width', 'height', 'y', 'scenarioHeight'],
   components: {
     // StackedInvestmentsBar,
     // StackedInvestmentsDiffLess,
     // StackedInvestmentsDiffMore,
     BarScenario,
     BarVariable,
+    BarRegion,
     BarGroups
   },
   data: () => {

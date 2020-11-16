@@ -140,12 +140,12 @@ export default {
       return compact(map(options, (option, i) => {
         const datum = find(data, option)
         if (!datum) { return false }
-        const { variable } = datum
+        const { variable, scenario } = datum
         const [change, isPositive, value] = get(datum, ['changes', this.region, this.model], [])
         const x = this.scaleX(i)
         const y = yBase + (Math.min(this.scaleY(change), this.maxHeight) * (isPositive ? -1 : 1))
         return {
-          tooltip: `Variable: ${variable}<br />${isPositive ? '+' : '–'}${format(',.3r')(value)}<br />Change: ${isPositive ? '+' : '–'}${format('.0%')(change)}<br />Region: ${this.region}`,
+          tooltip: `Variable: ${variable}<br />Scenario: ${scenario}<br />Change: ${isPositive ? '+' : '–'}${format(',.3r')(value)} Billion<br />Change: ${isPositive ? '+' : '–'}${format('.0%')(change)}<br />Region: ${this.region}`,
           d: calcBar(x, yBase, y, barWidth),
           x,
           y: yBase,
