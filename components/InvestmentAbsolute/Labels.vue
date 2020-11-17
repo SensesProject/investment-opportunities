@@ -6,15 +6,15 @@
     </section>
     <section>
       <h2>What {{ showRegions ? 'the regions' : 'we' }} <strong :class="{ isHighlighted: !barStacked }">pledged</strong> to invest <small>(Nationally Determined Contributions)</small></h2>
-      <span class="label-2" v-if="get(values, ['NDC'], 0) && !barStacked">Given current country plans, we are headed to invest over the next decade <strong>{{ get(values, ['NDC', 'value'], 0) }}</strong> billion US dollar every year. That is <strong>{{ get(values, ['NDC', 'diff'], 0) }}</strong> more currently.</span>
+      <span class="label-2" v-if="get(values, ['NDC'], 0) && !barStacked">Given current country plans, we are headed to invest over the next decade <strong>{{ get(values, ['NDC', 'value'], 0) }}</strong> billion US dollar every year. That is <strong>{{ get(values, ['NDC', 'diff'], 0) }}</strong> more than currently.</span>
     </section>
     <section>
       <h2>What {{ showRegions ? 'the regions' : 'we' }} <strong :class="{ isHighlighted: !barStacked }">should</strong> invest for <strong :class="{ isHighlighted: !barStacked }">2°C</strong></h2>
-      <span class="label-2" v-if="get(values, ['2C'], 0) && !barStacked">In order to reach the 2° target we must invest <strong>{{ get(values, ['2C', 'value'], 0) }}</strong> billion US dollar every year over the next decade. That is <strong>{{ get(values, ['2C', 'diff'], 0) }}</strong> more currently.</span>
+      <span class="label-2" v-if="get(values, ['2C'], 0) && !barStacked">In order to reach the 2° target we must invest <strong>{{ get(values, ['2C', 'value'], 0) }}</strong> billion US dollar every year over the next decade. That is <strong>{{ get(values, ['2C', 'diff'], 0) }}</strong> more than currently.</span>
     </section>
     <section>
       <h2>What {{ showRegions ? 'the regions' : 'we' }} <strong :class="{ isHighlighted: !barStacked }">should</strong> invest for <strong :class="{ isHighlighted: !barStacked }">1.5°C</strong></h2>
-      <span class="label-2" v-if="get(values, ['1.5C'], 0) && !barStacked">In order to reach the 1.5° target we must invest <strong>{{ get(values, ['1.5C', 'value'], 0) }}</strong> billion US dollar every year over the next decade. That is <strong>{{ get(values, ['1.5C', 'diff'], 0) }}</strong> more currently.</span>
+      <span class="label-2" v-if="get(values, ['1.5C'], 0) && !barStacked">In order to reach the 1.5° target we must invest <strong>{{ get(values, ['1.5C', 'value'], 0) }}</strong> billion US dollar every year over the next decade. That is <strong>{{ get(values, ['1.5C', 'diff'], 0) }}</strong> more than currently.</span>
     </section>
   </div>
 </template>

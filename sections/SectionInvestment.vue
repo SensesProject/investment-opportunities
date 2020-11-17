@@ -15,7 +15,7 @@
       </IntersectionObserver>
       <IntersectionObserver :step="2" :noStyling="true" classes="step step-2">
         <h3>Reducing fossil investments</h3>
-        <p>While the fossil sector, and especially the extraction side has still captured the largest share of energy investments in the past years, investments into fossil extraction needs to be reduced considerably in order to achieve the Paris Agreement climate targets and avoid stranded assets. While <Variable variable="oil-and-gas">Oil and Gas</Variable> investments decrease markedly, they don't fall to zero, as also declining production volumes still require some investments into existing fields. <Variable variable="coal">Coal</Variable> investments decrease even stronger in most models, as coal is the fossil fuel with the higher emission intensity and the lowest specific value. Furthermore, it's mostly used in power generation, where low-carbon alternatives are most mature and expanding rapidly. Therefore, investments into <Variable variable="fossil-fuels">Fossil Fuels</Variable> also decrease very strongly, with investments into new coal-fired power plants ending immediately in mitigation scenarios, and only some gas generation projects still being pursued in some regions.</p>
+        <p>While the fossil sector, and especially the extraction side has still captured the largest share of energy investments in the past years, investments into fossil extraction needs to be reduced considerably in order to achieve the Paris Agreement climate targets and avoid stranded assets. While <Variable variable="oil-and-gas">Oil and Gas</Variable> investments decrease markedly, they don't fall to zero, as also declining production volumes still require some investments into existing fields. <Variable variable="coal">Coal</Variable> investments decrease even stronger in most models, as coal is the fossil fuel with the higher emission intensity and the lowest specific value. Furthermore, it's mostly used in power generation, where low-carbon alternatives are most mature and expanding rapidly. Therefore, investments into <Variable variable="fossil-fuels">Fossil Power Generation</Variable> also decrease very strongly, with investments into new coal-fired power plants ending immediately in mitigation scenarios, and only some gas generation projects still being pursued in some regions.</p>
         <BarInvestmentsChart
           :variables="GROUP_FOSSILS"
           :scenarios="['NDC', '2C', '1.5C']"
@@ -37,10 +37,10 @@
           :variables="GROUP_NON_FOSSILS"
           :scenarios="['NDC', '2C', '1.5C']">
           <template v-slot:header>
-            Change in something
+            Change compared to current investments
           </template>
           <template v-slot:caption>
-            Figure 2. Absolute changes in something
+            Figure 2. Absolute changes in average yearly investments in power generation technologies (in bn US$/yr).
           </template>
         </BarCompactAbsolute>
         <p>The low-carbon power generation technologies <Variable variable="nuclear">Nuclear</Variable> and hydro and geothermal, included in <Variable variable="other-renewables">other renewables</Variable> currently still provide the highest share of low-carbon electricity, but face different hurdles that limit their expansion and thus see more moderate increases of investment over the next 10 years. </p>
@@ -48,17 +48,17 @@
       </IntersectionObserver>
       <IntersectionObserver :step="4" :noStyling="true" classes="step step-4">
         <h3>Increased role of networks, CCS, and efficiency</h3>
-        <p>Decarbonized power systems need to expand <Variable variable="transmission-and-distribution">Transmission and Distribution</Variable> and <Variable variable="storage">Storage</Variable>, to balance demand and supply from increasing shares of variable renewables. </p>
+        <p>Decarbonized power systems need to expand <Variable variable="transmission-and-distribution">Transmission and Distribution</Variable> and <Variable variable="Storage">Storage</Variable>, to balance demand and supply from increasing shares of variable renewables. </p>
         <p>Carbon capture and storage investments (<Variable variable="ccs">CCS</Variable>) are needed both for extending the usage of fossil fuels in some applications (industry, hydrogen), but also enable carbon dioxide removal (CDR) via bioenergy with CCS (BECCS). Scaling up investments into these options starts from a much lower base, as only demonstration projects exist so far. The in absolute terms moderate upscaling is however an important component for gathering experience and knowledge, and thus being able to better understand viable combinations of residual emissions and CDR in future net-zero energy systems.</p>
         <p>The last but very clearly not the least component of an investment strategy to move towards ambitious climate targets is a considerably increase in investments for <Variable variable="energy-efficiency">Energy Efficiency</Variable>. These investments allow for immediate emission reductions of sectors before their energy supply is decarbonized, and also are a crucial component for long-term sustainable energy systems with much reduced sustainability trade-offs inherent to all energy technologies [cite Grubler et al. 2018, Bertram et al. 2018]</p>
         <BarCompactAbsolute
           :variables="GROUP_OTHERS"
           :scenarios="['NDC', '2C', '1.5C']">
           <template v-slot:header>
-            Change in something
+            Changes compared to current investments
           </template>
           <template v-slot:caption>
-            Figure 3. Relative changes in something
+            Figure 3. Absolute change in average yearly investments in power systems, CCS and efficiency (in bn US$/yr).
           </template>
         </BarCompactAbsolute>
       </IntersectionObserver>
@@ -66,10 +66,10 @@
         <div />
       </IntersectionObserver>
       <IntersectionObserver :step="6" :noStyling="true" classes="step step-6">
-        <h3>Regional detail</h3>
-        <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-        <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. <span class="type-other">others</span> sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+        <h3>Regional data</h3>
+        <p>The regional picture mostly is in line with the global picture. Given their disproportionate weight in terms of economic output, and hence energy demand, the two regions of "OECD+EU" and "Asia" show the highest investment numbers in most categories.</p>
+        <p>Exceptions include the current investments into gas and oil extraction with the second largest contribution from "Middle East and Africa", and the investments into bioenergy under ambitous mitigation in "Latin America", both caused by the important role as exporters of the respective energy forms. </p>
+        <p></p>
       </IntersectionObserver>
       <IntersectionObserver :step="7" :noStyling="true" classes="step step-7 step-trigger">
         <div />
