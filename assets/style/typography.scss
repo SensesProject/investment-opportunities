@@ -1,55 +1,5 @@
 @charset "utf-8";
 
-@mixin headline-1() {
-	font-family: $font-serif;
-	font-size: 3.1rem;
-	line-height: 1.2;
-	letter-spacing: 0.01em;
-	color: #222;
-}
-
-@mixin headline-2() {
-	font-size: 1.4rem;
-	font-weight: 450;
-	font-family: $font-serif;
-}
-
-@mixin headline-3() {
-	font-size: 1.3rem;
-	line-height: 1.2;
-	font-weight: 600;
-	font-family: $font-sans;
-}
-
-@mixin text-intro() {
-	font-family: $font-serif;
-	font-style: italic;
-	font-size: 1.4rem;
-	line-height: 1.4;
-	color: #232323;
-	max-width: 55ch;
-	letter-spacing: 0.01em;
-}
-
-@mixin text-default() {
-	font-size: 1.05rem;
-	max-width: 60ch;
-}
-
-@mixin text-1() {
-	font-size: 0.8rem;
-	color: #444;
-	font-family: $font-sans;
-	font-weight: 400;
-}
-
-@mixin text-3() {
-	font-size: 0.8rem;
-	color: #444;
-	font-family: $font-sans;
-	font-weight: 400;
-}
-
 .container h1 {
 	@include headline-1();
 	margin-bottom: 2rem;

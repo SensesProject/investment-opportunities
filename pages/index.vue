@@ -5,7 +5,7 @@
     <SectionInvestment />
     <SectionConclusion />
     <SectionMethodology />
-    <Options />
+    <Warning />
     <SensesMeta id="investment-opportunities"/>
   </main>
 </template>
@@ -18,7 +18,7 @@ import SectionIntroduction from '~/sections/SectionIntroduction'
 import SectionInvestment from '~/sections/SectionInvestment'
 import SectionConclusion from '~/sections/SectionConclusion'
 import SectionMethodology from '~/sections/SectionMethodology'
-import Options from '~/components/Options'
+import Warning from '~/components/Warning'
 
 export default {
   components: {
@@ -27,9 +27,8 @@ export default {
     SectionInvestment,
     SectionConclusion,
     SectionMethodology,
-    Options,
-    SensesMeta
-    // LayoutScrollytelling
+    SensesMeta,
+    Warning
   },
   computed: {
     ...mapState({
@@ -42,18 +41,16 @@ export default {
   created () {
     this.loadInvestments()
   },
+  mounted () {
+    this.$on('step', (step) => {
+      this.changeStep(step)
+    })
+  },
   methods: {
     ...mapActions([
       'loadInvestments',
       'changeStep'
     ])
-  },
-  mounted () {
-    console.log('Step', this.step)
-    this.$on('step', (step) => {
-      console.log({ step })
-      this.changeStep(step)
-    })
   }
 }
 </script>
@@ -84,10 +81,6 @@ export default {
 
       .text {
         z-index: $z-index-text;
-      }
-
-      .text *:first-child {
-        // padding-top: 30vh;
       }
 
       & > .text {

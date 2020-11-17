@@ -18,6 +18,17 @@ $font-prefix: "../../node_modules/library/src/assets/fonts";
   }
 }
 
+.senses-tooltip-select.popover {
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.03);
+  border: 1px solid #f2f2f2d9;
+  border-radius: 3px;
+
+  .popover-inner {
+    padding: 10px;
+  }
+}
+
+
 .highlight {
   background: transparent;
   border: 1px solid #f5f6f8 !important;

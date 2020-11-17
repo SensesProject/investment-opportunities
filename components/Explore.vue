@@ -1,19 +1,33 @@
 <template>
   <div class="options">
-    Step: {{ step }}<br />
-    <SensesSelect v-model="model" :options="models" />
-    <!-- <label><input v-model="isColored" type="checkbox"> {{ isColored ? 'is' : 'is not' }} colored</label>
-    <label><input v-model="showRegions" type="checkbox"> {{ showRegions ? 'show' : 'show not' }} regions</label> -->
+    <div class="option vertical">
+      <label>Select model</label>
+      <SensesSelect v-model="model" :options="models" />
+    </div>
+    <div class="option horizontal">
+      <label>Compare regions</label>
+      <InputSwitch v-model="showRegions" />
+    </div>
+    <div class="option vertical">
+      <label>Select region</label>
+      <SensesSelect v-model="region" :options="regions" />
+    </div>
+    <div class="option horizontal">
+      <label>Stack variables</label>
+      <InputSwitch v-model="barStacked" />
+    </div>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 import SensesSelect from 'library/src/components/SensesSelect'
+import InputSwitch from '~/components/Helper/InputSwitch'
 
 export default {
   components: {
-    SensesSelect
+    SensesSelect,
+    InputSwitch
   },
   data: () => {
     return {
@@ -95,22 +109,6 @@ export default {
     ...mapState({
       step: state => state.settings.step
     }),
-    isColored: {
-      get () {
-        return this.$store.state.settings.isColored
-      },
-      set (value) {
-        this.$store.commit('SETTINGS_CHANGE', { key: 'isColored', value })
-      }
-    },
-    isRotated: {
-      get () {
-        return this.$store.state.settings.isRotated
-      },
-      set (value) {
-        this.$store.commit('SETTINGS_CHANGE', { key: 'isRotated', value })
-      }
-    },
     region: {
       get () {
         return this.$store.state.settings.region
@@ -159,18 +157,31 @@ export default {
   @import "~@/assets/style/global";
 
   .options {
-    background-color: #fff;
-    top: $spacing * 2;
-    position: fixed;
-    right: $spacing / 2;
-    padding: $spacing / 4;
-    border: 1px solid getColor(gray, 80);
-    border-radius: $border-radius;
-    font-size: $font-size-default;
-    color: getColor(gray, 40);
     display: grid;
-    justify-items: end;
-    grid-gap: $spacing / 4;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 1rem;
+  }
+
+  .option {
+    display: grid;
+
+    &:not(:last-child) {
+      border-right: 1px solid $color-pale-gray;
+    }
+
+    &.vertical {
+      grid-row-gap: 0.3rem;
+      grid-template-rows: repeat(2, 1fr);
+    }
+
+    &.horizontal {
+      grid-template-columns: repeat(2, auto);
+    }
+
+    label {
+      @include text-2();
+      // color: $color-neon;
+    }
   }
 
 </style>

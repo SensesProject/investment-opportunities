@@ -69,10 +69,12 @@
         <h3>Regional data</h3>
         <p>The regional picture mostly is in line with the global picture. Given their disproportionate weight in terms of economic output, and hence energy demand, the two regions of “<Region region="R5OECD90+EU">OECD+EU</Region>” and “<Region region="R5ASIA">Asia</Region>” show the highest investment numbers in most categories.</p>
         <p>Exceptions include the current investments into gas and oil extraction with the second largest contribution from “<Region region="R5MAF">Middle East and Africa</Region>”, and the investments into bioenergy under ambitous mitigation in “<Region region="R5LAM">Latin America</Region>”, both caused by the important role as exporters of the respective energy forms.</p>
-        <p></p>
       </IntersectionObserver>
       <IntersectionObserver :step="7" :noStyling="true" classes="step step-7 step-trigger">
         <div />
+      </IntersectionObserver>
+      <IntersectionObserver :step="8" :noStyling="true" classes="step step-8">
+        <Explore />
       </IntersectionObserver>
     </div>
   </section>
@@ -84,6 +86,7 @@ import IntersectionObserver from 'library/src/components/IntersectionObserver'
 import BarInvestmentsChart from '~/components/BarInvestmentsChart'
 import StackedInvestments from '~/components/StackedInvestments'
 import BarCompactAbsolute from '~/components/ChartCompactAbsolute/Chart'
+import Explore from '~/components/Explore'
 import Variable from '~/components/Helper/Variable'
 import Region from '~/components/Helper/Region'
 import { GROUP_FOSSILS, GROUP_NON_FOSSILS, GROUP_OTHERS } from '~/store/config'
@@ -100,7 +103,8 @@ export default {
     StackedInvestments,
     BarCompactAbsolute,
     Variable,
-    Region
+    Region,
+    Explore
   },
   computed: {
     ...mapGetters([
@@ -122,6 +126,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import "~@/assets/style/global";
 
 .section--investment {
   .graphic {
@@ -141,7 +146,7 @@ export default {
     grid-template-columns: repeat(6, 1fr);
     grid-column-gap: 1rem;
     grid-row-gap: 30vh;
-    margin: 20vh 0;
+    margin: 20vh 0 0;
     pointer-events: none;
 
     & > * {
@@ -157,7 +162,8 @@ export default {
 
     .step:not(.step-trigger) {
       border: 1px solid #f2f2f2;
-      background-color: rgba(255, 255, 255, 0.96);
+      background-color: rgba(255, 255, 255, 0.94);
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.05);
       padding: 1rem;
     }
 
@@ -168,6 +174,11 @@ export default {
 
     @mixin place-right() {
       grid-column-start: 5;
+      grid-column-end: 7;
+    }
+
+    @mixin place-full() {
+      grid-column-start: 1;
       grid-column-end: 7;
     }
 
@@ -212,6 +223,14 @@ export default {
       width: 0px;
       grid-row-start: 8;
       height: 40vh;
+    }
+
+    .step-8 {
+      grid-row-start: 9;
+      @include place-full();
+      // border-color: $color-neon !important;
+      box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.05) !important;
+      margin-bottom: 5vh;
     }
   }
 }

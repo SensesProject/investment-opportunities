@@ -97,6 +97,13 @@ const actions = {
         commit('SETTINGS_CHANGE', { key: 'isColored', value: true })
         commit('SETTINGS_CHANGE', { key: 'highlight', value: [] })
         break
+      case 7:
+        // commit('SETTINGS_CHANGE', { key: 'isRotated', value: true })
+        commit('SETTINGS_CHANGE', { key: 'barStacked', value: true })
+        commit('SETTINGS_CHANGE', { key: 'showRegions', value: true })
+        commit('SETTINGS_CHANGE', { key: 'isColored', value: true })
+        commit('SETTINGS_CHANGE', { key: 'highlight', value: [] })
+        break
     }
   }
 }
