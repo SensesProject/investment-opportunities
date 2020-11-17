@@ -44,3 +44,19 @@ export const REGIONS = [
 export const GROUP_LABELS = ['Fossil', 'Non-Fossil', 'Other']
 
 export const VARIABLES = [...GROUP_FOSSILS, ...GROUP_NON_FOSSILS, ...GROUP_OTHERS]
+
+export const REGION_MAPPING_SHORT = {
+  'R5OECD90+EU': 'OECD and EU',
+  'R5ASIA': 'Asia',
+  'R5LAM': 'Latin America',
+  'R5MAF': 'Middle East and Africa',
+  'R5REF': 'Reform economies'
+}
+
+export const REGION_MAPPING_LONG = {
+  'R5OECD90+EU': 'Central Asia, China, India, Indonesia, Pakistan, South Asia, South Korea, Southeast Asia, Taiwan',
+  'R5ASIA': 'Brazil, Central America and Caribbean, Mexico, South America_Northern, South America_Southern, Argentina, Colombia',
+  'R5LAM': 'Africa Eastern, Africa Northern, Africa Southern, Africa Western, Middle East, South Africa',
+  'R5MAF': 'USA, Australia, NZ, Canada, EU-15, Europe Non EU, European Free Trade Association, Japan',
+  'R5REF': 'EU-12, Europe Eastern, Russia'
+}
