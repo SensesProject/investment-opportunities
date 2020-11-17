@@ -43,8 +43,8 @@ export default {
           value: 'WITCH-GLOBIOM'
         },
         {
-          label: 'average',
-          value: 'average'
+          label: 'median',
+          value: 'median'
         }
       ],
       regions: [

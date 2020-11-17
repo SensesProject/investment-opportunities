@@ -40,8 +40,8 @@ export default {
           return get(this.extents, variable, 0)
         })
 
-        // const reference = get(d, ['reference', 'average'], 0)
-        // const [change, isPositiveChange] = get(d, ['changes', 'average'], [])
+        // const reference = get(d, ['reference', 'median'], 0)
+        // const [change, isPositiveChange] = get(d, ['changes', 'median'], [])
 
         // const color = this.isColored ? getColorFromVariable(variable) : '#343437'
 

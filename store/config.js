@@ -1,4 +1,4 @@
-export const MODELS = ['average', 'POLES', 'REMIND-MAgPIE', 'AIM/CGE', 'IMAGE', 'MESSAGEix-GLOBIOM']
+export const MODELS = ['median', 'POLES', 'REMIND-MAgPIE', 'AIM/CGE', 'IMAGE', 'MESSAGEix-GLOBIOM']
 export const FORMULATIONS = ['historic', 'NDC', '2C', '1.5C']
 
 export const DEFAULT_MODEL = 'REMIND-MAgPIE'

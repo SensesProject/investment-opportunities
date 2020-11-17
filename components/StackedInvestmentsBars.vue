@@ -93,7 +93,7 @@ export default {
         left: 0,
         right: 0
       },
-      models: ['average', 'POLES', 'REMIND-MAgPIE', 'AIM/CGE', 'IMAGE', 'MESSAGEix-GLOBIOM']
+      models: ['median', 'POLES', 'REMIND-MAgPIE', 'AIM/CGE', 'IMAGE', 'MESSAGEix-GLOBIOM']
     }
   },
   computed: {
@@ -138,7 +138,7 @@ export default {
         const values = get(data, ['values'], {})
         const references = get(data, ['reference'], {})
 
-        const average = get(values, this.model, 0)
+        const median = get(values, this.model, 0)
         const referenceAverage = get(references, this.model, 0)
 
         let n = 0
@@ -154,7 +154,7 @@ export default {
           const y = this.showModels ? this.scaleY(key) : this.scaleY(key) - bandwidth / 2 * n
 
           const x1 = this.barStacked ? this.scaleX(get(this.extents, variable, value)) + this.gap : this.scaleX(value)
-          const width = this.scaleX(this.showModels ? value : average)
+          const width = this.scaleX(this.showModels ? value : median)
           const marker = this.scaleX(this.showModels ? reference : referenceAverage)
           const diff = value - reference
           const tooltip = this.createTooltip(variable, value, reference, diff)
@@ -189,14 +189,14 @@ export default {
         const labelX = x0
         const labelY = this.groupHeight / 2 + bandwidth / 2
 
-        const maxValue = get(values, this.barStacked ? 'max' : 'average')
+        const maxValue = get(values, this.barStacked ? 'max' : 'median')
         x0 += round(this.barStacked ? this.scaleX(get(this.extents, variable, maxValue)) + this.gap : this.scaleX(maxValue), 0)
 
         return {
           labelX,
           labelY,
-          value: this.formatNumber(average),
-          diff: this.formatNumber(average - referenceAverage),
+          value: this.formatNumber(median),
+          diff: this.formatNumber(median - referenceAverage),
           bars,
           variable
         }
