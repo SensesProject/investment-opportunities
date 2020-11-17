@@ -7,7 +7,7 @@
       <IntersectionObserver :step="0" :noStyling="true" classes="step step-0">
         <h3>The next decade is crucial</h3>
         <p>Compared to the average investment volumes observed from 2017-2019, annual average investments over the next 10 years need to be considerably scaled up for achieving ambitious mitigation targets. Currently pledged targets for 2030 (so called Nationally Determined Contributions, NDC, see emissions gap module) already imply an increase of yearly investments, but cost-efficiently achieving the 2°C or even 1.5°C target requires an even stronger increase.</p>
-        <p>Increased investments don't imply equally increased costs to consumers. Many of the investments required actually allow for future savings, by limiting energy bills (as in the case of efficiency investments), or by providing power generation without fuel costs (as in the case of investments into renewable power generation). The current situation of high public spending via COVID-19 recovery packages offers a great way of mobilizing these sums, which are only a small percentage of envisioned total recovery packages [refer to Andrijevic et al. 2020] </p>
+        <p>Increased investments don't imply equally increased costs to consumers. Many of the investments required actually allow for future savings, by limiting energy bills (as in the case of efficiency investments), or by providing power generation without fuel costs (as in the case of investments into renewable power generation). The current situation of high public spending via COVID-19 recovery packages offers a great way of mobilizing these sums, which are only a small percentage of envisioned total recovery packages [refer to Andrijevic et al. 2020]</p>
         <p>Let's now look at the composition of these total energy investments, and what implications climate targets have for each of them </p>
       </IntersectionObserver>
       <IntersectionObserver :step="1" :noStyling="true" classes="step step-1 step-trigger">
@@ -48,7 +48,7 @@
       </IntersectionObserver>
       <IntersectionObserver :step="4" :noStyling="true" classes="step step-4">
         <h3>Increased role of networks, CCS, and efficiency</h3>
-        <p>Decarbonized power systems need to expand <Variable variable="transmission-and-distribution">Transmission and Distribution</Variable> and <Variable variable="Storage">Storage</Variable>, to balance demand and supply from increasing shares of variable renewables. </p>
+        <p>Decarbonized power systems need to expand <Variable variable="transmission-and-distribution">Transmission and Distribution</Variable> and <Variable variable="storage">Storage</Variable>, to balance demand and supply from increasing shares of variable renewables. </p>
         <p>Carbon capture and storage investments (<Variable variable="ccs">CCS</Variable>) are needed both for extending the usage of fossil fuels in some applications (industry, hydrogen), but also enable carbon dioxide removal (CDR) via bioenergy with CCS (BECCS). Scaling up investments into these options starts from a much lower base, as only demonstration projects exist so far. The in absolute terms moderate upscaling is however an important component for gathering experience and knowledge, and thus being able to better understand viable combinations of residual emissions and CDR in future net-zero energy systems.</p>
         <p>The last but very clearly not the least component of an investment strategy to move towards ambitious climate targets is a considerably increase in investments for <Variable variable="energy-efficiency">Energy Efficiency</Variable>. These investments allow for immediate emission reductions of sectors before their energy supply is decarbonized, and also are a crucial component for long-term sustainable energy systems with much reduced sustainability trade-offs inherent to all energy technologies [cite Grubler et al. 2018, Bertram et al. 2018]</p>
         <BarCompactAbsolute
@@ -67,8 +67,8 @@
       </IntersectionObserver>
       <IntersectionObserver :step="6" :noStyling="true" classes="step step-6">
         <h3>Regional data</h3>
-        <p>The regional picture mostly is in line with the global picture. Given their disproportionate weight in terms of economic output, and hence energy demand, the two regions of "OECD+EU" and "Asia" show the highest investment numbers in most categories.</p>
-        <p>Exceptions include the current investments into gas and oil extraction with the second largest contribution from "Middle East and Africa", and the investments into bioenergy under ambitous mitigation in "Latin America", both caused by the important role as exporters of the respective energy forms. </p>
+        <p>The regional picture mostly is in line with the global picture. Given their disproportionate weight in terms of economic output, and hence energy demand, the two regions of “<Region region="R5OECD90+EU">OECD+EU</Region>” and “<Region region="R5ASIA">Asia</Region>” show the highest investment numbers in most categories.</p>
+        <p>Exceptions include the current investments into gas and oil extraction with the second largest contribution from “<Region region="R5MAF">Middle East and Africa</Region>”, and the investments into bioenergy under ambitous mitigation in “<Region region="R5LAM">Latin America</Region>”, both caused by the important role as exporters of the respective energy forms.</p>
         <p></p>
       </IntersectionObserver>
       <IntersectionObserver :step="7" :noStyling="true" classes="step step-7 step-trigger">
@@ -85,6 +85,7 @@ import BarInvestmentsChart from '~/components/BarInvestmentsChart'
 import StackedInvestments from '~/components/StackedInvestments'
 import BarCompactAbsolute from '~/components/ChartCompactAbsolute/Chart'
 import Variable from '~/components/Helper/Variable'
+import Region from '~/components/Helper/Region'
 import { GROUP_FOSSILS, GROUP_NON_FOSSILS, GROUP_OTHERS } from '~/store/config'
 
 export default {
@@ -98,7 +99,8 @@ export default {
     BarInvestmentsChart,
     StackedInvestments,
     BarCompactAbsolute,
-    Variable
+    Variable,
+    Region
   },
   computed: {
     ...mapGetters([
