@@ -3,11 +3,8 @@
     <SectionHeader />
     <SectionIntroduction />
     <SectionInvestment />
-    <div class="wrapper margin">
-      <h2>Trade-off curves for single technologies</h2>
-      <img src="graphic-2.png">
-      <small>McCollum, D.L., Zhou, W., Bertram, C. et al. Energy investment needs for fulfilling the Paris Agreement and achieving the Sustainable Development Goals. Nat Energy 3, 589–599 (2018). </small>
-    </div>
+    <SectionConclusion />
+    <SectionMethodology />
     <Options />
     <SensesMeta id="investment-opportunities"/>
   </main>
@@ -19,6 +16,8 @@ import SensesMeta from 'library/src/components/SensesMeta.vue'
 import SectionHeader from '~/sections/SectionHeader'
 import SectionIntroduction from '~/sections/SectionIntroduction'
 import SectionInvestment from '~/sections/SectionInvestment'
+import SectionConclusion from '~/sections/SectionConclusion'
+import SectionMethodology from '~/sections/SectionMethodology'
 import Options from '~/components/Options'
 
 export default {
@@ -26,6 +25,8 @@ export default {
     SectionHeader,
     SectionIntroduction,
     SectionInvestment,
+    SectionConclusion,
+    SectionMethodology,
     Options,
     SensesMeta
     // LayoutScrollytelling

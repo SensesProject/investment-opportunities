@@ -1,9 +1,9 @@
 import { has, get, set, isUndefined, isNaN } from 'lodash'
-import { GROUP_FOSSILS, GROUP_NON_FOSSILS, GROUP_OTHERS } from '~/store/config'
+import { GROUP_FOSSILS, GROUP_NON_FOSSILS, GROUP_OTHERS, DEFAULT_MODEL, DEFAULT_REGION } from '~/store/config'
 
 const DEFAULTS = {
-  model: 'average',
-  region: 'World',
+  model: DEFAULT_MODEL,
+  region: DEFAULT_REGION,
   barStacked: false,
   barDifference: false,
   showRegions: false,
@@ -15,8 +15,8 @@ const DEFAULTS = {
 
 const state = () => {
   return {
-    model: DEFAULTS.model,
-    region: DEFAULTS.region,
+    model: DEFAULT_MODEL,
+    region: DEFAULT_REGION,
     barStacked: DEFAULTS.barStacked,
     barDifference: DEFAULTS.barDifference,
     showRegions: DEFAULTS.showRegions,
