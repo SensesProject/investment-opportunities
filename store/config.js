@@ -26,13 +26,13 @@ export const GROUP_OTHERS = [
 
 export const REGIONS = [
   'R5OECD90+EU',
-  'USA',
   'R5MAF',
   'R5ASIA',
   'R5LAM',
-  'R5REF',
-  'CHN',
-  'IND'
+  'R5REF'
+  // 'USA',
+  // 'CHN',
+  // 'IND'
   //  'EUR',
   //  'JPN',
   //  'RUS',
