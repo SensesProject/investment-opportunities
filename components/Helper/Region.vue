@@ -1,15 +1,16 @@
 <template>
-  <span :class="`region region--${region}`" v-tooltip="{ content: tooltip }"><slot /></span>
+  <span :class="`region region--${region}`" v-tooltip="tooltip"><slot /></span>
 </template>
 
 <script>
-import { longScenario } from '~/assets/js/utils.js'
+import { longRegion } from '~/assets/js/utils.js'
 
 export default {
   props: ['region'],
   computed: {
     tooltip () {
-      return longScenario(this.region)
+      const [title, list] = longRegion(this.region)
+      return { content: `<header>${title}</header><p>${list}</p>` }
     }
   }
 }
