@@ -1,4 +1,5 @@
 import { get } from 'lodash'
+import { SCENARIO_MAPPING_SHORT } from '~/store/config'
 
 export const getColorFromVariable = function (key) {
   const colors = {
@@ -22,4 +23,8 @@ export const getColorFromVariable = function (key) {
 
 export const calcBar = function (x, zero, y, width) {
   return `M${x} ${zero} L${x} ${y} L${x + width} ${y} L ${x + width} ${zero} Z`
+}
+
+export const shortScenario = function (scenario) {
+  return get(SCENARIO_MAPPING_SHORT, scenario, scenario)
 }
