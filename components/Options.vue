@@ -1,13 +1,9 @@
 <template>
   <div class="options">
     Step: {{ step }}<br />
-    <SensesSelect v-model="region" :options="regions" />
     <SensesSelect v-model="model" :options="models" />
-    <label><input v-model="barStacked" type="checkbox"> {{ barStacked ? '' : 'not ' }}stacked</label>
-    <label><input v-model="barDifference" type="checkbox"> difference {{ barDifference ? '' : 'models ' }}colored</label>
-    <label><input v-model="showModels" type="checkbox"> {{ showModels ? 'hide' : 'show' }} models</label>
-    <label><input v-model="isRotated" type="checkbox"> {{ isRotated ? 'is not' : 'is' }} rotated</label>
-    <label><input v-model="isColored" type="checkbox"> {{ isColored ? 'is not' : 'is' }} colored</label>
+    <!-- <label><input v-model="isColored" type="checkbox"> {{ isColored ? 'is' : 'is not' }} colored</label>
+    <label><input v-model="showRegions" type="checkbox"> {{ showRegions ? 'show' : 'show not' }} regions</label> -->
   </div>
 </template>
 
@@ -147,12 +143,12 @@ export default {
         this.$store.commit('SETTINGS_CHANGE', { key: 'barDifference', value })
       }
     },
-    showModels: {
+    showRegions: {
       get () {
-        return this.$store.state.settings.showModels
+        return this.$store.state.settings.showRegions
       },
       set (value) {
-        this.$store.commit('SETTINGS_CHANGE', { key: 'showModels', value })
+        this.$store.commit('SETTINGS_CHANGE', { key: 'showRegions', value })
       }
     }
   }

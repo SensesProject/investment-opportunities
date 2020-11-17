@@ -3,12 +3,12 @@
     <g class="barGroup-wrapper" v-for="bar in barGroups">
       <text
         class="barGroup--label"
-        :class="{ isVisible: !showModels && barStacked }"
+        :class="{ isVisible: !showRegions && barStacked }"
         :x="bar.x"
         :y="bar.y - 2">{{ bar.label }}</text>
       <rect
         class="barGroup"
-        :class="{ isVisible: !showModels && barStacked }"
+        :class="{ isVisible: !showRegions && barStacked }"
         :x="bar.x"
         :y="bar.y"
         :width="bar.width"
@@ -29,7 +29,7 @@ export default {
     ...mapState({
       barStacked: state => state.settings.barStacked,
       isColored: state => state.settings.isColored,
-      showModels: state => state.settings.showModels,
+      showRegions: state => state.settings.showRegions,
       highlight: state => state.settings.highlight
     }),
     barGroups () {

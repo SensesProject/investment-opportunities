@@ -8,8 +8,7 @@
         <h3>The next decade is crucial</h3>
         <p>Compared to the average investment volumes observed from 2017-2019, annual average investments over the next 10 years need to be considerably scaled up for achieving ambitious mitigation targets. Currently pledged targets for 2030 (so called Nationally Determined Contributions, NDC, see emissions gap module) already imply an increase of yearly investments, but cost-efficiently achieving the 2°C or even 1.5°C target requires an even stronger increase.</p>
         <p>Increased investments don't imply equally increased costs to consumers. Many of the investments required actually allow for future savings, by limiting energy bills (as in the case of efficiency investments), or by providing power generation without fuel costs (as in the case of investments into renewable power generation). The current situation of high public spending via COVID-19 recovery packages offers a great way of mobilizing these sums, which are only a small percentage of envisioned total recovery packages [refer to Andrijevic et al. 2020] </p>
-		<p>Let's now look at the composition of these total energy investments, and what implications climate targets have for each of them </p>
-		
+        <p>Let's now look at the composition of these total energy investments, and what implications climate targets have for each of them </p>
       </IntersectionObserver>
       <IntersectionObserver :step="1" :noStyling="true" classes="step step-1 step-trigger">
         <div />
@@ -19,7 +18,8 @@
         <p>While the fossil sector, and especially the extraction side has still captured the largest share of energy investments in the past years, investments into fossil extraction needs to be reduced considerably in order to achieve the Paris Agreement climate targets and avoid stranded assets. While <Variable variable="oil-and-gas">Oil and Gas</Variable> investments decrease markedly, they don't fall to zero, as also declining production volumes still require some investments into existing fields. <Variable variable="coal">Coal</Variable> investments decrease even stronger in most models, as coal is the fossil fuel with the higher emission intensity and the lowest specific value. Furthermore, it's mostly used in power generation, where low-carbon alternatives are most mature and expanding rapidly. Therefore, investments into <Variable variable="fossil-fuels">Fossil Fuels</Variable> also decrease very strongly, with investments into new coal-fired power plants ending immediately in mitigation scenarios, and only some gas generation projects still being pursued in some regions.</p>
         <BarInvestmentsChart
           :variables="GROUP_FOSSILS"
-          :scenarios="['NDC', '2C', '1.5C']">
+          :scenarios="['NDC', '2C', '1.5C']"
+          :limit="1">
           <template v-slot:header>
             Change of investments
           </template>
@@ -33,16 +33,16 @@
         <h3>Upscaling low-carbon investments</h3>
         <p>Electrification is a key mitigation strategy, but for it to be effective, power generation needs to be decarbonized quickly. Therefore, ambitious mitigation scenarios sees all sources of low-carbon energy to expand, requiring strongly increasing investments in the next decade.</p>
 		<p>The two low-carbon sources standing out however are <Variable variable="wind">Wind</Variable> and <Variable variable="solar">Solar</Variable>: Due to recent cost reductions, they quickly become universally the cheapest form of electricity as soon as CO2 is priced, and thanks to their granular nature and can be scaled up rapidly in all world regions. </p>
-        <BarInvestmentsChart
+        <BarCompactAbsolute
           :variables="GROUP_NON_FOSSILS"
           :scenarios="['NDC', '2C', '1.5C']">
           <template v-slot:header>
             Change in something
           </template>
           <template v-slot:caption>
-            Figure 2. Relative changes in something
+            Figure 2. Absolute changes in something
           </template>
-        </BarInvestmentsChart>
+        </BarCompactAbsolute>
         <p>The low-carbon power generation technologies <Variable variable="nuclear">Nuclear</Variable> and hydro and geothermal, included in <Variable variable="other-renewables">other renewables</Variable> currently still provide the highest share of low-carbon electricity, but face different hurdles that limit their expansion and thus see more moderate increases of investment over the next 10 years. </p>
 		<p>Not only low-carbon power generation is being scaled up, but also low-carbon fuels via <Variable variable="hydrogen-non-fossil">Hydrogen - Non-fossil</Variable> and <Variable variable="bioenergy">Bioenergy</Variable>. </p>
       </IntersectionObserver>
@@ -61,11 +61,17 @@
           </template>
         </BarInvestmentsChart>
       </IntersectionObserver>
-      <IntersectionObserver :step="5" :noStyling="true" classes="step step-5">
+      <IntersectionObserver :step="5" :noStyling="true" classes="step step-5 step-trigger">
+        <div />
+      </IntersectionObserver>
+      <IntersectionObserver :step="6" :noStyling="true" classes="step step-6">
         <h3>Others</h3>
         <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
         <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. <span class="type-other">others</span> sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      </IntersectionObserver>
+      <IntersectionObserver :step="7" :noStyling="true" classes="step step-7 step-trigger">
+        <div />
       </IntersectionObserver>
     </div>
   </section>
@@ -76,6 +82,7 @@ import { mapGetters, mapActions } from 'vuex'
 import IntersectionObserver from 'library/src/components/IntersectionObserver'
 import BarInvestmentsChart from '~/components/BarInvestmentsChart'
 import StackedInvestments from '~/components/StackedInvestments'
+import BarCompactAbsolute from '~/components/ChartCompactAbsolute/Chart'
 import Variable from '~/components/Helper/Variable'
 import { GROUP_FOSSILS, GROUP_NON_FOSSILS, GROUP_OTHERS } from '~/store/config'
 
@@ -89,6 +96,7 @@ export default {
     IntersectionObserver,
     BarInvestmentsChart,
     StackedInvestments,
+    BarCompactAbsolute,
     Variable
   },
   computed: {
@@ -127,7 +135,7 @@ export default {
   .steps {
     display: grid;
     width: 100%;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     grid-column-gap: 1rem;
     grid-row-gap: 30vh;
     margin: 20vh 0;
@@ -156,8 +164,8 @@ export default {
     }
 
     @mixin place-right() {
-      grid-column-start: 4;
-      grid-column-end: 6;
+      grid-column-start: 5;
+      grid-column-end: 7;
     }
 
     .step-0 {
@@ -186,9 +194,21 @@ export default {
       @include place-left();
     }
 
-    .step-5 {
+    .step-5 { // Trigger
+      width: 0px;
       grid-row-start: 6;
+      height: 40vh;
+    }
+
+    .step-6 {
+      grid-row-start: 7;
       @include place-right();
+    }
+
+    .step-7 { // Trigger
+      width: 0px;
+      grid-row-start: 8;
+      height: 40vh;
     }
   }
 }

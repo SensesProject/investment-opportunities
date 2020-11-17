@@ -54,7 +54,7 @@ export default {
 
     &.variable--nuclear {
       &:before {
-        background-color: #FFE7A0;
+        background-color: #B8AEFF;
       }
     }
 
@@ -66,19 +66,19 @@ export default {
 
     &.variable--hydrogen-non-fossil {
       &:before {
-        background-color: #A3D1EA;
+        background-color: #B6D68C;
       }
     }
 
     &.variable--solar {
       &:before {
-        background-color: #B8AEFF;
+        background-color: #FFE7A0;
       }
     }
 
     &.variable--wind {
       &:before {
-        background-color: #B6D68C;
+        background-color: #A3D1EA;
       }
     }
 

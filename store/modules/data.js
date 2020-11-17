@@ -1,4 +1,4 @@
-import { assign, get, filter, map, groupBy, fromPairs, compact } from 'lodash'
+import { assign, get, map, groupBy, fromPairs, compact } from 'lodash'
 import axios from 'axios'
 
 const PATH_DATA = './data/investments.json'
@@ -23,12 +23,12 @@ const mutations = {
 const getters = {
   data: (state, getters, rootState) => {
     // Get the currently selected region
-    const region = get(rootState, ['settings', 'region'])
+    // const region = get(rootState, ['settings', 'region'])
     // Based on the region, we filter the data
-    console.log('getter data:')
-    console.log(get(state, ['investments', 'data'], []))
-    console.log('filtered', region, filter(get(state, ['investments', 'data'], []), { region }))
-    return filter(get(state, ['investments', 'data'], []), { region })
+    // console.log('getter data:')
+    // console.log(get(state, ['investments', 'data'], []))
+    // console.log('filtered', region, filter(get(state, ['investments', 'data'], []), { region }))
+    return get(state, ['investments', 'data'], [])
   },
   dataByScenario: (state, getters) => {
     console.log('Data (dataByScenario):', getters.data)

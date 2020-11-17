@@ -58,7 +58,7 @@ import { scaleLinear, scaleBand } from 'd3-scale'
 import { map, find, isUndefined, compact, range, get, forEach, kebabCase } from 'lodash'
 import { mapState, mapGetters } from 'vuex'
 import { format } from 'd3-format'
-import { getColorFromVariable, calcBar } from '../assets/js/utils.js'
+import { getColorFromVariable, calcBar } from '~/assets/js/utils.js'
 
 export default {
   props: {
@@ -97,10 +97,19 @@ export default {
     ...mapGetters([
       'data'
     ]),
+    extentX () {
+      return Math.max(...map(this.options, (option, i) => {
+        // const datum = get(find(this.data, option), ['values', this.region, this.model], 0)
+        // const ref = get(find(this.data, option), ['reference', this.region, this.model], 0)
+        const diff = get(find(this.data, option), ['changes', this.region, this.model, 2], 0)
+        // console.log(option.variable, { datum, ref, diff })
+        return Math.abs(diff)
+      }))
+    },
     scaleY () {
       return scaleLinear()
         .range([0, this.height / 2 - this.margin.top])
-        .domain([0, this.limit])
+        .domain([0, this.extentX]).nice()
     },
     maxHeight () {
       return this.scaleY.range()[1] + 15
@@ -140,12 +149,12 @@ export default {
       return compact(map(options, (option, i) => {
         const datum = find(data, option)
         if (!datum) { return false }
-        const { variable, scenario } = datum
-        const [change, isPositive, value] = get(datum, ['changes', this.region, this.model], [])
+        const { variable } = datum
+        const [change, isPositive, value] = get(datum, ['changes', this.region, this.model], [0, true, 0])
         const x = this.scaleX(i)
-        const y = yBase + (Math.min(this.scaleY(change), this.maxHeight) * (isPositive ? -1 : 1))
+        const y = yBase + (Math.min(this.scaleY(Math.abs(value)), this.maxHeight) * (isPositive ? -1 : 1))
         return {
-          tooltip: `Variable: ${variable}<br />Scenario: ${scenario}<br />Change: ${isPositive ? '+' : '–'}${format(',.3r')(value)} Billion<br />Change: ${isPositive ? '+' : '–'}${format('.0%')(change)}<br />Region: ${this.region}`,
+          tooltip: `Variable: ${variable}<br />${isPositive ? '+' : '–'}${format(',.3r')(value)}<br />Change: ${isPositive ? '+' : '–'}${format('.0%')(change)}<br />Region: ${this.region}`,
           d: calcBar(x, yBase, y, barWidth),
           x,
           y: yBase,
@@ -162,7 +171,7 @@ export default {
           y: yBase + (this.scaleY(tick) * (isPositive ? -1 : 1)),
           x1: margin.left,
           x2: this.width - margin.right,
-          label: `${isPositive ? '' : '–'}${tick * 100}%`
+          label: `${isPositive ? '' : '–'}${tick}`
         }
       })
     }

@@ -3,13 +3,15 @@
     <g class="barVariable-wrapper" v-for="bar in barVariables">
       <rect
         class="barVariable"
-        :class="{ isVisible: !showModels && isColored, hasHighlight: highlight.length, isHighlighted: highlight.includes(bar.variable) }"
+        :class="{ isVisible: !showRegions, hasHighlight: highlight.length, isHighlighted: highlight.includes(bar.variable) }"
         :x="bar.x"
         :y="bar.y"
         :width="bar.width"
         :height="bar.height"
         :fill="bar.color"
-        v-tooltip="{ content: bar.tooltip }" />
+        v-tooltip="{ content: bar.tooltip }"
+        @mouseenter="() => changeGuides([bar.x, bar.x + bar.width])"
+        @mouseleave="() => changeGuides([])"  />
       </g>
   </g>
 </template>
@@ -17,7 +19,7 @@
 <script>
 import { format } from 'd3-format'
 import { get, find, map } from 'lodash'
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import { getColorFromVariable } from '~/assets/js/utils.js'
 import { VARIABLES } from '~/store/config'
 // import { MODELS } from '~/store/config'
@@ -33,24 +35,26 @@ export default {
     ...mapState({
       barStacked: state => state.settings.barStacked,
       isColored: state => state.settings.isColored,
-      showModels: state => state.settings.showModels,
-      highlight: state => state.settings.highlight
+      showRegions: state => state.settings.showRegions,
+      highlight: state => state.settings.highlight,
+      model: state => state.settings.model,
+      region: state => state.settings.region
     }),
     barVariables () {
       let x0 = 0
 
       return map(VARIABLES, (variable) => {
         const d = find(this.data, { variable })
-        const value = get(d, ['values', 'average'], 0)
+        const value = get(d, ['values', this.region, this.model], 0)
 
-        const reference = get(d, ['reference', 'average'], 0)
-        const [change, isPositiveChange] = get(d, ['changes', 'average'], [])
+        const reference = get(d, ['reference', this.region, this.model], 0)
+        const [change, isPositiveChange] = get(d, ['changes', this.region, this.model], [])
 
         const color = this.isColored ? getColorFromVariable(variable) : '#343437'
 
         const tooltip = this.createVariableTooltip(variable, value, reference, change, isPositiveChange)
 
-        const width = this.scaleX(value)
+        const width = this.showRegions ? 0 : this.scaleX(value)
         const maxWidth = this.scaleX(get(this.extents, variable, value)) + this.gap
 
         // width to be stacked
@@ -70,6 +74,9 @@ export default {
     }
   },
   methods: {
+    ...mapActions('guides', [
+      'changeGuides'
+    ]),
     createVariableTooltip (variable, value, reference, change, isPositive) {
       const { formatNumber: fN } = this
       return `
@@ -93,10 +100,12 @@ export default {
   @import "~@/assets/style/global";
 
   .barVariable {
-    transition: x $transition-animation linear 0s, fill $transition-animation, opacity $transition-animation;
+    opacity: 0;
+    transition: x $transition-animation linear 0s, fill $transition-animation, opacity $transition-animation, width $transition-animation;
 
     &.isVisible {
-      transition: x $transition-animation linear $transition-animation, fill $transition-animation, opacity $transition-animation;
+      opacity: 1;
+      transition: x $transition-animation linear $transition-animation, fill $transition-animation, opacity $transition-animation, width $transition-animation;
     }
 
     &.hasHighlight {
@@ -104,7 +113,7 @@ export default {
 
       &.isHighlighted {
         opacity: 1;
-        filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, .1));
+        // filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, .1));
       }
     }
   }
