@@ -69,3 +69,10 @@
 	font-family: $font-sans;
 	font-weight: 400;
 }
+
+@mixin text-4() {
+	font-size: 0.6rem;
+	color: #444;
+	font-family: $font-sans;
+	font-weight: 400;
+}

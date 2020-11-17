@@ -6,18 +6,6 @@ $font-prefix: "../../node_modules/library/src/assets/fonts";
 @import "./layout";
 @import "./typography";
 
-.tooltip {
-  font-size: $font-size-default;
-  font-weight: $font-weight-regular;
-  letter-spacing: 0.02em;
-
-  header {
-    font-weight: $font-weight-bold;
-    font-size: $font-size-big;
-    margin: 0 0 $spacing / 6;
-  }
-}
-
 .senses-tooltip-select.popover {
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.03);
   border: 1px solid #f2f2f2d9;
