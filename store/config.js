@@ -1,6 +1,9 @@
 export const MODELS = ['average', 'POLES', 'REMIND-MAgPIE', 'AIM/CGE', 'IMAGE', 'MESSAGEix-GLOBIOM']
 export const FORMULATIONS = ['historic', 'NDC', '2C', '1.5C']
 
+export const DEFAULT_MODEL = 'REMIND-MAgPIE'
+export const DEFAULT_REGION = 'World'
+
 export const GROUP_FOSSILS = [
   'Oil and Gas extraction',
   'Coal extraction',
