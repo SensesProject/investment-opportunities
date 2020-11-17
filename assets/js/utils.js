@@ -1,5 +1,5 @@
 import { get } from 'lodash'
-import { SCENARIO_MAPPING_SHORT, REGION_MAPPING_LONG } from '~/store/config'
+import { SCENARIO_MAPPING_SHORT, REGION_MAPPING_LONG, SCENARIO_MAPPING_LONG } from '~/store/config'
 
 export const getColorFromVariable = function (key) {
   const colors = {
@@ -30,5 +30,9 @@ export const shortScenario = function (scenario) {
 }
 
 export const longScenario = function (scenario) {
+  return get(SCENARIO_MAPPING_LONG, scenario, scenario)
+}
+
+export const longRegion = function (scenario) {
   return get(REGION_MAPPING_LONG, scenario, scenario)
 }

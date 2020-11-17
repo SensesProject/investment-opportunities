@@ -54,13 +54,14 @@ export default {
     createScenarioTooltip (scenario, value, reference, diff) {
       const { formatNumber: fN } = this
       return `
-        <header>${scenario}</header>
+        <header><strong>${scenario}</strong><span>${fN(value)}</span></header>
         <p>
-          We are currently investing <strong>${fN(reference)}</strong> Billion US-Dollar per year,<br />
-          but we should invest <strong>${fN(value)}</strong>.
-          That means, we should invest<br />
-          <strong>${fN(Math.abs(diff))} ${diff > 0 ? 'more' : 'less'}</strong> in ${scenario}.
+          We are currently investing ${fN(reference)} billion US dollar every year, but we ${scenario === 'NDC' ? 'pledged to' : 'should'} invest <strong>${fN(value)}</strong> for <strong>${scenario}</strong>.
+          That means, we should invest <strong>${fN(Math.abs(diff))} ${diff > 0 ? 'more' : 'less'}</strong>.
         </p>
+        <footer>
+          <span>Region: ${this.region}</span><span>Model: ${this.model}</span>
+        </footer>
       `
     },
     formatNumber (n) {

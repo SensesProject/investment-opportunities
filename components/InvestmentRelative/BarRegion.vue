@@ -32,7 +32,7 @@ import { format } from 'd3-format'
 import { scaleBand } from 'd3-scale'
 import { get, find, map } from 'lodash'
 import { mapState, mapActions } from 'vuex'
-import { getColorFromVariable } from '~/assets/js/utils.js'
+import { getColorFromVariable, longScenario } from '~/assets/js/utils.js'
 import { VARIABLES, REGIONS, REGION_MAPPING_SHORT, REGION_MAPPING_LONG } from '~/store/config'
 
 export default {
@@ -117,13 +117,14 @@ export default {
     createVariableTooltip (region, variable, value, reference, change, isPositive) {
       const { formatNumber: fN } = this
       return `
-        <header>${region} / ${variable}</header>
+        <header><strong>${variable}</strong><strong>${get(REGION_MAPPING_SHORT, region, region)}</strong><span>${fN(value)}</span></header>
         <p>
-          ${region} is currently investing <strong>${fN(reference)}</strong> Billion US-Dollar per year in ${variable},<br />
-          but they ${this.scenario === 'NDC' ? 'pledged to' : 'should'} invest <strong>${fN(value)}</strong>.
-          That means, they should invest<br />
-          <strong>${fN(Math.abs(value - reference))} (${format('.0%')(change)}) ${isPositive ? 'more' : 'less'}</strong> in ${variable}.
+          ${get(REGION_MAPPING_SHORT, region, region)} is currently investing <strong>${fN(reference)}</strong> billion US dollar every year in ${variable}, but they ${this.scenario === 'NDC' ? 'pledged to' : 'should'} invest <strong>${fN(value)}</strong> for <strong>${longScenario(this.scenario)}</strong>.
+          That is <strong>${fN(Math.abs(value - reference))} (${format('.0%')(change)}) ${isPositive ? 'more' : 'less'}</strong>.
         </p>
+        <footer>
+          <span>Scenario: ${longScenario(this.scenario)}</span><span>Model: ${this.model}</span>
+        </footer>
       `
     },
     formatNumber (n) {
