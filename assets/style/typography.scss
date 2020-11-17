@@ -16,6 +16,7 @@
 
 @mixin headline-3() {
 	font-size: 1.3rem;
+	line-height: 1.2;
 	font-weight: 600;
 	font-family: $font-sans;
 }
