@@ -18,7 +18,7 @@ export default {
     label () {
       const pronom = this.region === 'World' ? 'we' : this.region
       const labels = {
-        CPol: `What ${pronom} ${this.region === 'World' ? 'are' : 'is'} <tspan>currently</tspan> investing <small>(Current policies)</small>`,
+        CPol: `What ${pronom} ${this.region === 'World' ? 'are' : 'is'} <tspan>currently</tspan> investing <small>(average 2017-2019)</small>`,
         NDC: `What ${pronom} <tspan>pledged</tspan> to invest <small>(Nationally Determined Contributions)</small>`,
         '2C': `What ${pronom} <tspan>should</tspan> invest for <tspan>2°C</tspan>`,
         '1.5C': `What ${pronom} <tspan>should</tspan> invest for <tspan>1.5°C</tspan>`
