@@ -51,7 +51,7 @@
         <p>Decarbonized power systems need to expand <Variable variable="transmission-and-distribution">Transmission and Distribution</Variable> and <Variable variable="storage">Storage</Variable>, to balance demand and supply from increasing shares of variable renewables. </p>
         <p>Carbon capture and storage investments (<Variable variable="ccs">CCS</Variable>) are needed both for extending the usage of fossil fuels in some applications (industry, hydrogen), but also enable carbon dioxide removal (CDR) via bioenergy with CCS (BECCS). Scaling up investments into these options starts from a much lower base, as only demonstration projects exist so far. The in absolute terms moderate upscaling is however an important component for gathering experience and knowledge, and thus being able to better understand viable combinations of residual emissions and CDR in future net-zero energy systems.</p>
     <p>The last but very clearly not the least component of an investment strategy to move towards ambitious climate targets is a considerably increase in investments for <Variable variable="energy-efficiency">Energy Efficiency</Variable>. These investments allow for immediate emission reductions of sectors before their energy supply is decarbonized, and also are a crucial component for long-term sustainable energy systems with much reduced sustainability trade-offs inherent to all energy technologies [cite Grubler et al. 2018, Bertram et al. 2018]</p>
-        <BarInvestmentsChart
+        <BarCompactAbsolute
           :variables="GROUP_OTHERS"
           :scenarios="['NDC', '2C', '1.5C']">
           <template v-slot:header>
@@ -60,7 +60,7 @@
           <template v-slot:caption>
             Figure 3. Relative changes in something
           </template>
-        </BarInvestmentsChart>
+        </BarCompactAbsolute>
       </IntersectionObserver>
       <IntersectionObserver :step="5" :noStyling="true" classes="step step-5 step-trigger">
         <div />
