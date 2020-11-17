@@ -105,6 +105,12 @@ export default {
         background-color: #BAD2EB;
       }
     }
+
+    &.variable--storage {
+      &:before {
+        background-color: #A7DBD1;
+      }
+    }
   }
 
 </style>
