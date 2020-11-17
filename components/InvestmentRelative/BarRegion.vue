@@ -33,7 +33,7 @@ import { scaleBand } from 'd3-scale'
 import { get, find, map } from 'lodash'
 import { mapState, mapActions } from 'vuex'
 import { getColorFromVariable } from '~/assets/js/utils.js'
-import { VARIABLES, REGIONS } from '~/store/config'
+import { VARIABLES, REGIONS, REGION_MAPPING_SHORT, REGION_MAPPING_LONG } from '~/store/config'
 
 export default {
   props: ['data', 'scenario', 'width', 'height', 'y', 'scaleX', 'groupHeight', 'extents', 'gap', 'scenarioHeight'],
@@ -63,7 +63,8 @@ export default {
         return {
           x: 0,
           y: this.y + this.scaleY(region) - 2 - 20,
-          region
+          region: get(REGION_MAPPING_SHORT, region, region),
+          tooltip: get(REGION_MAPPING_LONG, region, region)
         }
       })
     },
