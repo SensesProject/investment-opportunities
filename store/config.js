@@ -60,3 +60,8 @@ export const REGION_MAPPING_LONG = {
   'R5MAF': 'USA, Australia, NZ, Canada, EU-15, Europe Non EU, European Free Trade Association, Japan',
   'R5REF': 'EU-12, Europe Eastern, Russia'
 }
+
+export const SCENARIO_MAPPING_SHORT = {
+  '2C': '2°',
+  '1.5C': '1.5°'
+}
