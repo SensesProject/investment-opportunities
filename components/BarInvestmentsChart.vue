@@ -40,6 +40,15 @@
             :d="el.d"
             :fill="`url(#gradient-${el.variable})`"
           />
+          <text
+            v-if="el.label"
+            class="label"
+            text-anchor="middle"
+            :x="el.x + barWidth / 2"
+            :y="el.y + el.offset"
+            :dominant-baseline="el.baseline">
+            {{ el.label }}
+          </text>
         </g>
         <line
           :x1="margin.left"
@@ -58,7 +67,7 @@ import { scaleLinear, scaleBand } from 'd3-scale'
 import { map, find, isUndefined, compact, range, get, forEach, kebabCase } from 'lodash'
 import { mapState, mapGetters } from 'vuex'
 import { format } from 'd3-format'
-import { getColorFromVariable, calcBar } from '../assets/js/utils.js'
+import { getColorFromVariable, calcBar, shortScenario } from '../assets/js/utils.js'
 
 export default {
   props: {
@@ -148,8 +157,11 @@ export default {
           tooltip: `Variable: ${variable}<br />Scenario: ${scenario}<br />Change: ${isPositive ? '+' : '–'}${format(',.3r')(value)} Billion<br />Change: ${isPositive ? '+' : '–'}${format('.0%')(change)}<br />Region: ${this.region}`,
           d: calcBar(x, yBase, y, barWidth),
           x,
-          y: yBase,
-          variable: kebabCase(variable)
+          y,
+          variable: kebabCase(variable),
+          offset: 4 * (isPositive ? -1 : 1),
+          label: i < this.scenarios.length ? shortScenario(scenario) : false,
+          baseline: isPositive ? 'auto' : 'hanging'
         }
       }))
     },

@@ -40,6 +40,15 @@
             :d="el.d"
             :fill="`url(#gradient-${el.variable})`"
           />
+          <text
+            v-if="el.label"
+            class="label"
+            text-anchor="middle"
+            :x="el.x + barWidth / 2"
+            :y="el.y + el.offset"
+            :dominant-baseline="el.baseline">
+            {{ el.label }}
+          </text>
         </g>
         <line
           :x1="margin.left"
@@ -58,7 +67,7 @@ import { scaleLinear, scaleBand } from 'd3-scale'
 import { map, find, isUndefined, compact, range, get, forEach, kebabCase } from 'lodash'
 import { mapState, mapGetters } from 'vuex'
 import { format } from 'd3-format'
-import { getColorFromVariable, calcBar } from '~/assets/js/utils.js'
+import { getColorFromVariable, calcBar, shortScenario } from '~/assets/js/utils.js'
 
 export default {
   props: {
@@ -149,7 +158,7 @@ export default {
       return compact(map(options, (option, i) => {
         const datum = find(data, option)
         if (!datum) { return false }
-        const { variable } = datum
+        const { variable, scenario } = datum
         const [change, isPositive, value] = get(datum, ['changes', this.region, this.model], [0, true, 0])
         const x = this.scaleX(i)
         const y = yBase + (Math.min(this.scaleY(Math.abs(value)), this.maxHeight) * (isPositive ? -1 : 1))
@@ -157,14 +166,17 @@ export default {
           tooltip: `Variable: ${variable}<br />${isPositive ? '+' : '–'}${format(',.3r')(value)}<br />Change: ${isPositive ? '+' : '–'}${format('.0%')(change)}<br />Region: ${this.region}`,
           d: calcBar(x, yBase, y, barWidth),
           x,
-          y: yBase,
-          variable: kebabCase(variable)
+          y,
+          variable: kebabCase(variable),
+          offset: 4 * (isPositive ? -1 : 1),
+          label: i < this.scenarios.length ? shortScenario(scenario) : false,
+          baseline: isPositive ? 'auto' : 'hanging'
         }
       }))
     },
     ticks () {
       const { margin, yBase } = this
-      const ticks = this.scaleY.ticks(2)
+      const ticks = this.scaleY.ticks(3)
       return map(ticks.concat(ticks), (tick, i) => {
         const isPositive = i <= ticks.length
         return {
@@ -215,6 +227,10 @@ export default {
             stroke: #aaa;
           }
         }
+      }
+
+      .label {
+        @include graphic-text-label-2();
       }
 
       .tick {
