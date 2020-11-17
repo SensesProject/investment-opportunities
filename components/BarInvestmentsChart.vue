@@ -67,7 +67,7 @@ import { scaleLinear, scaleBand } from 'd3-scale'
 import { map, find, isUndefined, compact, range, get, forEach, kebabCase } from 'lodash'
 import { mapState, mapGetters } from 'vuex'
 import { format } from 'd3-format'
-import { getColorFromVariable, calcBar, shortScenario } from '../assets/js/utils.js'
+import { getColorFromVariable, calcBar, shortScenario } from '~/assets/js/utils.js'
 
 export default {
   props: {
