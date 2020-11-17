@@ -32,7 +32,7 @@
       <IntersectionObserver :step="3" :noStyling="true" classes="step step-3">
         <h3>Upscaling low-carbon investments</h3>
         <p>Electrification is a key mitigation strategy, but for it to be effective, power generation needs to be decarbonized quickly. Therefore, ambitious mitigation scenarios sees all sources of low-carbon energy to expand, requiring strongly increasing investments in the next decade.</p>
-		<p>The two low-carbon sources standing out however are <Variable variable="wind">Wind</Variable> and <Variable variable="solar">Solar</Variable>: Due to recent cost reductions, they quickly become universally the cheapest form of electricity as soon as CO2 is priced, and thanks to their granular nature and can be scaled up rapidly in all world regions. </p>
+        <p>The two low-carbon sources standing out however are <Variable variable="wind">Wind</Variable> and <Variable variable="solar">Solar</Variable>: Due to recent cost reductions, they quickly become universally the cheapest form of electricity as soon as CO2 is priced, and thanks to their granular nature and can be scaled up rapidly in all world regions. </p>
         <BarCompactAbsolute
           :variables="GROUP_NON_FOSSILS"
           :scenarios="['NDC', '2C', '1.5C']">
@@ -44,7 +44,7 @@
           </template>
         </BarCompactAbsolute>
         <p>The low-carbon power generation technologies <Variable variable="nuclear">Nuclear</Variable> and hydro and geothermal, included in <Variable variable="other-renewables">other renewables</Variable> currently still provide the highest share of low-carbon electricity, but face different hurdles that limit their expansion and thus see more moderate increases of investment over the next 10 years. </p>
-		<p>Not only low-carbon power generation is being scaled up, but also low-carbon fuels via <Variable variable="hydrogen-non-fossil">Hydrogen - Non-fossil</Variable> and <Variable variable="bioenergy">Bioenergy</Variable>. </p>
+        <p>Not only low-carbon power generation is being scaled up, but also low-carbon fuels via <Variable variable="hydrogen-non-fossil">Hydrogen - Non-fossil</Variable> and <Variable variable="bioenergy">Bioenergy</Variable>.</p>
       </IntersectionObserver>
       <IntersectionObserver :step="4" :noStyling="true" classes="step step-4">
         <h3>Downscaling fossils</h3>
