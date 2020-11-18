@@ -35,7 +35,7 @@ export default {
 
     &.variable--coal {
       i {
-        background-color: #F0A1BA;
+        background-color: #E67887;
       }
     }
 
@@ -47,7 +47,7 @@ export default {
 
     &.variable--oil-and-gas {
       i {
-        background-color: #E67887;
+        background-color: #F0A1BA;
       }
     }
 
