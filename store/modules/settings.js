@@ -29,13 +29,20 @@ const state = () => {
 
 const mutations = {
   SETTINGS_CHANGE (state, { key, value }) {
-    // console.log({ key, value })
     if (has(state, key)) {
       let val = value
       if (isUndefined(value) || isNaN(value)) {
         val = get(DEFAULTS, key)
       }
       set(state, key, val)
+
+      if (key === 'showRegions' && val === true) {
+        set(state, 'barStacked', true)
+      }
+
+      if (key === 'barStacked' && val === false) {
+        set(state, 'showRegions', false)
+      }
     }
   }
 }
