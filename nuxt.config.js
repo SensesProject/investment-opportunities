@@ -1,58 +1,29 @@
+const { getHead } = require('library/src/assets/js/head.js')
 
 export default {
   mode: 'spa',
-  /*
-  ** Headers of the page
-  */
-  head: {
+  head: getHead({
     title: 'Investment Opportunities and Alignment',
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
-    ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
-  },
-  /*
-  ** Customize the progress-bar color
-  */
+    description: 'In this module, we illustrate how co-production techniques can be applied in combination with socioeconomic and impact scenarios to develop adaptation pathways for a climate robust and CO2-neutral landscape. We demonstrate this process with the case study of the Dutch Overijsselse Vecht.',
+    image: 'https://climatescenarios.org/share/og-dutch.jpg'
+  }),
   loading: { color: '#fff' },
-  /*
-  ** Global CSS
-  */
   css: [
     '@/assets/style/base.scss'
   ],
-  /*
-  ** Plugins to load before mounting the App
-  */
-  plugins: [
-  ],
-  /*
-  ** Nuxt.js dev-modules
-  */
-  buildModules: [
-    // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
-  ],
-  /*
-  ** Nuxt.js modules
-  */
-  modules: [
-  ],
-  /*
-  ** Build configuration
-  */
   router: {
     base: '/investment/'
   },
+  resolve: {
+    alias: {
+      style: 'assets/style'
+    }
+  },
   build: {
-    /*
-    ** You can extend webpack config here
-    */
     extend (config, ctx) {
     }
+  },
+  generate: {
+    crawler: false
   }
 }
