@@ -1,7 +1,7 @@
 <template>
   <div class="vis-labels">
     <section>
-      <h2>What {{ showRegions ? 'the regions' : 'we' }} are <strong :class="{ isHighlighted: !barStacked }">currently</strong> investing <small>(average 2017-2019)</small></h2>
+      <h2>What {{ showRegions ? 'the regions' : 'we' }} are <strong :class="{ isHighlighted: !barStacked }">currently</strong> investing <small>(average 2017–2019)</small></h2>
       <span class="label-2" v-if="get(values, ['historic'], 0) && !barStacked">As an average of the last 3 years, we are currently investing <strong>{{ get(values, ['historic', 'value'], 0) }}</strong> billion US dollar every year</span>
     </section>
     <section>
