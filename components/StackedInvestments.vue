@@ -7,7 +7,7 @@
           <StackedInvestmentsBars
             :width="width"
             :height="height"
-            :gap="showRegions ? 10 : gap"
+            :gap="gap"
             :data="data"
             :scenario="key"
             :extents="extents"
@@ -24,7 +24,7 @@
 
 <script>
 import { groupBy, filter, get, map, forEach, max } from 'lodash'
-import { scaleBand } from 'd3-scale'
+import { scaleBand, scaleLinear } from 'd3-scale'
 import { mapState, mapGetters } from 'vuex'
 import StackedInvestmentsBars from '~/components/StackedInvestmentsBars'
 import StackedInvestmentsDefs from '~/components/StackedInvestmentsDefs'
@@ -43,7 +43,6 @@ export default {
     return {
       width: 0,
       height: 0,
-      gap: 20,
       scenarios: ['historic', 'NDC', '2C', '1.5C']
     }
   },
@@ -56,6 +55,14 @@ export default {
       region: state => state.settings.region,
       showRegions: state => state.settings.showRegions
     }),
+    scaleGap () {
+      return scaleLinear()
+        .range([5, 20])
+        .domain([300 / VARIABLES.length, 1400 / VARIABLES.length])
+    },
+    gap () {
+      return Math.max(Math.min(this.scaleGap(this.width / VARIABLES.length) * (this.showRegions ? 0.5 : 1), 30), 3)
+    },
     scaleY () {
       return scaleBand()
         .range([0, this.height])
