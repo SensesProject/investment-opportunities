@@ -45,6 +45,10 @@ export const getShortRegion = function (region) {
 const fn = format(',.3r')
 const fp = format('.0%')
 
+String.prototype.capitalize = function() {
+  return this.charAt(0).toUpperCase() + this.slice(1)
+}
+
 export const createTooltip = function (type, region, variable, value, reference, change, isPositive, scenario, model) {
   const longScenario = getLongScenario(scenario)
   const shortRegion = getShortRegion(region)
@@ -65,25 +69,28 @@ export const createTooltip = function (type, region, variable, value, reference,
       content.push(`<header><strong>${variable}</strong><strong>${longScenario}</strong><span>${labelValue}&#8239;bn US$/yr</span></header>`)
       break;
     default:
-      content.push(`<header><strong>${scenario}</strong><span>${labelValue}&#8239;bn US$/yr</span></header>`)
+      content.push(`<header><strong>${longScenario}</strong><span>${labelValue}&#8239;bn US$/yr</span></header>`)
   }
 
-  const verb = scenario === 'NDC' ? 'pledged to' : 'should'
   const adjective = isPositive ? 'more' : 'less'
-  const target = scenario === 'NDC' ? 's' : ' target'
 
   if (scenario === 'historic') {
     const subject = region === 'World' ? 'We are' : `${shortRegion} is`
     content.push(`<p>${subject} currently investing ${labelReference} billion US dollar every year${object}.</p>`)
   } else {
-    const subject = region === 'World' ? 'We' : shortRegion
+    const subject = region === 'World' ? 'we' : shortRegion
     const pronoun = region === 'World' ? 'we' : 'they'
-    content.push(`<p>${subject} ${verb} invest ${labelValue} billion US dollar every year ${object} to be aligned with the ${longScenario}${target}.</p>`)
+
+    if (scenario === 'NDC') {
+      content.push(`<p>Given pledged NDCs, ${subject} ${region === 'World' ? 'are' : 'is'} on track to invest ${labelValue} billion US dollar every year ${object}.</p>`)
+    } else {
+      content.push(`<p>${subject.capitalize()} should invest ${labelValue} billion US dollar every year ${object} to be aligned with the ${longScenario} ${scenario} target.</p>`)
+    }
 
     if (reference !== 0) {
       content.push(`<p>That is ${labelDiff} ${labelChange} ${adjective} than the ${labelReference}&#8239;bn US$/yr, that ${pronoun} are currently investing.</p>`)
     } else {
-      content.push(`<p>${subject} ${region === 'World' ? 'are' : 'is'} currently not investing anything in this.</p>`)
+      content.push(`<p>${subject.capitalize()} ${region === 'World' ? 'are' : 'is'} currently not investing anything in this.</p>`)
     }
   }
 
