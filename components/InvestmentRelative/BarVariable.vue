@@ -3,7 +3,7 @@
     <g class="barVariable-wrapper" v-for="bar in barVariables">
       <rect
         class="barVariable"
-        :class="[changeClass, { isVisible: !showRegions, isNotStacked: !barStacked, hasHighlight: highlight.length, isHighlighted: highlight.includes(bar.variable) }]"
+        :class="[changeClass, { isVisible: !showRegions, isStacked: barStacked, hasHighlight: highlight.length, isHighlighted: highlight.includes(bar.variable) }]"
         :x="bar.x"
         :y="bar.y"
         :width="bar.width"
@@ -103,17 +103,17 @@ export default {
     &.change-barStacked, &.change-region {
       opacity: 0;
       transition:
-        x $transition-animation,
-        fill $transition-animation,
-        opacity $transition-animation,
+        x $transition-animation linear 0s,
+        fill $transition-animation linear $transition-animation,
+        opacity $transition-animation linear $transition-animation * 2,
         width $transition-animation;
 
-      &.isVisible {
+      &.isStacked, &.isVisible {
         opacity: 1;
         transition:
-          x $transition-animation,
-          fill $transition-animation,
-          opacity $transition-animation,
+          x $transition-animation linear $transition-animation,
+          fill $transition-animation linear 0s,
+          opacity $transition-animation linear 0s,
           width $transition-animation;
       }
     }
