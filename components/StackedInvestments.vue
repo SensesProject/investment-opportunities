@@ -86,7 +86,7 @@ export default {
             const regions = map(REGIONS, region => get(run, ['values', region, this.model]))
             return max(regions)
           } else {
-            return get(run, ['values', 'World', this.model])
+            return get(run, ['values', this.region, this.model])
           }
         })
         // Set the max value
@@ -126,6 +126,18 @@ export default {
     margin: 0;
     height: 70vh;
     width: 100%;
+
+    @include query($narrow) {
+      width: 90%;
+    }
+
+    @include query($medium) {
+      width: 80%;
+    }
+
+    @include query($wide) {
+      width: 70%;
+    }
 
     .vis {
       height: 100%;
