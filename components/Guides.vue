@@ -1,5 +1,5 @@
 <template>
-  <g class="guides">
+  <g class="guides" v-if="false">
     <line
       v-for="(x, i) in guides"
       :x1="x + 0.5"
