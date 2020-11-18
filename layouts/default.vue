@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SensesMenu message="Work in Progress"/>
+    <SensesMenu />
     <nuxt />
   </div>
 </template>

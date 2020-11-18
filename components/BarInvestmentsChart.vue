@@ -7,8 +7,9 @@
       <svg ref="vis" class="vis">
         <defs>
           <linearGradient
-            v-for="({ variable, color }) in gradients"
-            :id="`gradient-${variable}`"
+            v-for="({ variable, color, id }) in gradients"
+            :key="id"
+            :id="id"
             gradientUnits="userSpaceOnUse"
             x1="0"
             x2="0"
@@ -137,9 +138,11 @@ export default {
     },
     gradients () {
       return map(this.variables, (variable) => {
+        const key = kebabCase(variable)
         return {
-          variable: kebabCase(variable),
-          color: getColorFromVariable(variable)
+          variable: key,
+          color: getColorFromVariable(variable),
+          id: `gradient-${key}`
         }
       })
     },

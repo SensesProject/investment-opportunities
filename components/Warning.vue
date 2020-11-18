@@ -1,5 +1,5 @@
 <template>
-  <div class="warning" v-if="model !== 'median' && model !== 'REMIND-MAgPIE'">
+  <div v-if="model !== 'median' && model !== 'REMIND-MAgPIE'" class="warning">
     <span>The model {{ model }} is not Lorem ipsum dolor sit amet.</span>
   </div>
 </template>

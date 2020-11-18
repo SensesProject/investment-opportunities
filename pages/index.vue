@@ -6,7 +6,7 @@
     <SectionConclusion />
     <SectionMethodology />
     <Warning />
-    <SensesMeta id="investment-opportunities"/>
+    <SensesMeta id="investment-opportunities" />
   </main>
 </template>
 
