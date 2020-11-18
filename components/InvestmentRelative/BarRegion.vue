@@ -32,7 +32,7 @@ import { format } from 'd3-format'
 import { scaleBand } from 'd3-scale'
 import { get, find, map } from 'lodash'
 import { mapState, mapActions } from 'vuex'
-import { getColorFromVariable, longScenario, createTooltip } from '~/assets/js/utils.js'
+import { getColorFromVariable, createTooltip } from '~/assets/js/utils.js'
 import { VARIABLES, REGIONS, REGION_MAPPING_SHORT, REGION_MAPPING_LONG } from '~/store/config'
 
 export default {

@@ -20,7 +20,7 @@
 import { format } from 'd3-format'
 import { get, find, map } from 'lodash'
 import { mapState, mapActions } from 'vuex'
-import { getColorFromVariable, getLongScenario, createTooltip } from '~/assets/js/utils.js'
+import { getColorFromVariable, createTooltip } from '~/assets/js/utils.js'
 import { VARIABLES } from '~/store/config'
 // import { MODELS } from '~/store/config'
 
