@@ -61,6 +61,8 @@ const actions = {
         commit('SETTINGS_CHANGE', { key: 'showRegions', value: false })
         commit('SETTINGS_CHANGE', { key: 'isColored', value: false })
         commit('SETTINGS_CHANGE', { key: 'highlight', value: [] })
+        commit('SETTINGS_CHANGE', { key: 'region', value: DEFAULT_REGION })
+        commit('SETTINGS_CHANGE', { key: 'model', value: DEFAULT_MODEL })
         break
       case 1:
         // commit('SETTINGS_CHANGE', { key: 'isRotated', value: false })
@@ -68,6 +70,8 @@ const actions = {
         commit('SETTINGS_CHANGE', { key: 'showRegions', value: false })
         commit('SETTINGS_CHANGE', { key: 'isColored', value: true })
         commit('SETTINGS_CHANGE', { key: 'highlight', value: [] })
+        commit('SETTINGS_CHANGE', { key: 'region', value: DEFAULT_REGION })
+        commit('SETTINGS_CHANGE', { key: 'model', value: DEFAULT_MODEL })
         break
       case 2:
         // commit('SETTINGS_CHANGE', { key: 'isRotated', value: true })
@@ -75,6 +79,8 @@ const actions = {
         commit('SETTINGS_CHANGE', { key: 'showRegions', value: false })
         commit('SETTINGS_CHANGE', { key: 'isColored', value: true })
         commit('SETTINGS_CHANGE', { key: 'highlight', value: GROUP_FOSSILS })
+        commit('SETTINGS_CHANGE', { key: 'region', value: DEFAULT_REGION })
+        commit('SETTINGS_CHANGE', { key: 'model', value: DEFAULT_MODEL })
         break
       case 3:
         // commit('SETTINGS_CHANGE', { key: 'isRotated', value: true })
@@ -82,6 +88,8 @@ const actions = {
         commit('SETTINGS_CHANGE', { key: 'showRegions', value: false })
         commit('SETTINGS_CHANGE', { key: 'isColored', value: true })
         commit('SETTINGS_CHANGE', { key: 'highlight', value: GROUP_NON_FOSSILS })
+        commit('SETTINGS_CHANGE', { key: 'region', value: DEFAULT_REGION })
+        commit('SETTINGS_CHANGE', { key: 'model', value: DEFAULT_MODEL })
         break
       case 4:
         // commit('SETTINGS_CHANGE', { key: 'isRotated', value: true })
@@ -89,6 +97,8 @@ const actions = {
         commit('SETTINGS_CHANGE', { key: 'showRegions', value: false })
         commit('SETTINGS_CHANGE', { key: 'isColored', value: true })
         commit('SETTINGS_CHANGE', { key: 'highlight', value: GROUP_OTHERS })
+        commit('SETTINGS_CHANGE', { key: 'region', value: DEFAULT_REGION })
+        commit('SETTINGS_CHANGE', { key: 'model', value: DEFAULT_MODEL })
         break
       case 5:
         // commit('SETTINGS_CHANGE', { key: 'isRotated', value: true })
@@ -96,6 +106,8 @@ const actions = {
         commit('SETTINGS_CHANGE', { key: 'showRegions', value: true })
         commit('SETTINGS_CHANGE', { key: 'isColored', value: true })
         commit('SETTINGS_CHANGE', { key: 'highlight', value: [] })
+        commit('SETTINGS_CHANGE', { key: 'region', value: DEFAULT_REGION })
+        commit('SETTINGS_CHANGE', { key: 'model', value: DEFAULT_MODEL })
         break
       case 6:
         // commit('SETTINGS_CHANGE', { key: 'isRotated', value: true })
@@ -103,6 +115,8 @@ const actions = {
         commit('SETTINGS_CHANGE', { key: 'showRegions', value: true })
         commit('SETTINGS_CHANGE', { key: 'isColored', value: true })
         commit('SETTINGS_CHANGE', { key: 'highlight', value: [] })
+        commit('SETTINGS_CHANGE', { key: 'region', value: DEFAULT_REGION })
+        commit('SETTINGS_CHANGE', { key: 'model', value: DEFAULT_MODEL })
         break
       case 7:
         // commit('SETTINGS_CHANGE', { key: 'isRotated', value: true })
@@ -110,6 +124,8 @@ const actions = {
         commit('SETTINGS_CHANGE', { key: 'showRegions', value: true })
         commit('SETTINGS_CHANGE', { key: 'isColored', value: true })
         commit('SETTINGS_CHANGE', { key: 'highlight', value: [] })
+        commit('SETTINGS_CHANGE', { key: 'region', value: DEFAULT_REGION })
+        commit('SETTINGS_CHANGE', { key: 'model', value: DEFAULT_MODEL })
         break
     }
   }
