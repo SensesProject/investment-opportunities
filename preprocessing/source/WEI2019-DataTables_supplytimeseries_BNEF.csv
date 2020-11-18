@@ -1,8 +1,0 @@
-Model;Scenario;Region;Variable;Unit;2006;2007;2008;2009;2010;2011;2012;2013;2014;2015;2016;2017;2018;2019
-Reference;IEA-WEI ;World;Investment|Energy Supply|Extraction|Coal;billion US$2010/yr;;;;;117.18;136.276;141.484;131.936;116.312;97.216;75.516;67.704;69.44;
-Reference;IEA-WEI ;World;Investment|Energy Supply|Extraction|Fossil;billion US$2010/yr;;;;;859.32;945.252;1050.28;1061.564;1077.188;861.056;699.608;695.268;704.816;
-Reference;IEA-WEI ;World;Investment|Energy Supply|Electricity|Nuclear;billion US$2010/yr;;;;;18.228;19.964;21.7;26.908;30.38;31.248;36.456;40.796;40.796;
-Reference;IEA-WEI ;World;Investment|Energy Supply|Electricity|Fossil;billion US$2010/yr;;;;;150.164;152.768;149.296;137.144;128.464;124.124;120.652;115.444;110.236;
-Reference;IEA-WEI ;World;Investment|Energy Supply|Electricity|Transmission and Distribution;billion US$2010/yr;;;;;221.34;229.152;221.34;228.284;240.436;255.192;265.608;258.664;257.796;
-Reference;BNEF;World;Investment|Energy Supply|Electricity|Solar;billion US$2010/yr;19.096;32.116;52.948;55.552;88.536;138.88;124.992;104.16;128.464;153.636;126.728;157.108;124.992;122.388
-Reference;BNEF;World;Investment|Energy Supply|Electricity|Wind;billion US$2010/yr;30.38;51.212;64.232;62.496;85.064;72.044;67.704;72.044;96.348;104.16;106.764;115.444;115.444;124.124
