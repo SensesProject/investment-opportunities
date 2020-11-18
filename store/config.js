@@ -50,7 +50,14 @@ export const REGION_MAPPING_SHORT = {
   'R5ASIA': 'Asia',
   'R5LAM': 'Latin America',
   'R5MAF': 'Middle East and Africa',
-  'R5REF': 'Reform economies'
+  'R5REF': 'Reform economies',
+  'CHN': 'China',
+  'IND': 'India',
+  'EUR': 'Europe',
+  'EU': 'Europe',
+  'JPN': 'Japan',
+  'RUS': 'Russia',
+  'USA': 'The United States'
 }
 
 export const REGION_MAPPING_LONG = {
