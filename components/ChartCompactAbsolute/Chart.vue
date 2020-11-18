@@ -68,7 +68,7 @@ import { scaleLinear, scaleBand } from 'd3-scale'
 import { map, find, isUndefined, compact, range, get, forEach, kebabCase } from 'lodash'
 import { mapState, mapGetters } from 'vuex'
 import { format } from 'd3-format'
-import { getColorFromVariable, calcBar, shortScenario } from '~/assets/js/utils.js'
+import { getColorFromVariable, calcBar, shortScenario, createTooltip } from '~/assets/js/utils.js'
 
 export default {
   props: {
@@ -163,10 +163,11 @@ export default {
         if (!datum) { return false }
         const { variable, scenario } = datum
         const [change, isPositive, value] = get(datum, ['changes', this.region, this.model], [0, true, 0])
+        const reference = get(datum, ['reference', this.region, this.model], 0)
         const x = this.scaleX(i)
         const y = yBase + (Math.min(this.scaleY(Math.abs(value)), this.maxHeight) * (isPositive ? -1 : 1))
         return {
-          tooltip: `Variable: ${variable}<br />${isPositive ? '+' : '–'}${format(',.3r')(value)}<br />Change: ${isPositive ? '+' : '–'}${format('.0%')(change)}<br />Region: ${this.region}`,
+          tooltip: createTooltip('change', this.region, variable, value, reference, change, isPositive, scenario, this.model),
           d: calcBar(x, yBase, y, barWidth),
           x,
           y,

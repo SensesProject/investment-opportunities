@@ -22,11 +22,12 @@
     header {
       font-weight: $font-weight-bold;
       font-size: $font-size-big;
+      line-height: 1.12;
       margin: 0 0 $spacing / 6;
       display: flex;
       justify-content: space-between;
       border-bottom: 1px solid $color-pale-gray;
-      padding-bottom: 0.3rem;
+      padding-bottom: 0.6rem;
       margin-bottom: 0.9rem;
     }
 

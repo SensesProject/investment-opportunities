@@ -10,7 +10,7 @@
           :width="bar.width"
           :height="bar.height"
           :fill="bar.color"
-          v-tooltip="{ content: bar.tooltip }"
+          v-tooltip="bar.tooltip"
           @mouseenter="() => changeGuides([bar.x, bar.x + bar.width])"
           @mouseleave="() => changeGuides([])"  />
         </g>
@@ -32,7 +32,7 @@ import { format } from 'd3-format'
 import { scaleBand } from 'd3-scale'
 import { get, find, map } from 'lodash'
 import { mapState, mapActions } from 'vuex'
-import { getColorFromVariable, longScenario } from '~/assets/js/utils.js'
+import { getColorFromVariable, longScenario, createTooltip } from '~/assets/js/utils.js'
 import { VARIABLES, REGIONS, REGION_MAPPING_SHORT, REGION_MAPPING_LONG } from '~/store/config'
 
 export default {
@@ -93,7 +93,7 @@ export default {
           const reference = get(d, ['reference', region, this.model], 0)
           const [change, isPositiveChange] = get(d, ['changes', region, this.model], [])
 
-          const tooltip = this.createVariableTooltip(region, variable, value, reference, change, isPositiveChange)
+          const tooltip = createTooltip('region', region, variable, value, reference, change, isPositiveChange, this.scenario, this.model)
 
           const width = this.showRegions ? this.scaleX(value) : widthRegion
           const height = this.scaleY.bandwidth() // this.showRegions ? this.scenarioHeight : this.groupHeight / 2 / (REGIONS.length / 2)
@@ -122,23 +122,7 @@ export default {
   methods: {
     ...mapActions('guides', [
       'changeGuides'
-    ]),
-    createVariableTooltip (region, variable, value, reference, change, isPositive) {
-      const { formatNumber: fN } = this
-      return `
-        <header><strong>${variable}</strong><strong>${get(REGION_MAPPING_SHORT, region, region)}</strong><span>${fN(value)}</span></header>
-        <p>
-          ${get(REGION_MAPPING_SHORT, region, region)} is currently investing <strong>${fN(reference)}</strong> billion US dollar every year in ${variable}, but they ${this.scenario === 'NDC' ? 'pledged to' : 'should'} invest <strong>${fN(value)}</strong> for <strong>${longScenario(this.scenario)}</strong>.
-          That is <strong>${fN(Math.abs(value - reference))} (${format('.0%')(change)}) ${isPositive ? 'more' : 'less'}</strong>.
-        </p>
-        <footer>
-          <span>Scenario: ${longScenario(this.scenario)}</span><span>Model: ${this.model}</span>
-        </footer>
-      `
-    },
-    formatNumber (n) {
-      return format(',.3r')(n)
-    }
+    ])
   },
   watch: {
     // The transitions of the different stages depend on what is changing.

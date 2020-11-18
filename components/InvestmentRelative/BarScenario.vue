@@ -7,7 +7,7 @@
       :y="barScenario.y"
       :width="barScenario.width"
       :height="barScenario.height"
-      v-tooltip="{ content: barScenario.tooltip }"
+      v-tooltip="barScenario.tooltip"
       @mouseenter="() => changeGuides([barScenario.x, barScenario.x + barScenario.width])"
       @mouseleave="() => changeGuides([])" />
   </g>
@@ -17,6 +17,7 @@
 import { format } from 'd3-format'
 import { get, sumBy, find } from 'lodash'
 import { mapState, mapActions } from 'vuex'
+import { createTooltip } from '~/assets/js/utils.js'
 import { VARIABLES } from '~/store/config'
 
 export default {
@@ -37,7 +38,7 @@ export default {
         const d = find(this.data, { variable })
         return get(d, ['reference', this.region, this.model], 0)
       })
-      const tooltip = this.createScenarioTooltip(this.scenario, sum, sumRef, sum - sumRef)
+      const tooltip = createTooltip('scenario', this.region, false, sum, sumRef, sum - sumRef, sum > sumRef, this.scenario, this.model)
       return {
         x: 0,
         y: this.y,
@@ -50,23 +51,7 @@ export default {
   methods: {
     ...mapActions('guides', [
       'changeGuides'
-    ]),
-    createScenarioTooltip (scenario, value, reference, diff) {
-      const { formatNumber: fN } = this
-      return `
-        <header><strong>${scenario}</strong><span>${fN(value)}</span></header>
-        <p>
-          We are currently investing ${fN(reference)} billion US dollar every year, but we ${scenario === 'NDC' ? 'pledged to' : 'should'} invest <strong>${fN(value)}</strong> for <strong>${scenario}</strong>.
-          That means, we should invest <strong>${fN(Math.abs(diff))} ${diff > 0 ? 'more' : 'less'}</strong>.
-        </p>
-        <footer>
-          <span>Region: ${this.region}</span><span>Model: ${this.model}</span>
-        </footer>
-      `
-    },
-    formatNumber (n) {
-      return format(',.3r')(n)
-    }
+    ])
   }
 }
 </script>
