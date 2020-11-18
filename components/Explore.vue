@@ -8,13 +8,13 @@
       <label>Compare regions</label>
       <InputSwitch v-model="showRegions" />
     </div>
-    <div class="option vertical">
+    <div class="option vertical" :class="{ disabled: showRegions }">
       <label>Select region</label>
-      <SensesSelect v-model="region" :options="regions" />
+      <SensesSelect v-model="region" :options="regions" :disabled="showRegions" />
     </div>
-    <div class="option horizontal">
-      <label>Stack variables</label>
-      <InputSwitch v-model="barStacked" />
+    <div class="option horizontal" :class="{ disabled: showRegions }">
+      <label>Un-stack investments</label>
+      <InputSwitch v-model="barStacked" :disabled="showRegions" />
     </div>
   </div>
 </template>
@@ -180,7 +180,14 @@ export default {
 
     label {
       @include text-2();
+      transition: color $transition-animation;
       // color: $color-neon;
+    }
+
+    &.disabled {
+      label {
+        color: $color-pale-gray;
+      }
     }
   }
 

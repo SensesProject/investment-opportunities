@@ -16,10 +16,13 @@ $font-prefix: "../../node_modules/library/src/assets/fonts";
   }
 }
 
+.senses-select.disabled {
+  pointer-events: none;
+}
 
 .highlight {
   background: transparent;
-  border: 1px solid #f5f6f8 !important;
+  border: 1px solid $color-neon !important;
   color: getColor(gray, 40);
   transition: border-color $transition, color $transition;
 
@@ -35,6 +38,16 @@ $font-prefix: "../../node_modules/library/src/assets/fonts";
 
     svg g path {
       stroke: $color-neon !important;
+    }
+  }
+
+  &:disabled {
+    pointer-events: none;
+    border-color: $color-pale-gray !important;
+    color: $color-pale-gray !important;
+
+    svg g path {
+      stroke: $color-pale-gray !important;
     }
   }
 }

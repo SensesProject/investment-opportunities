@@ -4,7 +4,7 @@
       <g v-for="bar in variable.barsRegions">
         <rect
           class="barRegion"
-          :class="{ isVisible: showRegions && isColored }"
+          :class="[changeClass, { isVisible: showRegions && isColored }]"
           :x="bar.x"
           :y="bar.y"
           :width="bar.width"
@@ -18,7 +18,7 @@
     <g v-for="label in barRegionsLabels">
       <text
         class="barRegion--label"
-        :class="{ isVisible: showRegions }"
+        :class="{ isVisible: showRegions && isColored }"
         :x="label.x"
         :y="label.y">
         {{ label.region }}
@@ -39,7 +39,8 @@ export default {
   props: ['data', 'scenario', 'width', 'height', 'y', 'scaleX', 'groupHeight', 'extents', 'gap', 'scenarioHeight'],
   data: () => {
     return {
-      headlineHeight: 50
+      headlineHeight: 50,
+      changeClass: false
     }
   },
   computed: {
@@ -56,13 +57,20 @@ export default {
         .range([0, this.showRegions ? this.scenarioHeight - 50 : this.groupHeight / 2])
         .domain(REGIONS)
         .paddingOuter(0)
+        .paddingInner(this.showRegions ? 0.7 : 0)
+    },
+    scaleYLabels () {
+      return scaleBand()
+        .range([0, this.scenarioHeight - 50])
+        .domain(REGIONS)
+        .paddingOuter(0)
         .paddingInner(0.7)
     },
     barRegionsLabels () {
       return map(REGIONS, (region, i) => {
         return {
           x: 0,
-          y: this.y + this.scaleY(region) - 2 - 20,
+          y: this.y + this.scaleYLabels(region) - 2 - 20,
           region: get(REGION_MAPPING_SHORT, region, region),
           tooltip: get(REGION_MAPPING_LONG, region, region)
         }
@@ -76,7 +84,8 @@ export default {
 
         const color = this.isColored ? getColorFromVariable(variable) : '#343437'
 
-        const widthWorld = this.scaleX(get(d, ['values', 'World', this.model], 0))
+        // This is used for transition between »compare region« and »custom region«
+        const widthRegion = this.scaleX(get(d, ['values', this.region, this.model], 0))
 
         const barsRegions = map(REGIONS, (region, i) => {
           const value = get(d, ['values', region, this.model], 0)
@@ -86,12 +95,12 @@ export default {
 
           const tooltip = this.createVariableTooltip(region, variable, value, reference, change, isPositiveChange)
 
-          const width = this.showRegions ? this.scaleX(value) : widthWorld
+          const width = this.showRegions ? this.scaleX(value) : widthRegion
           const height = this.scaleY.bandwidth() // this.showRegions ? this.scenarioHeight : this.groupHeight / 2 / (REGIONS.length / 2)
 
           return {
             x: x0,
-            y: this.y + this.scaleY(region) - 20,
+            y: this.y + this.scaleY(region) + (this.showRegions ? -20 : 0),
             width,
             height,
             tooltip,
@@ -101,7 +110,7 @@ export default {
         })
 
         // width to be stacked
-        const x1 = this.barStacked ? this.scaleX(get(this.extents, variable, 0)) + this.gap : widthWorld
+        const x1 = this.barStacked ? this.scaleX(get(this.extents, variable, 0)) + this.gap : widthRegion
         x0 += x1
 
         return {
@@ -130,6 +139,16 @@ export default {
     formatNumber (n) {
       return format(',.3r')(n)
     }
+  },
+  watch: {
+    // The transitions of the different stages depend on what is changing.
+    // By adding this class we can define the transition durations.
+    showRegions () {
+      this.changeClass = 'showRegions'
+    },
+    model () {
+      this.changeClass = 'model'
+    }
   }
 }
 </script>
@@ -140,21 +159,62 @@ export default {
   .barRegion--label {
     @include graphic-text-label-2();
     opacity: 0;
-    transition: opacity $transition-animation linear 0s;
+    transition:
+      opacity $transition-animation linear 0s;
 
     &.isVisible {
       opacity: 1;
-      transition: opacity $transition-animation linear $transition-animation;
+      transition:
+        opacity $transition-animation linear $transition-animation * 2;
     }
   }
 
-  .barRegion {
-    opacity: 0;
-    transition: x $transition-animation linear 0s, fill $transition-animation, opacity $transition-animation, y $transition-animation, width $transition-animation;
+  .model {
+    &.barRegion {
+      opacity: 0;
+      transition:
+        x $transition-animation,
+        fill $transition-animation,
+        opacity $transition-animation,
+        y $transition-animation,
+        width $transition-animation,
+        height $transition-animation;
 
-    &.isVisible {
-      opacity: 1;
-      transition: x $transition-animation linear $transition-animation, fill $transition-animation, opacity $transition-animation, y $transition-animation, width $transition-animation;
+      &.isVisible {
+        opacity: 1;
+        transition:
+          x $transition-animation,
+          fill $transition-animation,
+          opacity $transition-animation,
+          y $transition-animation,
+          width $transition-animation,
+          height $transition-animation;
+      }
     }
   }
+
+  .showRegions {
+    &.barRegion {
+      opacity: 0;
+      transition:
+        x $transition-animation linear $transition-animation * 2,
+        fill $transition-animation,
+        opacity $transition-animation linear $transition-animation,
+        y $transition-animation linear 0s,
+        width $transition-animation linear 0s,
+        height $transition-animation linear 0s;
+
+      &.isVisible {
+        opacity: 1;
+        transition:
+          x $transition-animation linear 0s,
+          fill $transition-animation,
+          opacity $transition-animation linear 0s,
+          y $transition-animation linear $transition-animation,
+          width $transition-animation linear $transition-animation,
+          height $transition-animation linear $transition-animation;
+      }
+    }
+  }
+
 </style>

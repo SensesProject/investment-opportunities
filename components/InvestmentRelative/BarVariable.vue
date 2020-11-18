@@ -3,7 +3,7 @@
     <g class="barVariable-wrapper" v-for="bar in barVariables">
       <rect
         class="barVariable"
-        :class="{ isVisible: !showRegions, hasHighlight: highlight.length, isHighlighted: highlight.includes(bar.variable) }"
+        :class="[changeClass, { isVisible: !showRegions, isNotStacked: !barStacked, hasHighlight: highlight.length, isHighlighted: highlight.includes(bar.variable) }]"
         :x="bar.x"
         :y="bar.y"
         :width="bar.width"
@@ -28,7 +28,8 @@ export default {
   props: ['data', 'scenario', 'width', 'height', 'y', 'scaleX', 'groupHeight', 'extents', 'gap'],
   data: () => {
     return {
-      headlineHeight: 50
+      headlineHeight: 50,
+      changeClass: false
     }
   },
   computed: {
@@ -93,6 +94,19 @@ export default {
     formatNumber (n) {
       return format(',.3r')(n)
     }
+  },
+  watch: {
+    // The transitions of the different stages depend on what is changing.
+    // By adding this class we can define the transition durations.
+    showRegions () {
+      this.changeClass = 'change-showRegions'
+    },
+    barStacked () {
+      this.changeClass = 'change-barStacked'
+    },
+    region () {
+      this.changeClass = 'change-region'
+    }
   }
 }
 </script>
@@ -101,12 +115,41 @@ export default {
   @import "~@/assets/style/global";
 
   .barVariable {
-    opacity: 0;
-    transition: x $transition-animation linear 0s, fill $transition-animation, opacity $transition-animation, width $transition-animation;
 
-    &.isVisible {
-      opacity: 1;
-      transition: x $transition-animation linear $transition-animation, fill $transition-animation, opacity $transition-animation, width $transition-animation;
+    &.change-barStacked, &.change-region {
+      opacity: 0;
+      transition:
+        x $transition-animation,
+        fill $transition-animation,
+        opacity $transition-animation,
+        width $transition-animation;
+
+      &.isVisible {
+        opacity: 1;
+        transition:
+          x $transition-animation,
+          fill $transition-animation,
+          opacity $transition-animation,
+          width $transition-animation;
+      }
+    }
+
+    &.change-showRegions {
+      opacity: 0;
+      transition:
+        x $transition-animation linear 0s,
+        fill $transition-animation,
+        opacity $transition-animation linear 0s,
+        width $transition-animation linear $transition-animation;
+
+      &.isVisible {
+        opacity: 1;
+        transition:
+          x $transition-animation linear $transition-animation * 2,
+          fill $transition-animation,
+          opacity $transition-animation linear $transition-animation,
+          width $transition-animation linear 0s;
+      }
     }
 
     &.hasHighlight {

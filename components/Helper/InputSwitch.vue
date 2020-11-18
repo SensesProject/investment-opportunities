@@ -1,5 +1,5 @@
 <template>
-  <svg class="switch" @click="$emit('input', !value)">
+  <svg class="switch" :class="{ disabled }" @click="$emit('input', !value)">
     <rect
       x="1"
       y="1"
@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  props: ['value']
+  props: ['value', 'disabled']
 }
 </script>
 
@@ -58,6 +58,19 @@ export default {
 
       &.isActive {
         transform: translate(12px);
+      }
+    }
+
+    &.disabled {
+      pointer-events: none;
+
+      rect {
+        fill: $color-pale-gray;
+
+        &.isActive {
+          fill: getColor(neon, 100);
+          stroke: getColor(neon, 100);
+        }
       }
     }
   }
