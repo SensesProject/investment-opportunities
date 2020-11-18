@@ -1,5 +1,5 @@
 <template>
-  <span :class="`variable variable--${variable}`"><slot /></span>
+  <span :class="`variable variable--${variable}`"><i /><strong><slot /></strong></span>
 </template>
 
 <script>
@@ -15,99 +15,104 @@ export default {
     font-size: 0.95em;
     text-transform: uppercase;
     letter-spacing: 0.01em;
-    font-weight: bold;
+    // display: inline-block;
     white-space: nowrap;
 
-    &:before {
+    strong {
+      white-space: normal;
+      font-weight: bold;
+    }
+
+    i {
       content: '';
       width: 0.6em;
       height: 0.6em;
       margin-bottom: 0.05em;
       margin-right: 0.3em;
-      display: inline-block;
       border-radius: 50%;
+      display: inline-block;
     }
 
     &.variable--coal {
-      &:before {
+      i {
         background-color: #F0A1BA;
       }
     }
 
     &.variable--hydrogen-fossil {
-      &:before {
+      i {
         background-color: #FFBD9A;
       }
     }
 
     &.variable--oil-and-gas {
-      &:before {
+      i {
         background-color: #E67887;
       }
     }
 
     &.variable--fossil-fuels {
-      &:before {
+      i {
         background-color: #FAA99C;
       }
     }
 
     &.variable--nuclear {
-      &:before {
+      i {
         background-color: #B8AEFF;
       }
     }
 
     &.variable--bioenergy {
-      &:before {
+      i {
         background-color: #A2E7C0;
       }
     }
 
     &.variable--hydrogen-non-fossil {
-      &:before {
+      i {
         background-color: #B6D68C;
       }
     }
 
     &.variable--solar {
-      &:before {
+      i {
         background-color: #FFE7A0;
       }
     }
 
     &.variable--wind {
-      &:before {
+      i {
         background-color: #A3D1EA;
       }
     }
 
     &.variable--other-renewables {
-      &:before {
+      i {
         background-color: #DED68E;
       }
     }
 
     &.variable--transmission-and-distribution {
-      &:before {
+      i {
         background-color: #D8D8E4;
       }
     }
 
     &.variable--energy-efficiency {
-      &:before {
+      i {
         background-color: #AC9BD9;
       }
     }
 
     &.variable--ccs {
-      &:before {
+      i {
         background-color: #BAD2EB;
       }
     }
 
     &.variable--storage {
-      &:before {
+      i {
         background-color: #A7DBD1;
       }
     }
