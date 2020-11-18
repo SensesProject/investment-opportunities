@@ -38,7 +38,7 @@ export default {
         const d = find(this.data, { variable })
         return get(d, ['reference', this.region, this.model], 0)
       })
-      const tooltip = createTooltip('scenario', this.region, false, sum, sumRef, sum - sumRef, sum > sumRef, this.scenario, this.model)
+      const tooltip = createTooltip('scenario', this.region, false, sum, sumRef, Math.abs(sumRef - sum) / sumRef, sum > sumRef, this.scenario, this.model)
       return {
         x: 0,
         y: this.y,
