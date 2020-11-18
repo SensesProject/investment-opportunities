@@ -75,5 +75,6 @@ export const SCENARIO_MAPPING_SHORT = {
 
 export const SCENARIO_MAPPING_LONG = {
   '2C': '2° C',
-  '1.5C': '1.5° C'
+  '1.5C': '1.5° C',
+  'historic': 'Historic'
 }
