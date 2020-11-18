@@ -134,7 +134,6 @@ export default {
     width: 100%;
     height: 100vh;
     top: 0;
-    // top: 10vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -192,7 +191,7 @@ export default {
       grid-column-end: 7;
 
       @include query($narrow) {
-        grid-column-start: 2;
+        grid-column-start: 3;
         grid-column-end: 7;
       }
 
