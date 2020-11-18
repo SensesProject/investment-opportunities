@@ -1,6 +1,6 @@
 <template>
   <div v-if="model !== 'median' && model !== 'REMIND-MAgPIE'" class="warning">
-    <span>The model {{ model }} is not Lorem ipsum dolor sit amet.</span>
+    <span>The CD-Links scenarios of model {{ model }} are from 2017 and do not fully reflect recent cost reductions for wind and solar. This should to be taken into account when analysing the investments into the power sector in those scenarios.</span>
   </div>
 </template>
 
