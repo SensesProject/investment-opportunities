@@ -76,3 +76,9 @@
 	font-family: $font-sans;
 	font-weight: 400;
 }
+
+@mixin query($device) {
+  @media screen and (min-width: $device) {
+    @content;
+  }
+}

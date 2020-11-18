@@ -169,12 +169,42 @@ export default {
 
     @mixin place-left() {
       grid-column-start: 1;
-      grid-column-end: 3;
+      grid-column-end: 7;
+
+      @include query($narrow) {
+        grid-column-start: 1;
+        grid-column-end: 6;
+      }
+
+      @include query($medium) {
+        grid-column-start: 1;
+        grid-column-end: 4;
+      }
+
+      @include query($wide) {
+        grid-column-start: 1;
+        grid-column-end: 3;
+      }
     }
 
     @mixin place-right() {
-      grid-column-start: 5;
+      grid-column-start: 1;
       grid-column-end: 7;
+
+      @include query($narrow) {
+        grid-column-start: 2;
+        grid-column-end: 7;
+      }
+
+      @include query($medium) {
+        grid-column-start: 4;
+        grid-column-end: 7;
+      }
+
+      @include query($wide) {
+        grid-column-start: 5;
+        grid-column-end: 7;
+      }
     }
 
     @mixin place-full() {
