@@ -1,28 +1,5 @@
 <template>
   <g class="bars">
-<!--     <g v-for="({ bars, variable }) in elements" :class="variable" v-tooltip="{ content: `${variable}` }">
-      <g
-        v-for="bar in bars"
-        :key="bar.id"
-        class="bar"
-        :style="bar.style">
-        <StackedInvestmentsBar
-          :width="bar.width"
-          :groupHeight="bar.groupHeight"
-          :variable="bar.label"
-          :id="bar.id"
-          :y="bar.y"
-          :color="bar.color" />
-        <g v-if="bar.marker !== bar.width" :class="['difference', { showDifference }]">
-          <StackedInvestmentsDiffLess
-            v-if="bar.marker < bar.width"
-            v-bind="bar" />
-          <StackedInvestmentsDiffMore
-            v-else
-            v-bind="bar" />
-        </g>
-      </g>
-    </g> -->
     <BarGroups
       v-if="scenario === 'historic'"
       :data="data"
@@ -66,9 +43,6 @@ import { map, sum, values, filter, get, compact, round } from 'lodash'
 import { mapState } from 'vuex'
 import { getColorFromVariable } from '../assets/js/utils.js'
 import { VARIABLES } from '~/store/config'
-// import StackedInvestmentsBar from '~/components/StackedInvestmentsBar'
-// import StackedInvestmentsDiffLess from '~/components/StackedInvestmentsDiffLess'
-// import StackedInvestmentsDiffMore from '~/components/StackedInvestmentsDiffMore'
 import BarScenario from '~/components/InvestmentRelative/BarScenario'
 import BarVariable from '~/components/InvestmentRelative/BarVariable'
 import BarRegion from '~/components/InvestmentRelative/BarRegion'
@@ -77,9 +51,6 @@ import BarGroups from '~/components/InvestmentRelative/BarGroups'
 export default {
   props: ['data', 'scenario', 'extents', 'gap', 'width', 'height', 'y', 'scenarioHeight'],
   components: {
-    // StackedInvestmentsBar,
-    // StackedInvestmentsDiffLess,
-    // StackedInvestmentsDiffMore,
     BarScenario,
     BarVariable,
     BarRegion,
@@ -97,13 +68,6 @@ export default {
     }
   },
   computed: {
-    ...mapState({
-      barStacked: state => state.settings.barStacked,
-      showDifference: state => state.settings.barDifference,
-      showModels: state => state.settings.showModels,
-      model: state => state.settings.model,
-      isColored: state => state.settings.isColored
-    }),
     total () {
       return sum(values(this.extents))
     },
@@ -118,106 +82,8 @@ export default {
         .domain(this.models)
         .paddingOuter(0)
     },
-    widths () {
-      return map(this.elements, (d) => { return get(d, ['bars', 0, 'width'], 0) - this.gap })
-    },
     y0 () {
       return this.headlineHeight + 10 + this.y
-    },
-    // y () {
-    //   return this.formulations.indexOf(this.scenario) * (this.groupHeight + this.headlineHeight)
-    // },
-    elements () {
-      const { isColored } = this
-
-      let x0 = 0
-      return map(VARIABLES, (variable, i) => {
-        const color = isColored ? getColorFromVariable(variable) : '#222'
-        const data = get(filter(this.data, { variable }), 0)
-
-        const values = get(data, ['values'], {})
-        const references = get(data, ['reference'], {})
-
-        const median = get(values, this.model, 0)
-        const referenceAverage = get(references, this.model, 0)
-
-        let n = 0
-
-        const bandwidth = this.scaleY.bandwidth()
-        const groupHeight = bandwidth / 2
-        // const height = groupHeight * values.length
-
-        const bars = compact(map(values, (value, key) => {
-          const reference = get(references, key, 0)
-
-          // const x = this.scaleX(value)
-          const y = this.showModels ? this.scaleY(key) : this.scaleY(key) - bandwidth / 2 * n
-
-          const x1 = this.barStacked ? this.scaleX(get(this.extents, variable, value)) + this.gap : this.scaleX(value)
-          const width = this.scaleX(this.showModels ? value : median)
-          const marker = this.scaleX(this.showModels ? reference : referenceAverage)
-          const diff = value - reference
-          const tooltip = this.createTooltip(variable, value, reference, diff)
-
-          if (key === 'max') {
-            return false
-          }
-          n++
-
-          const style = {
-            transform: `translate(${x0}px, ${this.y0}px)`
-          }
-          return {
-            id: key,
-            x: x0,
-            y,
-            label: variable,
-            diff: (diff > 0 ? '+' : '') + this.formatNumber(diff).replace('-', '–'),
-            x0,
-            x1,
-            width,
-            value: this.formatNumber(value),
-            groupHeight,
-            reference,
-            color,
-            marker,
-            tooltip,
-            style
-          }
-        }))
-
-        const labelX = x0
-        const labelY = this.groupHeight / 2 + bandwidth / 2
-
-        const maxValue = get(values, this.barStacked ? 'max' : 'median')
-        x0 += round(this.barStacked ? this.scaleX(get(this.extents, variable, maxValue)) + this.gap : this.scaleX(maxValue), 0)
-
-        return {
-          labelX,
-          labelY,
-          value: this.formatNumber(median),
-          diff: this.formatNumber(median - referenceAverage),
-          bars,
-          variable
-        }
-      })
-    }
-  },
-  methods: {
-    createTooltip (variable, value, reference, diff) {
-      const { formatNumber: fN } = this
-      return `
-        <header>${variable}</header>
-        <p>
-          We are currently investing <strong>${fN(reference)}</strong> Billion US-Dollar per year,<br />
-          but we should invest <strong>${fN(value)}</strong>.
-          That means, we should invest<br />
-          <strong>${fN(Math.abs(diff))} ${diff > 0 ? 'more' : 'less'}</strong> in ${variable}.
-        </p>
-      `
-    },
-    formatNumber (n) {
-      return format(',.3r')(n)
     }
   }
 }
@@ -232,26 +98,6 @@ export default {
 
   line {
     transition: opacity $transition-animation, x1 $transition-animation, x2 $transition-animation, y1 $transition-animation, y2 $transition-animation;
-  }
-
-  line {
-    &.more {
-      stroke: #fff;
-      stroke-width: 2px;
-      stroke-dasharray: 1px, 1px;
-    }
-  }
-
-  .difference {
-    rect, line {
-      opacity: 0;
-    }
-
-    &.showDifference {
-      rect, line {
-        opacity: 1;
-      }
-    }
   }
 
   .label {
