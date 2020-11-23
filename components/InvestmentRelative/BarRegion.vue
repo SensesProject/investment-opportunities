@@ -4,7 +4,7 @@
       <g v-for="bar in variable.barsRegions">
         <rect
           class="barRegion"
-          :class="[changeClass, { isVisible: showRegions && isColored }]"
+          :class="[changeClass, { isVisible: showRegions && isColored && barStacked }]"
           :x="bar.x"
           :y="bar.y"
           :width="bar.width"
@@ -128,10 +128,13 @@ export default {
     // The transitions of the different stages depend on what is changing.
     // By adding this class we can define the transition durations.
     showRegions () {
-      this.changeClass = 'showRegions'
+      this.changeClass = 'change-region'
     },
     model () {
-      this.changeClass = 'model'
+      this.changeClass = 'change-model'
+    },
+    barStacked () {
+      this.changeClass = 'change-stacked'
     }
   }
 }
@@ -144,59 +147,91 @@ export default {
     @include graphic-text-label-2();
     opacity: 0;
     transition:
-      opacity $transition-animation linear 0s;
+      opacity $transition-animation $transition-type 0s;
 
     &.isVisible {
       opacity: 1;
       transition:
-        opacity $transition-animation linear $transition-animation * 2;
+        opacity $transition-animation $transition-type $transition-animation * 2;
     }
   }
 
-  .model {
+  .barRegion {
+    opacity: 0;
+
+    &.isVisible {
+      opacity: 1;
+    }
+  }
+
+  .change-stacked {
     &.barRegion {
       opacity: 0;
       transition:
-        x $transition-animation,
-        fill $transition-animation,
-        opacity $transition-animation,
-        y $transition-animation,
-        width $transition-animation,
-        height $transition-animation;
+        x $transition-animation $transition-type 0s,
+        fill $transition-animation $transition-type,
+        opacity $transition-animation $transition-type,
+        y $transition-animation $transition-type,
+        width $transition-animation $transition-type,
+        height $transition-animation $transition-type;
 
       &.isVisible {
         opacity: 1;
         transition:
-          x $transition-animation,
-          fill $transition-animation,
-          opacity $transition-animation,
-          y $transition-animation,
-          width $transition-animation,
-          height $transition-animation;
+          x $transition-animation $transition-type $transition-animation * 2,
+          fill $transition-animation $transition-type,
+          opacity $transition-animation $transition-type,
+          y $transition-animation $transition-type,
+          width $transition-animation $transition-type,
+          height $transition-animation $transition-type;
       }
     }
   }
 
-  .showRegions {
+  .change-model {
     &.barRegion {
       opacity: 0;
       transition:
-        x $transition-animation linear $transition-animation * 2,
-        fill $transition-animation,
-        opacity $transition-animation linear $transition-animation,
-        y $transition-animation linear 0s,
-        width $transition-animation linear 0s,
-        height $transition-animation linear 0s;
+        x $transition-animation $transition-type,
+        fill $transition-animation $transition-type,
+        opacity $transition-animation $transition-type,
+        y $transition-animation $transition-type,
+        width $transition-animation $transition-type,
+        height $transition-animation $transition-type;
 
       &.isVisible {
         opacity: 1;
         transition:
-          x $transition-animation linear 0s,
-          fill $transition-animation,
-          opacity $transition-animation linear 0s,
-          y $transition-animation linear $transition-animation,
-          width $transition-animation linear $transition-animation,
-          height $transition-animation linear $transition-animation;
+          x $transition-animation $transition-type,
+          fill $transition-animation $transition-type,
+          opacity $transition-animation $transition-type,
+          y $transition-animation $transition-type,
+          width $transition-animation $transition-type,
+          height $transition-animation $transition-type;
+      }
+    }
+  }
+
+  .change-region {
+    &.barRegion {
+      opacity: 0;
+      transition:
+        x $transition-animation $transition-type $transition-animation * 2,
+        fill $transition-animation $transition-type,
+        opacity $transition-animation $transition-type $transition-animation,
+        y $transition-animation $transition-type 0s,
+        width $transition-animation $transition-type 0s,
+        height $transition-animation $transition-type 0s;
+
+      &.isVisible {
+        opacity: 1;
+        transition:
+          x $transition-animation $transition-type 0s,
+          fill $transition-animation $transition-type,
+          opacity $transition-animation $transition-type 0s,
+          y $transition-animation $transition-type $transition-animation,
+          width $transition-animation $transition-type 0s,
+          height $transition-animation $transition-type $transition-animation;
       }
     }
   }

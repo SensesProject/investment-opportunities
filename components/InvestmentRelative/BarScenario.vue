@@ -62,15 +62,13 @@ export default {
   .barScenario {
     opacity: 0;
     pointer-events: none;
-    transition: opacity $transition-animation linear 0s;
+    transition: opacity $transition-animation $transition-type 0s;
     fill: getColor(gray, 10);
-    // stroke: #000;
-    // stroke-width: 1.5;
 
     &.isVisible {
       opacity: 1;
       pointer-events: all;
-      transition: opacity $transition-animation linear $transition-animation;
+      transition: opacity $transition-animation $transition-type $transition-animation * 2;
     }
   }
 

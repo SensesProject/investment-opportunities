@@ -90,6 +90,9 @@ export default {
     },
     region () {
       this.changeClass = 'change-region'
+    },
+    model () {
+      this.changeClass = 'change-model'
     }
   }
 }
@@ -100,39 +103,57 @@ export default {
 
   .barVariable {
 
-    &.change-barStacked, &.change-region {
+    &.change-barStacked {
       opacity: 0;
       transition:
-        x $transition-animation linear 0s,
-        fill $transition-animation linear $transition-animation,
-        opacity $transition-animation linear $transition-animation * 2,
-        width $transition-animation;
+        x $transition-animation $transition-type 0s,
+        fill $transition-animation $transition-type $transition-animation,
+        opacity $transition-animation $transition-type $transition-animation * 2,
+        width $transition-animation $transition-type;
 
       &.isStacked, &.isVisible {
         opacity: 1;
         transition:
-          x $transition-animation linear $transition-animation,
-          fill $transition-animation linear 0s,
-          opacity $transition-animation linear 0s,
-          width $transition-animation;
+          x $transition-animation $transition-type $transition-animation,
+          fill $transition-animation $transition-type 0s,
+          opacity $transition-animation $transition-type 0s,
+          width $transition-animation $transition-type;
+      }
+    }
+
+    &.change-region, &.change-model {
+      opacity: 0;
+      transition:
+        x $transition-animation $transition-type 0s,
+        fill $transition-animation $transition-type $transition-animation,
+        opacity $transition-animation $transition-type $transition-animation * 2,
+        width $transition-animation $transition-type;
+
+      &.isVisible {
+        opacity: 1;
+        transition:
+          x $transition-animation $transition-type 0s,
+          fill $transition-animation $transition-type 0s,
+          opacity $transition-animation $transition-type 0s,
+          width $transition-animation $transition-type;
       }
     }
 
     &.change-showRegions {
       opacity: 0;
       transition:
-        x $transition-animation linear 0s,
-        fill $transition-animation,
-        opacity $transition-animation linear 0s,
-        width $transition-animation linear $transition-animation;
+        x $transition-animation $transition-type 0s,
+        fill $transition-animation $transition-type,
+        opacity $transition-animation $transition-type 0s,
+        width $transition-animation $transition-type $transition-animation;
 
       &.isVisible {
         opacity: 1;
         transition:
-          x $transition-animation linear $transition-animation * 2,
-          fill $transition-animation,
-          opacity $transition-animation linear $transition-animation,
-          width $transition-animation linear 0s;
+          x $transition-animation $transition-type $transition-animation * 2,
+          fill $transition-animation $transition-type,
+          opacity $transition-animation $transition-type $transition-animation,
+          width $transition-animation $transition-type 0s;
       }
     }
 

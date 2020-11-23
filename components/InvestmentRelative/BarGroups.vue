@@ -79,11 +79,11 @@ export default {
 
   .barGroup, .barGroup--label {
     opacity: 0;
-    transition: opacity $transition-animation linear 0;
+    transition: opacity $transition-animation $transition-type 0;
 
     &.isVisible {
       opacity: 1;
-      transition: opacity $transition-animation linear $transition-animation * 2;
+      transition: opacity $transition-animation $transition-type $transition-animation * 2;
     }
   }
 </style>
