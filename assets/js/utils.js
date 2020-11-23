@@ -1,6 +1,6 @@
 import { get } from 'lodash'
 import { format } from 'd3-format'
-import { SCENARIO_MAPPING_SHORT, REGION_MAPPING_LONG, SCENARIO_MAPPING_LONG, REGION_MAPPING_SHORT } from '~/store/config'
+import { VARIABLE_MAPPING_CSS, SCENARIO_MAPPING_SHORT, REGION_MAPPING_LONG, SCENARIO_MAPPING_LONG, REGION_MAPPING_SHORT } from '~/store/config'
 
 export const getColorFromVariable = function (key) {
   const colors = {
@@ -42,6 +42,10 @@ export const getShortRegion = function (region) {
   return get(REGION_MAPPING_SHORT, region, region)
 }
 
+export const getVariableCSS = function (variable) {
+  return get(VARIABLE_MAPPING_CSS, variable, variable)
+}
+
 const fn = format(',.3r')
 const fp = format('.0%')
 
@@ -57,16 +61,17 @@ export const createTooltip = function (type, region, variable, value, reference,
   const labelDiff = fn(Math.abs(value - reference))
   const labelChange = `(${fp(change)})`
   const object = variable ? ` in ${variable}` : ''
+  const classes = `variable variable--${getVariableCSS(variable)}`
 
   const content = []
 
   switch (type) {
     case 'region':
-      content.push(`<header><strong>${variable}</strong><strong>${shortRegion}</strong><span>${labelValue}&#8239;bn US$/yr</span></header>`)
+      content.push(`<header><strong class="${classes}"><i></i> ${variable}</strong><strong>${shortRegion}</strong><span>${labelValue}&#8239;bn US$/yr</span></header>`)
       break;
     case 'variable':
     case 'change':
-      content.push(`<header><strong>${variable}</strong><strong>${longScenario}</strong><span>${labelValue}&#8239;bn US$/yr</span></header>`)
+      content.push(`<header><strong class="${classes}"><i></i> ${variable}</strong><strong>${longScenario}</strong><span>${labelValue}&#8239;bn US$/yr</span></header>`)
       break;
     default:
       content.push(`<header><strong>${longScenario}</strong><span>${labelValue}&#8239;bn US$/yr</span></header>`)
@@ -84,7 +89,7 @@ export const createTooltip = function (type, region, variable, value, reference,
     if (scenario === 'NDC') {
       content.push(`<p>Given pledged NDCs, ${subject} ${region === 'World' ? 'are' : 'is'} on track to invest ${labelValue} billion US dollar every year ${object}.</p>`)
     } else {
-      content.push(`<p>${subject.capitalize()} should invest ${labelValue} billion US dollar every year ${object} to be aligned with the ${longScenario} ${scenario} target.</p>`)
+      content.push(`<p>${subject.capitalize()} should invest ${labelValue} billion US dollar every year ${object} to be aligned with the ${longScenario} target.</p>`)
     }
 
     if (reference !== 0) {
