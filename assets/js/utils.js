@@ -67,11 +67,11 @@ export const createTooltip = function (type, region, variable, value, reference,
 
   switch (type) {
     case 'region':
-      content.push(`<header><strong class="${classes}"><i></i> ${variable}</strong><strong>${shortRegion}</strong><span>${labelValue}&#8239;bn US$/yr</span></header>`)
+      content.push(`<header><strong class="${classes}"><i></i> ${variable}</strong><strong>${shortRegion}</strong><span class="value">${labelValue}&#8239;bn US$/yr</span></header>`)
       break;
     case 'variable':
     case 'change':
-      content.push(`<header><strong class="${classes}"><i></i> ${variable}</strong><strong>${longScenario}</strong><span>${labelValue}&#8239;bn US$/yr</span></header>`)
+      content.push(`<header><strong class="${classes}"><i></i> ${variable}</strong><strong class="scenario">${longScenario}</strong><span class="value">${labelValue}&#8239;bn US$/yr</span></header>`)
       break;
     default:
       content.push(`<header><strong>${longScenario}</strong><span>${labelValue}&#8239;bn US$/yr</span></header>`)
