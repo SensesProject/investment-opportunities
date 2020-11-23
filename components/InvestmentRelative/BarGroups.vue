@@ -21,7 +21,6 @@
 import { get, map, sumBy, intersection } from 'lodash'
 import { mapState } from 'vuex'
 import { GROUP_FOSSILS, GROUP_NON_FOSSILS, GROUP_OTHERS, GROUP_LABELS } from '~/store/config'
-// import { MODELS } from '~/store/config'
 
 export default {
   props: ['data', 'scenario', 'width', 'height', 'y', 'scaleX', 'groupHeight', 'extents', 'gap'],

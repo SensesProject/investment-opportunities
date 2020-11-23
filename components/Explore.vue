@@ -98,24 +98,53 @@ export default {
 
   .options {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-column-gap: 1rem;
+    grid-template-rows: repeat(4, auto);
+    grid-row-gap: 0.5rem;
+
+    @include query($medium) {
+      grid-template-columns: auto;
+      grid-row-gap: 0;
+      grid-column-gap: 1rem;
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 
   .option {
     display: grid;
 
     &:not(:last-child) {
-      border-right: 1px solid $color-pale-gray;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid $color-pale-gray;
+
+      @include query($medium) {
+        border-bottom: none;
+        border-right: 1px solid $color-pale-gray;
+      }
     }
 
     &.vertical {
       grid-row-gap: 0.3rem;
-      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: repeat(2, 1fr);
+      justify-content: space-between;
+
+      & > *:last-child {
+        text-align: right;
+      }
+
+      @include query($medium) {
+        grid-template-columns: unset;
+        grid-template-rows: repeat(2, 1fr);
+      }
     }
 
     &.horizontal {
       grid-template-columns: repeat(2, auto);
+      justify-content: space-between;
+      align-items: center;
+
+      & > *:last-child {
+        text-align: right;
+      }
     }
 
     label {

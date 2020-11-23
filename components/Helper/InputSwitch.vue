@@ -28,7 +28,6 @@ export default {
   .switch {
     width: 28px;
     height: 16px;
-    margin-bottom: 0.5rem;
     cursor: pointer;
 
     rect {

@@ -124,10 +124,11 @@ export default {
     position: relative;
     padding: 0;
     margin: 0;
-    height: 70vh;
+    height: 80vh;
     width: 100%;
 
     @include query($narrow) {
+      height: 70vh;
       width: 90%;
     }
 

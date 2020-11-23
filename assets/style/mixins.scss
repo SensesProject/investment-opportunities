@@ -15,16 +15,24 @@
 
 @mixin headline-1() {
 	font-family: $font-serif;
-	font-size: 3.1rem;
+	font-size: 2.4rem;
 	line-height: 1.2;
 	letter-spacing: 0.01em;
 	color: #222;
+
+	@include query($medium) {
+    font-size: 3.1rem;
+  }
 }
 
 @mixin headline-2() {
-	font-size: 1.4rem;
+	font-size: 1.3rem;
 	font-weight: 450;
 	font-family: $font-serif;
+
+	@include query($medium) {
+    font-size: 1.4rem;
+  }
 }
 
 @mixin headline-3() {
@@ -37,11 +45,15 @@
 @mixin text-intro() {
 	font-family: $font-serif;
 	font-style: italic;
-	font-size: 1.4rem;
+	font-size: 1.2rem;
 	line-height: 1.4;
 	color: #232323;
 	max-width: 55ch;
 	letter-spacing: 0.01em;
+
+	@include query($medium) {
+    font-size: 1.4rem;
+  }
 }
 
 @mixin text-default() {

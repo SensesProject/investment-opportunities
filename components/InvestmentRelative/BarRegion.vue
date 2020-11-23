@@ -52,16 +52,22 @@ export default {
       model: state => state.settings.model,
       region: state => state.settings.region
     }),
+    isSmallScreen () {
+      return this.width < 400 && this.height < 700
+    },
+    offHeight () {
+      return this.isSmallScreen ? -60 : -50
+    },
     scaleY () {
       return scaleBand()
-        .range([0, this.showRegions ? this.scenarioHeight - 50 : this.groupHeight / 2])
+        .range([0, this.showRegions ? this.scenarioHeight + this.offHeight : this.groupHeight / 2])
         .domain(REGIONS)
         .paddingOuter(0)
         .paddingInner(this.showRegions ? 0.7 : 0)
     },
     scaleYLabels () {
       return scaleBand()
-        .range([0, this.scenarioHeight - 50])
+        .range([0, this.scenarioHeight + this.offHeight])
         .domain(REGIONS)
         .paddingOuter(0)
         .paddingInner(0.7)
@@ -70,7 +76,7 @@ export default {
       return map(REGIONS, (region, i) => {
         return {
           x: 0,
-          y: this.y + this.scaleYLabels(region) - 2 - 20,
+          y: this.y + this.scaleYLabels(region) - 2 + (this.isSmallScreen ? -10 : -20),
           region: get(REGION_MAPPING_SHORT, region, region),
           tooltip: get(REGION_MAPPING_LONG, region, region)
         }
@@ -100,7 +106,7 @@ export default {
 
           return {
             x: x0,
-            y: this.y + this.scaleY(region) + (this.showRegions ? -20 : 0),
+            y: this.y + this.scaleY(region) + (this.showRegions ? (this.isSmallScreen ? -10 : -20) : 0),
             width,
             height,
             tooltip,

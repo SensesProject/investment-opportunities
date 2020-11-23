@@ -17,7 +17,9 @@
       :gap="gap"
       :extents="extents"
       :y="y0"
-      :scenarioHeight="scenarioHeight" />
+      :scenarioHeight="scenarioHeight"
+      :height="height"
+      :width="width" />
     <BarVariable
       :data="data"
       :scaleX="scaleX"
@@ -59,7 +61,6 @@ export default {
   data: () => {
     return {
       groupHeight: 50,
-      headlineHeight: 50,
       margin: {
         left: 0,
         right: 0
@@ -68,6 +69,9 @@ export default {
     }
   },
   computed: {
+    headlineHeight () {
+      return this.height < 500 ? 30 : 50
+    },
     total () {
       return sum(values(this.extents))
     },
@@ -76,14 +80,8 @@ export default {
         .range([this.margin.left, this.width - (VARIABLES.length - 1) * this.gap - this.margin.right])
         .domain([0, this.total])
     },
-    scaleY () {
-      return scaleBand()
-        .range([0, this.groupHeight])
-        .domain(this.models)
-        .paddingOuter(0)
-    },
     y0 () {
-      return this.headlineHeight + 10 + this.y
+      return (this.height < 500 ? 30 : 50) + 10 + this.y
     }
   }
 }

@@ -143,9 +143,13 @@ export default {
     width: 100%;
     grid-template-columns: repeat(6, 1fr);
     grid-column-gap: 1rem;
-    grid-row-gap: 30vh;
+    grid-row-gap: 70vh;
     margin: 20vh 0 0;
     pointer-events: none;
+
+    @include query($medium) {
+      grid-row-gap: 30vh;
+    }
 
     & > * {
       pointer-events: all;
@@ -160,9 +164,13 @@ export default {
 
     .step:not(.step-trigger) {
       border: 1px solid #f2f2f2;
-      background-color: rgba(255, 255, 255, 0.94);
+      background-color: rgba(255, 255, 255, 0.98);
       box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.05);
       padding: 1rem;
+
+      @include query($medium) {
+        background-color: rgba(255, 255, 255, 0.94);
+      }
     }
 
     @mixin place-left() {
@@ -250,7 +258,11 @@ export default {
     .step-7 { // Trigger
       width: 0px;
       grid-row-start: 8;
-      height: 40vh;
+      height: 10vh;
+
+      @include query($medium) {
+        height: 40vh;
+      }
     }
 
     .step-8 {

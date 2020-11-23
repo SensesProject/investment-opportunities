@@ -100,12 +100,24 @@ export default {
 
   h2 {
     line-height: 1;
+
+    small {
+      display: none;
+
+      @include query($medium) {
+        display: inline-block;
+      }
+    }
   }
 
   .description {
-    display: flex;
+    display: none;
     height: calc(1.05rem * 2.0);
     align-items: center;
+
+    @include query($medium) {
+      display: flex;
+    }
   }
 
   .label-2 {
