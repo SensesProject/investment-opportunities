@@ -22,7 +22,6 @@ import { get, find, map } from 'lodash'
 import { mapState, mapActions } from 'vuex'
 import { getColorFromVariable, createTooltip } from '~/assets/js/utils.js'
 import { VARIABLES } from '~/store/config'
-// import { MODELS } from '~/store/config'
 
 export default {
   props: ['data', 'scenario', 'width', 'height', 'y', 'scaleX', 'groupHeight', 'extents', 'gap'],
@@ -82,6 +81,9 @@ export default {
   watch: {
     // The transitions of the different stages depend on what is changing.
     // By adding this class we can define the transition durations.
+    highlight () {
+      this.changeClass = 'change-highlight'
+    },
     showRegions () {
       this.changeClass = 'change-showRegions'
     },
@@ -157,12 +159,16 @@ export default {
       }
     }
 
-    &.hasHighlight {
-      opacity: 0.2;
+    &.change-highlight {
+      transition: opacity $transition-animation $transition-type 0s;
 
-      &.isHighlighted {
-        opacity: 1;
-        // filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, .1));
+      &.hasHighlight {
+        opacity: 0.2;
+        transition: opacity $transition-animation $transition-type 0s;
+
+        &.isHighlighted {
+          opacity: 1;
+        }
       }
     }
   }
