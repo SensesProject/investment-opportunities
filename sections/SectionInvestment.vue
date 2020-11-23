@@ -16,17 +16,16 @@
       <IntersectionObserver :step="2" :noStyling="true" classes="step step-2">
         <h3>Reducing fossil investments</h3>
         <p>While the fossil sector, and especially the extraction side has still captured the largest share of energy investments in the past years, investments into fossil extraction need to be reduced considerably in order to achieve the Paris Agreement climate targets and avoid stranded assets. While <Variable variable="oil-and-gas">Oil and Gas</Variable> investments decrease markedly, they don't fall to zero, as also declining production volumes still require some investments into existing fields. <Variable variable="coal">Coal</Variable> investments decrease even stronger with high agreement across models as coal is the fossil fuel with the higher emission intensity and the lowest specific value. Furthermore, it's mostly used in power generation, where low-carbon alternatives are most mature and expanding rapidly. Therefore, investments into <Variable variable="fossil-fuels">Fossil Power Generation</Variable> also decrease strongly, with investments into new coal-fired power plants ending immediately in mitigation scenarios, and only some gas generation projects still being pursued in some regions.</p>
-        <BarInvestmentsChart
+        <BarCompactAbsolute
           :variables="GROUP_FOSSILS"
-          :scenarios="['NDC', '2C', '1.5C']"
-          :limit="1">
+          :scenarios="['NDC', '2C', '1.5C']">
           <template v-slot:header>
-            Change of investments
+            Change compared to current investments
           </template>
           <template v-slot:caption>
-            Figure 1. Relative changes of different fossil investment components.
+            Figure 1. Absolute changes of different fossil investment components.
           </template>
-        </BarInvestmentsChart>
+        </BarCompactAbsolute>
         <p> Whether Carbon capture and storage offers a way for fossil fuels to retain its place in the transition to a low-carbon energy system is uncertain, but some models foresee increased investments into <Variable variable="hydrogen-fossil">Hydrogen (fossil)</Variable> with CCS in ambitious mitigation scenarios.</p>
       </IntersectionObserver>
       <IntersectionObserver :step="3" :noStyling="true" classes="step step-3">
