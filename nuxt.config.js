@@ -4,8 +4,8 @@ export default {
   mode: 'spa',
   head: getHead({
     title: 'Investment Opportunities and Alignment',
-    description: 'In this module, we illustrate how co-production techniques can be applied in combination with socioeconomic and impact scenarios to develop adaptation pathways for a climate robust and CO2-neutral landscape. We demonstrate this process with the case study of the Dutch Overijsselse Vecht.',
-    image: 'https://climatescenarios.org/share/og-dutch.jpg'
+    description: 'What are near-time investment requirements for meeting stringent climate targets in a low carbon world?',
+    image: 'https://climatescenarios.org/share/og-investment.jpg'
   }),
   loading: { color: '#fff' },
   css: [
