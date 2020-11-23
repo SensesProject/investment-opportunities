@@ -78,11 +78,100 @@ h2 {
 	font-size: 1.1rem;
 }
 
-.ee { color: #aaa; }
-.ccs { color: #feeda1; }
-.ets { color: #fdbf6f; }
-.ecn { color: #e9f6a1; }
-.ecb { color: #b7e075; }
-.enr { color: #229c53; }
-.effc { color: #da372a; }
-.ecff { color: #a50026; }
+
+
+.variable {
+  i {
+    content: '';
+    width: 0.6em;
+    height: 0.6em;
+    margin-bottom: 0.05em;
+    margin-right: 0.3em;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  &.variable--coal {
+    i {
+      background-color: #E67887;
+    }
+  }
+
+  &.variable--hydrogen-fossil {
+    i {
+      background-color: #FFBD9A;
+    }
+  }
+
+  &.variable--oil-and-gas {
+    i {
+      background-color: #F0A1BA;
+    }
+  }
+
+  &.variable--fossil-fuels {
+    i {
+      background-color: #FAA99C;
+    }
+  }
+
+  &.variable--nuclear {
+    i {
+      background-color: #B8AEFF;
+    }
+  }
+
+  &.variable--bioenergy {
+    i {
+      background-color: #A2E7C0;
+    }
+  }
+
+  &.variable--hydrogen-non-fossil {
+    i {
+      background-color: #B6D68C;
+    }
+  }
+
+  &.variable--solar {
+    i {
+      background-color: #FFE7A0;
+    }
+  }
+
+  &.variable--wind {
+    i {
+      background-color: #A3D1EA;
+    }
+  }
+
+  &.variable--other-renewables {
+    i {
+      background-color: #DED68E;
+    }
+  }
+
+  &.variable--transmission-and-distribution {
+    i {
+      background-color: #D8D8E4;
+    }
+  }
+
+  &.variable--energy-efficiency {
+    i {
+      background-color: #AC9BD9;
+    }
+  }
+
+  &.variable--ccs {
+    i {
+      background-color: #BAD2EB;
+    }
+  }
+
+  &.variable--storage {
+    i {
+      background-color: #A7DBD1;
+    }
+  }
+}
