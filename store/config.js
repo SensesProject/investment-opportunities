@@ -17,7 +17,7 @@ export const GROUP_NON_FOSSILS = [
   'Hydrogen - Non-fossil',
   'Solar',
   'Wind',
-  'other renewables'
+  'Other renewables'
 ]
 
 export const GROUP_OTHERS = [
@@ -33,12 +33,13 @@ export const REGIONS = [
   'R5ASIA',
   'R5LAM',
   'R5REF'
-  // 'USA',
-  // 'CHN',
-  // 'IND'
-  //  'EUR',
-  //  'JPN',
-  //  'RUS',
+]
+
+export const ADDITIONAL_REGIONS = [
+  'USA',
+  'CHN',
+  'IND',
+  'EU'
 ]
 
 export const GROUP_LABELS = ['Fossil', 'Non-Fossil', 'Other']

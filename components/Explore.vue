@@ -23,6 +23,9 @@
 import { mapState } from 'vuex'
 import SensesSelect from 'library/src/components/SensesSelect'
 import InputSwitch from '~/components/Helper/InputSwitch'
+import { map } from 'lodash'
+import { getShortRegion } from '~/assets/js/utils.js'
+import { REGIONS, ADDITIONAL_REGIONS, MODELS } from '~/store/config'
 
 export default {
   components: {
@@ -31,84 +34,21 @@ export default {
   },
   data: () => {
     return {
-      models: [
-        {
-          label: 'AIM/CGE',
-          value: 'AIM/CGE'
-        },
-        {
-          label: 'IMAGE',
-          value: 'IMAGE'
-        },
-        {
-          label: 'MESSAGEix-GLOBIOM',
-          value: 'MESSAGEix-GLOBIOM'
-        },
-        {
-          label: 'POLES',
-          value: 'POLES'
-        },
-        {
-          label: 'REMIND-MAgPIE',
-          value: 'REMIND-MAgPIE'
-        },
-        {
-          label: 'WITCH-GLOBIOM',
-          value: 'WITCH-GLOBIOM'
-        },
-        {
-          label: 'median',
-          value: 'median'
-        }
-      ],
-      regions: [
-        {
-          label: 'The World',
-          value: 'World'
-        },
-        {
-          label: 'China',
-          value: 'CHN'
-        },
-        {
-          label: 'EU',
-          value: 'EU'
-        },
-        {
-          label: 'India',
-          value: 'IND'
-        },
-        {
-          label: 'USA',
-          value: 'USA'
-        },
-        {
-          label: 'R5OECD90+EU',
-          value: 'R5OECD90+EU'
-        },
-        {
-          label: 'R5REF',
-          value: 'R5REF'
-        },
-        {
-          label: 'R5ASIA',
-          value: 'R5ASIA'
-        },
-        {
-          label: 'R5MAF',
-          value: 'R5MAF'
-        },
-        {
-          label: 'R5LAM',
-          value: 'R5LAM'
-        }
-      ]
+      models: MODELS
     }
   },
   computed: {
     ...mapState({
       step: state => state.settings.step
     }),
+    regions () {
+      return map(['World', ...REGIONS, ...ADDITIONAL_REGIONS], (region) => {
+        return {
+          label: getShortRegion(region),
+          value: region
+        }
+      })
+    },
     region: {
       get () {
         return this.$store.state.settings.region
