@@ -45,12 +45,29 @@ export const GROUP_LABELS = ['Fossil', 'Non-Fossil', 'Other']
 
 export const VARIABLES = [...GROUP_FOSSILS, ...GROUP_NON_FOSSILS, ...GROUP_OTHERS]
 
+export const VARIABLE_MAPPING_CSS = {
+  'Oil and Gas extraction': 'oil-and-gas',
+  'Coal extraction': 'coal',
+  'Fossil power generation': 'fossil-fuels',
+  'Hydrogen - Fossil': 'hydrogen-fossil',
+  'Nuclear': 'nuclear',
+  'Bioenergy': 'bioenergy',
+  'Hydrogen - Non-fossil': 'hydrogen-non-fossil',
+  'Solar': 'solar',
+  'Wind': 'wind',
+  'other renewables': 'other-renewables',
+  'Transmission and Distribution': 'transmission-and-distribution',
+  'Energy Efficiency': 'energy-efficiency',
+  'CCS': 'ccs',
+  'Storage': 'storage',
+}
+
 export const REGION_MAPPING_SHORT = {
   'R5OECD90+EU': 'OECD and EU',
   'R5ASIA': 'Asia',
   'R5LAM': 'Latin America',
   'R5MAF': 'Middle East and Africa',
-  'R5REF': 'Reform economies',
+  'R5REF': 'Reform Economies',
   'CHN': 'China',
   'IND': 'India',
   'EUR': 'Europe',
