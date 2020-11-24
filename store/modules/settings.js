@@ -52,11 +52,9 @@ const actions = {
     commit('SETTINGS_CHANGE', params)
   },
   changeStep ({ commit }, step) {
-    // commit('SETTINGS_CHANGE', params)
     commit('SETTINGS_CHANGE', { key: 'step', value: step })
     switch (step) {
       case 0:
-        // this.changeSettings({ key: 'isRotated', value: false })
         commit('SETTINGS_CHANGE', { key: 'barStacked', value: false })
         commit('SETTINGS_CHANGE', { key: 'showRegions', value: false })
         commit('SETTINGS_CHANGE', { key: 'isColored', value: false })
@@ -65,7 +63,6 @@ const actions = {
         commit('SETTINGS_CHANGE', { key: 'model', value: DEFAULT_MODEL })
         break
       case 1:
-        // commit('SETTINGS_CHANGE', { key: 'isRotated', value: false })
         commit('SETTINGS_CHANGE', { key: 'barStacked', value: true })
         commit('SETTINGS_CHANGE', { key: 'showRegions', value: false })
         commit('SETTINGS_CHANGE', { key: 'isColored', value: true })
@@ -74,7 +71,6 @@ const actions = {
         commit('SETTINGS_CHANGE', { key: 'model', value: DEFAULT_MODEL })
         break
       case 2:
-        // commit('SETTINGS_CHANGE', { key: 'isRotated', value: true })
         commit('SETTINGS_CHANGE', { key: 'barStacked', value: true })
         commit('SETTINGS_CHANGE', { key: 'showRegions', value: false })
         commit('SETTINGS_CHANGE', { key: 'isColored', value: true })
@@ -83,7 +79,6 @@ const actions = {
         commit('SETTINGS_CHANGE', { key: 'model', value: DEFAULT_MODEL })
         break
       case 3:
-        // commit('SETTINGS_CHANGE', { key: 'isRotated', value: true })
         commit('SETTINGS_CHANGE', { key: 'barStacked', value: true })
         commit('SETTINGS_CHANGE', { key: 'showRegions', value: false })
         commit('SETTINGS_CHANGE', { key: 'isColored', value: true })
@@ -92,7 +87,6 @@ const actions = {
         commit('SETTINGS_CHANGE', { key: 'model', value: DEFAULT_MODEL })
         break
       case 4:
-        // commit('SETTINGS_CHANGE', { key: 'isRotated', value: true })
         commit('SETTINGS_CHANGE', { key: 'barStacked', value: true })
         commit('SETTINGS_CHANGE', { key: 'showRegions', value: false })
         commit('SETTINGS_CHANGE', { key: 'isColored', value: true })
@@ -101,7 +95,6 @@ const actions = {
         commit('SETTINGS_CHANGE', { key: 'model', value: DEFAULT_MODEL })
         break
       case 5:
-        // commit('SETTINGS_CHANGE', { key: 'isRotated', value: true })
         commit('SETTINGS_CHANGE', { key: 'barStacked', value: true })
         commit('SETTINGS_CHANGE', { key: 'showRegions', value: true })
         commit('SETTINGS_CHANGE', { key: 'isColored', value: true })
@@ -110,7 +103,6 @@ const actions = {
         commit('SETTINGS_CHANGE', { key: 'model', value: DEFAULT_MODEL })
         break
       case 6:
-        // commit('SETTINGS_CHANGE', { key: 'isRotated', value: true })
         commit('SETTINGS_CHANGE', { key: 'barStacked', value: true })
         commit('SETTINGS_CHANGE', { key: 'showRegions', value: true })
         commit('SETTINGS_CHANGE', { key: 'isColored', value: true })
@@ -119,7 +111,6 @@ const actions = {
         commit('SETTINGS_CHANGE', { key: 'model', value: DEFAULT_MODEL })
         break
       case 7:
-        // commit('SETTINGS_CHANGE', { key: 'isRotated', value: true })
         commit('SETTINGS_CHANGE', { key: 'barStacked', value: true })
         commit('SETTINGS_CHANGE', { key: 'showRegions', value: true })
         commit('SETTINGS_CHANGE', { key: 'isColored', value: true })
