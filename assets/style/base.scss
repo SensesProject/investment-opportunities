@@ -26,6 +26,11 @@ $font-prefix: "../../node_modules/library/src/assets/fonts";
   color: getColor(gray, 40);
   transition: border-color $transition, color $transition;
 
+  span {
+    line-height: 1.1;
+    padding: 0.3em 0 0.2em;
+  }
+
   svg g path {
     stroke: getColor(gray, 40) !important;
     transition: stroke $transition;

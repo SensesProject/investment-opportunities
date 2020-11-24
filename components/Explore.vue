@@ -5,16 +5,20 @@
       <SensesSelect v-model="model" :options="models" />
     </div>
     <div class="option horizontal">
-      <label>Compare regions</label>
-      <InputSwitch v-model="showRegions" />
+      <div>
+        <label>Compare regions</label>
+        <InputSwitch v-model="showRegions" />
+      </div>
     </div>
     <div class="option vertical" :class="{ disabled: showRegions }">
       <label>Select region</label>
       <SensesSelect v-model="region" :options="regions" :disabled="showRegions" />
     </div>
     <div class="option horizontal" :class="{ disabled: showRegions }">
-      <label>Un-stack investments</label>
-      <InputSwitch v-model="barStacked" :disabled="showRegions" />
+      <div>
+        <label>Un-stack investments</label>
+        <InputSwitch v-model="barStacked" :disabled="showRegions" />
+      </div>
     </div>
   </div>
 </template>
@@ -118,6 +122,8 @@ export default {
 
       @include query($medium) {
         border-bottom: none;
+        padding-bottom: 0;
+        padding-right: 1rem;
         border-right: 1px solid $color-pale-gray;
       }
     }
@@ -134,16 +140,22 @@ export default {
       @include query($medium) {
         grid-template-columns: unset;
         grid-template-rows: repeat(2, 1fr);
+        justify-items: start;
       }
     }
 
     &.horizontal {
-      grid-template-columns: repeat(2, auto);
-      justify-content: space-between;
-      align-items: center;
+      align-items: start;
 
-      & > *:last-child {
-        text-align: right;
+      div {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        justify-content: space-between;
+        align-items: center;
+
+        & > *:last-child {
+          text-align: right;
+        }
       }
     }
 
