@@ -128,6 +128,8 @@ export default {
 @import "~@/assets/style/global";
 
 .section--investment {
+  position: relative;
+
   .graphic {
     position: sticky;
     width: 100%;
@@ -136,6 +138,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: -1;
   }
 
   .steps {
@@ -146,6 +149,7 @@ export default {
     grid-row-gap: 70vh;
     margin: 20vh 0 0;
     pointer-events: none;
+    z-index: 1;
 
     @include query($medium) {
       grid-row-gap: 30vh;
@@ -157,16 +161,12 @@ export default {
     // We need this for the chart in the background
     position: relative;
 
-    .vis {
-      // position: absolute;
-      // width: 100%;
-    }
-
     .step:not(.step-trigger) {
       border: 1px solid #f2f2f2;
       background-color: rgba(255, 255, 255, 0.98);
       box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.05);
       padding: 1rem;
+      z-index: 11;
 
       @include query($medium) {
         background-color: rgba(255, 255, 255, 0.94);
