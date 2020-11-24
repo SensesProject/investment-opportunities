@@ -1,12 +1,12 @@
 <template>
   <defs>
-    <pattern id="diagonal-stripe-more" patternUnits="userSpaceOnUse" width="4" height="4">
+    <pattern id="diagonal-stripe-more" patternUnits="userSpaceOnUse" width="6" height="6">
       <path
           d="M-1,1 l2,-2
-            M0,4 l4,-4
-            M3,5 l2,-2"
+            M0,6 l6,-6
+            M5,7 l2,-2"
           stroke="#fff"
-          style="opacity: 0.8"
+          style="opacity: 1"
           stroke-width="1.5"
         />
     </pattern>
