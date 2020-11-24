@@ -12,7 +12,17 @@
         v-tooltip="bar.tooltip"
         @mouseenter="() => changeGuides([bar.x, bar.x + bar.width])"
         @mouseleave="() => changeGuides([])"  />
-      </g>
+      <!-- <g v-if="bar.widthReference !== bar.width" :class="['difference']">
+        <DiffLess
+          v-if="bar.widthReference < bar.width"
+          v-bind="bar"
+          v-tooltip="bar.tooltip" />
+        <DiffMore
+          v-else
+          v-bind="bar"
+          v-tooltip="bar.tooltip" />
+      </g> -->
+    </g>
   </g>
 </template>
 
@@ -22,9 +32,15 @@ import { get, find, map } from 'lodash'
 import { mapState, mapActions } from 'vuex'
 import { getColorFromVariable, createTooltip } from '~/assets/js/utils.js'
 import { VARIABLES } from '~/store/config'
+import DiffLess from './DiffLess'
+import DiffMore from './DiffMore'
 
 export default {
   props: ['data', 'scenario', 'width', 'height', 'y', 'scaleX', 'groupHeight', 'extents', 'gap'],
+  components: {
+    DiffLess,
+    DiffMore
+  },
   data: () => {
     return {
       headlineHeight: 50,
@@ -57,6 +73,8 @@ export default {
         const width = this.showRegions ? 0 : this.scaleX(value)
         const maxWidth = this.scaleX(get(this.extents, variable, value)) + this.gap
 
+        const widthReference = this.showRegions ? 0 : this.scaleX(reference)
+
         // width to be stacked
         const x1 = this.barStacked ? maxWidth : width
         x0 += x1
@@ -68,7 +86,8 @@ export default {
           height: this.groupHeight / 2,
           tooltip,
           color,
-          variable
+          variable,
+          widthReference
         }
       })
     }
