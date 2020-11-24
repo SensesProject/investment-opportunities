@@ -126,6 +126,7 @@ export default {
     margin: 0;
     height: 80vh;
     width: 100%;
+    // z-index: 0;
 
     @include query($narrow) {
       height: 70vh;
@@ -143,6 +144,8 @@ export default {
     .vis {
       height: 100%;
       width: 100%;
+      position: relative;
+      // z-index: -1;
 
       svg > * {
         pointer-events: all;
@@ -157,6 +160,7 @@ export default {
       width: 100%;
       display: grid;
       grid-template-rows: repeat(4, 1fr);
+      z-index: -1;
     }
   }
 
