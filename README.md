@@ -4,13 +4,15 @@
 Christoph Bertram, Bas van Ruijven and Jonas Parnow
 
 The 1.5 and 2 °C climate targets of the Paris Agreement can only be reached with a profound shift in energy system investments over the coming decade. As described in the 1.5 Special Report by the IPCC, the world needs to bring the global CO2 emissions down to zero in the next 3–5 decades. This requires a complete transformation of the energy system that is currently characterised by a dominance of fossil fuels towards a system shaped by high efficiency, broad electrification of end-uses and decarbonised power supply, mainly via renewables.
+
 Because energy systems require long-lived capital stocks, these investments need to be shifted immediately. The Paris Agreement points to this crucial role of investment flows by requiring “finance flows [to be] consistent with a pathway towards low greenhouse gas emissions and climate-resilient development.” The module visualises how this flow needs to change in size and composition and thus not only reveals alignments to also opportunities for financial actors.
+
 The module is extending the static figure 2 from McCollum, D. L. et al. (2018) into an interactive, explanatory and exploratory graphic. The module uses updated data and guides the user step by step through the chart. The chart becomes more complex by splitting up from a macro perspective into a micro perspective and thus allowing the reader to compare investments per region, scenario, model and energy type.
 
-![screenshot of the module](./screenshot 1.jpg)
-![screenshot of the module](./screenshot 2.jpg)
-![screenshot of the module](./screenshot 3.jpg)
-![screenshot of the module](./screenshot 4.jpg)
+![screenshot of the module](./screenshot_4.jpg)
+![screenshot of the module](./screenshot_3.jpg)
+![screenshot of the module](./screenshot_2.jpg)
+![screenshot of the module](./screenshot_1.jpg)
 
 This repository contains the code for [*Investment Opportunities and Alignment*](https://climatescenarios.org/investment-opportunities), a learn module on requirements for a low carbon world. It is part of the [SENSES Toolkit](https://climatescenarios.org/).
 
