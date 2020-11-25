@@ -13,8 +13,8 @@ The source code is licensed under the [ISC license](LICENSE.md). Text and graphi
 
 Data sources and if applicable licenses are listed below on a per-file basis.
 
-- `preprocessing/sources/historic_investment.csv` [Source on Github CEDS](https://github.com/JGCRI/CEDS/) [License on Github](https://github.com/JGCRI/CEDS/#license-section)
-- `preprocessing/sources/41560_2018_179_MOESM2_ESM-1.csv` Source: [IAMC 1.5°C Scenario Explorer and Data hosted by IIASA](https://data.ene.iiasa.ac.at/iamc-1.5c-explorer/#/about)[License for the IAMC 1.5°C scenario ensemble data](https://data.ene.iiasa.ac.at/iamc-1.5c-explorer/#/license)
+- `preprocessing/sources/historic_investment.csv` [Source on Github CEDS](https://github.com/JGCRI/CEDS/); [License on Github](https://github.com/JGCRI/CEDS/#license-section)
+- `preprocessing/sources/41560_2018_179_MOESM2_ESM-1.csv` Source: [IAMC 1.5°C Scenario Explorer and Data hosted by IIASA](https://data.ene.iiasa.ac.at/iamc-1.5c-explorer/#/about); [License for the IAMC 1.5°C scenario ensemble data](https://data.ene.iiasa.ac.at/iamc-1.5c-explorer/#/license)
 
 ## Build Setup
 
