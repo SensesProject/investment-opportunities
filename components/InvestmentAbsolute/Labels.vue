@@ -13,13 +13,13 @@
       </div>
     </section>
     <section>
-      <h2>What {{ subject }} <strong :class="{ isHighlighted }">should</strong> invest for <strong :class="{ isHighlighted }">2°&#8239;C</strong></h2>
+      <h2>What {{ subject }} <strong :class="{ isHighlighted }">should</strong> invest for <strong :class="{ isHighlighted }">2&#8239;°C</strong></h2>
       <div class="description">
         <span :class="['label-2', { isVisible: get(values, ['2C'], 0) && !barStacked }]">In order to reach the 2° target, {{ subject }} must invest <strong>{{ get(values, ['2C', 'value'], 0) }}</strong> billion US dollar every year over the next decade. That is <strong>{{ get(values, ['2C', 'diff'], 0) }}</strong>&#8239;bn {{ get(values, ['2C', 'isPositive'], true) ? 'more' : 'less' }} than currently.</span>
       </div>
     </section>
     <section>
-      <h2>What {{ subject }} <strong :class="{ isHighlighted }">should</strong> invest for <strong :class="{ isHighlighted }">1.5°&#8239;C</strong></h2>
+      <h2>What {{ subject }} <strong :class="{ isHighlighted }">should</strong> invest for <strong :class="{ isHighlighted }">1.5&#8239;°C</strong></h2>
       <div class="description">
         <span :class="['label-2', { isVisible: get(values, ['1.5C'], 0) && !barStacked }]">In order to reach the 1.5° target, {{ subject }} must invest <strong>{{ get(values, ['1.5C', 'value'], 0) }}</strong> billion US dollar every year over the next decade. That is <strong>{{ get(values, ['1.5C', 'diff'], 0) }}</strong>&#8239;bn {{ get(values, ['1.5C', 'isPositive'], true) ? 'more' : 'less' }} than currently.</span>
       </div>
