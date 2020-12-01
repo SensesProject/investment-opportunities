@@ -13,10 +13,10 @@ The module is extending the static figure 2 from McCollum, D. L. et al. (2018) i
 
 This repository contains the code for [*Investment Opportunities and Alignment*](https://climatescenarios.org/investment-opportunities), a learn module on the required energy system transformation. It is part of the [SENSES Toolkit](https://climatescenarios.org/).
 
-![screenshot of the module](./screenshot_investment_1.jpg)
-![screenshot of the module](./screenshot_investment_2.jpg)
-![screenshot of the module](./screenshot_investment_3.jpg)
-![screenshot of the module](./screenshot_investment_4.jpg)
+![screenshot of the module](./screenshot_investment_1.png)
+![screenshot of the module](./screenshot_investment_2.png)
+![screenshot of the module](./screenshot_investment_3.png)
+![screenshot of the module](./screenshot_investment_4.png)
 
 ## License
 
