@@ -9,12 +9,15 @@ Because energy systems require long-lived capital stocks, these investments need
 
 The module is extending the static figure 2 from McCollum, D. L. et al. (2018) into an interactive, explanatory and exploratory graphic. The module uses updated data and guides the user step by step through the chart. The chart becomes more complex by splitting up from a macro perspective into a micro perspective and thus allowing the reader to compare investments per region, scenario, model and energy type.
 
+---
+
+This repository contains the code for [*Investment Opportunities and Alignment*](https://climatescenarios.org/investment-opportunities), a learn module on the required energy system transformation. It is part of the [SENSES Toolkit](https://climatescenarios.org/).
+
+
 ![screenshot of the module](./screenshot_4.jpg)
 ![screenshot of the module](./screenshot_3.jpg)
 ![screenshot of the module](./screenshot_2.jpg)
 ![screenshot of the module](./screenshot_1.jpg)
-
-This repository contains the code for [*Investment Opportunities and Alignment*](https://climatescenarios.org/investment-opportunities), a learn module on requirements for a low carbon world. It is part of the [SENSES Toolkit](https://climatescenarios.org/).
 
 ## License
 
