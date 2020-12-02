@@ -77,34 +77,40 @@ export const createTooltip = function (type, region, variable, value, reference,
       content.push(`<header><strong>${longScenario}</strong><span>${labelValue}&#8239;bn US$/yr</span></header>`)
   }
 
-  const adjective = isPositive ? 'more' : 'less'
-
-  if (scenario === 'historic') {
-    const subject = region === 'World' ? 'We are' : `${shortRegion} is`
-    content.push(`<p>${subject} currently investing ${labelReference} billion US dollar every year${object}.</p>`)
+  if (region !== 'World' && variable === 'Energy Efficiency' && scenario !== 'historic') {
+    content.push(`<p>Energy efficiency investments listed for the regions (other than ‘World’) are known to be underestimates, as they include only the ‘supply-side offset’ component of the calculation, whereas the ‘World’ energy efficiency investments include both this and the ‘base-year efficiency’ component. The latter is available as an estimate by IEA only at the global level (see Methods of McCollum et al. 2018 for details), hence the varying treatment.</p>`)
   } else {
-    const subject = region === 'World' ? 'we' : shortRegion
-    const pronoun = region === 'World' ? 'we' : 'they'
+    const adjective = isPositive ? 'more' : 'less'
 
-    if (scenario === 'NDC') {
-      content.push(`<p>Given pledged NDCs, ${subject} ${region === 'World' ? 'are' : 'is'} on track to invest ${labelValue} billion US dollar every year ${object}.</p>`)
+    if (scenario === 'historic') {
+      const subject = region === 'World' ? 'We are' : `${shortRegion} is`
+      content.push(`<p>${subject} currently investing ${labelReference} billion US dollar every year${object}.</p>`)
     } else {
-      content.push(`<p>${subject.capitalize()} should invest ${labelValue} billion US dollar every year ${object} to be aligned with the ${longScenario} target.</p>`)
-    }
+      const subject = region === 'World' ? 'we' : shortRegion
+      const pronoun = region === 'World' ? 'we' : 'they'
 
-    if (reference !== 0) {
-      content.push(`<p>That is ${labelDiff} ${labelChange} ${adjective} than the ${labelReference}&#8239;bn US$/yr, that ${pronoun} are currently investing.</p>`)
-    } else {
-      content.push(`<p>${subject.capitalize()} ${region === 'World' ? 'are' : 'is'} currently not investing anything in this.</p>`)
+      if (scenario === 'NDC') {
+        content.push(`<p>Given pledged NDCs, ${subject} ${region === 'World' ? 'are' : 'is'} on track to invest ${labelValue} billion US dollar every year ${object}.</p>`)
+      } else {
+        content.push(`<p>${subject.capitalize()} should invest ${labelValue} billion US dollar every year ${object} to be aligned with the ${longScenario} target.</p>`)
+      }
+
+      if (reference !== 0) {
+        content.push(`<p>That is ${labelDiff} ${labelChange} ${adjective} than the ${labelReference}&#8239;bn US$/yr, that ${pronoun} are currently investing.</p>`)
+      } else {
+        content.push(`<p>${subject.capitalize()} ${region === 'World' ? 'are' : 'is'} currently not investing anything in this.</p>`)
+      }
     }
   }
 
+  const modelText = scenario === 'historic' ? '' : `<span>Model: ${model}</span>`
+
   switch (type) {
     case 'region':
-      content.push(`<footer><span>Scenario: ${longScenario}</span><span>Model: ${model}</span></footer>`)
+      content.push(`<footer><span>Scenario: ${longScenario}</span>${modelText}</footer>`)
       break;
     default:
-      content.push(`<footer><span>Region: ${shortRegion}</span><span>Model: ${model}</span></footer>`)
+      content.push(`<footer><span>Region: ${shortRegion}</span>${modelText}</footer>`)
   }
 
   return {
