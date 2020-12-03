@@ -78,7 +78,7 @@ export const createTooltip = function (type, region, variable, value, reference,
   }
 
   if (region !== 'World' && variable === 'Energy Efficiency' && scenario !== 'historic') {
-    content.push(`<p>Energy efficiency investments listed for the regions (other than ‘World’) are known to be underestimates, as they include only the ‘supply-side offset’ component of the calculation, whereas the ‘World’ energy efficiency investments include both this and the ‘base-year efficiency’ component. The latter is available as an estimate by IEA only at the global level (see Methods of McCollum et al. 2018 for details), hence the varying treatment.</p>`)
+    content.push(`<p>Regional and country energy efficiency investments projections are underestimates, as they include only an estimation based on a supply-side offset component, whereas the ‘World’ energy efficiency investment projections include both this and an additional ‘base-year efficiency’ component. The latter is available as an estimate by IEA only at the global level (see Methods of McCollum et al. 2018 for details).</p>`)
   } else {
     const adjective = isPositive ? 'more' : 'less'
 
