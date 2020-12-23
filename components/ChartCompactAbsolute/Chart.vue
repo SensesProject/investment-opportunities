@@ -163,11 +163,12 @@ export default {
         if (!datum) { return false }
         const { variable, scenario } = datum
         const [change, isPositive, value] = get(datum, ['changes', this.region, this.model], [0, true, 0])
+        const absValue = get(datum, ['values', this.region, this.model], 0)
         const reference = get(datum, ['reference', this.region, this.model], 0)
         const x = this.scaleX(i)
         const y = yBase + (Math.min(this.scaleY(Math.abs(value)), this.maxHeight) * (isPositive ? -1 : 1))
         return {
-          tooltip: createTooltip('change', this.region, variable, value, reference, change, isPositive, scenario, this.model),
+          tooltip: createTooltip('change', this.region, variable, absValue, reference, change, isPositive, scenario, this.model),
           d: calcBar(x, yBase, y, barWidth),
           x,
           y,
