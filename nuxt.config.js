@@ -1,7 +1,7 @@
 const { getHead } = require('library/src/assets/js/head.js')
 
 export default {
-  mode: 'spa',
+  ssr: false,
   head: getHead({
     title: 'Investment Opportunities and Alignment',
     description: 'What are near-time investment requirements for meeting stringent climate targets in a low carbon world?',
